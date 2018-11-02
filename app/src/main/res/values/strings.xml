@@ -10,7 +10,6 @@
     <string name="title_numberTicket">번호표</string>
     <string name="title_foodTray">식판</string>
 
-
     <!-- Tutorial -->
     <string name="closeBtn">닫기</string>
     <string name="noshowBtn">다시 보지 않기</string>
@@ -24,12 +23,20 @@
     <string name="nav_setting">환경설정</string>
     <string name="nav_appVersion">현재 버전 1.0.0</string>
 
+    <string name="nav_mypage">My Page</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
-
+    <!-- MyPage -->
+    <string name="mypage_save">저장</string>
+    <string name="mypage_email">이메일</string>
+    <string name="mypage_password">비밀번호</string>
+    <string name="mypage_phoneCertification">휴대폰 인증</string>
+    <string name="mypage_changePwd">변경</string>
+    <string name="mypage_changePhoneNumber">재인증</string>
 
 </resources>

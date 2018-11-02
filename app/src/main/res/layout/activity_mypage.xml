@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     tools:context=".MypageActivity">
 
@@ -17,7 +19,36 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/nav_mypage"
+                    android:textColor="#000"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/mypage_saveBtn"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:onClick="onClick"
+                    android:text="@string/mypage_save"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -32,29 +63,172 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center">
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/mypage_profile"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
                     android:src="@drawable/profile" />
 
                 <EditText
                     android:id="@+id/mypage_nickname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentRight="true"
                     android:layout_below="@+id/mypage_profile"
-                    android:text="김행키" />
+                    android:layout_marginLeft="70dp"
+                    android:layout_marginRight="70dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/border_mypage_nickname"
+                    android:text="김행키"
+                    android:textColor="#000"
+                    android:textSize="15sp" />
 
             </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="#ccc" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <TextView
+                    android:id="@+id/email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:gravity="center"
+                    android:text="@string/mypage_email"
+                    android:textColor="#000" />
+
+                <TextView
+                    android:id="@+id/mypage_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignBottom="@+id/email"
+                    android:layout_alignTop="@id/email"
+                    android:layout_marginRight="20dp"
+                    android:layout_toRightOf="@+id/phoneCertification"
+                    android:gravity="center_vertical"
+                    android:text="hanki123@hanki.kr" />
+
+                <TextView
+                    android:id="@+id/password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignLeft="@+id/email"
+                    android:layout_below="@+id/email"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/mypage_password"
+                    android:textColor="#000" />
+
+                <EditText
+                    android:id="@+id/mypage_password"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/password"
+                    android:layout_alignLeft="@+id/mypage_email"
+                    android:layout_alignTop="@+id/password"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/border_mypage_nickname"
+                    android:hint="8-20자 이내"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/mypage_pwdSaveBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/password"
+                    android:layout_alignRight="@+id/mypage_email"
+                    android:layout_alignTop="@+id/password"
+                    android:layout_toRightOf="@+id/mypage_password"
+                    android:background="#ccc"
+                    android:text="@string/mypage_changePwd"
+                    android:textColor="#fff" />
+
+                <TextView
+                    android:id="@+id/phoneCertification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_alignLeft="@+id/password"
+                    android:layout_below="@+id/password"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center"
+                    android:text="@string/mypage_phoneCertification"
+                    android:textColor="#000" />
+
+                <EditText
+                    android:id="@+id/mypage_phone1"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_alignLeft="@+id/phoneCertification"
+                    android:layout_below="@+id/phoneCertification"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/border_mypage_nickname"
+                    android:gravity="center"
+                    android:hint="010"
+                    android:inputType="number"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/mypage_phone2"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/mypage_phone1"
+                    android:layout_alignTop="@+id/mypage_phone1"
+                    android:layout_marginRight="5dp"
+                    android:layout_toRightOf="@+id/mypage_phone1"
+                    android:background="@drawable/border_mypage_nickname"
+                    android:gravity="center"
+                    android:hint="1234"
+                    android:inputType="number"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/mypage_phone3"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/mypage_phone1"
+                    android:layout_alignTop="@+id/mypage_phone1"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/mypage_phone2"
+                    android:background="@drawable/border_mypage_nickname"
+                    android:gravity="center"
+                    android:hint="5678"
+                    android:inputType="number"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/mypage_phone1"
+                    android:layout_alignRight="@+id/mypage_pwdSaveBtn"
+                    android:layout_alignTop="@+id/mypage_phone1"
+                    android:layout_toRightOf="@+id/mypage_phone3"
+                    android:background="#ccc"
+                    android:text="@string/mypage_changePhoneNumber"
+                    android:textColor="#fff" />
+
             </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="20dp"
+                android:background="#ccc" />
+
+            
 
         </LinearLayout>
 

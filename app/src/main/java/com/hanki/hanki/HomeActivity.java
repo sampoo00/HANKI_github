@@ -50,7 +50,6 @@ public class HomeActivity extends AppCompatActivity
 
     boolean isFirstRun = true;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,8 +83,6 @@ public class HomeActivity extends AppCompatActivity
         nav_orderList = (TextView) header.findViewById(R.id.nav_orderList);
         nav_myreview = (TextView) header.findViewById(R.id.nav_myreview);
 
-
-
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
         bottomBar.setOnTabSelectListener(new OnTabSelectListener() {
             @Override
@@ -107,8 +104,6 @@ public class HomeActivity extends AppCompatActivity
             }
 
         });
-
-
 
     }
 
@@ -197,6 +192,8 @@ public class HomeActivity extends AppCompatActivity
 
                 break;
         }
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
         startActivity(intent);
     }
 }
