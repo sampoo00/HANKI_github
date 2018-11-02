@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        id = "@+id/tab_nearybyShop"
+        icon="@drawable/home_gray"
+        title = "주변매장" />
+
+    <tab
+        id = "@+id/tab_likeShop"
+        icon="@drawable/heart_gray"
+        title = "찜한매장" />
+
+
+    <tab
+        id="@+id/tab_home"
+        icon="@drawable/home_gray"
+        title = "홈" />
+
+    <tab
+        id = "@+id/tab_numberTicket"
+        icon="@drawable/heart_gray"
+        title = "번호표" />
+
+    <tab
+        id = "@+id/tab_foodTray"
+        icon="@drawable/heart_gray"
+        title = "식판" />
+
+</tabs>
