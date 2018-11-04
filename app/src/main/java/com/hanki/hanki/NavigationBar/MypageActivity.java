@@ -1,17 +1,20 @@
-package com.hanki.hanki;
+package com.hanki.hanki.NavigationBar;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import com.hanki.hanki.R;
 
 public class MypageActivity extends AppCompatActivity {
 
     Switch emailSwitch;
     Switch smsSwitch;
+
+    DeleteAccountDialog dialog = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +56,10 @@ public class MypageActivity extends AppCompatActivity {
             case R.id.mypage_saveBtn: //저장버튼
                 finish();
                 break;
-            case R.id.mypage_withdrawalBtn: //회원탈퇴버튼
+            case R.id.mypage_deleteAccountBtn: //회원탈퇴버튼
+                dialog = new DeleteAccountDialog(MypageActivity.this);
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.show();
                 break;
         }
     }
