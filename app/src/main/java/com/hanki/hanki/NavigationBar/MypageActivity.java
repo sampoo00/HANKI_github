@@ -56,7 +56,7 @@ public class MypageActivity extends AppCompatActivity {
             case R.id.mypage_saveBtn: //저장버튼
                 finish();
                 break;
-            case R.id.mypage_deleteAccountBtn: //회원탈퇴버튼
+            case R.id.mypage_deleteAccountTv: //회원탈퇴버튼
                 dialog = new DeleteAccountDialog(MypageActivity.this);
                 dialog.setCanceledOnTouchOutside(false);
                 dialog.show();
