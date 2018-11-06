@@ -18,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +28,7 @@ import com.hanki.hanki.LikeShop.Fragment_LikeShop;
 import com.hanki.hanki.Main.Fragment_Home;
 import com.hanki.hanki.NearByShop.Fragment_NearByShop;
 import com.hanki.hanki.NumberTicket.Fragment_numberticket;
+import com.hanki.hanki.ShopOrder.ShopMainActivity;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -47,8 +49,6 @@ public class HomeActivity extends AppCompatActivity
     private Fragment_LikeShop likeShopFragment;
     private Fragment_numberticket numberticketFragment;
     private Fragment_FoodTray foodTrayFragment;
-
-    boolean isFirstRun = true;
 
 
     @Override
@@ -112,15 +112,12 @@ public class HomeActivity extends AppCompatActivity
 
     }
 
-    public boolean initFragment() {
+    public void initFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.contentContainer, homeFragment);
         transaction.addToBackStack(null);
-        transaction.replace(R.id.contentContainer, homeFragment).commit();
-        isFirstRun = false;
-
-        return isFirstRun;
-    }
+        transaction.commit();
+        }
 
     @Override
     public void onBackPressed() {
@@ -183,6 +180,7 @@ public class HomeActivity extends AppCompatActivity
         switch (view.getId()) {
             case R.id.nav_mypage :
                 intent = new Intent(HomeActivity.this, MypageActivity.class);
+                startActivity(intent);
                 break;
             case R.id.nav_logout :
 
@@ -196,7 +194,8 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_myreview :
 
                 break;
+
         }
-        startActivity(intent);
+//        startActivity(intent);
     }
 }

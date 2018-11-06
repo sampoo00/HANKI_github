@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ShopOrder.ShopMainActivity"
+    android:id="@+id/shopmain_scrollView"
+    android:fillViewport="true">
+
+            <RelativeLayout
+                android:id="@+id/shopMain_shopInfo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <com.like.LikeButton
+                    android:id="@+id/likeBtn"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    app:anim_scale_factor="2.5"
+                    app:circle_start_color="#b1b1b1"
+                    app:icon_size="25dp"
+                    app:icon_type="heart" />
+
+                <TextView
+                    android:id="@+id/shopMain_shopTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/likeBtn"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginLeft="50dp"
+                    android:gravity="center"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    android:layout_centerHorizontal="true"
+                    android:text="매장 이름 받아와야함"/>
+
+                <RelativeLayout
+                    android:id="@+id/shopMain_ratingbarLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/shopMain_shopTitle"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    >
+
+                    <RatingBar
+                        android:id="@+id/shopMain_ratingbar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:isIndicator="true"
+                        android:rating="3.5"
+                        android:stepSize="0.5"
+                        android:max="5"
+                        android:numStars="5"
+                        android:clickable="false"
+                        android:scaleX="0.7"
+                        android:scaleY="0.7"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignRight="@+id/shopMain_ratingbar"
+                        android:layout_centerVertical="true"
+                        android:textSize="16sp"
+                        android:text="3.5"
+                        />
+
+                </RelativeLayout>
+
+
+                <android.support.design.widget.TabLayout
+                    android:id="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/shopMain_ratingbarLayout"
+                    android:background="@null"
+                    app:tabTextColor="#000000">
+
+                    <android.support.design.widget.TabItem
+                        android:id="@+id/tabItem1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/shopmain_menu" />
+
+                    <android.support.design.widget.TabItem
+                        android:id="@+id/tabItem2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/shopmain_shopInfo" />
+
+                    <android.support.design.widget.TabItem
+                        android:id="@+id/tabItem3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/shopmain_reviews" />
+
+                </android.support.design.widget.TabLayout>
+
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/shopmain_viewPager"
+                    android:layout_below="@+id/tabs"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </RelativeLayout>
+
+
+</ScrollView>

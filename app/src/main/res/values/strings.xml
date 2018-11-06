@@ -30,6 +30,10 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+    <!-- ShopMain -->
+    <string name="shopmain_menu">메뉴판</string>
+    <string name="shopmain_shopInfo">매장 정보</string>
+    <string name="shopmain_reviews">리뷰</string>
 
 
 </resources>

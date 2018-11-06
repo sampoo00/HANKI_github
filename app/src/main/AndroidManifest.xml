@@ -19,9 +19,9 @@
         <activity android:name=".Tutorial.TutorialActivity" />
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"/>
-
-        <activity android:name=".MypageActivity"></activity>
+            android:label="@string/title_activity_home" />
+        <activity android:name=".MypageActivity" />
+        <activity android:name=".ShopOrder.ShopMainActivity"></activity>
     </application>
 
 </manifest>

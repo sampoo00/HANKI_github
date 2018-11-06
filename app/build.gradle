@@ -32,10 +32,12 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
     //tutorial page
     implementation 'com.github.vivchar:ViewPagerIndicator:1.1.0'
     implementation 'com.roughike:bottom-bar:2.3.1'
 
-
+    //Like library
+    implementation 'com.github.jd-alexander:LikeButton:0.2.3'
 
 }
