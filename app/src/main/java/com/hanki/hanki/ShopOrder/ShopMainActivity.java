@@ -24,7 +24,6 @@ public class ShopMainActivity extends AppCompatActivity {
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     TabLayout mTabLayout;
-    ScrollView mScrollView;
 
     final static int TAB_NUMS = 3;
 
@@ -41,12 +40,11 @@ public class ShopMainActivity extends AppCompatActivity {
     public void init(){
 //        NestedScrollView nestedScrollView = (NestedScrollView) findViewById(R.id.shopmain_scrollView);
 //        nestedScrollView.setFillViewport(true);
-        mScrollView = (ScrollView) findViewById(R.id.shopmain_scrollView);
+//        mScrollView = (ScrollView) findViewById(R.id.shopmain_scrollView);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
-
         mViewPager = (ViewPager) findViewById(R.id.shopmain_viewPager);
 
         mViewPager.setAdapter(mSectionsPagerAdapter);
