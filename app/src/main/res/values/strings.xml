@@ -49,6 +49,10 @@
     <string name="mypage_smsAcceptance">SMS 수신 동의</string>
     <string name="mypage_gender">성별</string>
     <string name="mypage_birthday">생일</string>
-    <string name="mypage_withdrawal">회원탈퇴</string>
+    <string name="mypage_deleteAccount">회원탈퇴</string>
+    <string name="mypage_deleteAccountMessage">탈퇴하시려면 \'탈퇴합니다\'를 아래 칸에 적어주세요.</string>
+    <string name="mypage_delete">탈퇴합니다</string>
+    <string name="mypage_deletion">탈퇴</string>
+    <string name="mypage_cancel">취소</string>
 
 </resources>

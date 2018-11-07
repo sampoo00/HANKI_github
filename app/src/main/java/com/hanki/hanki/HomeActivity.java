@@ -1,12 +1,7 @@
 package com.hanki.hanki;
 
 import android.content.Intent;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.OvalShape;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.util.Log;
 import android.view.View;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentTransaction;
@@ -21,11 +16,11 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.hanki.hanki.FoodTray.Fragment_FoodTray;
 import com.hanki.hanki.LikeShop.Fragment_LikeShop;
 import com.hanki.hanki.Main.Fragment_Home;
+import com.hanki.hanki.NavigationBar.MypageActivity;
 import com.hanki.hanki.NearByShop.Fragment_NearByShop;
 import com.hanki.hanki.NumberTicket.Fragment_numberticket;
 import com.hanki.hanki.ShopOrder.ShopMainActivity;
