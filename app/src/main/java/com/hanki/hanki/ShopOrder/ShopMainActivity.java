@@ -36,8 +36,6 @@ public class ShopMainActivity extends AppCompatActivity {
         init();
         setupToolbar();
         setupCollapsingToolbar();
-
-
     }
 
 
