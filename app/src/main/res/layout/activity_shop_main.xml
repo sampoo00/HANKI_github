@@ -68,7 +68,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/shopMain_shopTitle"
                         android:layout_marginTop="10dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginBottom="5dp"
                         android:layout_centerHorizontal="true"
                         >
 
@@ -94,8 +94,59 @@
                             android:textSize="16sp"
                             android:text="3.5"
                             />
-
                     </RelativeLayout>
+
+
+                        <TextView
+                            android:id="@+id/shopMain_txt_reviews"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:text="리뷰 113"
+                            android:layout_below="@+id/shopMain_ratingbarLayout"
+                            android:layout_centerHorizontal="true"/>
+                        
+                        
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginBottom="20dp"
+                            android:gravity="center"
+                            android:layout_below="@+id/shopMain_txt_reviews">
+
+                            <TextView
+                                android:layout_width="57dp"
+                                android:layout_height="30dp"
+                                android:gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="13sp"
+                                android:background="#d8ff4747"
+                                android:layout_marginEnd="20dp"
+                                android:text="픽   업" />
+
+                            <TextView
+                                android:layout_width="57dp"
+                                android:layout_height="30dp"
+                                android:gravity="center"
+                                android:textColor="@color/black"
+                                android:background="#d847ddff"
+                                android:layout_marginEnd="20dp"
+                                android:textSize="13sp"
+                                android:text="현   장"/>
+
+                            <TextView
+                                android:layout_width="57dp"
+                                android:layout_height="30dp"
+                                android:gravity="center"
+                                android:textColor="@color/black"
+                                android:background="#e7ffff47"
+
+                                android:textSize="13sp"
+                                android:text="예   약"/>
+                        </LinearLayout>
+
                 </RelativeLayout>
 
             <android.support.v7.widget.Toolbar
@@ -117,7 +168,6 @@
             android:id="@+id/tabs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/shopMain_ratingbarLayout"
             android:background="#ffffff"
             app:tabTextColor="#000000">
 

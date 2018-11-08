@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/shopMain_menu_recyclerView_Layout"
+    >
+
+        <ImageView
+            android:id="@+id/menu_recyclerImage"
+            android:layout_width="120dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/logo_sample"
+            android:onClick="onClick" />
+
+        <LinearLayout
+            android:id="@+id/menu_recyclerText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_toEndOf="@id/menu_recyclerImage"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/menu_recycler_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:onClick="onClick"
+                android:text="메뉴이름"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/menu_recycler_fee"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp"
+                android:onClick="onClick"
+                android:text="가 격"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_below="@+id/menu_recyclerImage"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#49000000"/>
+
+
+
+</RelativeLayout>
