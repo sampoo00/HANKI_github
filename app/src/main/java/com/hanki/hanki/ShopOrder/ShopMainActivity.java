@@ -1,8 +1,6 @@
 package com.hanki.hanki.ShopOrder;
 
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -15,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.hanki.hanki.R;
 
@@ -108,7 +105,7 @@ public class ShopMainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_menu, container, false);
+            View rootView = inflater.inflate(R.layout.shop_main_fragment_menu, container, false);
             return rootView;
         }
     }
