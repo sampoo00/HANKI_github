@@ -1,14 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ShopOrder.Fragment_reviews">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/shopmain_reviews" />
+    <RelativeLayout
+        android:id="@+id/writeReviewButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/border_write_review_btn"
+        android:onClick="onClick">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/pencil"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/writeReview"
+            android:layout_alignTop="@+id/writeReview"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/ic_mode_edit_black_24dp"
+            android:backgroundTint="#000"
+            android:onClick="onClick" />
+
+        <TextView
+            android:id="@+id/writeReview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/pencil"
+            android:gravity="center"
+            android:onClick="onClick"
+            android:text="@string/writeReview"
+            android:textColor="#000"
+            android:textSize="14sp" />
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/reviewListRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+</LinearLayout>

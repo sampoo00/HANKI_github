@@ -59,4 +59,7 @@
     <string name="home_bluetoothMessage">매장 인식을 위해 먼저 Bluetooth를 켜주세요.</string>
     <string name="home_searchedShopDialogTitle">매장 선택</string>
 
+    <!-- Review -->
+    <string name="writeReview">작성하기</string>
+
 </resources>

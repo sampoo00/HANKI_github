@@ -11,7 +11,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/searchedShop_title"
+            android:id="@+id/searchedDialog_title"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:background="@drawable/border_searched_shop_title"
@@ -22,18 +22,18 @@
             android:textStyle="bold" />
 
         <ImageButton
-            android:id="@+id/searchedShop_refreshBtn"
+            android:id="@+id/searchedDialog_refreshBtn"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginRight="5dp"
-            android:layout_alignRight="@+id/searchedShop_title"
+            android:layout_alignRight="@+id/searchedDialog_title"
             android:background="@drawable/ic_refresh_black_48dp"
             android:backgroundTint="#fff" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:layout_below="@+id/searchedShop_title">
+            android:layout_below="@+id/searchedDialog_title">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/shopListRecyclerView"
