@@ -11,17 +11,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toolbar;
 
-import com.github.vivchar.viewpagerindicator.ViewPagerIndicator;
 import com.hanki.hanki.R;
-import com.like.LikeButton;
 
 public class ShopMainActivity extends AppCompatActivity {
 
@@ -29,33 +25,30 @@ public class ShopMainActivity extends AppCompatActivity {
     private ViewPager mViewPager;
     TabLayout mTabLayout;
 
-    CoordinatorLayout mCoordinatorLayout;
     CollapsingToolbarLayout mCollapsingToolbar;
-    AppBarLayout mAppBarLayout;
     Toolbar mToolbar;
     NestedScrollView mScrollView;
-
 
     final static int TAB_NUMS = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shop_main2);
+        setContentView(R.layout.activity_shop_main);
 
         init();
+        setupToolbar();
+        setupCollapsingToolbar();
+
 
     }
 
 
     public void init(){
-//        NestedScrollView nestedScrollView = (NestedScrollView) findViewById(R.id.shopmain_scrollView);
-//        nestedScrollView.setFillViewport(true);
-//        mScrollView = (ScrollView) findViewById(R.id.shopmain_scrollView);
-        mCoordinatorLayout = (CoordinatorLayout) findViewById(R.id.shopMain_coordinator);
-        mAppBarLayout = (AppBarLayout) findViewById(R.id.shopMain_appbar);
-        mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.shopMain_collapsingtoolbar);
 
+        mToolbar = (Toolbar) findViewById(R.id.shopMain_toolbar);
+        mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(
+                R.id.shopMain_collapsingtoolbar);
         mScrollView = (NestedScrollView) findViewById(R.id.shopMain_scrollview);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -65,12 +58,27 @@ public class ShopMainActivity extends AppCompatActivity {
 
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+
+
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
     }
 
 
+    private void setupToolbar() {
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle("매장 이름");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+
+    private void setupCollapsingToolbar() {
+        mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(
+                R.id.shopMain_collapsingtoolbar);
+
+        mCollapsingToolbar.setTitleEnabled(false);
+    }
 
     /**
      * A placeholder fragment containing a simple view.
