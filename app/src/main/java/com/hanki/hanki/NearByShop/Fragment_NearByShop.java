@@ -17,7 +17,7 @@ public class Fragment_NearByShop extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_nearbyshop, container, false);
+        View view = inflater.inflate(R.layout.home_fragment_nearbyshop, container, false);
         return view;
     }
 }

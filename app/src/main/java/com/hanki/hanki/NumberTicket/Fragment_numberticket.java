@@ -17,7 +17,7 @@ public class Fragment_numberticket extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_numberticket, container, false);
+        View view = inflater.inflate(R.layout.home_fragment_numberticket, container, false);
         return view;
     }
 }

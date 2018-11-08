@@ -1,5 +1,6 @@
 package com.hanki.hanki.ShopOrder;
 
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -8,22 +9,22 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
-import android.widget.TextView;
 
-import com.github.vivchar.viewpagerindicator.ViewPagerIndicator;
 import com.hanki.hanki.R;
-import com.like.LikeButton;
 
 public class ShopMainActivity extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
     TabLayout mTabLayout;
+
+    CollapsingToolbarLayout mCollapsingToolbar;
+    Toolbar mToolbar;
+    NestedScrollView mScrollView;
 
     final static int TAB_NUMS = 3;
 
@@ -33,20 +34,26 @@ public class ShopMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shop_main);
 
         init();
+        setupToolbar();
+        setupCollapsingToolbar();
     }
 
 
     public void init(){
-//        NestedScrollView nestedScrollView = (NestedScrollView) findViewById(R.id.shopmain_scrollView);
-//        nestedScrollView.setFillViewport(true);
-//        mScrollView = (ScrollView) findViewById(R.id.shopmain_scrollView);
+
+        mToolbar = (Toolbar) findViewById(R.id.shopMain_toolbar);
+        mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(
+                R.id.shopMain_collapsingtoolbar);
+        mScrollView = (NestedScrollView) findViewById(R.id.shopMain_scrollview);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
-        mViewPager = (ViewPager) findViewById(R.id.shopmain_viewPager);
+        mViewPager = (ViewPager) findViewById(R.id.shopMain_viewPager);
 
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
+
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
@@ -54,6 +61,19 @@ public class ShopMainActivity extends AppCompatActivity {
     }
 
 
+    private void setupToolbar() {
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setTitle("매장 이름");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+    }
+
+
+    private void setupCollapsingToolbar() {
+        mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(
+                R.id.shopMain_collapsingtoolbar);
+
+        mCollapsingToolbar.setTitleEnabled(false);
+    }
 
     /**
      * A placeholder fragment containing a simple view.
@@ -83,7 +103,7 @@ public class ShopMainActivity extends AppCompatActivity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_menu, container, false);
+            View rootView = inflater.inflate(R.layout.shop_main_fragment_menu, container, false);
             return rootView;
         }
     }
