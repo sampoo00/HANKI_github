@@ -54,18 +54,7 @@ public class Fragment_Home extends Fragment {
             minewBeaconManager = MinewBeaconManager.getInstance(getActivity());
         }
 
-        Button shopMainBtn = (Button) view.findViewById(R.id.shopMainBtn); // 지워야할 것 test용
         startSearchBtn = (Button) view.findViewById(R.id.startSearchBtn); //비콘 인식 버튼
-
-        shopMainBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ShopMainActivity.class);
-                startActivity(intent);
-            }
-
-        });
-
         startSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

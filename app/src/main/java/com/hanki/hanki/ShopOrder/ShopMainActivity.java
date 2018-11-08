@@ -38,7 +38,6 @@ public class ShopMainActivity extends AppCompatActivity {
         setupCollapsingToolbar();
     }
 
-
     public void init(){
 
         mToolbar = (Toolbar) findViewById(R.id.shopMain_toolbar);
@@ -52,8 +51,6 @@ public class ShopMainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.shopMain_viewPager);
 
         mViewPager.setAdapter(mSectionsPagerAdapter);
-
-
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));

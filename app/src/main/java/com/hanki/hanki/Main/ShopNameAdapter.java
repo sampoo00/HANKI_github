@@ -1,5 +1,6 @@
 package com.hanki.hanki.Main;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.ShopMainActivity;
 
 import java.util.ArrayList;
 
@@ -41,9 +43,17 @@ public class ShopNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
         TextView shopTv;
 
-        public MyViewHolder(View itemView) {
+        public MyViewHolder(final View itemView) {
             super(itemView);
             shopTv = (TextView) itemView.findViewById(R.id.shopTv);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(itemView.getContext(), ShopMainActivity.class);
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }
