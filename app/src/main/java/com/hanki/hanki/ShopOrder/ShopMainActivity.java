@@ -33,7 +33,6 @@ public class ShopMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_shop_main);
 
         init();
-
     }
 
 
