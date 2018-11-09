@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".ShopOrder.Fragment_menu">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        >
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -27,12 +26,13 @@
             <android.support.v7.widget.RecyclerView
 
                 android:id="@+id/shopMain_menu_recyclerView"
-                android:layout_below="@+id/shopMain_menu_rec_recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/shopMain_menu_rec_recyclerView"
                 android:nestedScrollingEnabled="false">
 
             </android.support.v7.widget.RecyclerView>
+<<<<<<< HEAD
             
             <RelativeLayout
                 android:layout_below="@+id/shopMain_menu_recyclerView"
@@ -72,10 +72,11 @@
 
                 
             </RelativeLayout>
+=======
+
+>>>>>>> 5116f0c8ffdd55769935e23109865ed427c6d0ce
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
-
-
 
 </LinearLayout>
