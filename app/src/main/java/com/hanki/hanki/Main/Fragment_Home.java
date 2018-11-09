@@ -1,5 +1,6 @@
 package com.hanki.hanki.Main;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,6 +13,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.Fragment_menu;
 import com.hanki.hanki.ShopOrder.ShopMainActivity;
 import com.minew.beacon.BeaconValueIndex;
 import com.minew.beacon.BluetoothState;
@@ -26,7 +28,7 @@ import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
 
 public class Fragment_Home extends Fragment {
-
+    Button goShopMain;
     Button startSearchBtn;
     PrettyDialog bluetoothDialog = null;
 
@@ -53,6 +55,17 @@ public class Fragment_Home extends Fragment {
         if (minewBeaconManager == null) {
             minewBeaconManager = MinewBeaconManager.getInstance(getActivity());
         }
+
+        goShopMain = (Button) view.findViewById(R.id.goShopMain);
+        goShopMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ShopMainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         startSearchBtn = (Button) view.findViewById(R.id.startSearchBtn); //비콘 인식 버튼
         startSearchBtn.setOnClickListener(new View.OnClickListener() {
