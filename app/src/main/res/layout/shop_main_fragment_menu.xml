@@ -22,10 +22,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false">
-
             </android.support.v7.widget.RecyclerView>
 
             <android.support.v7.widget.RecyclerView
+
                 android:id="@+id/shopMain_menu_recyclerView"
                 android:layout_below="@+id/shopMain_menu_rec_recyclerView"
                 android:layout_width="match_parent"
@@ -33,6 +33,45 @@
                 android:nestedScrollingEnabled="false">
 
             </android.support.v7.widget.RecyclerView>
+            
+            <RelativeLayout
+                android:layout_below="@+id/shopMain_menu_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_alignParentTop="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:background="#49000000"/>
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:layout_margin="10dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="원산지 - "/>
+
+
+                    <TextView
+                        android:id="@+id/shopMain_countryOforigin"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill_horizontal"
+                        android:text="소고기(호주산), 쌀(국내산)"/>
+
+
+                </GridLayout>
+
+                
+            </RelativeLayout>
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>

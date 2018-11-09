@@ -14,8 +14,15 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hanki.hanki.R;
+import com.like.LikeButton;
+import com.like.OnLikeListener;
+
+import org.w3c.dom.Text;
 
 public class ShopMainActivity extends AppCompatActivity {
 
@@ -25,9 +32,17 @@ public class ShopMainActivity extends AppCompatActivity {
 
     CollapsingToolbarLayout mCollapsingToolbar;
     Toolbar mToolbar;
-    NestedScrollView mScrollView;
 
-    final static int TAB_NUMS = 3;
+    LikeButton likeBtn;
+    TextView shopTitle;
+    RatingBar shopRatingBar;
+    TextView shopTxtRatingBar;
+    TextView reviewNum;
+    TextView pickup;
+    TextView nonpickup;
+    TextView reserve;
+
+    final static int TAB_NUMS = 3; //탭 갯수
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +59,6 @@ public class ShopMainActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.shopMain_toolbar);
         mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(
                 R.id.shopMain_collapsingtoolbar);
-//        mScrollView = (NestedScrollView) findViewById(R.id.shopMain_scrollview);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
@@ -56,11 +70,38 @@ public class ShopMainActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
+
+        shopTitle = (TextView) findViewById(R.id.shopMain_shopTitle); //매장 이름
+        shopRatingBar = (RatingBar) findViewById(R.id.shopMain_ratingbar); //ratingBar
+        shopTxtRatingBar = (TextView) findViewById(R.id.shopMain_txtRatingbar); //ratingBar개수를 표시하는 텍스트
+        reviewNum = (TextView) findViewById(R.id.shopMain_txt_reviews);
+
+        //pickup(픽업), nonpickup(현장), reserve(예약)
+        pickup = (TextView) findViewById(R.id.shopMain_pickup);
+        nonpickup = (TextView) findViewById(R.id.shopMain_nonpickup);
+        reserve = (TextView) findViewById(R.id.shopMain_reservation);
+
+
+        //like버튼
+        likeBtn = (LikeButton) findViewById(R.id.shopMain_likeBtn);
+        likeBtn.setOnLikeListener(new OnLikeListener() {
+            @Override
+            public void liked(LikeButton likeButton) {
+                Toast.makeText(getApplicationContext(), "liked!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void unLiked(LikeButton likeButton) {
+                Toast.makeText(getApplicationContext(), "unliked!", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
     }
 
     private void setupToolbar() {
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("매장 이름");
+        getSupportActionBar().setTitle("매장 이름"); // toolbar 제목
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
