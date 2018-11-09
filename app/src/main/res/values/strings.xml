@@ -61,5 +61,8 @@
 
     <!-- Review -->
     <string name="writeReview">작성하기</string>
+    <string name="showMoreReview">더보기</string>
+    <string name="review_save">등록</string>
+    <string name="review_writeReview">리뷰 작성</string>
 
 </resources>
