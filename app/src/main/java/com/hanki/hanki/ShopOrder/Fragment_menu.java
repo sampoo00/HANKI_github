@@ -34,7 +34,7 @@ public class Fragment_menu extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         initMenuRecyclerView(view);
-        
+
     }
 
     public void initMenuRecyclerView(View view){

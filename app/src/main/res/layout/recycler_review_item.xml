@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:background="@drawable/border_review">
+
+    <ImageView
+        android:id="@+id/review_profile"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/profile" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/review_profile"
+        android:layout_alignTop="@+id/review_profile"
+        android:layout_toRightOf="@+id/review_profile"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/review_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="김행키"
+            android:textColor="#000" />
+
+        <RatingBar
+            android:id="@+id/review_rating"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/review_nickname"
+            android:layout_below="@+id/review_nickname"
+            android:layout_marginTop="8dp"
+            android:clickable="false"
+            android:isIndicator="true"
+            android:max="5"
+            android:numStars="5"
+            android:rating="3"
+            android:scaleX="0.7"
+            android:scaleY="0.7"
+            android:stepSize="0.5" />
+
+        <TextView
+            android:id="@+id/review_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/review_rating"
+            android:layout_alignTop="@+id/review_rating"
+            android:layout_toRightOf="@+id/review_rating"
+            android:gravity="center"
+            android:text="2018.11.09" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/review_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/review_profile"
+        android:layout_marginTop="10dp"
+        android:text="맛있기는 한데 너무 매웠습니다. 사리도 너무 적은 것 같아서 아쉬워요. 5점만점에 3점이요~" />
+
+</RelativeLayout>

@@ -85,7 +85,6 @@ public class Fragment_Home extends Fragment {
         if (bluetoothState == BluetoothState.BluetoothStatePowerOn) { //연결되어 있을 때
             return 0;
         } else {
-
             return 1;
         }
     }

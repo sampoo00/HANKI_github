@@ -1,9 +1,12 @@
 package com.hanki.hanki.NavigationBar;
 
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
@@ -25,6 +28,8 @@ public class MypageActivity extends AppCompatActivity {
     }
 
     public void init() {
+        ImageView mypage_profile = (ImageView) findViewById(R.id.mypage_profile);
+
         emailSwitch = (Switch) findViewById(R.id.emailSwitch);
         smsSwitch = (Switch) findViewById(R.id.smsSwitch);
 

@@ -170,7 +170,6 @@ public class HomeActivity extends AppCompatActivity
         switch (view.getId()) {
             case R.id.nav_mypage :
                 intent = new Intent(HomeActivity.this, MypageActivity.class);
-                startActivity(intent);
                 break;
             case R.id.nav_logout :
 
@@ -184,7 +183,6 @@ public class HomeActivity extends AppCompatActivity
             case R.id.nav_myreview :
 
                 break;
-
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -16,17 +16,18 @@ import java.util.ArrayList;
 
 public class SearchedShopDialog extends Dialog {
 
-    private ImageButton searchedDialog_closeBtn;
+    private ImageButton searchedDialog_refreshBtn;
     private RecyclerView shopListRecyclerView;
+    private ImageButton searchedDialog_closeBtn;
 
-    public SearchedShopDialog(@NonNull Context context, ArrayList<ShopData> shopNameList) {
+    public SearchedShopDialog(@NonNull Context context, final ArrayList<ShopData> shopNameList) {
         super(context);
         setContentView(R.layout.dialog_searched_shop);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         shopListRecyclerView = (RecyclerView) findViewById(R.id.shopListRecyclerView);
         shopListRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        ShopNameAdapter adapter = new ShopNameAdapter(shopNameList);
+        final ShopNameAdapter adapter = new ShopNameAdapter(shopNameList);
         shopListRecyclerView.setAdapter(adapter);
 
         searchedDialog_closeBtn = (ImageButton) findViewById(R.id.searchedDialog_closeBtn);
@@ -34,6 +35,14 @@ public class SearchedShopDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 dismiss();
+            }
+        });
+
+        searchedDialog_refreshBtn = (ImageButton) findViewById(R.id.searchedDialog_refreshBtn);
+        searchedDialog_refreshBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                adapter.notifyDataSetChanged();
             }
         });
 

@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -38,7 +39,7 @@ public class ShopMainActivity extends AppCompatActivity {
         setupCollapsingToolbar();
     }
 
-    public void init(){
+    public void init() {
 
         mToolbar = (Toolbar) findViewById(R.id.shopMain_toolbar);
         mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(
@@ -57,13 +58,11 @@ public class ShopMainActivity extends AppCompatActivity {
 
     }
 
-
     private void setupToolbar() {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setTitle("매장 이름");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
-
 
     private void setupCollapsingToolbar() {
         mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(
@@ -131,4 +130,13 @@ public class ShopMainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
