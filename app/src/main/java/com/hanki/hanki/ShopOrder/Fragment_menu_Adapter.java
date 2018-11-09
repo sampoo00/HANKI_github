@@ -47,6 +47,7 @@ public class Fragment_menu_Adapter extends RecyclerView.Adapter<Fragment_menu_Vi
                 .load(R.drawable.logo_sample)
                 .into(holder.VH_menu_image);
 
+
         holder.VH_menu_title.setText(menuData.get(position)[0]);
         holder.VH_menu_fee.setText(menuData.get(position)[1]);
 

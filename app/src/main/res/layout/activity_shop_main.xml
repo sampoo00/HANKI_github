@@ -108,6 +108,7 @@
                         android:layout_width="57dp"
                         android:layout_height="30dp"
                         android:layout_marginEnd="20dp"
+                        android:layout_marginRight="20dp"
                         android:background="#d8ff4747"
                         android:gravity="center"
                         android:text="픽   업"
@@ -118,11 +119,11 @@
                         android:layout_width="57dp"
                         android:layout_height="30dp"
                         android:layout_marginEnd="20dp"
+                        android:layout_marginRight="20dp"
                         android:background="#d847ddff"
                         android:gravity="center"
                         android:text="현   장"
-                        android:textColor="@color/black"
-                        android:textSize="13sp" />
+                        android:textColor="@color/black"/>
 
                     <TextView
                         android:layout_width="57dp"
@@ -130,7 +131,6 @@
                         android:background="#e7ffff47"
                         android:gravity="center"
                         android:text="예   약"
-
                         android:textColor="@color/black"
                         android:textSize="13sp" />
                 </LinearLayout>
@@ -177,21 +177,28 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.widget.NestedScrollView
-        android:id="@+id/shopMain_scrollview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:descendantFocusability="blocksDescendants"
-        android:fillViewport="true"
-        android:scrollbars="none"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/shopMain_viewPager"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+            <android.support.v4.view.ViewPager
+                android:id="@+id/shopMain_viewPager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    </android.support.v4.widget.NestedScrollView>
+    <!--<android.support.v4.widget.NestedScrollView-->
+        <!--android:id="@+id/shopMain_scrollview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:descendantFocusability="blocksDescendants"-->
+        <!--android:fillViewport="true"-->
+        <!--android:scrollbars="none"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+            <!--<android.support.v4.view.ViewPager-->
+                <!--android:id="@+id/shopMain_viewPager"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--app:layout_behavior="@string/appbar_scrolling_view_behavior" />-->
+
+    <!--</android.support.v4.widget.NestedScrollView>-->
 
 </android.support.design.widget.CoordinatorLayout>

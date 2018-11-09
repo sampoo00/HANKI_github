@@ -44,7 +44,7 @@ public class ShopMainActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.shopMain_toolbar);
         mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(
                 R.id.shopMain_collapsingtoolbar);
-        mScrollView = (NestedScrollView) findViewById(R.id.shopMain_scrollview);
+//        mScrollView = (NestedScrollView) findViewById(R.id.shopMain_scrollview);
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
