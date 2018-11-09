@@ -32,8 +32,7 @@
                 android:nestedScrollingEnabled="false">
 
             </android.support.v7.widget.RecyclerView>
-<<<<<<< HEAD
-            
+
             <RelativeLayout
                 android:layout_below="@+id/shopMain_menu_recyclerView"
                 android:layout_width="match_parent"
@@ -72,9 +71,7 @@
 
                 
             </RelativeLayout>
-=======
 
->>>>>>> 5116f0c8ffdd55769935e23109865ed427c6d0ce
         </RelativeLayout>
 
     </android.support.v4.widget.NestedScrollView>
