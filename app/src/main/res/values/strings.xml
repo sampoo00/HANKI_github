@@ -15,7 +15,7 @@
     <string name="noshowBtn">다시 보지 않기</string>
 
     <!-- Navigation Drawer -->
-    <string name="nav_welcomeMessage">김행키 님\n반갑습니다^^</string>
+    <string name="nav_welcomeMessage">김행키님 반갑습니다^^</string>
     <string name="nav_notice">공지사항</string>
     <string name="nav_event">이벤트</string>
     <string name="nav_ads">광고문의</string>
@@ -54,6 +54,10 @@
     <string name="mypage_delete">탈퇴합니다</string>
     <string name="mypage_deletion">탈퇴</string>
     <string name="mypage_cancel">취소</string>
+    <string name="mypage_acceptEmail">로 메일 수신에 동의하였습니다.</string>
+    <string name="mypage_denyEmail">로 메일 수신을 거부하였습니다.</string>
+    <string name="mypage_acceptSMS">로 SMS 수신에 동의하였습니다.</string>
+    <string name="mypage_denySMS">로 SMS 수신을 거부하였습니다.</string>
 
     <!-- Home -->
     <string name="home_bluetoothMessage">매장 인식을 위해 먼저 Bluetooth를 켜주세요.</string>

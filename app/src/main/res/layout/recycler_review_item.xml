@@ -5,10 +5,10 @@
     android:layout_marginBottom="20dp"
     android:background="@drawable/border_review">
 
-    <ImageView
+    <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/review_profile"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginRight="15dp"
         android:src="@drawable/profile" />
 

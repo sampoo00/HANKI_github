@@ -41,4 +41,6 @@ dependencies {
     implementation files('libs/minewBeaconScan.jar')
     //pretty dialog
     implementation 'com.github.mjn1369:prettydialog:1.0.4'
+    //circleImageView
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 }

@@ -27,7 +27,6 @@ import com.hanki.hanki.ShopOrder.ShopMainActivity;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
-
 //AppCompatActivity
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

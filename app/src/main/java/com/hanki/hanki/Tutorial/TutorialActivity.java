@@ -47,18 +47,13 @@ public class TutorialActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.tutorial_closeBtn:
-                Intent intent = new Intent(TutorialActivity.this, HomeActivity.class);
-                startActivity(intent);
-                overridePendingTransition(0, 0);
-                finish();
-
             case R.id.tutorial_noshowBtn:
                 SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
                 editor.putInt("checkTutorial", 1).apply();
                 break;
-
+            case R.id.tutorial_closeBtn:
+                break;
         }
         Intent intent = new Intent(TutorialActivity.this, HomeActivity.class);
         startActivity(intent);
@@ -80,7 +75,6 @@ public class TutorialActivity extends AppCompatActivity {
                     return new Fragment_Second();
                 case 2:
                     return new Fragment_Third();
-
                 default:
                     return null;
             }
@@ -88,7 +82,6 @@ public class TutorialActivity extends AppCompatActivity {
 
         public int getCount() {
             return NUM_VIEWS;
-
         }
 
     }

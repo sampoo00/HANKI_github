@@ -65,28 +65,39 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/mypage_profile"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
+                    android:onClick="onClick"
                     android:src="@drawable/profile" />
+
+                <ImageButton
+                    android:id="@+id/mypage_profile_edit"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_alignBottom="@+id/mypage_profile"
+                    android:layout_alignRight="@+id/mypage_profile"
+                    android:background="@drawable/ic_camera_alt_black_24dp"
+                    android:backgroundTint="#838383"
+                    android:onClick="onClick" />
 
                 <EditText
                     android:id="@+id/mypage_nickname"
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/mypage_profile"
-                    android:layout_marginLeft="70dp"
-                    android:layout_marginRight="70dp"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginRight="80dp"
                     android:layout_marginTop="10dp"
                     android:background="@drawable/border_mypage_nickname"
                     android:text="김행키"
                     android:textColor="#000"
-                    android:textSize="15sp" />
+                    android:textSize="13sp" />
 
             </RelativeLayout>
 
@@ -99,13 +110,14 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
                 <TextView
                     android:id="@+id/email"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
+                    android:layout_height="35dp"
                     android:gravity="center"
                     android:text="@string/mypage_email"
                     android:textColor="#000" />
@@ -113,10 +125,9 @@
                 <TextView
                     android:id="@+id/mypage_email"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/email"
-                    android:layout_alignTop="@id/email"
-                    android:layout_marginRight="20dp"
+                    android:layout_alignTop="@+id/email"
                     android:layout_toRightOf="@+id/phoneCertification"
                     android:gravity="center_vertical"
                     android:text="hanki123@hanki.kr" />
@@ -124,7 +135,7 @@
                 <TextView
                     android:id="@+id/password"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
+                    android:layout_height="35dp"
                     android:layout_alignLeft="@+id/email"
                     android:layout_below="@+id/email"
                     android:layout_marginTop="10dp"
@@ -134,23 +145,24 @@
 
                 <EditText
                     android:id="@+id/mypage_password"
-                    android:layout_width="200dp"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/password"
-                    android:layout_alignLeft="@+id/mypage_email"
+                    android:layout_alignRight="@+id/mypage_phone3"
                     android:layout_alignTop="@+id/password"
-                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@+id/phoneCertification"
                     android:background="@drawable/border_mypage_nickname"
-                    android:hint="8-20자 이내"
+                    android:hint="6-15자 이내"
+                    android:inputType="textPassword"
+                    android:maxLength="15"
                     android:textSize="14sp" />
 
                 <Button
-                    android:id="@+id/mypage_pwdSaveBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/password"
-                    android:layout_alignRight="@+id/mypage_email"
-                    android:layout_alignTop="@+id/password"
+                    android:layout_alignBottom="@+id/mypage_password"
+                    android:layout_alignLeft="@+id/mypage_recertificationBtn"
+                    android:layout_alignTop="@+id/mypage_password"
                     android:layout_toRightOf="@+id/mypage_password"
                     android:background="#ccc"
                     android:text="@string/mypage_changePwd"
@@ -159,9 +171,9 @@
                 <TextView
                     android:id="@+id/phoneCertification"
                     android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_alignLeft="@+id/password"
+                    android:layout_height="35dp"
                     android:layout_below="@+id/password"
+                    android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="@string/mypage_phoneCertification"
@@ -170,14 +182,13 @@
                 <EditText
                     android:id="@+id/mypage_phone1"
                     android:layout_width="80dp"
-                    android:layout_height="40dp"
-                    android:layout_alignLeft="@+id/phoneCertification"
+                    android:layout_height="35dp"
                     android:layout_below="@+id/phoneCertification"
                     android:layout_marginRight="5dp"
                     android:background="@drawable/border_mypage_nickname"
                     android:gravity="center"
-                    android:hint="010"
                     android:inputType="number"
+                    android:maxLength="3"
                     android:textSize="14sp" />
 
                 <EditText
@@ -190,8 +201,8 @@
                     android:layout_toRightOf="@+id/mypage_phone1"
                     android:background="@drawable/border_mypage_nickname"
                     android:gravity="center"
-                    android:hint="1234"
                     android:inputType="number"
+                    android:maxLength="4"
                     android:textSize="14sp" />
 
                 <EditText
@@ -204,15 +215,15 @@
                     android:layout_toRightOf="@+id/mypage_phone2"
                     android:background="@drawable/border_mypage_nickname"
                     android:gravity="center"
-                    android:hint="5678"
                     android:inputType="number"
+                    android:maxLength="4"
                     android:textSize="14sp" />
 
                 <Button
+                    android:id="@+id/mypage_recertificationBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignBottom="@+id/mypage_phone1"
-                    android:layout_alignRight="@+id/mypage_pwdSaveBtn"
                     android:layout_alignTop="@+id/mypage_phone1"
                     android:layout_toRightOf="@+id/mypage_phone3"
                     android:background="#ccc"
@@ -230,13 +241,14 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
                 <TextView
                     android:id="@+id/marketing"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
                     android:gravity="center"
                     android:text="@string/mypage_marketing"
                     android:textColor="#000" />
@@ -247,7 +259,6 @@
                     android:layout_height="wrap_content"
                     android:layout_alignLeft="@+id/marketing"
                     android:layout_below="@+id/marketing"
-                    android:layout_marginRight="20dp"
                     android:paddingBottom="5dp"
                     android:text="@string/mypage_marketingMessage"
                     android:textColor="#919191" />
@@ -299,13 +310,14 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
                 <TextView
                     android:id="@+id/gender"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_marginLeft="20dp"
                     android:gravity="center"
                     android:text="@string/mypage_gender"
                     android:textColor="#000" />
@@ -317,7 +329,6 @@
                     android:layout_alignBottom="@+id/gender"
                     android:layout_alignParentRight="true"
                     android:layout_alignTop="@+id/gender"
-                    android:layout_marginRight="20dp"
                     android:gravity="center_vertical"
                     android:text="남자" />
 
@@ -326,7 +337,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
                     android:layout_below="@+id/gender"
-                    android:layout_marginLeft="20dp"
                     android:gravity="center"
                     android:text="@string/mypage_birthday"
                     android:textColor="#000" />
@@ -338,7 +348,6 @@
                     android:layout_alignBottom="@+id/birthday"
                     android:layout_alignParentRight="true"
                     android:layout_alignTop="@+id/birthday"
-                    android:layout_marginRight="20dp"
                     android:gravity="center_vertical"
                     android:text="1991.07.19" />
 
