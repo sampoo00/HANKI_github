@@ -5,6 +5,193 @@
     android:layout_height="match_parent"
     tools:context=".ShopOrder.Fragment_shopInfo">
 
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:id="@+id/operationInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/shopInfo_operationInfo"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/runTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/operationInfo"
+                android:layout_marginTop="10dp"
+                android:text="@string/shopInfo_runTime" />
+
+            <TextView
+                android:id="@+id/shopInfo_runTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/runTime"
+                android:layout_toRightOf="@+id/breakTime"
+                android:text="10:00 ~ 21:00" />
+
+            <TextView
+                android:id="@+id/breakTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/runTime"
+                android:layout_marginRight="18dp"
+                android:layout_marginTop="5dp"
+                android:text="@string/shopInfo_breakTime" />
+
+            <TextView
+                android:id="@+id/shopInfo_breakTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/breakTime"
+                android:layout_toRightOf="@+id/breakTime"
+                android:text="14:00 ~ 17:00" />
+
+            <TextView
+                android:id="@+id/holiday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/breakTime"
+                android:layout_marginTop="5dp"
+                android:text="@string/shopInfo_holiday" />
+
+            <TextView
+                android:id="@+id/shopInfo_holiday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/holiday"
+                android:layout_toRightOf="@+id/breakTime"
+                android:text="격주 일요일" />
+
+            <TextView
+                android:id="@+id/shopPhoneNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/holiday"
+                android:layout_marginTop="5dp"
+                android:text="@string/shopInfo_shopPhoneNum" />
+
+            <TextView
+                android:id="@+id/shopInfo_phoneNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/shopPhoneNum"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@+id/breakTime"
+                android:text="031-123-1234" />
+
+            <Button
+                android:id="@+id/shopInfo_dialBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/shopInfo_phoneNum"
+                android:layout_alignTop="@+id/shopInfo_phoneNum"
+                android:layout_toRightOf="@+id/shopInfo_phoneNum"
+                android:background="@null"
+                android:text="전화걸기" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shopInfo_dialBtn"
+                android:layout_marginTop="18dp"
+                android:text="@string/shopInfo_location"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/shopInfo_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/location"
+                android:layout_marginTop="5dp"
+                android:text="서울특별시 삼성동 테헤란로 10" />
+
+            <ImageView
+                android:id="@+id/shopInfo_map"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/shopInfo_location"
+                android:background="@drawable/border_mypage_nickname"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:id="@+id/businessInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/shopInfo_map"
+                android:layout_marginTop="18dp"
+                android:text="사업자 정보"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ownerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/businessInfo"
+                android:layout_marginTop="10dp"
+                android:text="@string/shopInfo_ownerName" />
+
+            <TextView
+                android:id="@+id/shopInfo_ownerName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/ownerName"
+                android:layout_toRightOf="@+id/breakTime"
+                android:text="홍길동" />
+
+            <TextView
+                android:id="@+id/businessName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ownerName"
+                android:layout_marginTop="5dp"
+                android:text="@string/shopInfo_businessName" />
+
+            <TextView
+                android:id="@+id/shopInfo_businessName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/businessName"
+                android:layout_toRightOf="@+id/breakTime"
+                android:text="놀부 부대찌개 강남씨티점" />
+
+            <TextView
+                android:id="@+id/businessNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/businessName"
+                android:layout_marginTop="5dp"
+                android:text="@string/shopInfo_businessNum" />
+
+            <TextView
+                android:id="@+id/shopInfo_businessNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/businessNum"
+                android:layout_toRightOf="@+id/breakTime"
+                android:text="123-01-12345" />
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>
