@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.hanki.hanki.R;
 
@@ -19,24 +20,46 @@ import java.util.ArrayList;
 
 public class Fragment_menu extends Fragment {
 
+    //강조하고 싶은 메뉴
     private RecyclerView mMenuRecyclerView;
     private LinearLayoutManager mMenuLinearLayoutManager;
     private Fragment_menu_Adapter mMenuAdapter;
     private ArrayList<String[]> menuArrayList;
 
+    //매장 메뉴
     private RecyclerView mMenuRecRecyclerView;
     private GridLayoutManager mMenuRecGridLayoutManager;
     private Fragment_menu_rec_Adapter mMenuRecAdapter;
     private ArrayList<String[]> menuRecArrayList;
 
+    //원산지 표기
+    TextView txtCountryOrigin;
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+
+        return inflater.inflate(R.layout.shop_main_fragment_menu, container, false);
+    }
+
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        init(view);
         initMenuRecyclerView(view);
+
 
     }
 
+    public void init(View view){
+
+        txtCountryOrigin = (TextView)view.findViewById(R.id.shopMain_countryOforigin);
+        txtCountryOrigin.setText("소고기(호주산), 돼지고기(국내산), 닭고기(국내산), 김치(국내산), 쌀(국내산)");
+    }
     public void initMenuRecyclerView(View view){
         mMenuRecyclerView = view.findViewById(R.id.shopMain_menu_recyclerView);
         mMenuRecRecyclerView = view.findViewById(R.id.shopMain_menu_rec_recyclerView);
@@ -86,12 +109,6 @@ public class Fragment_menu extends Fragment {
 
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.shop_main_fragment_menu, container, false);
-    }
 
 
 }

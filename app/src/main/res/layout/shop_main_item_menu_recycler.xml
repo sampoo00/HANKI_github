@@ -27,8 +27,9 @@
 
         <LinearLayout
             android:id="@+id/menu_recyclerText"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
             android:layout_centerInParent="true"
             android:layout_toEndOf="@id/menu_recyclerImage"
             android:layout_toRightOf="@+id/menu_recyclerImage"
@@ -38,8 +39,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="5dp"
                 android:onClick="onClick"
                 android:text="메뉴이름"
@@ -50,8 +49,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="5dp"
                 android:onClick="onClick"
                 android:text="가 격"
