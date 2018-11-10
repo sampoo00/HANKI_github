@@ -16,10 +16,14 @@ import com.hanki.hanki.R;
 
 import java.util.ArrayList;
 
+import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
+
 public class ShopReviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
     ArrayList<ShopReviewData> shopReviewList;
+    PrettyDialog deleteReviewDialog;
 
     public ShopReviewAdapter(Context context, ArrayList<ShopReviewData> reviewList) {
         this.context = context;
@@ -51,7 +55,21 @@ public class ShopReviewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         reviewViewHolder.review_deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                deleteReviewDialog = new PrettyDialog(context);
+                deleteReviewDialog.setMessage(context.getResources().getString(R.string.deleteReviewMessage))
+                        .setIcon(R.drawable.pdlg_icon_info)
+                        .setIconTint(R.color.colorPrimary)
+                        .addButton("확인",
+                                R.color.pdlg_color_white,
+                                R.color.colorPrimary,
+                                new PrettyDialogCallback() {
+                                    @Override
+                                    public void onClick() {
+                                        deleteReviewDialog.dismiss();
+                                    }
+                                })
+                        .setCanceledOnTouchOutside(false);
+                deleteReviewDialog.show();
             }
         });
     }

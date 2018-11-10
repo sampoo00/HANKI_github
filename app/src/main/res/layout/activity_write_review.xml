@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".Review.WriteReviewActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -47,4 +48,80 @@
 
     </android.support.design.widget.AppBarLayout>
 
-</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="25dp">
+
+        <TextView
+            android:id="@+id/writeReview_shopName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="놀부 부대찌개"
+            android:textColor="#000"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/writeReview_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/writeReview_shopName"
+            android:layout_alignParentRight="true"
+            android:text="2018.10.03"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <ImageView
+            android:id="@+id/writeReview_profile"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_alignLeft="@+id/writeReview_shopName"
+            android:layout_below="@+id/writeReview_shopName"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/profile" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/writeReview_profile"
+            android:layout_alignTop="@+id/writeReview_profile"
+            android:layout_toRightOf="@+id/writeReview_profile"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/writeReview_nickname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="김행키" />
+
+            <RatingBar
+                android:id="@+id/writeReview_rating"
+                style="@style/Base.Widget.AppCompat.RatingBar.Indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:isIndicator="false"
+                android:max="5"
+                android:numStars="5"
+                android:rating="0"
+                android:stepSize="0.5" />
+
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/writeReview_profile"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/border_mypage_nickname"
+            android:gravity="top"
+            android:hint="리뷰를 작성해주세요."
+            android:padding="15dp"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>
