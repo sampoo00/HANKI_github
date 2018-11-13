@@ -3,6 +3,7 @@ package com.hanki.hanki.NavigationBar;
 import android.content.Intent;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,13 +15,19 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.hanki.hanki.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MypageActivity extends AppCompatActivity {
 
+    private final int GALLERY_REQUEST_CODE = 100;
+
+    CircleImageView mypage_profile;
     Switch emailSwitch;
     Switch smsSwitch;
 
@@ -35,8 +42,13 @@ public class MypageActivity extends AppCompatActivity {
     }
 
     public void init() {
+        mypage_profile = (CircleImageView) findViewById(R.id.mypage_profile);
         emailSwitch = (Switch) findViewById(R.id.emailSwitch);
         smsSwitch = (Switch) findViewById(R.id.smsSwitch);
+
+        final EditText mypage_phone1 = (EditText) findViewById(R.id.mypage_phone1);
+        final EditText mypage_phone2 = (EditText) findViewById(R.id.mypage_phone2);
+        final EditText mypage_phone3 = (EditText) findViewById(R.id.mypage_phone3);
 
         emailSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -63,10 +75,6 @@ public class MypageActivity extends AppCompatActivity {
                 }
             }
         });
-
-        final EditText mypage_phone1 = (EditText) findViewById(R.id.mypage_phone1);
-        final EditText mypage_phone2 = (EditText) findViewById(R.id.mypage_phone2);
-        final EditText mypage_phone3 = (EditText) findViewById(R.id.mypage_phone3);
 
         mypage_phone1.addTextChangedListener(new TextWatcher() {
             @Override
@@ -115,11 +123,22 @@ public class MypageActivity extends AppCompatActivity {
                 break;
             case R.id.mypage_profile:
             case R.id.mypage_profile_edit: //프로필 사진 변경
-                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-//                Intent intent = new Intent(Intent.ACTION_PICK);
+//                Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+                Intent intent = new Intent(Intent.ACTION_PICK);
+                intent.setData(MediaStore.Audio.Media.EXTERNAL_CONTENT_URI);
                 intent.setType("image/*");
-                startActivity(intent);
+                startActivityForResult(intent, GALLERY_REQUEST_CODE);
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == RESULT_OK && requestCode == GALLERY_REQUEST_CODE) {
+            Glide.with(MypageActivity.this).load(data.getData()).into(mypage_profile);
+        } else {
+            Toast.makeText(this, "사진 가져오기 오류", Toast.LENGTH_SHORT).show();
         }
     }
 

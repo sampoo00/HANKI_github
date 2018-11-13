@@ -81,7 +81,7 @@
                     android:layout_alignBottom="@+id/mypage_profile"
                     android:layout_alignRight="@+id/mypage_profile"
                     android:background="@drawable/ic_camera_alt_black_24dp"
-                    android:backgroundTint="#838383"
+                    android:backgroundTint="#676767"
                     android:onClick="onClick" />
 
                 <EditText
