@@ -43,8 +43,7 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name=".Review.WriteReviewActivity" />
-        <activity android:name=".ShopOrder.ShopMenu.ShopMenuDiaglog"></activity>
+        <activity android:name=".Review.WriteReviewActivity" ></activity>
     </application>
 
 </manifest>

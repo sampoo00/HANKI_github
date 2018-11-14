@@ -1,6 +1,7 @@
 package com.hanki.hanki.ShopOrder.ShopMenu;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -30,15 +31,21 @@ public class ShopMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
 
     @Override
     public ShopMenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shop_menu_item_recycler, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shop_menu_menulist_recycler, parent, false);
         ShopMenuViewHolder shopMenu_viewHolder = new ShopMenuViewHolder(view);
 
         return shopMenu_viewHolder;
     }
 
+    public void goShopMenuOrder(){
+        ArrayList<String[]> arrayList = new ArrayList<>();
+        arrayList.add(new String[]{"대", "중", "소"});
+        ShopMenuDialog shopMenuDialog = new ShopMenuDialog(context, arrayList);
+        shopMenuDialog.setCanceledOnTouchOutside(false);
+        shopMenuDialog.show();
+    }
     @Override
     public void onBindViewHolder(ShopMenuViewHolder holder, int position) {
-
 
         Glide.with(context)
                 .load(R.drawable.logo_sample)
@@ -52,9 +59,8 @@ public class ShopMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
             @Override
             public void onClick(View view) {
                //POP_UP 만들기
-
-                Toast.makeText(context, "이미지 클릭", Toast.LENGTH_LONG).show();
-
+                //Toast.makeText(context, "이미지 클릭", Toast.LENGTH_LONG).show();
+                goShopMenuOrder();
             }
         });
 
@@ -72,7 +78,7 @@ public class ShopMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
             public void onClick(View view) {
                 //popup
                 Toast.makeText(context, "가격 클릭", Toast.LENGTH_LONG).show();
-
+                goShopMenuOrder();
             }
         });
 
@@ -81,7 +87,7 @@ public class ShopMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
             public void onClick(View view) {
                 //popup
                 Toast.makeText(context, "relativeLayout클릭", Toast.LENGTH_LONG).show();
-
+                goShopMenuOrder();
             }
         });    }
 
