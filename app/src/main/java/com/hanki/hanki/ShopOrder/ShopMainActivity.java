@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -19,10 +18,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.ShopMenu.Fragment_menu;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
-
-import org.w3c.dom.Text;
 
 public class ShopMainActivity extends AppCompatActivity {
 

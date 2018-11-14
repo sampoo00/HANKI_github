@@ -1,11 +1,8 @@
-package com.hanki.hanki.ShopOrder;
+package com.hanki.hanki.ShopOrder.ShopMenu;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Environment;
 import android.support.v7.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +14,11 @@ import com.hanki.hanki.R;
 
 import java.util.ArrayList;
 
-public class Fragment_menu_Adapter extends RecyclerView.Adapter<Fragment_menu_ViewHolder>  {
+public class ShopMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
     private Context context;
     private ArrayList<String[]> menuData;
 
-    public Fragment_menu_Adapter(Context context, ArrayList<String[]> menuData) {
+    public ShopMenuAdapter(Context context, ArrayList<String[]> menuData) {
         this.context = context;
         this.menuData = menuData;
     }
@@ -32,15 +29,15 @@ public class Fragment_menu_Adapter extends RecyclerView.Adapter<Fragment_menu_Vi
     }
 
     @Override
-    public Fragment_menu_ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shop_main_item_menu_recycler, parent, false);
-        Fragment_menu_ViewHolder fragment_menu_viewHolder = new Fragment_menu_ViewHolder(view);
+    public ShopMenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shop_menu_item_recycler, parent, false);
+        ShopMenuViewHolder shopMenu_viewHolder = new ShopMenuViewHolder(view);
 
-        return fragment_menu_viewHolder;
+        return shopMenu_viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(Fragment_menu_ViewHolder holder, int position) {
+    public void onBindViewHolder(ShopMenuViewHolder holder, int position) {
 
 
         Glide.with(context)
