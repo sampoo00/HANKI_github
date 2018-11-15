@@ -1,7 +1,7 @@
 package com.hanki.hanki.Main;
 
 public class ShopData {
-    String shopName;
+    private String shopName;
 
     public ShopData(String shopName) {
         this.shopName = shopName;

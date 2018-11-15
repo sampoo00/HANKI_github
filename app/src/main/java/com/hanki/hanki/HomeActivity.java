@@ -13,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -23,7 +22,6 @@ import com.hanki.hanki.Main.Fragment_Home;
 import com.hanki.hanki.NavigationBar.MypageActivity;
 import com.hanki.hanki.NearByShop.Fragment_NearByShop;
 import com.hanki.hanki.NumberTicket.Fragment_numberticket;
-import com.hanki.hanki.ShopOrder.ShopMainActivity;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
@@ -106,7 +104,7 @@ public class HomeActivity extends AppCompatActivity
         transaction.add(R.id.contentContainer, homeFragment);
         transaction.addToBackStack(null);
         transaction.commit();
-        }
+    }
 
     @Override
     public void onBackPressed() {
@@ -118,27 +116,28 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.home, menu);
-        return true;
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.search, menu);
+//
+//        return true;
+//    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -167,20 +166,23 @@ public class HomeActivity extends AppCompatActivity
     public void onClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
-            case R.id.nav_mypage :
+            case R.id.nav_mypage:
                 intent = new Intent(HomeActivity.this, MypageActivity.class);
                 break;
-            case R.id.nav_logout :
+            case R.id.nav_logout:
 
                 break;
-            case R.id.nav_point :
+            case R.id.nav_point:
 
                 break;
-            case R.id.nav_orderList :
+            case R.id.nav_orderList:
 
                 break;
-            case R.id.nav_myreview :
+            case R.id.nav_myreview:
 
+                break;
+            case R.id.home_searchBtn:
+                intent = new Intent(HomeActivity.this, SearchActivity.class);
                 break;
         }
 
