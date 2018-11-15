@@ -45,7 +45,8 @@
         </receiver>
 
         <activity android:name=".Review.WriteReviewActivity" />
-        <activity android:name=".SearchActivity"></activity>
+        <activity android:name=".SearchActivity"/>
+
     </application>
 
 </manifest>

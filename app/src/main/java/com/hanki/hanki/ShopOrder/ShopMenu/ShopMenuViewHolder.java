@@ -1,4 +1,4 @@
-package com.hanki.hanki.ShopOrder;
+package com.hanki.hanki.ShopOrder.ShopMenu;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,7 +12,7 @@ import com.hanki.hanki.R;
 
 import org.w3c.dom.Text;
 
-public class Fragment_menu_ViewHolder extends RecyclerView.ViewHolder {
+public class ShopMenuViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView VH_menu_image;
         public TextView VH_menu_title;
@@ -29,7 +29,7 @@ public class Fragment_menu_ViewHolder extends RecyclerView.ViewHolder {
         public TextView VH_menu_rec_fee2;
         public LinearLayout VH_menu_rec_linearLayout2;
 
-        public Fragment_menu_ViewHolder(View itemView) {
+        public ShopMenuViewHolder(View itemView) {
             super(itemView);
 
             VH_menu_image = (ImageView)itemView.findViewById(R.id.menu_recyclerImage);

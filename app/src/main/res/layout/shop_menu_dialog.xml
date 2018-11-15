@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:src="@drawable/border_searched_shop_dialog">
+
+    <RelativeLayout
+        android:id="@+id/menuDialog_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_searched_shop_dialog"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/menuDialog_title"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="@drawable/border_menu_dialog_title"
+            android:gravity="center"
+            android:text="@string/shopmenu_title"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+
+
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/menu_totalPriceLayout"
+            android:layout_below="@+id/menuDialog_title">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageView
+                    android:id="@+id/menu_foodImg"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_margin="10dp"
+                    android:background="@drawable/ic_home_black_24dp"
+                    android:layout_centerHorizontal="true"
+                    />
+                <TextView
+                    android:id="@+id/menu_foodTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@id/menu_foodImg"
+                    android:text="맛있는 음식"/>
+
+                <ImageView
+                    android:id="@+id/menu_dotline1"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:background="@drawable/border_dot_line"
+                    android:layerType="software"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_below="@+id/menu_foodTitle"/>
+
+                <RelativeLayout
+                    android:id="@+id/menu_reqMenuLayout"
+                    android:layout_below="@id/menu_dotline1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/menu_txtSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:text="@string/shopmenu_size"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_below="@id/menu_txtSize"
+                        android:id="@+id/menu_reqRecyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:nestedScrollingEnabled="false"
+                       />
+
+                </RelativeLayout>
+
+                    <ImageView
+                        android:id="@+id/menu_dotline2"
+                        android:layout_width="match_parent"
+                        android:layout_height="11dp"
+                        android:layout_below="@+id/menu_reqMenuLayout"
+                        android:background="@drawable/border_dot_line"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layerType="software"/>
+
+                <RelativeLayout
+                    android:id="@+id/menu_optMenuLayout"
+                    android:layout_below="@id/menu_dotline2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    >
+
+                    <TextView
+                        android:id="@+id/menu_txtTopping"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:text="@string/shopmenu_topping"/>
+
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/menu_optGridView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/menu_txtTopping"
+                        android:layout_marginTop="10dp"
+                        android:nestedScrollingEnabled="false"
+                        />
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/menu_dotline3"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/menu_optMenuLayout"
+                    android:layout_height="11dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/border_dot_line"
+                    android:layerType="software"/>
+
+
+                <LinearLayout
+                    android:id="@+id/menu_totalSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_below="@+id/menu_dotline3">
+
+
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp"
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20dp"
+                            android:textStyle="bold"
+                            android:text="@string/shopmenu_menu_count"/>
+
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+                <ImageView
+                    android:id="@+id/menu_dotline4"
+                    android:layout_width="match_parent"
+                    android:layout_height="11dp"
+                    android:layout_below="@+id/menu_totalSize"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/border_dot_line"
+                    android:layerType="software"/>
+            </RelativeLayout>
+
+
+
+        </android.support.v4.widget.NestedScrollView>
+
+        <LinearLayout
+            android:id="@+id/menu_totalPriceLayout"
+            android:layout_alignParentBottom="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_menu_dialog_line">
+
+                <TextView
+                    android:id="@+id/menu_totalPriceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:text="@string/shopmenu_total_pirce"/>
+
+                <TextView
+                    android:id="@+id/menu_totalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/menu_totalPrice_wonTxt"
+                    android:layout_centerVertical="true"
+                    android:textSize="25sp"
+                    android:textColor="@color/pdlg_color_blue"
+                    android:textStyle="bold"
+                    android:text="36,000"/>
+
+                <TextView
+                    android:id="@+id/menu_totalPrice_wonTxt"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    android:text="원"/>
+            </RelativeLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/menu_bottomLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/menu_addCartLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:background="@drawable/border_menu_dialog_bottom_line"
+                    android:onClick="onClick">
+                    <TextView
+                        android:id="@+id/menu_addCartTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="23sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:text="@string/shopmenu_cart"
+                        android:onClick="onClick"
+                        />
+                </LinearLayout>
+                <LinearLayout
+                    android:id="@+id/menu_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:onClick="onClick">
+                    <TextView
+                        android:id="@+id/menu_orderTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:textSize="23sp"
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        android:onClick="onClick"
+                        android:text="@string/shopmenu_order"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

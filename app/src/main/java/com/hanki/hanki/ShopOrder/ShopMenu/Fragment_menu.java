@@ -1,4 +1,4 @@
-package com.hanki.hanki.ShopOrder;
+package com.hanki.hanki.ShopOrder.ShopMenu;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,8 +9,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridLayout;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.hanki.hanki.R;
@@ -23,13 +21,13 @@ public class Fragment_menu extends Fragment {
     //강조하고 싶은 메뉴
     private RecyclerView mMenuRecyclerView;
     private LinearLayoutManager mMenuLinearLayoutManager;
-    private Fragment_menu_Adapter mMenuAdapter;
+    private ShopMenuAdapter mMenuAdapter;
     private ArrayList<String[]> menuArrayList;
 
     //매장 메뉴
     private RecyclerView mMenuRecRecyclerView;
     private GridLayoutManager mMenuRecGridLayoutManager;
-    private Fragment_menu_rec_Adapter mMenuRecAdapter;
+    private ShopMenuRecAdapter mMenuRecAdapter;
     private ArrayList<String[]> menuRecArrayList;
 
     //원산지 표기
@@ -77,9 +75,9 @@ public class Fragment_menu extends Fragment {
 
         initMenuArrayList();
 
-        mMenuRecAdapter = new Fragment_menu_rec_Adapter(getContext(), menuRecArrayList);
+        mMenuRecAdapter = new ShopMenuRecAdapter(getContext(), menuRecArrayList);
         mMenuRecRecyclerView.setAdapter(mMenuRecAdapter);
-        mMenuAdapter = new Fragment_menu_Adapter(getContext(), menuArrayList);
+        mMenuAdapter = new ShopMenuAdapter(getContext(), menuArrayList);
         mMenuRecyclerView.setAdapter(mMenuAdapter);
 
 
