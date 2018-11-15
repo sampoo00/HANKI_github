@@ -38,6 +38,11 @@ public class ShopMenuDialog extends Dialog {
     TextView mTotalMenuCount;
     ImageButton mTotalAddBtn;
 
+    //수령 방법, radio btn
+
+    //전달 사항 UI 생성
+
+    //식판 담기, 주문하기
     //총 주문 금액
     public static int totalPrice = 0;
 
