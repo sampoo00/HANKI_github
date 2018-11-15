@@ -146,32 +146,60 @@
                     android:layerType="software"/>
 
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/menu_totalSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:layout_margin="10dp"
                     android:layout_below="@+id/menu_dotline3">
 
 
-
-                    <RelativeLayout
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10dp"
-                        >
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:layout_centerVertical="true"
+                        android:text="@string/shopmenu_menu_count"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_gravity="end"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/menu_totalSubBtn"
+                            android:layout_width="37dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/substract"
+                            android:scaleType="centerCrop" />
+
 
                         <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textSize="20dp"
-                            android:textStyle="bold"
-                            android:text="@string/shopmenu_menu_count"/>
+                            android:id="@+id/menu_totalAddCount"
+                            android:layout_width="60dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_vertical"
+                            android:gravity="center"
+                            android:textSize="17sp"
+                            android:background="@drawable/border_menu_diaog_all_edge"
+                            android:text="0"
+                            />
 
-                    </RelativeLayout>
+                        <ImageButton
+                            android:id="@+id/menu_totalPlusBtn"
+                            android:layout_width="37dp"
+                            android:layout_height="40dp"
+                            android:src="@drawable/plus"
+                            android:scaleType="centerCrop" />
 
+                    </LinearLayout>
 
-                </LinearLayout>
+                </RelativeLayout>
 
 
                 <ImageView
@@ -185,7 +213,65 @@
                     android:layout_marginEnd="5dp"
                     android:background="@drawable/border_dot_line"
                     android:layerType="software"/>
+
+            <RelativeLayout
+                android:id="@+id/menu_orderType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_below="@+id/menu_dotline4">
+
+
+                <TextView
+                    android:id="@+id/menu_orderTypeText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_centerVertical="true"
+                    android:text="@string/shopmenu_orderType"/>
+
+                <LinearLayout
+                    android:layout_centerVertical="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_toRightOf="@+id/menu_orderTypeText"
+                    android:layout_toEndOf="@+id/menu_orderTypeText"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <RadioGroup
+                        android:id="@+id/menu_RadioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="30dp"
+                        android:layout_marginRight="30dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/menu_pickupRadioBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="매장"/>
+
+                        <RadioButton
+                            android:id="@+id/menu_nonPickupRadioBtn"
+                            android:layout_marginStart="30dp"
+                            android:layout_marginLeft="30dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="포장"/>
+
+                    </RadioGroup>
+                </LinearLayout>
+
+
+
             </RelativeLayout>
+
+        </RelativeLayout>
 
 
 
@@ -283,7 +369,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
 
 
 

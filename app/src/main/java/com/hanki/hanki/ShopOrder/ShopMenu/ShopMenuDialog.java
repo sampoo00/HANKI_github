@@ -1,26 +1,19 @@
 package com.hanki.hanki.ShopOrder.ShopMenu;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.GridView;
-import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.hanki.hanki.R;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,14 +32,60 @@ public class ShopMenuDialog extends Dialog {
     private ShopOptMenuListAdapter mOptMenuAdapter;
     List<ShopOptMenuData> mOptMenuList;
 
+    //총수량
+    int mTotalCountInt;
+    ImageButton mTotalSubBtn;
+    TextView mTotalMenuCount;
+    ImageButton mTotalAddBtn;
+
     //총 주문 금액
     public static int totalPrice = 0;
 
 
     //총 주문 금액 계산하는 함수
 
-
     public void init(){
+        mTotalCountInt = 0;
+        mTotalSubBtn = (ImageButton)findViewById(R.id.menu_totalSubBtn);
+        mTotalMenuCount = (TextView) findViewById(id.menu_totalAddCount);
+        mTotalAddBtn = (ImageButton)findViewById(id.menu_totalPlusBtn);
+        mTotalMenuCount.setText("0");
+
+
+
+        mTotalAddBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                mTotalCountInt = Integer.parseInt(mTotalMenuCount.getText().toString());
+                if( mTotalCountInt < 99) {
+                    mTotalCountInt = mTotalCountInt + 1;
+                }
+                else{
+                    mTotalCountInt = 99;
+                }
+                mTotalMenuCount.setText(""+mTotalCountInt);
+            }
+        });
+
+        mTotalSubBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View v) {
+                mTotalCountInt = Integer.parseInt(mTotalMenuCount.getText().toString());
+                if (mTotalCountInt == 0) {
+                    mTotalCountInt = 0;
+                } else {
+                    mTotalCountInt = mTotalCountInt - 1;
+                }
+                mTotalMenuCount.setText("" + mTotalCountInt);
+            }
+        });
+
+    }
+
+
+    public void initRecycler(){
 
         mReqMenuRecyclerView = (RecyclerView) findViewById(id.menu_reqRecyclerView);
         mReqMenuLinearLayoutManager = new LinearLayoutManager(getContext());
@@ -77,6 +116,7 @@ public class ShopMenuDialog extends Dialog {
         setContentView(layout.shop_menu_dialog);
 
         init();
+        initRecycler();
 //참고
 //        searchedDialog_closeBtn = (ImageButton) findViewById(R.id.searchedDialog_closeBtn);
 //        searchedDialog_closeBtn.setOnClickListener(new View.OnClickListener() {

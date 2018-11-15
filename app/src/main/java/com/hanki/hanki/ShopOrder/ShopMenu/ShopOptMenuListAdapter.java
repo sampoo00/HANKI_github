@@ -10,13 +10,12 @@ import android.widget.CompoundButton;
 
 import com.hanki.hanki.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuListViewHolder> {
     private Context context;
     private List<ShopOptMenuData> optMenuData;
-    int menuCount = 0 ;
+    int toppingMenuCount = 0 ;
 
     public ShopOptMenuListAdapter(Context context, List<ShopOptMenuData> optMenuData) {
         this.context = context;
@@ -39,7 +38,7 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
 
         if(optMenuData.get(position).getOptMenuCount()==null){
             optMenuData.get(position).setOptMenuCount("0");
-            menuCount = 0;
+            toppingMenuCount = 0;
         }
 
         holder.VH_optCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -50,6 +49,10 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
                 }
                 else{
                     holder.VH_optLinearLayout.setVisibility(View.GONE);
+                    toppingMenuCount = 0;
+                    optMenuData.get(position).setOptMenuCount("0");
+                    holder.VH_optMenuCount.setText(optMenuData.get(position).optMenuCount);
+
                 }
             }
         });
@@ -58,9 +61,14 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
         holder.VH_optMenuPlusBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                    menuCount = Integer.parseInt(optMenuData.get(position).getOptMenuCount());
-                    menuCount = menuCount+1;
-                    optMenuData.get(position).setOptMenuCount(""+menuCount);
+                    toppingMenuCount = Integer.parseInt(optMenuData.get(position).getOptMenuCount());
+                    if(toppingMenuCount < 99) {
+                        toppingMenuCount = toppingMenuCount + 1;
+                    }
+                    else{
+                        toppingMenuCount = 99;
+                    }
+                    optMenuData.get(position).setOptMenuCount("" + toppingMenuCount);
                     holder.VH_optMenuCount.setText(optMenuData.get(position).optMenuCount);
 
             }
@@ -69,14 +77,14 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
         holder.VH_optMenuSubBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                menuCount = Integer.parseInt(optMenuData.get(position).getOptMenuCount());
-                if(menuCount == 0){
-                    menuCount = 0;
+                toppingMenuCount = Integer.parseInt(optMenuData.get(position).getOptMenuCount());
+                if(toppingMenuCount == 0){
+                    toppingMenuCount = 0;
                 }
                 else{
-                    menuCount = menuCount-1;
+                    toppingMenuCount = toppingMenuCount -1;
                 }
-                optMenuData.get(position).setOptMenuCount(""+menuCount);
+                optMenuData.get(position).setOptMenuCount(""+ toppingMenuCount);
                 holder.VH_optMenuCount.setText(optMenuData.get(position).optMenuCount);
 
             }

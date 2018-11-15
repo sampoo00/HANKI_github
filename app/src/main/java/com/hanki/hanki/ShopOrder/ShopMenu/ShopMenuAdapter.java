@@ -66,7 +66,8 @@ public class ShopMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
             @Override
             public void onClick(View view) {
                 //popup
-                Toast.makeText(context, "타이틀 클릭", Toast.LENGTH_LONG).show();
+//                Toast.makeText(context, "타이틀 클릭", Toast.LENGTH_LONG).show();
+                goShopMenuOrder();
 
             }
         });
@@ -75,7 +76,7 @@ public class ShopMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
             @Override
             public void onClick(View view) {
                 //popup
-                Toast.makeText(context, "가격 클릭", Toast.LENGTH_LONG).show();
+//                Toast.makeText(context, "가격 클릭", Toast.LENGTH_LONG).show();
                 goShopMenuOrder();
             }
         });
@@ -84,7 +85,7 @@ public class ShopMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
             @Override
             public void onClick(View view) {
                 //popup
-                Toast.makeText(context, "relativeLayout클릭", Toast.LENGTH_LONG).show();
+//                Toast.makeText(context, "relativeLayout클릭", Toast.LENGTH_LONG).show();
                 goShopMenuOrder();
             }
         });    }

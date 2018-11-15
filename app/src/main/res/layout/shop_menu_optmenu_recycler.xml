@@ -26,7 +26,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:gravity="start"
-            android:layout_columnWeight="1"
             android:textSize="17sp"
             android:text="초밥 회무침"
             />
@@ -90,7 +89,6 @@
             android:layout_height="40dp"
             android:src="@drawable/plus"
             android:scaleType="centerCrop" />
-
 
 
         </LinearLayout>
