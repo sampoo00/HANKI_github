@@ -39,7 +39,7 @@
     <!-- ShopMenuDialog -->
     <string name="shopmenu_title">메뉴 주문</string>
     <string name="shopmenu_size">사이즈(필수 선택)</string>
-    <string name="shopmenu_topping">토핑(추가 선택)(</string>
+    <string name="shopmenu_topping">토핑(추가 선택)</string>
     <string name="shopmenu_menu_count">수량</string>
     <string name="shopmenu_total_pirce">총 주문 금액</string>
     <string name="shopmenu_cart">식판 담기</string>

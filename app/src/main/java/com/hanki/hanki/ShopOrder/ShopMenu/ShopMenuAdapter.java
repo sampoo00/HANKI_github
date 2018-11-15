@@ -38,9 +38,7 @@ public class ShopMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
     }
 
     public void goShopMenuOrder(){
-        ArrayList<String[]> arrayList = new ArrayList<>();
-        arrayList.add(new String[]{"대", "중", "소"});
-        ShopMenuDialog shopMenuDialog = new ShopMenuDialog(context, arrayList);
+        ShopMenuDialog shopMenuDialog = new ShopMenuDialog(context);
         shopMenuDialog.setCanceledOnTouchOutside(false);
         shopMenuDialog.show();
     }
