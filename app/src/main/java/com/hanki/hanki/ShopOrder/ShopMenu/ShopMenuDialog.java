@@ -27,11 +27,23 @@ import java.util.List;
 import static com.hanki.hanki.R.*;
 
 public class ShopMenuDialog extends Dialog {
+    //필수 메뉴
     private RecyclerView mReqMenuRecyclerView;
     private LinearLayoutManager mReqMenuLinearLayoutManager;
     private ShopReqMenuListAdapter mReqMenuAdapter;
-//    private ArrayList<String[]> mReqMenuArrayList;
     List<ShopReqMenuData> mReqMenuList;
+
+    //선택 메뉴
+    private RecyclerView mOptMenuRecyclerView;
+    private LinearLayoutManager mOptMenuLinearLayoutManager;
+    private ShopOptMenuListAdapter mOptMenuAdapter;
+    List<ShopOptMenuData> mOptMenuList;
+
+    //총 주문 금액
+    public static int totalPrice = 0;
+
+
+    //총 주문 금액 계산하는 함수
 
 
     public void init(){
@@ -40,13 +52,21 @@ public class ShopMenuDialog extends Dialog {
         mReqMenuLinearLayoutManager = new LinearLayoutManager(getContext());
         mReqMenuLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
+        mOptMenuRecyclerView = (RecyclerView) findViewById(id.menu_optRecyclerView);
+        mOptMenuLinearLayoutManager = new LinearLayoutManager(getContext());
+        mOptMenuLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+
         mReqMenuRecyclerView.setLayoutManager(mReqMenuLinearLayoutManager);
         mReqMenuRecyclerView.setHasFixedSize(true);
+        mOptMenuRecyclerView.setLayoutManager(mOptMenuLinearLayoutManager);
+        mOptMenuRecyclerView.setHasFixedSize(true);
 
         initArrayList();
 
         mReqMenuAdapter = new ShopReqMenuListAdapter(getContext(), mReqMenuList);
         mReqMenuRecyclerView.setAdapter(mReqMenuAdapter);
+        mOptMenuAdapter = new ShopOptMenuListAdapter(getContext(), mOptMenuList);
+        mOptMenuRecyclerView.setAdapter(mOptMenuAdapter);
 
     }
 
@@ -76,6 +96,12 @@ public class ShopMenuDialog extends Dialog {
                 new ShopReqMenuData("대","5~6인", "26,000원"),
                 new ShopReqMenuData("중", "3~4인", "23,000원"),
                 new ShopReqMenuData("소", "1~2인", "20,000원"));
+
+        mOptMenuList = Arrays.asList(new ShopOptMenuData("라면사리", "1000원"),
+                new ShopOptMenuData("떡사리", "2000원"),
+        new ShopOptMenuData("모둠사리", "4000원"),
+        new ShopOptMenuData("치즈", "2000원"),
+        new ShopOptMenuData("파", "500원"));
 
     }
 

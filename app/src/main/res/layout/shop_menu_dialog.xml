@@ -123,7 +123,7 @@
                         android:text="@string/shopmenu_topping"/>
 
                     <android.support.v7.widget.RecyclerView
-                        android:id="@+id/menu_optGridView"
+                        android:id="@+id/menu_optRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/menu_txtTopping"

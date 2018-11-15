@@ -1,7 +1,6 @@
 package com.hanki.hanki.ShopOrder.ShopMenu;
 
 import android.content.Context;
-import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,9 +9,7 @@ import android.view.ViewGroup;
 import android.widget.RadioButton;
 
 import com.hanki.hanki.R;
-import com.hanki.hanki.ShopOrder.ShopReviewData;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuListViewHolder> {
@@ -39,9 +36,9 @@ public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
     @Override
     public void onBindViewHolder(@NonNull final ShopReqMenuListViewHolder holder, final int position) {
 
-        holder.VH_menuSize.setText(reqMenuData.get(position).reqMenuSize);
-        holder.VH_menuPeople.setText(reqMenuData.get(position).reqMenuPeople);
-        holder.VH_menuPrice.setText(reqMenuData.get(position).reqMenuPrice);
+        holder.VH_reqMenuSize.setText(reqMenuData.get(position).reqMenuSize);
+        holder.VH_reqMenuPeople.setText(reqMenuData.get(position).reqMenuPeople);
+        holder.VH_reqMenuPrice.setText(reqMenuData.get(position).reqMenuPrice);
         holder.VH_reqRadioBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
