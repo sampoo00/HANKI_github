@@ -66,7 +66,6 @@ public class Fragment_Home extends Fragment {
         });
 
 
-
         startSearchBtn = (Button) view.findViewById(R.id.startSearchBtn); //비콘 인식 버튼
         startSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +124,11 @@ public class Fragment_Home extends Fragment {
                 ShopData shopData;
                 for (int i = 0; i < list.size(); i++) {
                     shopData = new ShopData(list.get(i).getBeaconValue(BeaconValueIndex.MinewBeaconValueIndex_Minor).getStringValue());
-                    shopNameList.add(shopData);
+                    if (shopData.getShopName().equals("15290") || shopData.getShopName().equals("15282")) {
+                        if (!shopNameList.contains(shopData)) {
+                            shopNameList.add(shopData);
+                        }
+                    }
                 }
             }
 
