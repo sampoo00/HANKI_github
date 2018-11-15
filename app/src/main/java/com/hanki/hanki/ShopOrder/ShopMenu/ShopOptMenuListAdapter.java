@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 
 import com.hanki.hanki.R;
 
@@ -41,6 +42,19 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
             menuCount = 0;
         }
 
+        holder.VH_optCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    holder.VH_optLinearLayout.setVisibility(View.VISIBLE);
+                }
+                else{
+                    holder.VH_optLinearLayout.setVisibility(View.GONE);
+                }
+            }
+        });
+
+
         holder.VH_optMenuPlusBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
@@ -49,7 +63,21 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
                     optMenuData.get(position).setOptMenuCount(""+menuCount);
                     holder.VH_optMenuCount.setText(optMenuData.get(position).optMenuCount);
 
+            }
+        });
 
+        holder.VH_optMenuSubBtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                menuCount = Integer.parseInt(optMenuData.get(position).getOptMenuCount());
+                if(menuCount == 0){
+                    menuCount = 0;
+                }
+                else{
+                    menuCount = menuCount-1;
+                }
+                optMenuData.get(position).setOptMenuCount(""+menuCount);
+                holder.VH_optMenuCount.setText(optMenuData.get(position).optMenuCount);
 
             }
         });

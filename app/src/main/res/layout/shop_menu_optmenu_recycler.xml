@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
 
     <GridLayout
         android:layout_width="match_parent"
@@ -44,12 +45,14 @@
     </GridLayout>
     
     <LinearLayout
+        android:id="@+id/menu_optToppingCountLayout"
+        android:visibility="gone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_gravity="end"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp">
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
 
         <TextView
             android:id="@+id/reqMenuCount"
@@ -62,31 +65,33 @@
             android:textSize="17sp"
             android:text="수량"
             />
+        <ImageButton
+            android:id="@+id/optMenuSubBtn"
+            android:layout_width="37dp"
+            android:layout_height="40dp"
+            android:src="@drawable/substract"
+            android:scaleType="centerCrop" />
 
-            <ImageButton
-                android:id="@+id/optMenuPlusBtn"
-                android:layout_width="37dp"
-                android:layout_height="40dp"
-                android:src="@drawable/plus"
-                android:scaleType="centerCrop" />
 
-            <TextView
-                android:id="@+id/optMenuAddCount"
-                android:layout_width="60dp"
-                android:layout_height="30dp"
-                android:layout_gravity="center_vertical"
-                android:gravity="center"
-                android:textSize="17sp"
-                android:background="@drawable/border_menu_diaog_all_edge"
-                android:text="0"
-                />
+        <TextView
+            android:id="@+id/optMenuAddCount"
+            android:layout_width="60dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:textSize="17sp"
+            android:background="@drawable/border_menu_diaog_all_edge"
+            android:text="0"
+            />
 
-            <ImageButton
-                android:id="@+id/optMenuSubBtn"
-                android:layout_width="37dp"
-                android:layout_height="40dp"
-                android:src="@drawable/substract"
-                android:scaleType="centerCrop" />
+        <ImageButton
+            android:id="@+id/optMenuPlusBtn"
+            android:layout_width="37dp"
+            android:layout_height="40dp"
+            android:src="@drawable/plus"
+            android:scaleType="centerCrop" />
+
+
 
         </LinearLayout>
 
