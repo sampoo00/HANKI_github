@@ -1,6 +1,5 @@
 package com.hanki.hanki.ShopOrder.ShopMenu;
 
-import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CheckBox;
@@ -25,7 +24,10 @@ public class ShopReqMenuListViewHolder extends RecyclerView.ViewHolder {
     ImageButton VH_optMenuPlusBtn;
     TextView VH_optMenuCount;
     ImageButton VH_optMenuSubBtn;
-    LinearLayout VH_optLinearLayout;
+    LinearLayout VH_optToppingLinearlayout;
+
+    //Recycler에서 opt와 require layout 선택시 라디오/체크박스 버튼 선택
+
 
     public ShopReqMenuListViewHolder(View itemView) {
         super(itemView);
@@ -42,7 +44,7 @@ public class ShopReqMenuListViewHolder extends RecyclerView.ViewHolder {
         VH_optMenuCount = (TextView) itemView.findViewById(R.id.optMenuAddCount);
         VH_optMenuSubBtn = (ImageButton) itemView.findViewById(R.id.optMenuSubBtn);
 
-        VH_optLinearLayout = (LinearLayout) itemView.findViewById(R.id.menu_optToppingCountLayout);
+        VH_optToppingLinearlayout = (LinearLayout) itemView.findViewById(R.id.menu_optToppingCountLayout);
 
     }
 }

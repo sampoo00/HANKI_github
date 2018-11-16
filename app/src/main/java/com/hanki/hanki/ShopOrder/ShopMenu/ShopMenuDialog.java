@@ -6,16 +6,16 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
-import com.hanki.hanki.R;
 
 import java.util.Arrays;
 import java.util.List;
@@ -23,6 +23,7 @@ import java.util.List;
 import static com.hanki.hanki.R.*;
 
 public class ShopMenuDialog extends Dialog {
+    NestedScrollView mNestScroll;
     //필수 메뉴
     private RecyclerView mReqMenuRecyclerView;
     private LinearLayoutManager mReqMenuLinearLayoutManager;
@@ -47,7 +48,7 @@ public class ShopMenuDialog extends Dialog {
     RadioButton mNonPickupType;
 
     //전달 사항 UI 생성
-    EditText mRequestText;
+    EditText mRequestTxt;
 
     //식판 담기, 주문하기
     //총 주문 금액
@@ -128,14 +129,38 @@ public class ShopMenuDialog extends Dialog {
     }
 
 
+    public void initRequest(){
+        mNestScroll = (NestedScrollView) findViewById(id.menu_ScrollView);
+        mRequestTxt = (EditText) findViewById(id.menu_inputRequestTxt);
+
+
+        mRequestTxt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus == true) {
+                    mNestScroll.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            mNestScroll.smoothScrollBy(0, 800);
+                        }
+                    }, 100);
+
+                }
+            }
+        });
+    }
+
+
     public ShopMenuDialog(@NonNull Context context) {
         super(context);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setContentView(layout.shop_menu_dialog);
 
+
         initTotalCount();
         initRecycler();
         initPickupType();
+        initRequest();
 //참고
 //        searchedDialog_closeBtn = (ImageButton) findViewById(R.id.searchedDialog_closeBtn);
 //        searchedDialog_closeBtn.setOnClickListener(new View.OnClickListener() {
