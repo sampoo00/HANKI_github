@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:background="@drawable/border_review">
+
+    <TextView
+        android:id="@+id/review_shopName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="놀부 부대찌개"
+        android:textColor="#000"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/review_profile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/review_shopName"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/profile" />
+
+    <ImageButton
+        android:id="@+id/review_modifyBtn"
+        android:layout_width="23dp"
+        android:layout_height="23dp"
+        android:layout_marginRight="5dp"
+        android:layout_toLeftOf="@+id/review_deleteBtn"
+        android:background="@drawable/ic_mode_edit_black_24dp" />
+
+    <ImageButton
+        android:id="@+id/review_deleteBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/ic_clear_black_24dp" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/review_profile"
+        android:layout_alignTop="@+id/review_profile"
+        android:layout_toRightOf="@+id/review_profile"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/review_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="김행키"
+            android:textColor="#000" />
+
+        <RatingBar
+            android:id="@+id/review_rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/review_nickname"
+            android:layout_below="@+id/review_nickname"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="8dp"
+            android:clickable="false"
+            android:isIndicator="true"
+            android:max="5"
+            android:numStars="5"
+            android:rating="3"
+            android:stepSize="0.5" />
+
+        <TextView
+            android:id="@+id/review_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/review_rating"
+            android:layout_alignTop="@+id/review_rating"
+            android:layout_toRightOf="@+id/review_rating"
+            android:gravity="center_vertical"
+            android:text="2018.11.09" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/review_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/review_profile"
+        android:layout_marginTop="10dp"
+        android:text="맛있기는 한데 너무 매웠습니다. 사리도 너무 적은 것 같아서 아쉬워요. 5점만점에 3점이요~" />
+
+</RelativeLayout>

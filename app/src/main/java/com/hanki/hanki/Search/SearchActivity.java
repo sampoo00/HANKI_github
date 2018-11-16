@@ -45,6 +45,7 @@ public class SearchActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case android.R.id.home:
                 finish();
+                overridePendingTransition(0,0);
                 return true;
         }
         return super.onOptionsItemSelected(item);

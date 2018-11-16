@@ -52,7 +52,9 @@
             android:value="@string/key" />
 
         <activity android:name=".NavigationBar.PointActivity" />
-        <activity android:name=".NavigationBar.OrderHistory.OrderHistoryActivity"></activity>
+        <activity android:name=".NavigationBar.OrderHistory.OrderHistoryActivity" />
+        <activity android:name=".NavigationBar.OrderHistory.OrderDetailActivity" />
+        <activity android:name=".NavigationBar.MyReview.MyReviewActivity"/>
     </application>
 
 </manifest>

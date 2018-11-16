@@ -19,6 +19,7 @@ import com.bumptech.glide.signature.ApplicationVersionSignature;
 import com.hanki.hanki.FoodTray.Fragment_FoodTray;
 import com.hanki.hanki.LikeShop.Fragment_LikeShop;
 import com.hanki.hanki.Main.Fragment_Home;
+import com.hanki.hanki.NavigationBar.MyReview.MyReviewActivity;
 import com.hanki.hanki.NavigationBar.MypageActivity;
 import com.hanki.hanki.NavigationBar.OrderHistory.OrderHistoryActivity;
 import com.hanki.hanki.NavigationBar.PointActivity;
@@ -181,15 +182,19 @@ public class HomeActivity extends AppCompatActivity
                 intent = new Intent(HomeActivity.this, OrderHistoryActivity.class);
                 break;
             case R.id.nav_myreview:
-
+                intent = new Intent(HomeActivity.this, MyReviewActivity.class);
                 break;
             case R.id.home_searchBtn:
                 intent = new Intent(HomeActivity.this, SearchActivity.class);
                 break;
         }
+        startActivity(intent);
+
+        if(view.getId() == R.id.home_searchBtn) {
+            overridePendingTransition(0, 0);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        startActivity(intent);
     }
 }

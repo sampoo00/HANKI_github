@@ -1,6 +1,7 @@
 package com.hanki.hanki.NavigationBar.OrderHistory;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -47,9 +48,9 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             viewHolder.orderHistory_pickUpType.setText("픽업");
         }
 
-        if(orderHistory.orderFinish.equals("Y")) {
+        if (orderHistory.orderFinish.equals("Y")) {
             viewHolder.orderHistory_orderFinish.setText("완료");
-        } else if(orderHistory.orderFinish.equals("N")) {
+        } else if (orderHistory.orderFinish.equals("N")) {
             viewHolder.orderHistory_orderFinish.setText("대기");
         }
 
@@ -68,7 +69,7 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         TextView orderHistory_date;
         TextView orderHistory_orderFinish;
 
-        public OrderHistoryViewHolder(View itemView) {
+        public OrderHistoryViewHolder(final View itemView) {
             super(itemView);
 
             orderHistory_shopImage = (CircleImageView) itemView.findViewById(R.id.orderHistory_shopImage);
@@ -80,7 +81,8 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    // 상세 내역
+                    Intent intent = new Intent(context, OrderDetailActivity.class);
+                    itemView.getContext().startActivity(intent);
                 }
             });
         }
