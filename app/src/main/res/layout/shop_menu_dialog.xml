@@ -26,6 +26,7 @@
 
 
         <android.support.v4.widget.NestedScrollView
+            android:id="@+id/menu_ScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/menu_totalPriceLayout"
@@ -311,12 +312,13 @@
                         >
 
                         <EditText
+                            android:focusable="true"
                             android:focusableInTouchMode="true"
                             android:id="@+id/menu_inputRequestTxt"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:minLines="4"
+                            android:minLines="5"
                             android:baselineAligned="false"
                             android:gravity="top"
                             android:hint="@string/shopmenu_hint"

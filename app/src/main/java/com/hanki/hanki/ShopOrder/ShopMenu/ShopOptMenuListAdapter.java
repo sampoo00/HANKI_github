@@ -53,10 +53,10 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
-                    holder.VH_optLinearLayout.setVisibility(View.VISIBLE);
+                    holder.VH_optToppingLinearlayout.setVisibility(View.VISIBLE);
                 }
                 else{
-                    holder.VH_optLinearLayout.setVisibility(View.GONE);
+                    holder.VH_optToppingLinearlayout.setVisibility(View.GONE);
                     toppingMenuCount = 0;
                     optMenuData.get(position).setOptMenuCount(0);
                     holder.VH_optMenuCount.setText(optMenuData.get(position).optMenuCount);
