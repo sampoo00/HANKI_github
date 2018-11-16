@@ -46,8 +46,6 @@
     <string name="shopmenu_cart">식판 담기</string>
     <string name="shopmenu_order">주문 하기</string>
 
-
-
     <!-- MyPage -->
     <string name="mypage_save">저장</string>
     <string name="mypage_email">이메일</string>
@@ -92,5 +90,8 @@
     <string name="shopInfo_ownerName">대표자명</string>
     <string name="shopInfo_businessName">상호명</string>
     <string name="shopInfo_businessNum">사업자 번호</string>
+
+    <!-- kakaoMap -->
+    <string name="key">7da86d06d89abba0a40d64d2350ad8fb</string>
 
 </resources>

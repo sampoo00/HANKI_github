@@ -1,6 +1,8 @@
 package com.hanki.hanki.ShopOrder;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,9 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hanki.hanki.R;
+
+import net.daum.mf.map.api.MapView;
 
 
 public class Fragment_shopInfo extends Fragment {
@@ -22,6 +27,7 @@ public class Fragment_shopInfo extends Fragment {
     TextView shopInfo_holiday;
     TextView shopInfo_phoneNum;
     Button shopInfo_dialBtn;
+    RelativeLayout shopInfo_mapview;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,6 +38,11 @@ public class Fragment_shopInfo extends Fragment {
         shopInfo_holiday = (TextView) view.findViewById(R.id.shopInfo_holiday);
         shopInfo_phoneNum = (TextView) view.findViewById(R.id.shopInfo_phoneNum);
         shopInfo_dialBtn = (Button) view.findViewById(R.id.shopInfo_dialBtn);
+        shopInfo_mapview = (RelativeLayout) view.findViewById(R.id.shopInfo_mapview);
+
+        MapView mapView = new MapView(getActivity());
+        shopInfo_mapview.addView(mapView);
+
         return view;
     }
 

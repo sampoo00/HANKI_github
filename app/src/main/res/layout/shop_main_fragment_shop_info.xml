@@ -121,12 +121,11 @@
                 android:layout_marginTop="5dp"
                 android:text="서울특별시 삼성동 테헤란로 10" />
 
-            <ImageView
-                android:id="@+id/shopInfo_map"
+            <RelativeLayout
+                android:id="@+id/shopInfo_mapview"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="230dp"
                 android:layout_below="@+id/shopInfo_location"
-                android:background="@drawable/border_mypage_nickname"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="5dp" />
@@ -135,7 +134,7 @@
                 android:id="@+id/businessInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/shopInfo_map"
+                android:layout_below="@+id/shopInfo_mapview"
                 android:layout_marginTop="18dp"
                 android:text="사업자 정보"
                 android:textColor="#000"
