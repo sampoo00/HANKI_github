@@ -1,5 +1,6 @@
 package com.hanki.hanki.ShopOrder.ShopMenu;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.widget.RadioButton;
 
 import com.hanki.hanki.R;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuListViewHolder> {
@@ -33,12 +35,19 @@ public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
 
     }
 
+    //천 단위 숫자 입력
+    public static String moneyFormat(int inputMoney) {
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+        return decimalFormat.format(inputMoney);
+    }
+
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull final ShopReqMenuListViewHolder holder, final int position) {
 
         holder.VH_reqMenuSize.setText(reqMenuData.get(position).reqMenuSize);
         holder.VH_reqMenuPeople.setText(reqMenuData.get(position).reqMenuPeople);
-        holder.VH_reqMenuPrice.setText(reqMenuData.get(position).reqMenuPrice);
+        holder.VH_reqMenuPrice.setText(String.valueOf(moneyFormat(reqMenuData.get(position).reqMenuPrice))+"원");
         holder.VH_reqRadioBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -1,5 +1,6 @@
 package com.hanki.hanki.ShopOrder.ShopMenu;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +11,7 @@ import android.widget.CompoundButton;
 
 import com.hanki.hanki.R;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuListViewHolder> {
@@ -31,13 +33,19 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
         return shopReqMenuListViewHolder;
     }
 
+    //천 단위 숫자 입력
+    public static String moneyFormat(int inputMoney) {
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+        return decimalFormat.format(inputMoney);
+    }
+
     @Override
     public void onBindViewHolder(@NonNull final ShopReqMenuListViewHolder holder, final int position) {
         holder.VH_optMenuTitle.setText(optMenuData.get(position).optMenuTitle);
-        holder.VH_optMenuPrice.setText(optMenuData.get(position).optMenuPrice);
+        holder.VH_optMenuPrice.setText(String.valueOf(moneyFormat(optMenuData.get(position).optMenuPrice)+"원"));
 
-        if(optMenuData.get(position).getOptMenuCount()==null){
-            optMenuData.get(position).setOptMenuCount("0");
+        if(optMenuData.get(position).getOptMenuCount()==0){
+            optMenuData.get(position).setOptMenuCount(0);
             toppingMenuCount = 0;
         }
 
@@ -50,7 +58,7 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
                 else{
                     holder.VH_optLinearLayout.setVisibility(View.GONE);
                     toppingMenuCount = 0;
-                    optMenuData.get(position).setOptMenuCount("0");
+                    optMenuData.get(position).setOptMenuCount(0);
                     holder.VH_optMenuCount.setText(optMenuData.get(position).optMenuCount);
 
                 }
@@ -59,17 +67,18 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
 
 
         holder.VH_optMenuPlusBtn.setOnClickListener(new View.OnClickListener(){
+            @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                    toppingMenuCount = Integer.parseInt(optMenuData.get(position).getOptMenuCount());
+                    toppingMenuCount = optMenuData.get(position).getOptMenuCount();
                     if(toppingMenuCount < 99) {
                         toppingMenuCount = toppingMenuCount + 1;
                     }
                     else{
                         toppingMenuCount = 99;
                     }
-                    optMenuData.get(position).setOptMenuCount("" + toppingMenuCount);
-                    holder.VH_optMenuCount.setText(optMenuData.get(position).optMenuCount);
+                    optMenuData.get(position).setOptMenuCount(toppingMenuCount);
+                    holder.VH_optMenuCount.setText(String.valueOf(toppingMenuCount));
 
             }
         });
@@ -77,15 +86,14 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
         holder.VH_optMenuSubBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                toppingMenuCount = Integer.parseInt(optMenuData.get(position).getOptMenuCount());
                 if(toppingMenuCount == 0){
                     toppingMenuCount = 0;
                 }
                 else{
                     toppingMenuCount = toppingMenuCount -1;
                 }
-                optMenuData.get(position).setOptMenuCount(""+ toppingMenuCount);
-                holder.VH_optMenuCount.setText(optMenuData.get(position).optMenuCount);
+                optMenuData.get(position).setOptMenuCount(toppingMenuCount);
+                holder.VH_optMenuCount.setText(String.valueOf(toppingMenuCount));
 
             }
         });
@@ -95,44 +103,5 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
     public int getItemCount() {
         return optMenuData != null ? optMenuData.size() : 0;
     }
-//    private List<ShopReqMenuData> reqMenuData;
-//    private RadioButton lastCheckedRB = null;
-//
-//
-//    public ShopOptMenuListAdapter(Context context, List<ShopReqMenuData> reqMenuData) {
-//        this.context = context;
-//        this.reqMenuData = reqMenuData;
-//    }
-//
-//    @NonNull
-//    @Override
-//    public ShopReqMenuListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shop_menu_reqmenu_recycler, parent, false);
-//        ShopReqMenuListViewHolder shopReqMenuListViewHolder = new ShopReqMenuListViewHolder(view);
-//
-//        return shopReqMenuListViewHolder;
-//
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull final ShopReqMenuListViewHolder holder, final int position) {
-//
-//        holder.VH_reqMenuSize.setText(reqMenuData.get(position).reqMenuSize);
-//        holder.VH_reqMenuPeople.setText(reqMenuData.get(position).reqMenuPeople);
-//        holder.VH_reqMenuPrice.setText(reqMenuData.get(position).reqMenuPrice);
-//        holder.VH_reqRadioBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(lastCheckedRB != null){
-//                    lastCheckedRB.setChecked(false);
-//                }
-//                lastCheckedRB = holder.VH_reqRadioBtn;
-//            }
-//        });
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return reqMenuData != null ? reqMenuData.size() : 0 ;
-//    }
+
 }

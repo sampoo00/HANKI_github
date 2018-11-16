@@ -2,10 +2,10 @@ package com.hanki.hanki.ShopOrder.ShopMenu;
 
 public class ShopOptMenuData {
     public String optMenuTitle;
-    public String optMenuPrice;
-    public String optMenuCount;
+    public int optMenuPrice;
+    public int optMenuCount;
 
-    public ShopOptMenuData(String optMenuTitle, String optMenuPrice) {
+    public ShopOptMenuData(String optMenuTitle, int optMenuPrice) {
         this.optMenuTitle = optMenuTitle;
         this.optMenuPrice = optMenuPrice;
     }
@@ -18,19 +18,17 @@ public class ShopOptMenuData {
         this.optMenuTitle = optMenuTitle;
     }
 
-    public String getOptMenuPrice() {
-        return optMenuPrice;
-    }
+    public int getOptMenuPrice() { return optMenuPrice;   }
 
-    public void setOptMenuPrice(String optMenuPrice) {
+    public void setOptMenuPrice(int optMenuPrice) {
         this.optMenuPrice = optMenuPrice;
     }
 
-    public String getOptMenuCount() {
+    public int getOptMenuCount() {
         return optMenuCount;
     }
 
-    public void setOptMenuCount(String optMenuCount) {
+    public void setOptMenuCount(int optMenuCount) {
         this.optMenuCount = optMenuCount;
     }
 

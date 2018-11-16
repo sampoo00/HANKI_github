@@ -1,5 +1,6 @@
 package com.hanki.hanki.ShopOrder.ShopMenu;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
@@ -13,18 +14,20 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.hanki.hanki.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShopMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
     private Context context;
-    private ArrayList<String[]> menuData;
+    private List<ShopMenuData> menuData;
 
-    public ShopMenuAdapter(Context context, ArrayList<String[]> menuData) {
+    public ShopMenuAdapter(Context context, List<ShopMenuData> menuData) {
         this.context = context;
         this.menuData = menuData;
     }
 
-    public void setAdapter(ArrayList<String[]> menuData) {
+    public void setAdapter(List<ShopMenuData> menuData) {
         this.menuData = menuData;
         notifyDataSetChanged();
     }
@@ -42,6 +45,13 @@ public class ShopMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
         shopMenuDialog.setCanceledOnTouchOutside(false);
         shopMenuDialog.show();
     }
+
+    //천 단위 숫자 입력
+    public static String moneyFormat(int inputMoney) {
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+        return decimalFormat.format(inputMoney);
+    }
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ShopMenuViewHolder holder, int position) {
 
@@ -50,8 +60,8 @@ public class ShopMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
                 .into(holder.VH_menu_image);
 
 
-        holder.VH_menu_title.setText(menuData.get(position)[0]);
-        holder.VH_menu_fee.setText(menuData.get(position)[1]);
+        holder.VH_menu_title.setText(menuData.get(position).menuName);
+        holder.VH_menu_fee.setText(String.valueOf(moneyFormat(menuData.get(position).menuPrice))+"원");
 
         holder.VH_menu_image.setOnClickListener(new View.OnClickListener() {
             @Override

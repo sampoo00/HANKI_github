@@ -97,7 +97,7 @@
                     <ImageView
                         android:id="@+id/menu_dotline2"
                         android:layout_width="match_parent"
-                        android:layout_height="11dp"
+                        android:layout_height="3dp"
                         android:layout_below="@+id/menu_reqMenuLayout"
                         android:background="@drawable/border_dot_line"
                         android:layout_marginStart="5dp"
@@ -137,7 +137,7 @@
                     android:id="@+id/menu_dotline3"
                     android:layout_width="match_parent"
                     android:layout_below="@id/menu_optMenuLayout"
-                    android:layout_height="11dp"
+                    android:layout_height="3dp"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
@@ -205,7 +205,7 @@
                 <ImageView
                     android:id="@+id/menu_dotline4"
                     android:layout_width="match_parent"
-                    android:layout_height="11dp"
+                    android:layout_height="3dp"
                     android:layout_below="@+id/menu_totalSize"
                     android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
@@ -223,7 +223,7 @@
 
 
                 <TextView
-                    android:id="@+id/menu_orderTypeText"
+                    android:id="@+id/menu_orderTypeTxt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
@@ -231,51 +231,84 @@
                     android:layout_centerVertical="true"
                     android:text="@string/shopmenu_orderType"/>
 
-                <LinearLayout
-                    android:layout_centerVertical="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_toRightOf="@+id/menu_orderTypeText"
-                    android:layout_toEndOf="@+id/menu_orderTypeText"
-                    android:layout_marginStart="30dp"
-                    android:layout_marginLeft="30dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <RadioGroup
-                        android:id="@+id/menu_RadioGroup"
+                    <GridLayout
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/menu_orderTypeTxt"
+                        android:layout_toEndOf="@+id/menu_orderTypeTxt"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginLeft="40dp"
+                        android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="30dp"
-                        android:layout_marginRight="30dp"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:columnCount="2">
 
-                        <RadioButton
-                            android:id="@+id/menu_pickupRadioBtn"
-                            android:layout_width="wrap_content"
+                        <RadioGroup
+                            android:id="@+id/menu_RadioGroup"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="매장"/>
+                            android:orientation="horizontal">
 
-                        <RadioButton
-                            android:id="@+id/menu_nonPickupRadioBtn"
-                            android:layout_marginStart="30dp"
-                            android:layout_marginLeft="30dp"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="포장"/>
+                            <RadioButton
+                                android:id="@+id/menu_pickupRadioBtn"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:padding="5dp"
+                                android:text="매장"/>
 
-                    </RadioGroup>
+                            <RadioButton
+                                android:id="@+id/menu_nonPickupRadioBtn"
 
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:padding="5dp"
+                                android:text="포장"/>
 
-                </LinearLayout>
-
-
+                        </RadioGroup>
+                    </GridLayout>
 
             </RelativeLayout>
 
+                <ImageView
+                    android:id="@+id/menu_dotline5"
+                    android:layout_width="match_parent"
+                    android:layout_height="3dp"
+                    android:layout_below="@+id/menu_orderType"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:background="@drawable/border_dot_line"
+                    android:layerType="software"/>
+
+                <TextView
+                    android:layout_below="@+id/menu_dotline5"
+                    android:id="@+id/menu_requestTxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_centerVertical="true"
+                    android:text="@string/shopmenu_request"/>
+
+
+
+                    <EditText
+                        android:id="@+id/menu_inputRequestTxt"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="@drawable/border_menu_diaog_all_edge"
+                        android:layout_below="@id/menu_requestTxt"/>
+
+
+
         </RelativeLayout>
-
-
 
         </android.support.v4.widget.NestedScrollView>
 
