@@ -19,6 +19,8 @@ public class ClearEditText extends AppCompatEditText implements TextWatcher, Vie
     private OnFocusChangeListener onFocusChangeListener;
     private OnTouchListener onTouchListener;
 
+    private int textLength;
+
     public ClearEditText(Context context) {
         super(context);
         init();
@@ -48,7 +50,6 @@ public class ClearEditText extends AppCompatEditText implements TextWatcher, Vie
 
     @Override
     public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
     }
 
     @Override
@@ -60,7 +61,6 @@ public class ClearEditText extends AppCompatEditText implements TextWatcher, Vie
 
     @Override
     public void afterTextChanged(Editable s) {
-
     }
 
     @Override
