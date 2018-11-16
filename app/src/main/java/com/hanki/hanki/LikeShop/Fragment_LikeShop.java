@@ -53,12 +53,12 @@ public class Fragment_LikeShop extends Fragment {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
-        networkService = retrofit.create(NetworkService.class);
+//        networkService = retrofit.create(NetworkService.class);
 
         testBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                networkService = Application.getInstance().getNetworkService();
+                networkService = Application.getInstance().getNetworkService();
                 Call<TestData> request = networkService.getTestResponse();
                 request.enqueue(new Callback<TestData>() {
                     @Override

@@ -6,6 +6,7 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.signature.ApplicationVersionSignature;
 import com.hanki.hanki.FoodTray.Fragment_FoodTray;
 import com.hanki.hanki.LikeShop.Fragment_LikeShop;
 import com.hanki.hanki.Main.Fragment_Home;
@@ -31,10 +33,10 @@ import com.hanki.hanki.NumberTicket.Fragment_numberticket;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
 
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-import static com.kakao.util.maps.helper.Utility.getPackageInfo;
 
 //AppCompatActivity
 public class HomeActivity extends AppCompatActivity
@@ -52,6 +54,8 @@ public class HomeActivity extends AppCompatActivity
     private Fragment_LikeShop likeShopFragment;
     private Fragment_numberticket numberticketFragment;
     private Fragment_FoodTray foodTrayFragment;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
