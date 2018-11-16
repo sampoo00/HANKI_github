@@ -17,6 +17,8 @@ import android.widget.TextView;
 
 import com.hanki.hanki.R;
 
+import net.daum.mf.map.api.MapPOIItem;
+import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
 
@@ -40,8 +42,7 @@ public class Fragment_shopInfo extends Fragment {
         shopInfo_dialBtn = (Button) view.findViewById(R.id.shopInfo_dialBtn);
         shopInfo_mapview = (RelativeLayout) view.findViewById(R.id.shopInfo_mapview);
 
-        MapView mapView = new MapView(getActivity());
-        shopInfo_mapview.addView(mapView);
+        setMapView();
 
         return view;
     }
@@ -58,5 +59,20 @@ public class Fragment_shopInfo extends Fragment {
                 startActivity(intent);
             }
         });
+    }
+
+    public void setMapView() {
+        MapView mapView = new MapView(getActivity());
+        mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(37.5609739, 126.99352870000007), true); //지도 중심점 변경
+
+        MapPOIItem marker = new MapPOIItem();
+        marker.setItemName("교촌치킨 서초점");
+        marker.setTag(0);
+        marker.setMapPoint(MapPoint.mapPointWithGeoCoord(37.5609739, 126.99352870000007));
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
+        mapView.addPOIItem(marker);
+
+        shopInfo_mapview.addView(mapView);
     }
 }

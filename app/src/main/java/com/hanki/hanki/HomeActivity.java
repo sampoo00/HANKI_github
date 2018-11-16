@@ -1,13 +1,7 @@
 package com.hanki.hanki;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
 import android.os.Bundle;
-import android.util.Base64;
-import android.util.Log;
 import android.view.View;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentTransaction;
@@ -17,7 +11,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,13 +21,9 @@ import com.hanki.hanki.Main.Fragment_Home;
 import com.hanki.hanki.NavigationBar.MypageActivity;
 import com.hanki.hanki.NearByShop.Fragment_NearByShop;
 import com.hanki.hanki.NumberTicket.Fragment_numberticket;
+import com.hanki.hanki.Search.SearchActivity;
 import com.roughike.bottombar.BottomBar;
 import com.roughike.bottombar.OnTabSelectListener;
-
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import static com.kakao.util.maps.helper.Utility.getPackageInfo;
 
 //AppCompatActivity
 public class HomeActivity extends AppCompatActivity

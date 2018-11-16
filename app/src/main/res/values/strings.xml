@@ -95,4 +95,7 @@
     <!-- kakaoMap -->
     <string name="key">7da86d06d89abba0a40d64d2350ad8fb</string>
 
+    <!-- Search -->
+    <string name="search_hint">검색어를 입력해주세요.</string>
+
 </resources>

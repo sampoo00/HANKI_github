@@ -45,7 +45,7 @@
         </receiver>
 
         <activity android:name=".Review.WriteReviewActivity" />
-        <activity android:name=".SearchActivity"/>
+        <activity android:name=".Search.SearchActivity"/>
 
         <meta-data
             android:name="com.kakao.sdk.AppKey"
