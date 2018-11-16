@@ -47,14 +47,6 @@ public class Fragment_LikeShop extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Retrofit.Builder builder = new Retrofit.Builder();
-        Retrofit retrofit = builder
-                .baseUrl("http://117.17.156.101:8180/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .addConverterFactory(ScalarsConverterFactory.create())
-                .build();
-//        networkService = retrofit.create(NetworkService.class);
-
         testBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
