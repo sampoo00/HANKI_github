@@ -65,13 +65,13 @@ public class Fragment_shopInfo extends Fragment {
         MapView mapView = new MapView(getActivity());
         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(37.5609739, 126.99352870000007), true); //지도 중심점 변경
 
-        MapPOIItem marker = new MapPOIItem();
-        marker.setItemName("교촌치킨 서초점");
-        marker.setTag(0);
-        marker.setMapPoint(MapPoint.mapPointWithGeoCoord(37.5609739, 126.99352870000007));
-        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
-        mapView.addPOIItem(marker);
+//        MapPOIItem marker = new MapPOIItem();
+//        marker.setItemName("교촌치킨 서초점");
+//        marker.setTag(0);
+//        marker.setMapPoint(MapPoint.mapPointWithGeoCoord(37.5609739, 126.99352870000007));
+//        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
+//        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
+//        mapView.addPOIItem(marker);
 
         shopInfo_mapview.addView(mapView);
     }

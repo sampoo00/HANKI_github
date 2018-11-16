@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +19,8 @@ import com.hanki.hanki.R;
 
 import junit.framework.Test;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,20 +30,17 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Fragment_LikeShop extends Fragment {
 
-    Button testBtn;
-    TextView testTv;
-
-    NetworkService networkService;
+    RecyclerView likeshop_recyclerview;
 
     public Fragment_LikeShop() {
+
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_fragment_likeshop, container, false);
-        testBtn = view.findViewById(R.id.testBtn);
-        testTv = view.findViewById(R.id.textTv);
+        likeshop_recyclerview = (RecyclerView) view.findViewById(R.id.likeshop_recyclerview);
         return view;
     }
 
@@ -47,27 +48,17 @@ public class Fragment_LikeShop extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        testBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                networkService = Application.getInstance().getNetworkService();
-                Call<TestData> request = networkService.getTestResponse();
-                request.enqueue(new Callback<TestData>() {
-                    @Override
-                    public void onResponse(Call<TestData> call, Response<TestData> response) {
-                        Log.d("응답", response.body().result);
-                        if(response.isSuccessful()) {
-                            TestData testData = response.body();
-                            testTv.setText(testData.result);
-                        }
-                    }
+        ArrayList<LikeShop> likeShopList = new ArrayList<>();
+        LikeShop likeShop;
+        for(int i=0; i<7; i++) {
+            likeShop = new LikeShop("15290", "파스타하우스",
+                    "https://i0.wp.com/dilite.co.kr/wp-content/uploads/2018/04/%ED%8C%8C%EC%8A%A4%ED%83%80.jpg?fit=800505",
+                    3, 150, "알리오올리오, 빠네", 1);
+            likeShopList.add(likeShop);
+        }
 
-                    @Override
-                    public void onFailure(Call<TestData> call, Throwable t) {
-                        testTv.setText(t.getMessage());
-                    }
-                });
-            }
-        });
+        likeshop_recyclerview.setLayoutManager(new LinearLayoutManager(getContext()));
+        LikeShopAdapter likeShopAdapter = new LikeShopAdapter(getContext(), likeShopList);
+        likeshop_recyclerview.setAdapter(likeShopAdapter);
     }
 }

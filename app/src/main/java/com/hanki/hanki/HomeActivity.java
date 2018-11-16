@@ -20,6 +20,8 @@ import com.hanki.hanki.FoodTray.Fragment_FoodTray;
 import com.hanki.hanki.LikeShop.Fragment_LikeShop;
 import com.hanki.hanki.Main.Fragment_Home;
 import com.hanki.hanki.NavigationBar.MypageActivity;
+import com.hanki.hanki.NavigationBar.OrderHistory.OrderHistoryActivity;
+import com.hanki.hanki.NavigationBar.PointActivity;
 import com.hanki.hanki.NearByShop.Fragment_NearByShop;
 import com.hanki.hanki.NumberTicket.Fragment_numberticket;
 import com.hanki.hanki.Search.SearchActivity;
@@ -73,7 +75,7 @@ public class HomeActivity extends AppCompatActivity
         nav_mypage = (TextView) header.findViewById(R.id.nav_mypage);
         nav_logout = (TextView) header.findViewById(R.id.nav_logout);
         nav_point = (TextView) header.findViewById(R.id.nav_point);
-        nav_orderList = (TextView) header.findViewById(R.id.nav_orderList);
+        nav_orderList = (TextView) header.findViewById(R.id.nav_orderHistory);
         nav_myreview = (TextView) header.findViewById(R.id.nav_myreview);
 
         BottomBar bottomBar = (BottomBar) findViewById(R.id.bottomBar);
@@ -173,10 +175,10 @@ public class HomeActivity extends AppCompatActivity
 
                 break;
             case R.id.nav_point:
-
+                intent = new Intent(HomeActivity.this, PointActivity.class);
                 break;
-            case R.id.nav_orderList:
-
+            case R.id.nav_orderHistory:
+                intent = new Intent(HomeActivity.this, OrderHistoryActivity.class);
                 break;
             case R.id.nav_myreview:
 

@@ -20,11 +20,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class NearbyShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
-    ArrayList<NearbyShop> nearbyshopList;
+    ArrayList<NearbyShop> nearbyShopList;
 
     public NearbyShopAdapter(Context context, ArrayList<NearbyShop> nearbyshopList) {
         this.context = context;
-        this.nearbyshopList = nearbyshopList;
+        this.nearbyShopList = nearbyshopList;
     }
 
     @NonNull
@@ -37,16 +37,16 @@ public class NearbyShopAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         NearbyShopViewHolder viewHolder = (NearbyShopViewHolder) holder;
-        Glide.with(context).load(nearbyshopList.get(position).shopImage).into(viewHolder.nearbyshop_shopImage);
-        viewHolder.nearbyshop_shopName.setText(nearbyshopList.get(position).shopName);
-        viewHolder.nearbyshop_shopScore.setText(String.valueOf(nearbyshopList.get(position).shopScore));
-        viewHolder.nearbyshop_reviewNum.setText(String.valueOf(nearbyshopList.get(position).reviewNum));
-        viewHolder.nearbyshop_mainMenu.setText(nearbyshopList.get(position).mainMenu);
+        Glide.with(context).load(nearbyShopList.get(position).shopImage).into(viewHolder.nearbyshop_shopImage);
+        viewHolder.nearbyshop_shopName.setText(nearbyShopList.get(position).shopName);
+        viewHolder.nearbyshop_shopScore.setText(String.valueOf(nearbyShopList.get(position).shopScore));
+        viewHolder.nearbyshop_reviewNum.setText(String.valueOf(nearbyShopList.get(position).reviewNum));
+        viewHolder.nearbyshop_mainMenu.setText(nearbyShopList.get(position).mainMenu);
     }
 
     @Override
     public int getItemCount() {
-        return nearbyshopList.size();
+        return nearbyShopList.size();
     }
 
     private class NearbyShopViewHolder extends RecyclerView.ViewHolder {

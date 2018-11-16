@@ -19,6 +19,7 @@
             android:paddingTop="15dp">
 
             <TextView
+                android:id="@+id/nearbyshop_infoMessage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"

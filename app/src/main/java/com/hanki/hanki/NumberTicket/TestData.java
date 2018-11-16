@@ -1,4 +1,4 @@
-package com.hanki.hanki.LikeShop;
+package com.hanki.hanki.NumberTicket;
 
 public class TestData {
     String result;
