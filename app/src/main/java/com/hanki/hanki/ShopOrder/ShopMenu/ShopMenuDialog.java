@@ -9,7 +9,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.hanki.hanki.R;
@@ -39,8 +42,12 @@ public class ShopMenuDialog extends Dialog {
     ImageButton mTotalAddBtn;
 
     //수령 방법, radio btn
+    RadioGroup mPickupGroup;
+    RadioButton mPickupType;
+    RadioButton mNonPickupType;
 
     //전달 사항 UI 생성
+    EditText mRequestText;
 
     //식판 담기, 주문하기
     //총 주문 금액
@@ -49,9 +56,15 @@ public class ShopMenuDialog extends Dialog {
 
     //총 주문 금액 계산하는 함수
 
-    public void init(){
+
+    public void initPickupType(){
+        mPickupGroup = (RadioGroup) findViewById(id.menu_RadioGroup);
+        mPickupType = (RadioButton) findViewById(id.menu_pickupRadioBtn);
+        mNonPickupType = (RadioButton) findViewById(id.menu_nonPickupRadioBtn);
+    }
+    public void initTotalCount(){
         mTotalCountInt = 0;
-        mTotalSubBtn = (ImageButton)findViewById(R.id.menu_totalSubBtn);
+        mTotalSubBtn = (ImageButton)findViewById(id.menu_totalSubBtn);
         mTotalMenuCount = (TextView) findViewById(id.menu_totalAddCount);
         mTotalAddBtn = (ImageButton)findViewById(id.menu_totalPlusBtn);
         mTotalMenuCount.setText("0");
@@ -120,8 +133,9 @@ public class ShopMenuDialog extends Dialog {
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setContentView(layout.shop_menu_dialog);
 
-        init();
+        initTotalCount();
         initRecycler();
+        initPickupType();
 //참고
 //        searchedDialog_closeBtn = (ImageButton) findViewById(R.id.searchedDialog_closeBtn);
 //        searchedDialog_closeBtn.setOnClickListener(new View.OnClickListener() {

@@ -6,9 +6,9 @@ import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class Application extends android.app.Application {
 
-    private static Application instance = new Application();
+    private static Application instance;
     private NetworkService networkService;
-    private String baseUrl = "http://117.17.156.101:8180/";
+    private String baseUrl = "http://117.17.156.101:8180";
 
     public static Application getInstance() {
         return instance;
@@ -18,6 +18,7 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
         buildNetworkService();
+        Application.instance = this;
     }
 
     public void buildNetworkService() {

@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.signature.ApplicationVersionSignature;
 import com.hanki.hanki.FoodTray.Fragment_FoodTray;
 import com.hanki.hanki.LikeShop.Fragment_LikeShop;
 import com.hanki.hanki.Main.Fragment_Home;

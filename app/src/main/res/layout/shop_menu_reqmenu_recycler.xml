@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -22,30 +21,30 @@
             android:id="@+id/reqMenuSize"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:gravity="start"
             android:text="초밥 회무침"
             android:textSize="17sp" />
 
         <TextView
             android:id="@+id/reqMenuPeople"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_weight="1"
             android:gravity="start"
             android:text="임시명수"
             android:textSize="17sp" />
 
         <TextView
             android:id="@+id/reqMenuPrice"
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:text="26,000원"
+            android:layout_weight="1.3"
             android:gravity="end"
+            android:text="26,000원"
             android:textSize="17sp" />
 
     </LinearLayout>
