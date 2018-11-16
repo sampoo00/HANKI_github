@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.hanki.hanki.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class Fragment_menu extends Fragment {
@@ -22,13 +24,13 @@ public class Fragment_menu extends Fragment {
     private RecyclerView mMenuRecyclerView;
     private LinearLayoutManager mMenuLinearLayoutManager;
     private ShopMenuAdapter mMenuAdapter;
-    private ArrayList<String[]> menuArrayList;
+    private List<ShopMenuData> mMenuList;
 
     //매장 메뉴
     private RecyclerView mMenuRecRecyclerView;
     private GridLayoutManager mMenuRecGridLayoutManager;
     private ShopMenuRecAdapter mMenuRecAdapter;
-    private ArrayList<String[]> menuRecArrayList;
+    private List<ShopRecMenuData> mMenuRecList;
 
     //원산지 표기
     TextView txtCountryOrigin;
@@ -75,35 +77,31 @@ public class Fragment_menu extends Fragment {
 
         initMenuArrayList();
 
-        mMenuRecAdapter = new ShopMenuRecAdapter(getContext(), menuRecArrayList);
+        mMenuRecAdapter = new ShopMenuRecAdapter(getContext(), mMenuRecList);
         mMenuRecRecyclerView.setAdapter(mMenuRecAdapter);
-        mMenuAdapter = new ShopMenuAdapter(getContext(), menuArrayList);
+        mMenuAdapter = new ShopMenuAdapter(getContext(), mMenuList);
         mMenuRecyclerView.setAdapter(mMenuAdapter);
 
 
     }
 
     public void initMenuArrayList(){
-        menuArrayList = new ArrayList<String[]>();
-        menuArrayList.add(new String[]{"짜장면", "1000원"});
-        menuArrayList.add(new String[]{"국수", "6000원"});
-        menuArrayList.add(new String[]{"배고파", "100원"});
-        menuArrayList.add(new String[]{"짜장면", "1000원"});
-        menuArrayList.add(new String[]{"국수", "6000원"});
-        menuArrayList.add(new String[]{"배고파", "100원"});
-        menuArrayList.add(new String[]{"짜장면", "1000원"});
-        menuArrayList.add(new String[]{"국수", "6000원"});
-        menuArrayList.add(new String[]{"배고파", "100원"});
-        menuArrayList.add(new String[]{"짜장면", "1000원"});
-        menuArrayList.add(new String[]{"국수", "6000원"});
-        menuArrayList.add(new String[]{"배고파", "100원"});
 
-        menuRecArrayList = new ArrayList<String[]>();
-        menuRecArrayList.add(new String[]{"매운탕", "6000원"});
-        menuRecArrayList.add(new String[]{"회", "10000원"});
-        menuRecArrayList.add(new String[]{"짜장곱배기", "16000원"});
-        menuRecArrayList.add(new String[]{"탕수육", "30000원"});
-        menuRecArrayList.add(new String[]{"매운탕45", "46000원"});
+        mMenuList = Arrays.asList(new ShopMenuData("국수", 140020),
+                new ShopMenuData("국수2", 1403000),
+                new ShopMenuData("국수3", 1200),
+                new ShopMenuData("국수4", 1039439),
+                new ShopMenuData("국수5", 14000),
+                new ShopMenuData("국수6", 1403000),
+                new ShopMenuData("국수7", 1200));
+
+        mMenuRecList = Arrays.asList(new ShopRecMenuData("부대찌게", 14000),
+                new ShopRecMenuData("된장찌게", 1403000),
+                new ShopRecMenuData("칼국수", 1200),
+                new ShopRecMenuData("게찌게", 1039439),
+                new ShopRecMenuData("부대찌게", 14000),
+                new ShopRecMenuData("된장찌게", 1403000),
+                new ShopRecMenuData("칼국수", 1200));
 
     }
 

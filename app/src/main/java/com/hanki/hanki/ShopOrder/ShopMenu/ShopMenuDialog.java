@@ -135,18 +135,18 @@ public class ShopMenuDialog extends Dialog {
 
     public void initArrayList(){
 
-        mReqMenuList = Arrays.asList(new ShopReqMenuData("대","5~6인", "26,000원"),
-                new ShopReqMenuData("중", "3~4인", "23,000원"),
-                new ShopReqMenuData("소", "1~2인", "20,000원"),
-                new ShopReqMenuData("대","5~6인", "26,000원"),
-                new ShopReqMenuData("중", "3~4인", "23,000원"),
-                new ShopReqMenuData("소", "1~2인", "20,000원"));
+        mReqMenuList = Arrays.asList(new ShopReqMenuData("대","5~6인", 1326000),
+                new ShopReqMenuData("중", "3~4인", 23000),
+                new ShopReqMenuData("소", "1~2인", 20000),
+                new ShopReqMenuData("대","5~6인", 26000),
+                new ShopReqMenuData("중", "3~4인", 23000),
+                new ShopReqMenuData("소", "1~2인", 20000));
 
-        mOptMenuList = Arrays.asList(new ShopOptMenuData("라면사리", "1000원"),
-                new ShopOptMenuData("떡사리", "2000원"),
-        new ShopOptMenuData("모둠사리", "4000원"),
-        new ShopOptMenuData("치즈", "2000원"),
-        new ShopOptMenuData("파", "500원"));
+        mOptMenuList = Arrays.asList(new ShopOptMenuData("라면사리", 1000),
+                new ShopOptMenuData("떡사리", 2000),
+        new ShopOptMenuData("모둠사리", 4000),
+        new ShopOptMenuData("치즈", 2000),
+        new ShopOptMenuData("파", 500));
 
     }
 

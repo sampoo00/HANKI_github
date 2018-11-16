@@ -9,18 +9,20 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.hanki.hanki.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShopMenuRecAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
     private Context context;
-    private ArrayList<String[]> menuRecData;
+    private List<ShopRecMenuData> menuRecData;
 
-    public ShopMenuRecAdapter(Context context, ArrayList<String[]> menuRecData) {
+    public ShopMenuRecAdapter(Context context, List<ShopRecMenuData> menuRecData) {
         this.context = context;
         this.menuRecData = menuRecData;
     }
 
-    public void setAdapter(ArrayList<String[]> menuRecData) {
+    public void setAdapter(List<ShopRecMenuData> menuRecData) {
         this.menuRecData = menuRecData;
         notifyDataSetChanged();
     }
@@ -39,6 +41,12 @@ public class ShopMenuRecAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
         shopMenuDialog.show();
     }
 
+    //천 단위 숫자 입력
+    public static String moneyFormat(int inputMoney) {
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+        return decimalFormat.format(inputMoney);
+    }
+
     @Override
     public void onBindViewHolder(ShopMenuViewHolder holder, int position) {
 
@@ -46,8 +54,8 @@ public class ShopMenuRecAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
         Glide.with(context)
                 .load(R.drawable.logo_sample)
                 .into(holder.VH_menu_rec_image);
-        holder.VH_menu_rec_title.setText(menuRecData.get(position)[0]);
-        holder.VH_menu_rec_fee.setText(menuRecData.get(position)[1]);
+        holder.VH_menu_rec_title.setText(menuRecData.get(position).recMenuName);
+        holder.VH_menu_rec_fee.setText(String.valueOf(moneyFormat(menuRecData.get(position).recMenuPrice))+"원");
 
 
 
