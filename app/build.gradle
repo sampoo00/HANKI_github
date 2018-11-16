@@ -49,5 +49,4 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
     //kakaoMap
     implementation files('libs/libDaumMapAndroid.jar')
-    //서버 통신 retrofit2
 }
