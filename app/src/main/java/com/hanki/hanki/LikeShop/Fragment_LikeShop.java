@@ -49,7 +49,7 @@ public class Fragment_LikeShop extends Fragment {
 
         Retrofit.Builder builder = new Retrofit.Builder();
         Retrofit retrofit = builder
-                .baseUrl("http://192.168.1.108:8080")
+                .baseUrl("http://117.17.156.101:8180/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
@@ -63,7 +63,7 @@ public class Fragment_LikeShop extends Fragment {
                 request.enqueue(new Callback<TestData>() {
                     @Override
                     public void onResponse(Call<TestData> call, Response<TestData> response) {
-                        Log.d("response", response.body().result);
+                        Log.d("응답", response.body().result);
                         if(response.isSuccessful()) {
                             TestData testData = response.body();
                             testTv.setText(testData.result);

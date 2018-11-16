@@ -14,6 +14,6 @@ import retrofit2.http.POST;
 
 public interface NetworkService {
     //테스트용
-    @HTTP(method = "GET", path = "/aaaa/phone/test")
+    @HTTP(method = "GET", path = "/HANKI/phone/test")
     Call<TestData> getTestResponse();
 }

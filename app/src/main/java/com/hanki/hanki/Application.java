@@ -8,7 +8,7 @@ public class Application extends android.app.Application {
 
     private static Application instance = new Application();
     private NetworkService networkService;
-    private String baseUrl = "http://192.168.1.108:8080";
+    private String baseUrl = "http://117.17.156.101:8180/";
 
     public static Application getInstance() {
         return instance;
