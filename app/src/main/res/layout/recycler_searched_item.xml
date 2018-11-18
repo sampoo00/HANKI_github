@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/searched_shopImage"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@drawable/profile" />
+
+    <RelativeLayout
+        android:id="@+id/searched_layout1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/searched_shopImage"
+        android:layout_alignTop="@id/searched_shopImage"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_toRightOf="@id/searched_shopImage"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/searched_shopName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="교촌치킨 서초점"
+            android:textColor="#000"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/searched_scoreLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searched_shopName"
+            android:layout_marginRight="10dp">
+
+            <TextView
+                android:id="@+id/searched_star"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searched_shopName"
+                android:text="★" />
+
+            <TextView
+                android:id="@+id/searched_shopScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searched_shopName"
+                android:layout_toRightOf="@id/searched_star"
+                android:text="4.2" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/searched_reviewLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/searched_scoreLayout"
+            android:layout_toRightOf="@id/searched_scoreLayout">
+
+            <TextView
+                android:id="@+id/searched_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="3dp"
+                android:text="리뷰" />
+
+            <TextView
+                android:id="@+id/searched_reviewNum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="89" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/searched_mainMenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searched_reviewLayout"
+            android:text="허니콤보, 레드콤보" />
+
+        <TextView
+            android:id="@+id/distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searched_mainMenu"
+            android:layout_marginRight="5dp"
+            android:text="거리"
+            android:textColor="#00f" />
+
+        <TextView
+            android:id="@+id/searched_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searched_mainMenu"
+            android:layout_toRightOf="@+id/distance"
+            android:text="0.5km"
+            android:textColor="#00f" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/searched_layout4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/searched_shopImage"
+        android:layout_alignTop="@id/searched_shopImage"
+        android:layout_toLeftOf="@+id/searched_next"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/searched_pickup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:background="#d847ddff"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:text="픽업"
+            android:textColor="#fff" />
+
+        <TextView
+            android:id="@+id/searched_here"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/searched_pickup"
+            android:background="#d8ff4747"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:text="현장"
+            android:textColor="#fff" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/searched_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/ic_chevron_right_black_24dp" />
+
+</RelativeLayout>
