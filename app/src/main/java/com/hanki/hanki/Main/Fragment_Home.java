@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.hanki.hanki.Application;
+import com.hanki.hanki.NetworkService;
 import com.hanki.hanki.R;
 import com.hanki.hanki.ShopOrder.ShopMainActivity;
 import com.minew.beacon.BeaconValueIndex;
@@ -22,6 +25,9 @@ import java.util.List;
 
 import libs.mjn.prettydialog.PrettyDialog;
 import libs.mjn.prettydialog.PrettyDialogCallback;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Fragment_Home extends Fragment {
     Button goShopMain;
@@ -31,7 +37,8 @@ public class Fragment_Home extends Fragment {
     private MinewBeaconManager minewBeaconManager;
     private boolean isScanning;
 
-    ArrayList<ShopData> shopNameList = new ArrayList<>();
+    ArrayList<ShopName> shopNameList = new ArrayList<>();
+    NetworkService networkService;
 
     public Fragment_Home() {
 
@@ -48,6 +55,8 @@ public class Fragment_Home extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        networkService = Application.getInstance().getNetworkService();
+
         if (minewBeaconManager == null) {
             minewBeaconManager = MinewBeaconManager.getInstance(getActivity());
         }
@@ -60,7 +69,6 @@ public class Fragment_Home extends Fragment {
                 startActivity(intent);
             }
         });
-
 
         startSearchBtn = (Button) view.findViewById(R.id.startSearchBtn); //비콘 인식 버튼
         startSearchBtn.setOnClickListener(new View.OnClickListener() {
@@ -114,18 +122,38 @@ public class Fragment_Home extends Fragment {
         minewBeaconManager.startScan();
         isScanning = true;
 
+        //**** 매장명을 받아오기 위한 임시 코드 ****//
+        String UUID = "15290";
+        Call<ShopName> request = networkService.getShopNameResult(UUID);
+        request.enqueue(new Callback<ShopName>() {
+            @Override
+            public void onResponse(Call<ShopName> call, Response<ShopName> response) {
+                Log.d("응답", "응답 : " + response.code());
+                if(response.isSuccessful()) {
+                    shopNameList.add(response.body());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ShopName> call, Throwable t) {
+                Log.d("응답", "응답 : " + t.getMessage());
+            }
+        });
+        // *************************************//
+
+        //원래 코드
         minewBeaconManager.setDeviceManagerDelegateListener(new MinewBeaconManagerListener() {
             @Override
             public void onAppearBeacons(List<MinewBeacon> list) {
-                ShopData shopData;
-                for (int i = 0; i < list.size(); i++) {
-                    shopData = new ShopData(list.get(i).getBeaconValue(BeaconValueIndex.MinewBeaconValueIndex_Minor).getStringValue());
-                    if (shopData.getShopName().equals("15290") || shopData.getShopName().equals("15282")) {
-                        if (!shopNameList.contains(shopData)) {
-                            shopNameList.add(shopData);
-                        }
-                    }
-                }
+//                ShopName shopData;
+//                for (int i = 0; i < list.size(); i++) {
+//                    shopData = new ShopName(list.get(i).getBeaconValue(BeaconValueIndex.MinewBeaconValueIndex_Minor).getStringValue());
+//                    if (shopData.getShopName().equals("15290") || shopData.getShopName().equals("15282")) {
+//                        if (!shopNameList.contains(shopData)) {
+//                            shopNameList.add(shopData);
+//                        }
+//                    }
+//                }
             }
 
             @Override

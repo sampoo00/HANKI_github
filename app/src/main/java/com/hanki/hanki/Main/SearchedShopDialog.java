@@ -23,7 +23,7 @@ public class SearchedShopDialog extends Dialog {
 
     NetworkService service;
 
-    public SearchedShopDialog(@NonNull Context context, final ArrayList<ShopData> shopNameList) {
+    public SearchedShopDialog(@NonNull Context context, final ArrayList<ShopName> shopNameList) {
         super(context);
         setContentView(R.layout.dialog_searched_shop);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
