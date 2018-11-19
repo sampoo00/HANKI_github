@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".NavigationBar.OrderHistory.OrderDetailActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -45,5 +46,244 @@
         </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
+            android:paddingLeft="28dp"
+            android:paddingRight="28dp"
+            android:paddingTop="15dp">
+
+            <TextView
+                android:id="@+id/order_detail_shopName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="파스타 하우스"
+                android:textColor="#000"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent" />
+
+            <RelativeLayout
+                android:id="@+id/order_detail_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/order_detail_shopName">
+
+                <ImageView
+                    android:id="@+id/order_detail_menuImage"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_marginRight="15dp"
+                    android:src="@drawable/profile" />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/order_detail_menuImage"
+                    android:layout_alignTop="@+id/order_detail_menuImage"
+                    android:layout_toRightOf="@+id/order_detail_menuImage"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/order_detail_menu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="토마토 파스타"
+                        android:textColor="#000"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/order_detail_set"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/order_detail_menu"
+                        android:layout_below="@+id/order_detail_menu"
+                        android:text="단품" />
+
+                    <TextView
+                        android:id="@+id/order_detail_topping"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/order_detail_menu"
+                        android:layout_below="@+id/order_detail_set"
+                        android:text="치즈토핑 추가" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/requests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:text="전달사항"
+                android:textColor="#000"
+                app:layout_constraintTop_toBottomOf="@+id/order_detail_layout" />
+
+            <TextView
+                android:id="@+id/order_detail_requests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="치즈 많이 주세용~~"
+                app:layout_constraintLeft_toRightOf="@+id/requests"
+                app:layout_constraintTop_toTopOf="@+id/requests" />
+
+            <View
+                android:id="@+id/order_detail_view1"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_order_detail_dash"
+                app:layout_constraintTop_toBottomOf="@+id/order_detail_requests" />
+
+            <TextView
+                android:id="@+id/orderNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="주문 번호"
+                android:textColor="#000"
+                app:layout_constraintTop_toBottomOf="@+id/order_detail_view1" />
+
+            <TextView
+                android:id="@+id/order_detail_orderNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="0084"
+                app:layout_constraintLeft_toRightOf="@+id/orderNumber"
+                app:layout_constraintTop_toTopOf="@+id/orderNumber" />
+
+            <TextView
+                android:id="@+id/orderTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="주문 시간"
+                android:textColor="#000"
+                app:layout_constraintTop_toBottomOf="@+id/order_detail_orderNumber" />
+
+            <TextView
+                android:id="@+id/order_detail_orderTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="2018.11.19 12:36"
+                app:layout_constraintLeft_toRightOf="@+id/orderTime"
+                app:layout_constraintTop_toTopOf="@+id/orderTime" />
+
+            <TextView
+                android:id="@+id/orderAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="주문 금액"
+                android:textColor="#000"
+                app:layout_constraintTop_toBottomOf="@+id/order_detail_orderTime" />
+
+            <TextView
+                android:id="@+id/order_detail_orderAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="37,000원"
+                app:layout_constraintLeft_toRightOf="@+id/orderAmount"
+                app:layout_constraintTop_toTopOf="@+id/orderAmount" />
+
+            <TextView
+                android:id="@+id/orderPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="결제 수단"
+                android:textColor="#000"
+                app:layout_constraintTop_toBottomOf="@+id/order_detail_orderAmount" />
+
+            <TextView
+                android:id="@+id/order_detail_orderPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="신용카드"
+                app:layout_constraintLeft_toRightOf="@+id/orderPayment"
+                app:layout_constraintTop_toTopOf="@+id/orderPayment" />
+
+            <TextView
+                android:id="@+id/orderPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="적립 내역"
+                android:textColor="#000"
+                app:layout_constraintTop_toBottomOf="@+id/order_detail_orderPayment" />
+
+            <TextView
+                android:id="@+id/order_detail_orderPoints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="37,000원"
+                app:layout_constraintLeft_toRightOf="@+id/orderPoints"
+                app:layout_constraintTop_toTopOf="@+id/orderPoints" />
+
+            <View
+                android:id="@+id/order_detail_view2"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/border_order_detail_dash"
+                app:layout_constraintTop_toBottomOf="@+id/order_detail_orderPoints" />
+
+            <TextView
+                android:id="@+id/orderCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="신용카드"
+                android:textColor="#000"
+                app:layout_constraintTop_toBottomOf="@+id/order_detail_view2" />
+
+            <TextView
+                android:id="@+id/order_detail_orderCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="신한카드 9512****2394****"
+                app:layout_constraintLeft_toRightOf="@+id/orderCard"
+                app:layout_constraintTop_toTopOf="@+id/orderCard" />
+
+            <TextView
+                android:id="@+id/orderPaymentNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="승인번호"
+                android:textColor="#000"
+                app:layout_constraintTop_toBottomOf="@+id/order_detail_orderCard" />
+
+            <TextView
+                android:id="@+id/order_detail_orderPaymentNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:text="201811191565892"
+                app:layout_constraintLeft_toRightOf="@+id/orderPaymentNumber"
+                app:layout_constraintTop_toTopOf="@+id/orderPaymentNumber" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
 
 </LinearLayout>
