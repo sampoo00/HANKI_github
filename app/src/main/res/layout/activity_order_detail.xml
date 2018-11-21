@@ -74,7 +74,7 @@
                 android:id="@+id/order_detail_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/order_detail_shopName">
@@ -126,7 +126,7 @@
                 android:id="@+id/requests"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="20dp"
                 android:text="전달사항"
                 android:textColor="#000"
                 app:layout_constraintTop_toBottomOf="@+id/order_detail_layout" />
@@ -140,12 +140,13 @@
                 app:layout_constraintLeft_toRightOf="@+id/requests"
                 app:layout_constraintTop_toTopOf="@+id/requests" />
 
-            <View
+            <ImageView
                 android:id="@+id/order_detail_view1"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/border_order_detail_dash"
+                android:layerType="software"
                 app:layout_constraintTop_toBottomOf="@+id/order_detail_requests" />
 
             <TextView
@@ -238,12 +239,13 @@
                 app:layout_constraintLeft_toRightOf="@+id/orderPoints"
                 app:layout_constraintTop_toTopOf="@+id/orderPoints" />
 
-            <View
+            <ImageView
                 android:id="@+id/order_detail_view2"
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/border_order_detail_dash"
+                android:layerType="software"
                 app:layout_constraintTop_toBottomOf="@+id/order_detail_orderPoints" />
 
             <TextView

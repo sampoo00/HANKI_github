@@ -2,6 +2,7 @@ package com.hanki.hanki;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.view.View;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentTransaction;
@@ -59,8 +60,6 @@ public class HomeActivity extends AppCompatActivity
         numberticketFragment = new Fragment_numberticket();
         foodTrayFragment = new Fragment_FoodTray();
 
-        initFragment(); //처음 선택된 탭이 home이여야함
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -96,17 +95,13 @@ public class HomeActivity extends AppCompatActivity
                 } else if (tabId == R.id.tab_foodTray) {
                     transaction.replace(R.id.contentContainer, foodTrayFragment).commit();
                 }
-
             }
-
         });
-    }
 
-    public void initFragment() {
+        //init Fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.contentContainer, homeFragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
+        transaction.replace(R.id.contentContainer, homeFragment).commit();
+        bottomBar.setDefaultTab(R.id.tab_home);
     }
 
     @Override
@@ -190,7 +185,7 @@ public class HomeActivity extends AppCompatActivity
         }
         startActivity(intent);
 
-        if(view.getId() == R.id.home_searchBtn) {
+        if (view.getId() == R.id.home_searchBtn) {
             overridePendingTransition(0, 0);
         }
 
