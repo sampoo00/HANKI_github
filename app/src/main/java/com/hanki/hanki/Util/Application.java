@@ -1,4 +1,4 @@
-package com.hanki.hanki;
+package com.hanki.hanki.Util;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -34,4 +34,5 @@ public class Application extends android.app.Application {
     public NetworkService getNetworkService() {
         return networkService;
     }
+
 }

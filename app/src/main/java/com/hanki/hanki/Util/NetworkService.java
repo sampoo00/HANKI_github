@@ -1,12 +1,10 @@
-package com.hanki.hanki;
+package com.hanki.hanki.Util;
 
 import com.hanki.hanki.Main.ShopName;
 import com.hanki.hanki.NumberTicket.TestData;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
-import retrofit2.http.HTTP;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface NetworkService {

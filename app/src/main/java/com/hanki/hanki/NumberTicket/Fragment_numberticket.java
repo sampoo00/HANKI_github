@@ -11,8 +11,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.hanki.hanki.Application;
-import com.hanki.hanki.NetworkService;
+import com.hanki.hanki.Util.Application;
+import com.hanki.hanki.Util.NetworkService;
 import com.hanki.hanki.R;
 
 import retrofit2.Call;
