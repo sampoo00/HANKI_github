@@ -29,6 +29,12 @@ public class DeleteAccountDialog extends Dialog {
         deletionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String deleteMessage = deleteAccountEt.getText().toString(); //사용자가 입력한 탈퇴메시지
+                if(deleteMessage.equals(R.string.mypage_delete)) { //'탈퇴합니다'와 일치하였을 경우
+
+                } else {
+
+                }
                 dismiss();
             }
         });

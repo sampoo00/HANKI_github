@@ -1,53 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/border_delete_account_dialog"
-    android:paddingBottom="10dp"
-    android:paddingTop="25dp">
+    android:background="#fff"
+    android:gravity="center"
+    android:paddingLeft="25dp"
+    android:paddingTop="25dp"
+    android:paddingRight="25dp"
+    android:paddingBottom="25dp">
 
     <TextView
         android:id="@+id/deleteAccountMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
+        android:layout_marginBottom="15dp"
         android:gravity="center"
         android:text="@string/mypage_deleteAccountMessage"
-        android:textColor="#000" />
+        android:textColor="#000"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
 
     <EditText
         android:id="@+id/mypage_deleteAccountEt"
-        android:layout_width="200dp"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/deleteAccountMessage"
-        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
         android:background="@drawable/border_mypage_nickname"
         android:hint="@string/mypage_delete"
-        android:textSize="14sp" />
+        android:textSize="14sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/deleteAccountMessage" />
 
-    <LinearLayout
+    <Button
+        android:id="@+id/mypage_deletionBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/mypage_deleteAccountEt"
-        android:layout_centerHorizontal="true"
-        android:orientation="horizontal">
+        android:layout_marginTop="20dp"
+        android:background="#ff5b5b"
+        android:text="@string/mypage_deleteConfirm"
+        android:textColor="#fff"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/mypage_cancelBtn"
+        app:layout_constraintTop_toBottomOf="@+id/mypage_deleteAccountEt" />
 
-        <Button
-            android:id="@+id/mypage_deletionBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:text="@string/mypage_deletion" />
+    <Button
+        android:id="@+id/mypage_cancelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#c4c4c4"
+        android:text="@string/mypage_cancel"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="@+id/mypage_deletionBtn"
+        app:layout_constraintLeft_toRightOf="@+id/mypage_deletionBtn"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/mypage_deletionBtn"
+        app:layout_constraintVertical_bias="1.0" />
 
-        <Button
-            android:id="@+id/mypage_cancelBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@null"
-            android:text="@string/mypage_cancel" />
-
-    </LinearLayout>
-
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>
