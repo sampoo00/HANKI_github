@@ -78,8 +78,8 @@
                     android:id="@+id/mypage_profile_edit"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:layout_alignBottom="@+id/mypage_profile"
                     android:layout_alignRight="@+id/mypage_profile"
+                    android:layout_alignBottom="@+id/mypage_profile"
                     android:background="@drawable/ic_camera_alt_black_24dp"
                     android:backgroundTint="#676767"
                     android:onClick="onClick" />
@@ -88,13 +88,14 @@
                     android:id="@+id/mypage_nickname"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
+                    android:layout_below="@+id/mypage_profile"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentRight="true"
-                    android:layout_below="@+id/mypage_profile"
                     android:layout_marginLeft="80dp"
-                    android:layout_marginRight="80dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="80dp"
                     android:background="@drawable/border_mypage_nickname"
+                    android:maxLength="15"
                     android:text="김행키"
                     android:textColor="#000"
                     android:textSize="13sp" />
@@ -104,8 +105,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:background="#ccc" />
 
             <RelativeLayout
@@ -126,8 +127,8 @@
                     android:id="@+id/mypage_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/email"
                     android:layout_alignTop="@+id/email"
+                    android:layout_alignBottom="@+id/email"
                     android:layout_toRightOf="@+id/phoneCertification"
                     android:gravity="center_vertical"
                     android:text="hanki123@hanki.kr" />
@@ -136,8 +137,8 @@
                     android:id="@+id/password"
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
-                    android:layout_alignLeft="@+id/email"
                     android:layout_below="@+id/email"
+                    android:layout_alignLeft="@+id/email"
                     android:layout_marginTop="10dp"
                     android:gravity="center"
                     android:text="@string/mypage_password"
@@ -147,9 +148,9 @@
                     android:id="@+id/mypage_password"
                     android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/password"
-                    android:layout_alignRight="@+id/mypage_phone3"
                     android:layout_alignTop="@+id/password"
+                    android:layout_alignRight="@+id/mypage_phone3"
+                    android:layout_alignBottom="@+id/password"
                     android:layout_toRightOf="@+id/phoneCertification"
                     android:background="@drawable/border_mypage_nickname"
                     android:hint="6-15자 이내"
@@ -160,9 +161,9 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/mypage_password"
                     android:layout_alignLeft="@+id/mypage_recertificationBtn"
                     android:layout_alignTop="@+id/mypage_password"
+                    android:layout_alignBottom="@+id/mypage_password"
                     android:layout_toRightOf="@+id/mypage_password"
                     android:background="#ccc"
                     android:text="@string/mypage_changePwd"
@@ -173,8 +174,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="35dp"
                     android:layout_below="@+id/password"
-                    android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
                     android:gravity="center"
                     android:text="@string/mypage_phoneCertification"
                     android:textColor="#000" />
@@ -195,8 +196,8 @@
                     android:id="@+id/mypage_phone2"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/mypage_phone1"
                     android:layout_alignTop="@+id/mypage_phone1"
+                    android:layout_alignBottom="@+id/mypage_phone1"
                     android:layout_marginRight="5dp"
                     android:layout_toRightOf="@+id/mypage_phone1"
                     android:background="@drawable/border_mypage_nickname"
@@ -209,8 +210,8 @@
                     android:id="@+id/mypage_phone3"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/mypage_phone1"
                     android:layout_alignTop="@+id/mypage_phone1"
+                    android:layout_alignBottom="@+id/mypage_phone1"
                     android:layout_marginRight="10dp"
                     android:layout_toRightOf="@+id/mypage_phone2"
                     android:background="@drawable/border_mypage_nickname"
@@ -223,8 +224,8 @@
                     android:id="@+id/mypage_recertificationBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/mypage_phone1"
                     android:layout_alignTop="@+id/mypage_phone1"
+                    android:layout_alignBottom="@+id/mypage_phone1"
                     android:layout_toRightOf="@+id/mypage_phone3"
                     android:background="#ccc"
                     android:text="@string/mypage_changePhoneNumber"
@@ -235,8 +236,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:background="#ccc" />
 
             <RelativeLayout
@@ -257,8 +258,8 @@
                     android:id="@+id/marketingMessage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignLeft="@+id/marketing"
                     android:layout_below="@+id/marketing"
+                    android:layout_alignLeft="@+id/marketing"
                     android:paddingBottom="5dp"
                     android:text="@string/mypage_marketingMessage"
                     android:textColor="#919191" />
@@ -267,8 +268,8 @@
                     android:id="@+id/emailAcceptance"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_alignLeft="@+id/marketing"
                     android:layout_below="@+id/marketingMessage"
+                    android:layout_alignLeft="@+id/marketing"
                     android:gravity="center"
                     android:text="@string/mypage_emailAcceptance"
                     android:textColor="#000" />
@@ -277,16 +278,16 @@
                     android:id="@+id/emailSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/emailAcceptance"
+                    android:layout_alignTop="@+id/emailAcceptance"
                     android:layout_alignRight="@+id/marketingMessage"
-                    android:layout_alignTop="@+id/emailAcceptance" />
+                    android:layout_alignBottom="@+id/emailAcceptance" />
 
                 <TextView
                     android:id="@+id/smsAcceptance"
                     android:layout_width="wrap_content"
                     android:layout_height="40dp"
-                    android:layout_alignLeft="@+id/marketing"
                     android:layout_below="@+id/emailAcceptance"
+                    android:layout_alignLeft="@+id/marketing"
                     android:gravity="center"
                     android:text="@string/mypage_smsAcceptance"
                     android:textColor="#000" />
@@ -295,17 +296,17 @@
                     android:id="@+id/smsSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignBottom="@+id/smsAcceptance"
+                    android:layout_alignTop="@+id/smsAcceptance"
                     android:layout_alignRight="@+id/marketingMessage"
-                    android:layout_alignTop="@+id/smsAcceptance" />
+                    android:layout_alignBottom="@+id/smsAcceptance" />
 
             </RelativeLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
                 android:background="#ccc" />
 
             <RelativeLayout
@@ -326,9 +327,9 @@
                     android:id="@+id/mypage_gender"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/gender"
                     android:layout_alignBottom="@+id/gender"
                     android:layout_alignParentRight="true"
-                    android:layout_alignTop="@+id/gender"
                     android:gravity="center_vertical"
                     android:text="남자" />
 
@@ -345,9 +346,9 @@
                     android:id="@+id/mypage_birthday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignTop="@+id/birthday"
                     android:layout_alignBottom="@+id/birthday"
                     android:layout_alignParentRight="true"
-                    android:layout_alignTop="@+id/birthday"
                     android:gravity="center_vertical"
                     android:text="1991.07.19" />
 
@@ -356,8 +357,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="10dp"
-                android:layout_marginBottom="20dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
                 android:background="#ccc" />
 
             <TextView
@@ -365,8 +366,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:layout_marginBottom="30dp"
                 android:layout_marginRight="20dp"
+                android:layout_marginBottom="30dp"
                 android:onClick="onClick"
                 android:text="@string/mypage_deleteAccount" />
 
