@@ -27,7 +27,8 @@ public class ShopReqMenuListViewHolder extends RecyclerView.ViewHolder {
     LinearLayout VH_optToppingLinearlayout;
 
     //Recycler에서 opt와 require layout 선택시 라디오/체크박스 버튼 선택
-
+    LinearLayout VH_optMenuLayout;
+    LinearLayout VH_reqMenuLayout;
 
     public ShopReqMenuListViewHolder(View itemView) {
         super(itemView);
