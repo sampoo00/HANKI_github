@@ -22,9 +22,9 @@ public class ShopReqMenuListViewHolder extends RecyclerView.ViewHolder {
     CheckBox VH_optCheckBox;
     TextView VH_optMenuTitle;
     TextView VH_optMenuPrice;
-    ImageView VH_optMenuPlusBtn;
+    ImageButton VH_optMenuPlusBtn;
     TextView VH_optMenuCount;
-    ImageView VH_optMenuSubBtn;
+    ImageButton VH_optMenuSubBtn;
     LinearLayout VH_optToppingLinearlayout;
 
     //Recycler에서 opt와 require layout 선택시 라디오/체크박스 버튼 선택
@@ -42,9 +42,9 @@ public class ShopReqMenuListViewHolder extends RecyclerView.ViewHolder {
         VH_optCheckBox = (CheckBox) itemView.findViewById(R.id.optMenuCheckBtn);
         VH_optMenuTitle = (TextView) itemView.findViewById(R.id.optMenuTitle);
         VH_optMenuPrice = (TextView) itemView.findViewById(R.id.optMenuPrice);
-        VH_optMenuPlusBtn = (ImageView) itemView.findViewById(R.id.optMenuPlusBtn);
+        VH_optMenuPlusBtn = (ImageButton) itemView.findViewById(R.id.optMenuPlusBtn);
         VH_optMenuCount = (TextView) itemView.findViewById(R.id.optMenuAddCount);
-        VH_optMenuSubBtn = (ImageView) itemView.findViewById(R.id.optMenuSubBtn);
+        VH_optMenuSubBtn = (ImageButton) itemView.findViewById(R.id.optMenuSubBtn);
 
         VH_optToppingLinearlayout = (LinearLayout) itemView.findViewById(R.id.menu_optToppingCountLayout);
         VH_optMenuLayout = (LinearLayout) itemView.findViewById(R.id.menu_optMenuLayout);

@@ -57,13 +57,12 @@
         android:layout_marginRight="5dp">
 
 
-        <ImageView
+        <ImageButton
             android:id="@+id/optMenuSubBtn"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/substract_circle"
-            android:onClick="onClick" />
+            android:background="@drawable/substract_circle" />
 
 
         <TextView
@@ -81,13 +80,12 @@
             android:text="1"
             />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/optMenuPlusBtn"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/add_circle_gray"
-            android:onClick="onClick"
+            android:background="@drawable/add_circle_gray"
             />
 
 

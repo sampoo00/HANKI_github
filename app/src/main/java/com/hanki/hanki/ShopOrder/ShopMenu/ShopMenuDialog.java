@@ -68,11 +68,11 @@ public class ShopMenuDialog extends Dialog {
         mNonPickupType = (RadioButton) findViewById(id.menu_nonPickupRadioBtn);
     }
     public void initTotalCount(){
-        mTotalCountInt = 0;
+        mTotalCountInt = 1;
         mTotalSubBtn = (ImageButton)findViewById(id.menu_totalSubBtn);
         mTotalMenuCount = (TextView) findViewById(id.menu_totalAddCount);
         mTotalAddBtn = (ImageButton)findViewById(id.menu_totalPlusBtn);
-        mTotalMenuCount.setText("0");
+        mTotalMenuCount.setText(String.valueOf(mTotalCountInt));
 
 
 
@@ -88,6 +88,8 @@ public class ShopMenuDialog extends Dialog {
                     mTotalCountInt = 99;
                 }
                 mTotalMenuCount.setText(""+mTotalCountInt);
+                resultTotalPrice();
+
             }
         });
 
@@ -96,12 +98,14 @@ public class ShopMenuDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 mTotalCountInt = Integer.parseInt(mTotalMenuCount.getText().toString());
-                if (mTotalCountInt == 0) {
-                    mTotalCountInt = 0;
+                if (mTotalCountInt == 1) {
+                    mTotalCountInt = 1;
                 } else {
                     mTotalCountInt = mTotalCountInt - 1;
                 }
                 mTotalMenuCount.setText("" + mTotalCountInt);
+                resultTotalPrice();
+
             }
         });
 
@@ -181,12 +185,12 @@ public class ShopMenuDialog extends Dialog {
     }
 
     public void resultTotalPrice(){
-        mCalTotalPrice.setText(String.valueOf(moneyFormat(mReqMenuPrice+mOptMenuPrice)));
+        mCalTotalPrice.setText(String.valueOf(moneyFormat((mReqMenuPrice+mOptMenuPrice) * mTotalCountInt)));
 
     }
 
     public int getTotalPrice(){
-        mTotalPrice = mReqMenuPrice + mOptMenuPrice;
+        mTotalPrice = (mReqMenuPrice + mOptMenuPrice) * mTotalCountInt;
         return mTotalPrice;
     }
 
