@@ -54,11 +54,13 @@
         <activity android:name=".NavigationBar.PointActivity" />
         <activity android:name=".NavigationBar.OrderHistory.OrderHistoryActivity" />
         <activity android:name=".NavigationBar.OrderHistory.OrderDetailActivity" />
-        <activity android:name=".NavigationBar.MyReview.MyReviewActivity"/>
+        <activity android:name=".NavigationBar.MyReview.MyReviewActivity" />
 
         <service
             android:name=".Util.TaskService"
-            android:stopWithTask="false"/>
+            android:stopWithTask="false" />
+
+        <activity android:name=".ShopOrder.ShopPayment.PaymentActivity"></activity>
     </application>
 
 </manifest>

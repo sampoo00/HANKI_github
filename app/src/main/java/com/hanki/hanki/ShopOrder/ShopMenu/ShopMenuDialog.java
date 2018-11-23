@@ -3,6 +3,7 @@ package com.hanki.hanki.ShopOrder.ShopMenu;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -10,13 +11,19 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewTreeObserver;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.ShopPayment.PaymentActivity;
+
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,23 +59,56 @@ public class ShopMenuDialog extends Dialog {
 
     //식판 담기, 주문하기
     //총 주문 금액
-    public static int totalPrice = 0;
+    //필수 선택
+    int mReqMenuPrice = 0;
+    int mOptMenuPrice = 0;
+    TextView mCalTotalPrice;
+    int mTotalPrice = 0;
+    public static ShopMenuDialog mContext;
 
-
-    //총 주문 금액 계산하는 함수
+    //식판 담기, 주문 하기
+    LinearLayout addCartLayout;
+    LinearLayout orderMenuLayout;
 
 
     public void initPickupType(){
         mPickupGroup = (RadioGroup) findViewById(id.menu_RadioGroup);
         mPickupType = (RadioButton) findViewById(id.menu_pickupRadioBtn);
         mNonPickupType = (RadioButton) findViewById(id.menu_nonPickupRadioBtn);
+
+        mPickupType.setChecked(true);
+
+        mPickupType.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(mPickupType.isChecked()){
+                    Toast.makeText(getContext(), "매장이 선택 되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getContext(), "매장이 선택 해제 되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        mNonPickupType.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(mNonPickupType.isChecked()){
+                    Toast.makeText(getContext(), "픽업이 선택 되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getContext(), "픽업이 선택 해제 되었습니다.", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
     }
     public void initTotalCount(){
-        mTotalCountInt = 0;
+        mTotalCountInt = 1;
         mTotalSubBtn = (ImageButton)findViewById(id.menu_totalSubBtn);
         mTotalMenuCount = (TextView) findViewById(id.menu_totalAddCount);
         mTotalAddBtn = (ImageButton)findViewById(id.menu_totalPlusBtn);
-        mTotalMenuCount.setText("0");
+        mTotalMenuCount.setText(String.valueOf(mTotalCountInt));
 
 
 
@@ -84,6 +124,8 @@ public class ShopMenuDialog extends Dialog {
                     mTotalCountInt = 99;
                 }
                 mTotalMenuCount.setText(""+mTotalCountInt);
+                resultTotalPrice();
+
             }
         });
 
@@ -92,12 +134,14 @@ public class ShopMenuDialog extends Dialog {
             @Override
             public void onClick(View v) {
                 mTotalCountInt = Integer.parseInt(mTotalMenuCount.getText().toString());
-                if (mTotalCountInt == 0) {
-                    mTotalCountInt = 0;
+                if (mTotalCountInt == 1) {
+                    mTotalCountInt = 1;
                 } else {
                     mTotalCountInt = mTotalCountInt - 1;
                 }
                 mTotalMenuCount.setText("" + mTotalCountInt);
+                resultTotalPrice();
+
             }
         });
 
@@ -129,6 +173,7 @@ public class ShopMenuDialog extends Dialog {
     }
 
 
+    //요청 사항
     public void initRequest(){
         mNestScroll = (NestedScrollView) findViewById(id.menu_ScrollView);
         mRequestTxt = (EditText) findViewById(id.menu_inputRequestTxt);
@@ -150,18 +195,83 @@ public class ShopMenuDialog extends Dialog {
         });
     }
 
+    //천 단위 숫자 입력
+    public static String moneyFormat(int inputMoney) {
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+        return decimalFormat.format(inputMoney);
+    }
+
+    //계산 함수
+    public void subReqPrice(int price){
+            mReqMenuPrice = mReqMenuPrice - price;
+            resultTotalPrice();
+    }
+
+    public void addReqPrice(int price){
+        mReqMenuPrice = mReqMenuPrice + price;
+        resultTotalPrice();
+    }
+
+    public void subOptPrice(int price){
+        mOptMenuPrice = mOptMenuPrice - price;
+        resultTotalPrice();
+    }
+
+    public void addOptPrice(int price){
+        mOptMenuPrice = mOptMenuPrice + price;
+        resultTotalPrice();
+    }
+
+    public void resultTotalPrice(){
+        mCalTotalPrice.setText(String.valueOf(moneyFormat((mReqMenuPrice+mOptMenuPrice) * mTotalCountInt)));
+
+    }
+
+    public int getTotalPrice(){
+        mTotalPrice = (mReqMenuPrice + mOptMenuPrice) * mTotalCountInt;
+        return mTotalPrice;
+    }
+
+    public void initCartOrder(){
+        addCartLayout = (LinearLayout) findViewById(id.menu_addCartLayout);
+        orderMenuLayout = (LinearLayout) findViewById(id.menu_orderLayout);
+
+        //식판 담기
+        addCartLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "식판에 담겼습니다", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //주문하기
+        orderMenuLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), PaymentActivity.class);
+                getContext().startActivity(intent);
+            }
+        });
+
+    }
+
 
     public ShopMenuDialog(@NonNull Context context) {
         super(context);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setContentView(layout.shop_menu_dialog);
+        mContext = this;
+        mCalTotalPrice = (TextView) findViewById(id.menu_totalPrice);
+        mCalTotalPrice.setText("0");
 
 
         initTotalCount();
         initRecycler();
         initPickupType();
         initRequest();
-//참고
+        initCartOrder();
+
+        //참고
 //        searchedDialog_closeBtn = (ImageButton) findViewById(R.id.searchedDialog_closeBtn);
 //        searchedDialog_closeBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override

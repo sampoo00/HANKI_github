@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -46,6 +47,7 @@ public class ShopReqMenuListViewHolder extends RecyclerView.ViewHolder {
         VH_optMenuSubBtn = (ImageButton) itemView.findViewById(R.id.optMenuSubBtn);
 
         VH_optToppingLinearlayout = (LinearLayout) itemView.findViewById(R.id.menu_optToppingCountLayout);
-
+        VH_optMenuLayout = (LinearLayout) itemView.findViewById(R.id.menu_optMenuLayout);
+        VH_reqMenuLayout = (LinearLayout) itemView.findViewById(R.id.menu_reqMenuLayout);
     }
 }

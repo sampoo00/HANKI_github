@@ -44,56 +44,52 @@
             android:text="26,000원"
             />
     </LinearLayout>
-    
+
     <LinearLayout
         android:id="@+id/menu_optToppingCountLayout"
         android:visibility="gone"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:orientation="horizontal"
         android:layout_gravity="end"
+        android:layout_marginTop="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp">
 
-        <TextView
-            android:id="@+id/reqMenuCount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginRight="13dp"
-            android:layout_marginEnd="13dp"
-            android:gravity="center"
-            android:textSize="17sp"
-            android:text="수량"
-            />
+
         <ImageButton
             android:id="@+id/optMenuSubBtn"
-            android:layout_width="37dp"
-            android:layout_height="40dp"
-            android:src="@drawable/substract"
-            android:scaleType="centerCrop" />
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/substract_circle" />
 
 
         <TextView
             android:id="@+id/optMenuAddCount"
-            android:layout_width="60dp"
+            android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
             android:textSize="17sp"
             android:background="@drawable/border_menu_diaog_all_edge"
-            android:text="0"
+            android:text="1"
             />
 
         <ImageButton
             android:id="@+id/optMenuPlusBtn"
-            android:layout_width="37dp"
-            android:layout_height="40dp"
-            android:src="@drawable/plus"
-            android:scaleType="centerCrop" />
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/add_circle_gray"
+            />
 
 
-        </LinearLayout>
+    </LinearLayout>
 
 
 

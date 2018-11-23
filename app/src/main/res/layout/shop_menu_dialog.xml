@@ -174,10 +174,9 @@
 
                         <ImageButton
                             android:id="@+id/menu_totalSubBtn"
-                            android:layout_width="37dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/substract"
-                            android:scaleType="centerCrop" />
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/substract_circle" />
 
 
                         <TextView
@@ -185,18 +184,19 @@
                             android:layout_width="60dp"
                             android:layout_height="30dp"
                             android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
                             android:gravity="center"
                             android:textSize="17sp"
                             android:background="@drawable/border_menu_diaog_all_edge"
-                            android:text="0"
+                            android:text="1"
                             />
 
                         <ImageButton
                             android:id="@+id/menu_totalPlusBtn"
-                            android:layout_width="37dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/plus"
-                            android:scaleType="centerCrop" />
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:background="@drawable/add_circle_gray"                            android:scaleType="centerCrop" />
 
                     </LinearLayout>
 
@@ -405,11 +405,10 @@
                         android:textStyle="bold"
                         android:gravity="center"
                         android:text="@string/shopmenu_cart"
-                        android:onClick="onClick"
                         />
                 </LinearLayout>
                 <LinearLayout
-                    android:id="@+id/menu_order"
+                    android:id="@+id/menu_orderLayout"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:orientation="vertical"
@@ -422,7 +421,6 @@
                         android:textSize="23sp"
                         android:textStyle="bold"
                         android:gravity="center"
-                        android:onClick="onClick"
                         android:text="@string/shopmenu_order"
                         />
                 </LinearLayout>
