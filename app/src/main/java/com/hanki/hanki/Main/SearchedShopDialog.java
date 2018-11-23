@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageButton;
 
-import com.hanki.hanki.NetworkService;
+import com.hanki.hanki.Util.NetworkService;
 import com.hanki.hanki.R;
 
 import java.util.ArrayList;

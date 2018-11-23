@@ -2,7 +2,6 @@ package com.hanki.hanki;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.view.View;
 import android.support.annotation.IdRes;
 import android.support.v4.app.FragmentTransaction;
@@ -16,7 +15,8 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.signature.ApplicationVersionSignature;
+import com.hanki.hanki.Util.BluetoothService;
+import com.hanki.hanki.Util.TaskService;
 import com.hanki.hanki.FoodTray.Fragment_FoodTray;
 import com.hanki.hanki.LikeShop.Fragment_LikeShop;
 import com.hanki.hanki.Main.Fragment_Home;
@@ -102,6 +102,10 @@ public class HomeActivity extends AppCompatActivity
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.contentContainer, homeFragment).commit();
         bottomBar.setDefaultTab(R.id.tab_home);
+
+        //init Bluetooth
+        setBluetooth();
+        startService(new Intent(this, TaskService.class));
     }
 
     @Override
@@ -191,5 +195,12 @@ public class HomeActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+    }
+
+    public void setBluetooth() {
+        BluetoothService bluetoothService = new BluetoothService();
+        if(!bluetoothService.getBluetoothAdapter().isEnabled()) {
+            bluetoothService.enableBluetooth();
+        }
     }
 }
