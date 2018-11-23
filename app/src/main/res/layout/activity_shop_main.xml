@@ -121,22 +121,11 @@
                         android:id="@+id/shopMain_nonpickup"
                         android:layout_width="57dp"
                         android:layout_height="30dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginRight="20dp"
                         android:background="#d847ddff"
                         android:gravity="center"
                         android:text="현   장"
                         android:textColor="@color/black"/>
 
-                    <TextView
-                        android:id="@+id/shopMain_reservation"
-                        android:layout_width="57dp"
-                        android:layout_height="30dp"
-                        android:background="#e7ffff47"
-                        android:gravity="center"
-                        android:text="예   약"
-                        android:textColor="@color/black"
-                        android:textSize="13sp" />
                 </LinearLayout>
 
             </RelativeLayout>

@@ -49,7 +49,6 @@ public class ShopMainActivity extends AppCompatActivity {
     TextView reviewNum;
     TextView pickup;
     TextView nonpickup;
-    TextView reserve;
 
     final static int TAB_NUMS = 3; //탭 갯수
 
@@ -87,10 +86,9 @@ public class ShopMainActivity extends AppCompatActivity {
         shopTxtRatingBar = (TextView) findViewById(R.id.shopMain_txtRatingbar); //ratingBar개수를 표시하는 텍스트
         reviewNum = (TextView) findViewById(R.id.shopMain_txt_reviews);
 
-        //pickup(픽업), nonpickup(현장), reserve(예약)
+        //pickup(픽업), nonpickup(현장)
         pickup = (TextView) findViewById(R.id.shopMain_pickup);
         nonpickup = (TextView) findViewById(R.id.shopMain_nonpickup);
-        reserve = (TextView) findViewById(R.id.shopMain_reservation);
 
 
         //like버튼
