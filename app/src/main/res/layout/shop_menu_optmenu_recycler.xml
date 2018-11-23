@@ -78,7 +78,7 @@
             android:layout_marginRight="5dp"
             android:textSize="17sp"
             android:background="@drawable/border_menu_diaog_all_edge"
-            android:text="0"
+            android:text="1"
             />
 
         <ImageView

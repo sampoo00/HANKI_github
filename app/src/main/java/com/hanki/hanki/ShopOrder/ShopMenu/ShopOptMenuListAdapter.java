@@ -17,7 +17,8 @@ import java.util.List;
 public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuListViewHolder> {
     private Context context;
     private List<ShopOptMenuData> optMenuData;
-    int toppingMenuCount = 0 ;
+    int toppingMenuCount = 1;
+    int optMenuPrice = 0;
 
     public ShopOptMenuListAdapter(Context context, List<ShopOptMenuData> optMenuData) {
         this.context = context;
@@ -44,22 +45,25 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
         holder.VH_optMenuTitle.setText(optMenuData.get(position).optMenuTitle);
         holder.VH_optMenuPrice.setText(String.valueOf(moneyFormat(optMenuData.get(position).optMenuPrice)+"원"));
 
-        if(optMenuData.get(position).getOptMenuCount()==0){
-            optMenuData.get(position).setOptMenuCount(0);
-            toppingMenuCount = 0;
-        }
 
         holder.VH_optCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(isChecked){
                     holder.VH_optToppingLinearlayout.setVisibility(View.VISIBLE);
+                        toppingMenuCount = 1;
+                        optMenuPrice = optMenuData.get(position).optMenuPrice * toppingMenuCount;
+                        ((ShopMenuDialog)ShopMenuDialog.mContext).addOptPrice(optMenuPrice);
+                        optMenuData.get(position).setOptMenuCount(toppingMenuCount);
+
                 }
                 else{
                     holder.VH_optToppingLinearlayout.setVisibility(View.GONE);
-                    toppingMenuCount = 0;
+                    optMenuPrice = optMenuData.get(position).optMenuPrice * optMenuData.get(position).getOptMenuCount();
+                    ((ShopMenuDialog)ShopMenuDialog.mContext).subOptPrice(optMenuPrice);
+                    toppingMenuCount = 1;
                     optMenuData.get(position).setOptMenuCount(0);
-                    holder.VH_optMenuCount.setText(""+optMenuData.get(position).optMenuCount);
+                    holder.VH_optMenuCount.setText(String.valueOf(toppingMenuCount)); //topping 수량
 
                 }
             }
@@ -83,15 +87,17 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                    toppingMenuCount = optMenuData.get(position).getOptMenuCount();
                     if(toppingMenuCount < 99) {
                         toppingMenuCount = toppingMenuCount + 1;
+                       ((ShopMenuDialog)ShopMenuDialog.mContext).addOptPrice(optMenuData.get(position).optMenuPrice);
+
                     }
                     else{
                         toppingMenuCount = 99;
                     }
-                    optMenuData.get(position).setOptMenuCount(toppingMenuCount);
-                    holder.VH_optMenuCount.setText(String.valueOf(toppingMenuCount));
+
+                optMenuData.get(position).setOptMenuCount(toppingMenuCount);
+                holder.VH_optMenuCount.setText(String.valueOf(toppingMenuCount));
 
             }
         });
@@ -99,11 +105,14 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
         holder.VH_optMenuSubBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                if(toppingMenuCount == 0){
-                    toppingMenuCount = 0;
+
+                if(toppingMenuCount == 1){
+                    toppingMenuCount = 1;
                 }
                 else{
                     toppingMenuCount = toppingMenuCount -1;
+                    ((ShopMenuDialog)ShopMenuDialog.mContext).subOptPrice(optMenuData.get(position).optMenuPrice);;
+
                 }
                 optMenuData.get(position).setOptMenuCount(toppingMenuCount);
                 holder.VH_optMenuCount.setText(String.valueOf(toppingMenuCount));

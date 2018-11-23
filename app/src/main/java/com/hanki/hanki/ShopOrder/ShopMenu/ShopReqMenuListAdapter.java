@@ -1,6 +1,7 @@
 package com.hanki.hanki.ShopOrder.ShopMenu;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -15,10 +16,13 @@ import com.hanki.hanki.R;
 import java.text.DecimalFormat;
 import java.util.List;
 
+import static com.hanki.hanki.ShopOrder.ShopMenu.ShopMenuDialog.*;
+
 public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuListViewHolder> {
     private Context context;
     private List<ShopReqMenuData> reqMenuData;
     private RadioButton lastCheckedRB = null;
+    private int lastPosition = 0;
 
 
     public ShopReqMenuListAdapter(Context context, List<ShopReqMenuData> reqMenuData) {
@@ -52,20 +56,25 @@ public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
 //        holder.VH_reqRadioBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
-//                if(lastCheckedRB != null){
-//                    lastCheckedRB.setChecked(false);
+//                if(holder.VH_reqRadioBtn.isChecked()){
+//                    holder.VH_reqRadioBtn.setChecked(true);
 //                }
-//                lastCheckedRB = holder.VH_reqRadioBtn;
 //            }
 //        });
 
         holder.VH_reqRadioBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
                 if(lastCheckedRB != null){
                     lastCheckedRB.setChecked(false);
+                    ((ShopMenuDialog)ShopMenuDialog.mContext).subReqPrice(reqMenuData.get(lastPosition).reqMenuPrice);
+
                 }
                 lastCheckedRB = holder.VH_reqRadioBtn;
+                lastPosition = position;
+
+                ((ShopMenuDialog)ShopMenuDialog.mContext).addReqPrice(reqMenuData.get(position).reqMenuPrice);
             }
         });
 

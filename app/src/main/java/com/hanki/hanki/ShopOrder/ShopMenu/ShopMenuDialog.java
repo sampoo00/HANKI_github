@@ -10,13 +10,13 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,8 +52,12 @@ public class ShopMenuDialog extends Dialog {
 
     //식판 담기, 주문하기
     //총 주문 금액
-    public static int totalPrice = 0;
-
+    //필수 선택
+    int mReqMenuPrice = 0;
+    int mOptMenuPrice = 0;
+    TextView mCalTotalPrice;
+    int mTotalPrice = 0;
+    public static ShopMenuDialog mContext;
 
     //총 주문 금액 계산하는 함수
 
@@ -150,18 +154,58 @@ public class ShopMenuDialog extends Dialog {
         });
     }
 
+    //천 단위 숫자 입력
+    public static String moneyFormat(int inputMoney) {
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+        return decimalFormat.format(inputMoney);
+    }
+
+    public void subReqPrice(int price){
+            mReqMenuPrice = mReqMenuPrice - price;
+            resultTotalPrice();
+    }
+
+    public void addReqPrice(int price){
+        mReqMenuPrice = mReqMenuPrice + price;
+        resultTotalPrice();
+    }
+
+    public void subOptPrice(int price){
+        mOptMenuPrice = mOptMenuPrice - price;
+        resultTotalPrice();
+    }
+
+    public void addOptPrice(int price){
+        mOptMenuPrice = mOptMenuPrice + price;
+        resultTotalPrice();
+    }
+
+    public void resultTotalPrice(){
+        mCalTotalPrice.setText(String.valueOf(moneyFormat(mReqMenuPrice+mOptMenuPrice)));
+
+    }
+
+    public int getTotalPrice(){
+        mTotalPrice = mReqMenuPrice + mOptMenuPrice;
+        return mTotalPrice;
+    }
+
 
     public ShopMenuDialog(@NonNull Context context) {
         super(context);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setContentView(layout.shop_menu_dialog);
+        mContext = this;
+        mCalTotalPrice = (TextView) findViewById(id.menu_totalPrice);
+        mCalTotalPrice.setText("0");
 
 
         initTotalCount();
         initRecycler();
         initPickupType();
         initRequest();
-//참고
+
+        //참고
 //        searchedDialog_closeBtn = (ImageButton) findViewById(R.id.searchedDialog_closeBtn);
 //        searchedDialog_closeBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override

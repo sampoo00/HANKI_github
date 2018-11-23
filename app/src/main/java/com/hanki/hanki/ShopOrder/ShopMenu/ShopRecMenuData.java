@@ -1,8 +1,8 @@
 package com.hanki.hanki.ShopOrder.ShopMenu;
 
 public class ShopRecMenuData {
-    String recMenuName;
-    int recMenuPrice;
+    public String recMenuName;
+    public int recMenuPrice;
 
     public ShopRecMenuData(String recMenuName, int recMenuPrice) {
         this.recMenuName = recMenuName;
