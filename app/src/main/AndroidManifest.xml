@@ -34,7 +34,7 @@
             android:name=".HomeActivity"
             android:label="@string/title_activity_home" />
         <activity android:name=".NavigationBar.MypageActivity" />
-        <activity android:name=".ShopOrder.ShopMainActivity" />
+        <activity android:name=".ShopOrder.ShopMainActivity"/>
 
         <service android:name="com.minew.beacon.ScanService" />
 

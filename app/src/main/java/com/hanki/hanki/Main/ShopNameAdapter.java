@@ -1,13 +1,16 @@
 package com.hanki.hanki.Main;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.hanki.hanki.R;
 import com.hanki.hanki.ShopOrder.ShopMainActivity;
 
@@ -15,10 +18,12 @@ import java.util.ArrayList;
 
 public class ShopNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    ArrayList<ShopName> shopNameList;
+    Context context;
+    ArrayList<ShopName> shopLogoList;
 
-    public ShopNameAdapter(ArrayList<ShopName> shopNameList) {
-        this.shopNameList = shopNameList;
+    public ShopNameAdapter(Context context, ArrayList<ShopName> shopLogoList) {
+        this.context = context;
+        this.shopLogoList = shopLogoList;
     }
 
     @NonNull
@@ -31,21 +36,22 @@ public class ShopNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         MyViewHolder myViewHolder = (MyViewHolder) holder;
-        myViewHolder.shopTv.setText(shopNameList.get(position).getShopName());
+        Glide.with(context).load(shopLogoList.get(position).getShopImgUrl())
+                .into(myViewHolder.shopLogo);
     }
 
     @Override
     public int getItemCount() {
-        return shopNameList.size();
+        return shopLogoList.size();
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
-        TextView shopTv;
+        ImageView shopLogo;
 
         public MyViewHolder(final View itemView) {
             super(itemView);
-            shopTv = (TextView) itemView.findViewById(R.id.shopTv);
+            shopLogo = (ImageView) itemView.findViewById(R.id.shopLogo);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

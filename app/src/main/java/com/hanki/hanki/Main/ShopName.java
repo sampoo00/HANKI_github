@@ -4,14 +4,8 @@ public class ShopName {
     private String result;
     private String shopName;
     private String description;
+    private String shopImgUrl;
     private String shopKey;
-
-    public ShopName(String result, String shopName, String description, String shopKey) {
-        this.result = result;
-        this.shopName = shopName;
-        this.description = description;
-        this.shopKey = shopKey;
-    }
 
     public String getResult() {
         return result;
@@ -23,6 +17,10 @@ public class ShopName {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getShopImgUrl() {
+        return shopImgUrl;
     }
 
     public String getShopKey() {

@@ -1,5 +1,6 @@
 package com.hanki.hanki.ShopOrder;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
@@ -8,12 +9,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hanki.hanki.R;
 
@@ -44,6 +48,26 @@ public class Fragment_shopInfo extends Fragment {
 
         setMapView();
 
+        TextView shopInfo_location = (TextView) view.findViewById(R.id.shopInfo_location);
+        shopInfo_location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 카카오맵이 설치되어있을 경우
+                //String shopLatitude = "37.5511694";
+                //String shopLongitude = "126.98822659999996";
+                //String url = "daummaps://look?p=" + shopLatitude + "," + shopLongitude;
+                //String url = "daummaps://place?id=" + "7813422";
+
+                // 카카오맵이 설치되어 있지 않을 경우
+                String shopName = "충무로역";
+                String url = "https://m.map.daum.net/actions/searchView?q=" + shopName;
+                Log.d("MAP", "Map url : " + url);
+
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
@@ -61,17 +85,25 @@ public class Fragment_shopInfo extends Fragment {
         });
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     public void setMapView() {
         MapView mapView = new MapView(getActivity());
         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(37.5609739, 126.99352870000007), true); //지도 중심점 변경
 
-//        MapPOIItem marker = new MapPOIItem();
-//        marker.setItemName("교촌치킨 서초점");
-//        marker.setTag(0);
-//        marker.setMapPoint(MapPoint.mapPointWithGeoCoord(37.5609739, 126.99352870000007));
-//        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
-//        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
-//        mapView.addPOIItem(marker);
+        MapPOIItem marker = new MapPOIItem();
+        marker.setItemName("교촌치킨 서초점");
+        marker.setTag(0);
+        marker.setMapPoint(MapPoint.mapPointWithGeoCoord(37.5609739, 126.99352870000007));
+        marker.setMarkerType(MapPOIItem.MarkerType.BluePin);
+        marker.setSelectedMarkerType(MapPOIItem.MarkerType.RedPin);
+        mapView.addPOIItem(marker);
+
+        mapView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return true;
+            }
+        });
 
         shopInfo_mapview.addView(mapView);
     }

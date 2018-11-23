@@ -12,7 +12,11 @@ public interface NetworkService {
     @GET("/HANKI/phone/test")
     Call<TestData> getTestResponse();
 
-    //매장명 조회
-    @GET("/HANKI/shops")
+    //매장명 조회 (baseUrl)
+    //@GET("/HANKI/shops")
+    //Call<ShopName> getShopNameResult(@Query("UUID") String UUID);
+
+    //매장명 조회 (tempUrl)
+    @GET("/aaaa/shops")
     Call<ShopName> getShopNameResult(@Query("UUID") String UUID);
 }

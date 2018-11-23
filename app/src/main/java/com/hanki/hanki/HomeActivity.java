@@ -1,5 +1,6 @@
 package com.hanki.hanki;
 
+import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -199,7 +200,7 @@ public class HomeActivity extends AppCompatActivity
 
     public void setBluetooth() {
         BluetoothService bluetoothService = new BluetoothService();
-        if(!bluetoothService.getBluetoothAdapter().isEnabled()) {
+        if (!bluetoothService.getBluetoothAdapter().isEnabled()) {
             bluetoothService.enableBluetooth();
         }
     }

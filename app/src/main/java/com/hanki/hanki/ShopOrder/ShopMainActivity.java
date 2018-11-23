@@ -1,5 +1,9 @@
 package com.hanki.hanki.ShopOrder;
 
+import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -9,6 +13,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +27,11 @@ import com.hanki.hanki.R;
 import com.hanki.hanki.ShopOrder.ShopMenu.Fragment_menu;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import static com.kakao.util.maps.helper.Utility.getPackageInfo;
 
 public class ShopMainActivity extends AppCompatActivity {
 
@@ -50,6 +61,8 @@ public class ShopMainActivity extends AppCompatActivity {
         init();
         setupToolbar();
         setupCollapsingToolbar();
+
+        Log.d("HASH", getKeyHash(ShopMainActivity.this));
     }
 
     public void init() {
@@ -177,5 +190,21 @@ public class ShopMainActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public static String getKeyHash(final Context context) {
+        PackageInfo packageInfo = getPackageInfo(context, PackageManager.GET_SIGNATURES);
+        if (packageInfo == null) return null;
+
+        for (Signature signature : packageInfo.signatures) {
+            try {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                return Base64.encodeToString(md.digest(), Base64.NO_WRAP);
+            } catch (NoSuchAlgorithmException e) {
+                Log.d("해시", "Unable to get MessageDigest. signature=" + signature, e);
+            }
+        }
+        return null;
     }
 }

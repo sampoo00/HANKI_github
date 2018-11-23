@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.hanki.hanki.R;
 
@@ -15,7 +16,7 @@ public class DeleteAccountDialog extends Dialog {
 
     EditText deleteAccountEt;
     Button deletionBtn;
-    Button cancelBtn;
+    ImageButton cancelBtn;
 
     public DeleteAccountDialog(@NonNull Context context) {
         super(context);
@@ -24,7 +25,7 @@ public class DeleteAccountDialog extends Dialog {
 
         deleteAccountEt = (EditText) findViewById(R.id.mypage_deleteAccountEt);
         deletionBtn = (Button) findViewById(R.id.mypage_deletionBtn);
-        cancelBtn = (Button) findViewById(R.id.mypage_cancelBtn);
+        cancelBtn = (ImageButton) findViewById(R.id.mypage_cancelBtn);
 
         deletionBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -30,7 +30,7 @@ public class SearchedShopDialog extends Dialog {
 
         shopListRecyclerView = (RecyclerView) findViewById(R.id.shopListRecyclerView);
         shopListRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        final ShopNameAdapter adapter = new ShopNameAdapter(shopNameList);
+        final ShopNameAdapter adapter = new ShopNameAdapter(context, shopNameList);
         shopListRecyclerView.setAdapter(adapter);
 
         searchedDialog_closeBtn = (ImageButton) findViewById(R.id.searchedDialog_closeBtn);

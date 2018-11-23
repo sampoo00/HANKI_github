@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.hanki.hanki.HomeActivity;
 import com.hanki.hanki.Util.Application;
 import com.hanki.hanki.Util.NetworkService;
 import com.hanki.hanki.R;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import libs.mjn.prettydialog.PrettyDialog;
+import libs.mjn.prettydialog.PrettyDialogCallback;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -37,6 +39,8 @@ public class Fragment_Home extends Fragment {
 
     ArrayList<ShopName> shopNameList = new ArrayList<>();
     NetworkService networkService;
+
+    public final static String TAG = "Fragment_home";
 
     public Fragment_Home() {
 
@@ -72,42 +76,41 @@ public class Fragment_Home extends Fragment {
         startSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (checkBluetooth() == 0) {
-//                    startSearch();
-//                } else {
-//                    showBluetoothDialog(); //블루투스 다이얼로그
-//                }
-                startSearch();
+                if (checkBluetooth() == 0) {
+                    startSearch();
+                } else {
+                    showBluetoothDialog(); //블루투스 다이얼로그
+                }
             }
         });
     }
 
-//    public int checkBluetooth() {
-//        BluetoothState bluetoothState = minewBeaconManager.checkBluetoothState();
-//        if (bluetoothState == BluetoothState.BluetoothStatePowerOn) { //연결되어 있을 때
-//            return 0;
-//        } else {
-//            return 1;
-//        }
-//    }
-//
-//    public void showBluetoothDialog() {
-//        bluetoothDialog = new PrettyDialog(getActivity());
-//        bluetoothDialog.setMessage(getResources().getString(R.string.home_bluetoothMessage))
-//                .setIcon(R.drawable.bluetooth_logo)
-//                .setIconTint(R.color.colorPrimary)
-//                .addButton("확인",
-//                        R.color.pdlg_color_white,
-//                        R.color.colorPrimary,
-//                        new PrettyDialogCallback() {
-//                            @Override
-//                            public void onClick() {
-//                                bluetoothDialog.dismiss();
-//                            }
-//                        })
-//                .setCanceledOnTouchOutside(false);
-//        bluetoothDialog.show();
-//    }
+    public int checkBluetooth() {
+        BluetoothState bluetoothState = minewBeaconManager.checkBluetoothState();
+        if (bluetoothState == BluetoothState.BluetoothStatePowerOn) { //연결되어 있을 때
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
+    public void showBluetoothDialog() {
+        bluetoothDialog = new PrettyDialog(getActivity());
+        bluetoothDialog.setMessage(getResources().getString(R.string.home_bluetoothMessage))
+                .setIcon(R.drawable.bluetooth_logo)
+                .setIconTint(R.color.colorPrimary)
+                .addButton("확인",
+                        R.color.pdlg_color_white,
+                        R.color.colorPrimary,
+                        new PrettyDialogCallback() {
+                            @Override
+                            public void onClick() {
+                                bluetoothDialog.dismiss();
+                            }
+                        })
+                .setCanceledOnTouchOutside(false);
+        bluetoothDialog.show();
+    }
 
     public void startSearch() {
         startScan();
@@ -122,20 +125,25 @@ public class Fragment_Home extends Fragment {
         isScanning = true;
 
         //**** 매장명을 받아오기 위한 임시 코드 ****//
-        String UUID = "15290";
+        String UUID = "15282";
         Call<ShopName> request = networkService.getShopNameResult(UUID);
+
+        Log.d(TAG, Application.getInstance().tempUrl);
+
         request.enqueue(new Callback<ShopName>() {
             @Override
             public void onResponse(Call<ShopName> call, Response<ShopName> response) {
-                Log.d("응답", "응답 : " + response.code());
-                if(response.isSuccessful()) {
+                if (response.isSuccessful()) {
                     shopNameList.add(response.body());
                 }
+                Log.d(TAG, response.body().getShopImgUrl());
+                Log.d(TAG, response.message());
+                Log.d(TAG, "responseCode " + response.code());
             }
 
             @Override
             public void onFailure(Call<ShopName> call, Throwable t) {
-                Log.d("응답", "응답 : " + t.getMessage());
+                Log.d(TAG, "fail " + t.getMessage());
             }
         });
         // *************************************//
