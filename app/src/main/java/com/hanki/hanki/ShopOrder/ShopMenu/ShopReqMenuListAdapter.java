@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
 import com.hanki.hanki.R;
@@ -48,13 +49,36 @@ public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
         holder.VH_reqMenuSize.setText(reqMenuData.get(position).reqMenuSize);
         holder.VH_reqMenuPeople.setText(reqMenuData.get(position).reqMenuPeople);
         holder.VH_reqMenuPrice.setText(String.valueOf(moneyFormat(reqMenuData.get(position).reqMenuPrice))+"원");
-        holder.VH_reqRadioBtn.setOnClickListener(new View.OnClickListener() {
+//        holder.VH_reqRadioBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(lastCheckedRB != null){
+//                    lastCheckedRB.setChecked(false);
+//                }
+//                lastCheckedRB = holder.VH_reqRadioBtn;
+//            }
+//        });
+
+        holder.VH_reqRadioBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onClick(View v) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 if(lastCheckedRB != null){
                     lastCheckedRB.setChecked(false);
                 }
                 lastCheckedRB = holder.VH_reqRadioBtn;
+            }
+        });
+
+
+
+        holder.VH_reqMenuLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(holder.VH_reqRadioBtn.isChecked()){
+                    holder.VH_reqRadioBtn.setChecked(false);
+                }else {
+                    holder.VH_reqRadioBtn.setChecked(true);
+                }
             }
         });
     }

@@ -59,11 +59,24 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
                     holder.VH_optToppingLinearlayout.setVisibility(View.GONE);
                     toppingMenuCount = 0;
                     optMenuData.get(position).setOptMenuCount(0);
-                    holder.VH_optMenuCount.setText(optMenuData.get(position).optMenuCount);
+                    holder.VH_optMenuCount.setText(""+optMenuData.get(position).optMenuCount);
 
                 }
             }
         });
+
+        holder.VH_optMenuLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(holder.VH_optCheckBox.isChecked()){
+                    holder.VH_optCheckBox.setChecked(false);
+                }
+                else{
+                    holder.VH_optCheckBox.setChecked(true);
+                }
+            }
+        });
+
 
 
         holder.VH_optMenuPlusBtn.setOnClickListener(new View.OnClickListener(){
