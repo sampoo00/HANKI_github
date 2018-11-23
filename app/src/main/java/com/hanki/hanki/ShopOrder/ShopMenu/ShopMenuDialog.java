@@ -3,6 +3,7 @@ package com.hanki.hanki.ShopOrder.ShopMenu;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
@@ -10,11 +11,17 @@ import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.ShopPayment.PaymentActivity;
 
 import java.text.DecimalFormat;
 import java.util.Arrays;
@@ -59,13 +66,42 @@ public class ShopMenuDialog extends Dialog {
     int mTotalPrice = 0;
     public static ShopMenuDialog mContext;
 
-    //총 주문 금액 계산하는 함수
+    //식판 담기, 주문 하기
+    LinearLayout addCartLayout;
+    LinearLayout orderMenuLayout;
 
 
     public void initPickupType(){
         mPickupGroup = (RadioGroup) findViewById(id.menu_RadioGroup);
         mPickupType = (RadioButton) findViewById(id.menu_pickupRadioBtn);
         mNonPickupType = (RadioButton) findViewById(id.menu_nonPickupRadioBtn);
+
+        mPickupType.setChecked(true);
+
+        mPickupType.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(mPickupType.isChecked()){
+                    Toast.makeText(getContext(), "매장이 선택 되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getContext(), "매장이 선택 해제 되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        mNonPickupType.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(mNonPickupType.isChecked()){
+                    Toast.makeText(getContext(), "픽업이 선택 되었습니다.", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    Toast.makeText(getContext(), "픽업이 선택 해제 되었습니다.", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        });
     }
     public void initTotalCount(){
         mTotalCountInt = 1;
@@ -137,6 +173,7 @@ public class ShopMenuDialog extends Dialog {
     }
 
 
+    //요청 사항
     public void initRequest(){
         mNestScroll = (NestedScrollView) findViewById(id.menu_ScrollView);
         mRequestTxt = (EditText) findViewById(id.menu_inputRequestTxt);
@@ -164,6 +201,7 @@ public class ShopMenuDialog extends Dialog {
         return decimalFormat.format(inputMoney);
     }
 
+    //계산 함수
     public void subReqPrice(int price){
             mReqMenuPrice = mReqMenuPrice - price;
             resultTotalPrice();
@@ -194,6 +232,29 @@ public class ShopMenuDialog extends Dialog {
         return mTotalPrice;
     }
 
+    public void initCartOrder(){
+        addCartLayout = (LinearLayout) findViewById(id.menu_addCartLayout);
+        orderMenuLayout = (LinearLayout) findViewById(id.menu_orderLayout);
+
+        //식판 담기
+        addCartLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "식판에 담겼습니다", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        //주문하기
+        orderMenuLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), PaymentActivity.class);
+                getContext().startActivity(intent);
+            }
+        });
+
+    }
+
 
     public ShopMenuDialog(@NonNull Context context) {
         super(context);
@@ -208,6 +269,7 @@ public class ShopMenuDialog extends Dialog {
         initRecycler();
         initPickupType();
         initRequest();
+        initCartOrder();
 
         //참고
 //        searchedDialog_closeBtn = (ImageButton) findViewById(R.id.searchedDialog_closeBtn);
