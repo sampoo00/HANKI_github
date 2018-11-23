@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@color/pdlg_color_gray">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/payment_foodImg"
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/star_on">
+
+        </ImageView>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/payment_foodImg"
+            android:layout_toEndOf="@+id/payment_foodImg"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/payment_shopTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                android:text="놀부 부대찌개"
+                />
+
+            <TextView
+                android:id="@+id/payment_foodSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:text="중(中)"
+                />
+
+            <TextView
+                android:id="@+id/payment_topping"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11sp"
+                android:text="햄 사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 라면사리 2개, 햄 사리 2개, 라면사리 2개"
+                />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
