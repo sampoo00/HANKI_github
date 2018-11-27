@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.hanki.hanki.R;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class PaymentOrderListAdapter extends RecyclerView.Adapter<PaymentOrderListViewHolder> {
@@ -41,7 +42,10 @@ public class PaymentOrderListAdapter extends RecyclerView.Adapter<PaymentOrderLi
 
         holder.VH_menuName.setText(orderListData.get(position).menuName);
         holder.VH_menuSize.setText(orderListData.get(position).menuSize);
-        holder.VH_menuTopping.setText(orderListData.get(position).menuTopping.toString().toString());
+
+        String menuToppings = Arrays.toString(orderListData.get(position).menuTopping);
+        menuToppings =  menuToppings.substring(1, menuToppings.length()-1).replace(",", " /");
+        holder.VH_menuTopping.setText(menuToppings);
 
     }
 
