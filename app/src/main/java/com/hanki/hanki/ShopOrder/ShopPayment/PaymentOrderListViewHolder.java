@@ -8,17 +8,17 @@ import android.widget.TextView;
 import com.hanki.hanki.R;
 
 public class PaymentOrderListViewHolder extends RecyclerView.ViewHolder {
-    ImageView VH_foodImg;
-    TextView VH_shopTitle;
-    TextView VH_foodSize;
-    TextView VH_topping;
+    ImageView VH_foodImage;
+    TextView VH_menuName;
+    TextView VH_menuSize;
+    TextView VH_menuTopping;
 
     public PaymentOrderListViewHolder(View itemView) {
         super(itemView);
 
-        VH_foodImg = (ImageView) itemView.findViewById(R.id.payment_foodImg);
-        VH_shopTitle = (TextView) itemView.findViewById(R.id.payment_shopTitle);
-        VH_foodSize = (TextView) itemView.findViewById(R.id.payment_foodSize);
-        VH_topping = (TextView) itemView.findViewById(R.id.payment_topping);
+        VH_foodImage = (ImageView) itemView.findViewById(R.id.payment_foodImg);
+        VH_menuName = (TextView) itemView.findViewById(R.id.payment_shopTitle);
+        VH_menuSize = (TextView) itemView.findViewById(R.id.payment_foodSize);
+        VH_menuTopping = (TextView) itemView.findViewById(R.id.payment_topping);
     }
 }

@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide;
 import com.hanki.hanki.R;
 
 import java.text.DecimalFormat;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ShopMenuRecAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
@@ -54,8 +53,8 @@ public class ShopMenuRecAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
         Glide.with(context)
                 .load(R.drawable.logo_sample)
                 .into(holder.VH_menu_rec_image);
-        holder.VH_menu_rec_title.setText(menuRecData.get(position).recMenuName);
-        holder.VH_menu_rec_fee.setText(String.valueOf(moneyFormat(menuRecData.get(position).recMenuPrice))+"원");
+        holder.VH_menu_rec_title.setText(menuRecData.get(position).menuName);
+        holder.VH_menu_rec_fee.setText(String.valueOf(moneyFormat(menuRecData.get(position).menuPirce))+"원");
 
 
 
