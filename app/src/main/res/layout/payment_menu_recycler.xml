@@ -5,24 +5,15 @@
     android:layout_height="wrap_content"
     >
 
-    <ImageView
-        android:layout_below="@+id/payment_itemLayout"
-        android:layout_width="match_parent"
-        android:layout_height="3dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:layout_marginEnd="5dp"
-        android:background="@drawable/border_dot_line"
-        android:layerType="software"/>
-
     <RelativeLayout
         android:id="@+id/payment_itemLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@color/pdlg_color_gray"
-        android:gravity="center">
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        >
 
 
         <ImageView
@@ -77,5 +68,16 @@
         </LinearLayout>
 
     </RelativeLayout>
+
+    <ImageView
+        android:layout_below="@+id/payment_itemLayout"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/border_dot_line"
+        android:layerType="software"/>
 
 </RelativeLayout>

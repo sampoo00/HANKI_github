@@ -6,6 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.hanki.hanki.R;
 
@@ -20,6 +23,9 @@ public class PaymentActivity extends AppCompatActivity {
     private LinearLayoutManager mOrderLinearLayoutManager;
     private PaymentOrderListAdapter mPaymentAdapter;
     List<PaymentOrderListData> mOrderList;
+
+    //결제하기
+    RelativeLayout mToOrderLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +42,8 @@ public class PaymentActivity extends AppCompatActivity {
         mToolbar = (Toolbar) findViewById(R.id.payment_toolbar);
 
         initRecyclerView();
+
+        mToOrderLayout = (RelativeLayout) findViewById(R.id.payment_toOrderLayout);
     }
 
     public void initRecyclerView(){
@@ -59,7 +67,14 @@ public class PaymentActivity extends AppCompatActivity {
                 new PaymentOrderListData("케이크2", "소",
                         new String[]{"딸기2", "라즈베리2"}),
                 new PaymentOrderListData("케이크3", "대",
-                        new String[]{"딸기3", "라즈베리3"}));
+                        new String[]{"딸기3", "라즈베리3"}),
+                new PaymentOrderListData("케이크4", "대",
+                        new String[]{"딸기4", "라즈베리4"}),
+                new PaymentOrderListData("케이크4-1", "대",
+                        new String[]{"딸기4-1", "라즈베리4-1"}),
+                new PaymentOrderListData("케이크5", "대",
+                        new String[]{"딸기5", "라즈베리5", "라즈베리5", "라즈베리5", "라즈베리5", "라즈베리5"}));
+
 
 
     }
@@ -77,5 +92,13 @@ public class PaymentActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.payment_toOrderLayout:
+                Toast.makeText(getApplicationContext(), "결제하기", Toast.LENGTH_SHORT).show();
+
+        }
     }
 }
