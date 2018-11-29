@@ -1,5 +1,6 @@
 package com.hanki.hanki.ShopOrder.ShopPayment;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -72,6 +73,13 @@ public class PaymentActivity extends AppCompatActivity {
         mFirstPriceText = (TextView) findViewById(R.id.payment_PriceTxt);
         mChangePayBtn = (Button) findViewById(R.id.payment_changePayBtn);
         mCashReceipt_CheckBox = (CheckBox) findViewById(R.id.payment_cashReceipt_Checkbox);
+//
+//        mChangePayBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(), "선택하는 RadioBtn Layout 만들기", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
         //현금 영수증
         mCashReceiptLayout = (LinearLayout) findViewById(R.id.payment_cashReceiptContentLayout);
@@ -102,6 +110,12 @@ public class PaymentActivity extends AppCompatActivity {
                 switch (checkedId){
                     case R.id.payment_personRadioBtn:
                         Toast.makeText(getApplicationContext(), "개인", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case R.id.payment_corpRadioBtn:
+                        Toast.makeText(getApplicationContext(), "사업자", Toast.LENGTH_SHORT).show();
+                        break;
+
                 }
             }
         });
@@ -158,11 +172,17 @@ public class PaymentActivity extends AppCompatActivity {
     }
 
     public void onClick(View view) {
+        Intent intent;
         switch (view.getId()){
             case R.id.payment_changePayBtn:
-                Toast.makeText(getApplicationContext(), "변경Layout만들기", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "변경Layout만들기", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, PaymentPayActivity.class);
+                startActivity(intent);
+                break;
+
             case R.id.payment_toOrderLayout: // 결제하기 Layout
                 Toast.makeText(getApplicationContext(), "결제하기", Toast.LENGTH_SHORT).show();
+                break;
 
         }
     }

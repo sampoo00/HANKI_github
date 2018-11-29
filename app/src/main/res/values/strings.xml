@@ -1,6 +1,14 @@
 <resources>
     <string name="app_name">HANKI</string>
 
+    <string-array name="payment_paylist_array">
+        <item>카카오페이</item>
+        <item>네이버페이</item>
+        <item>페이코</item>
+        <item>카드 결제</item>
+        <item>휴대폰 결제</item>
+    </string-array>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_home">HomeActivity</string>
