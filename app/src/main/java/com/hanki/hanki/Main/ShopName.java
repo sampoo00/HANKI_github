@@ -1,40 +1,60 @@
 package com.hanki.hanki.Main;
 
 public class ShopName {
-    String result;
-    String shopName;
-    String description;
-    String shopImgUrl;
-    String shopKey;
+    private String shopCode;
+    private String result;
+    private String description;
+    private String UUID;
+    private String textImgId;
+
+    public String getShopCode() {
+        return shopCode;
+    }
+
+    public void setShopCode(String shopCode) {
+        this.shopCode = shopCode;
+    }
 
     public String getResult() {
         return result;
     }
 
-    public String getShopName() {
-        return shopName;
+    public void setResult(String result) {
+        this.result = result;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public String getShopImgUrl() {
-        return shopImgUrl;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public String getShopKey() {
-        return shopKey;
+    public String getUUID() {
+        return UUID;
+    }
+
+    public void setUUID(String UUID) {
+        this.UUID = UUID;
+    }
+
+    public String getTextImgId() {
+        return textImgId;
+    }
+
+    public void setTextImgId(String textImgId) {
+        this.textImgId = textImgId;
     }
 
     @Override
     public String toString() {
         return "ShopName{" +
-                "result='" + result + '\'' +
-                ", shopName='" + shopName + '\'' +
+                "shopCode='" + shopCode + '\'' +
+                ", result='" + result + '\'' +
                 ", description='" + description + '\'' +
-                ", shopImgUrl='" + shopImgUrl + '\'' +
-                ", shopKey='" + shopKey + '\'' +
+                ", UUID='" + UUID + '\'' +
+                ", textImgId='" + textImgId + '\'' +
                 '}';
     }
 }

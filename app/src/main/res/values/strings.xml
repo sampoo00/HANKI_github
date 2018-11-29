@@ -102,4 +102,15 @@
     <!-- Point -->
     <string name="point">Point</string>
 
+    <!-- Permission -->
+    <string name="permission_title">앱 권한 설정 안내</string>
+    <string name="permission_msg1">* HANKI는 서비스에 꼭 필요한 권한만 선택적으로 접근 권한을 받고 있습니다.</string>
+    <string name="permission_msg2">* 선택적 접근 권한은 해당 기능을 사용하실 때 승인이 필요하며, 승인하지 않으면 앱은 종료됩니다.</string>
+    <string name="permission_dial">전화</string>
+    <string name="permission_dial_explanation">매장 전화 걸기</string>
+    <string name="permission_location">위치</string>
+    <string name="permission_placeholder_explanation">주변 매장 위치 조회</string>
+    <string name="permission_btn">네, 확인했습니다.</string>
+
+
 </resources>

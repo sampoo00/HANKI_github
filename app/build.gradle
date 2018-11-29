@@ -50,4 +50,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
     //kakaoMap
     implementation files('libs/libDaumMapAndroid.jar')
+    //tedPermission
+    implementation 'gun0912.ted:tedpermission:2.2.2'
 }

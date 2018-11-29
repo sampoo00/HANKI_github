@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PermissionActivity">
+
+    <TextView
+        android:id="@+id/permissionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:text="@string/permission_title"
+        android:textColor="#000"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/permissionMsg1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="@string/permission_msg1"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/permissionTitle" />
+
+    <TextView
+        android:id="@+id/permissionMsg2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:text="@string/permission_msg2"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/permissionMsg1" />
+
+    <ImageView
+        android:id="@+id/phone"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/phone"
+        android:backgroundTint="#ccc"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/permissionMsg2" />
+
+    <TextView
+        android:id="@+id/phoneTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="@string/permission_dial"
+        android:textColor="#000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/phoneExplanation"
+        app:layout_constraintLeft_toRightOf="@+id/phone"
+        app:layout_constraintTop_toTopOf="@id/phone" />
+
+    <TextView
+        android:id="@+id/phoneExplanation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="@string/permission_dial_explanation"
+        app:layout_constraintBottom_toBottomOf="@+id/phone"
+        app:layout_constraintLeft_toRightOf="@+id/phone"
+        app:layout_constraintTop_toBottomOf="@id/phoneTitle" />
+
+    <ImageView
+        android:id="@+id/placeholder"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/placeholder"
+        android:backgroundTint="#ccc"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/phone" />
+
+    <TextView
+        android:id="@+id/placeholderTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="@string/permission_location"
+        android:textColor="#000"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/placeholder"
+        app:layout_constraintTop_toTopOf="@+id/placeholder" />
+
+    <TextView
+        android:id="@+id/placeholderExplanation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="@string/permission_placeholder_explanation"
+        app:layout_constraintLeft_toRightOf="@+id/placeholder"
+        app:layout_constraintTop_toBottomOf="@id/placeholderTitle" />
+
+    <Button
+        android:id="@+id/permissionBtn"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/permission_btn"
+        android:textColor="#fff"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

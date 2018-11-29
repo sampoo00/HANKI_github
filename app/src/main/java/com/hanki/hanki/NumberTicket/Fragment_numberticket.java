@@ -68,7 +68,7 @@ public class Fragment_numberticket extends Fragment {
                 });
                 */
 
-                Call<ShopName> request = networkService.getShopNameResult("15282");
+                Call<ShopName> request = networkService.getShopNameResult("15290");
                 request.enqueue(new Callback<ShopName>() {
                     @Override
                     public void onResponse(Call<ShopName> call, Response<ShopName> response) {
