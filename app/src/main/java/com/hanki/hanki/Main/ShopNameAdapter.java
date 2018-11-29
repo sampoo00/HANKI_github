@@ -38,6 +38,7 @@ public class ShopNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         MyViewHolder myViewHolder = (MyViewHolder) holder;
         Glide.with(context).load(shopLogoList.get(position).getShopImgUrl())
                 .into(myViewHolder.shopLogo);
+        myViewHolder.shopName.setText(shopLogoList.get(position).getShopName());
     }
 
     @Override
@@ -48,10 +49,12 @@ public class ShopNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public static class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView shopLogo;
+        TextView shopName;
 
         public MyViewHolder(final View itemView) {
             super(itemView);
             shopLogo = (ImageView) itemView.findViewById(R.id.shopLogo);
+            shopName = (TextView) itemView.findViewById(R.id.shopName);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
