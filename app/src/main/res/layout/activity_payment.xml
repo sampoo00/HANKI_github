@@ -22,18 +22,183 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/payment_orderListRecyclerView"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"
-                >
+                android:layout_height="wrap_content">
 
-            </android.support.v7.widget.RecyclerView>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/payment_orderListRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false"
+                    >
+
+                </android.support.v7.widget.RecyclerView>
+
+                <RelativeLayout
+                    android:id="@+id/payment_confirmPrice"
+                    android:layout_below="@+id/payment_orderListRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="35dp"
+                    android:layout_marginRight="35dp"
+                    android:gravity="center_vertical"
+                    >
+
+                    <TextView
+                        android:id="@+id/payment_totalPrcieTxt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        android:text="총 주문 금액"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginRight="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true">
+
+                        <TextView
+                            android:id="@+id/payment_PriceTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/pdlg_color_red"
+                            android:text="36,000"/>
+
+
+                        <TextView
+                            android:id="@+id/payment_wonTxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="17sp"
+                            android:textStyle="bold"
+                            android:layout_marginLeft="5dp"
+                            android:text="원"/>
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/payment_payLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:layout_marginTop="20dp"
+                        android:background="@color/white"
+                        android:layout_below="@+id/payment_totalPrcieTxt"
+                        >
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toLeftOf="@+id/pament_changePayBtn"
+                            android:scaleX="0.7"
+                            android:scaleY="0.7"
+                            android:background="@drawable/sample_kakaopay"/>
+                        
+                        <Button
+                            android:id="@+id/pament_changePayBtn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentEnd="true"
+                            android:background="@null"
+                            android:textSize="14sp"
+                            android:text="변경"/>
+
+                    </RelativeLayout>
+
+                    <CheckBox
+                        android:id="@+id/payment_cashReceipt_Checkbox"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@+id/payment_payLayout"
+                        android:text="현금연수증 신청"/>
+
+                    <LinearLayout
+                        android:id="@+id/payment_cashReceiptContentLayout"
+                        android:layout_below="@+id/payment_cashReceipt_Checkbox"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RadioGroup
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/payment_personRadioBtn"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="개인소득공제용"/>
+
+                            <RadioButton
+                                android:id="@+id/payment_corpRadioBtn"
+                                android:layout_marginLeft="20dp"
+                                android:layout_marginStart="20dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="사업자 증비용"/>
+                        </RadioGroup>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginBottom="10dp">
+
+                            <EditText
+                                android:id="@+id/payment_cashReceipt_number"
+                                android:layout_width="160dp"
+                                android:layout_height="40dp"
+                                android:textSize="13sp"
+                                android:paddingStart="10dp"
+                                android:paddingLeft="10dp"
+                                android:inputType="number"
+                                android:background="@drawable/border_menu_diaog_all_edge"
+                                android:hint="휴대폰/사업자등록번호"
+                                />
+
+                            <CheckBox
+                                android:id="@+id/payment_saveCashReceiptInfo"
+                                android:layout_gravity="center_vertical"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textSize="12sp"
+                                android:gravity="center_vertical"
+                                android:text="형금영수증 정보 저장" />
+
+                        </LinearLayout>
+
+
+
+                    </LinearLayout>
+                </RelativeLayout>
+
+            </RelativeLayout>
+
 
 
 
         </android.support.v4.widget.NestedScrollView>
+
+
+
 
 
         <RelativeLayout
@@ -52,7 +217,7 @@
 
 
                 <TextView
-                    android:id="@+id/menu_totalPrice"
+                    android:id="@+id/payment_totalPrice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -63,7 +228,7 @@
 
                 <TextView
                     android:id="@+id/menu_totalPrice_wonTxt"
-                    android:layout_toRightOf="@+id/menu_totalPrice"
+                    android:layout_toRightOf="@+id/payment_totalPrice"
                     android:layout_centerVertical="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
