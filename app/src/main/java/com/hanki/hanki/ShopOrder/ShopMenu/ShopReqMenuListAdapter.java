@@ -50,9 +50,9 @@ public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
     @Override
     public void onBindViewHolder(@NonNull final ShopReqMenuListViewHolder holder, final int position) {
 
-        holder.VH_reqMenuSize.setText(reqMenuData.get(position).reqMenuSize);
-        holder.VH_reqMenuPeople.setText(reqMenuData.get(position).reqMenuPeople);
-        holder.VH_reqMenuPrice.setText(String.valueOf(moneyFormat(reqMenuData.get(position).reqMenuPrice))+"원");
+        holder.VH_reqMenuSize.setText(reqMenuData.get(position).menuSize);
+        holder.VH_reqMenuPeople.setText(reqMenuData.get(position).menuPeople);
+        holder.VH_reqMenuPrice.setText(String.valueOf(moneyFormat(reqMenuData.get(position).menuPrice))+"원");
 //        holder.VH_reqRadioBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -68,13 +68,13 @@ public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
 
                 if(lastCheckedRB != null){
                     lastCheckedRB.setChecked(false);
-                    ((ShopMenuDialog)ShopMenuDialog.mContext).subReqPrice(reqMenuData.get(lastPosition).reqMenuPrice);
+                    ((ShopMenuDialog)ShopMenuDialog.mContext).subReqPrice(reqMenuData.get(lastPosition).menuPrice);
 
                 }
                 lastCheckedRB = holder.VH_reqRadioBtn;
                 lastPosition = position;
 
-                ((ShopMenuDialog)ShopMenuDialog.mContext).addReqPrice(reqMenuData.get(position).reqMenuPrice);
+                ((ShopMenuDialog)ShopMenuDialog.mContext).addReqPrice(reqMenuData.get(position).menuPrice);
             }
         });
 

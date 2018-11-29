@@ -1,27 +1,27 @@
 package com.hanki.hanki.ShopOrder.ShopMenu;
 
 public class ShopRecMenuData {
-    public String recMenuName;
-    public int recMenuPrice;
+    public String menuName;
+    public int menuPirce;
 
-    public ShopRecMenuData(String recMenuName, int recMenuPrice) {
-        this.recMenuName = recMenuName;
-        this.recMenuPrice = recMenuPrice;
+    public ShopRecMenuData(String menuName, int menuPirce) {
+        this.menuName = menuName;
+        this.menuPirce = menuPirce;
     }
 
-    public String getRecMenuName() {
-        return recMenuName;
+    public String getMenuName() {
+        return menuName;
     }
 
-    public void setRecMenuName(String recMenuName) {
-        this.recMenuName = recMenuName;
+    public void setMenuName(String menuName) {
+        this.menuName = menuName;
     }
 
-    public int getRecMenuPrice() {
-        return recMenuPrice;
+    public int getMenuPirce() {
+        return menuPirce;
     }
 
-    public void setRecMenuPrice(int recMenuPrice) {
-        this.recMenuPrice = recMenuPrice;
+    public void setMenuPirce(int menuPirce) {
+        this.menuPirce = menuPirce;
     }
 }
