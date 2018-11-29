@@ -13,7 +13,6 @@ import android.widget.TextView;
 
 import com.hanki.hanki.R;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -23,14 +22,14 @@ public class Fragment_menu extends Fragment {
     //강조하고 싶은 메뉴
     private RecyclerView mMenuRecyclerView;
     private LinearLayoutManager mMenuLinearLayoutManager;
-    private ShopMenuAdapter mMenuAdapter;
-    private List<ShopMenuData> mMenuList;
+    private ShopSubMenuAdapter mMenuAdapter;
+    private List<ShopSubMenuData> mMenuList;
 
     //매장 메뉴
     private RecyclerView mMenuRecRecyclerView;
     private GridLayoutManager mMenuRecGridLayoutManager;
-    private ShopMenuRecAdapter mMenuRecAdapter;
-    private List<ShopRecMenuData> mMenuRecList;
+    private ShopMainMenuAdapter mMenuRecAdapter;
+    private List<ShopMainMenuData> mMenuRecList;
 
     //원산지 표기
     TextView txtCountryOrigin;
@@ -77,9 +76,9 @@ public class Fragment_menu extends Fragment {
 
         initMenuArrayList();
 
-        mMenuRecAdapter = new ShopMenuRecAdapter(getContext(), mMenuRecList);
+        mMenuRecAdapter = new ShopMainMenuAdapter(getContext(), mMenuRecList);
         mMenuRecRecyclerView.setAdapter(mMenuRecAdapter);
-        mMenuAdapter = new ShopMenuAdapter(getContext(), mMenuList);
+        mMenuAdapter = new ShopSubMenuAdapter(getContext(), mMenuList);
         mMenuRecyclerView.setAdapter(mMenuAdapter);
 
 
@@ -87,21 +86,21 @@ public class Fragment_menu extends Fragment {
 
     public void initMenuArrayList(){
 
-        mMenuList = Arrays.asList(new ShopMenuData("국수", 140020),
-                new ShopMenuData("국수2", 1403000),
-                new ShopMenuData("국수3", 1200),
-                new ShopMenuData("국수4", 1039439),
-                new ShopMenuData("국수5", 14000),
-                new ShopMenuData("국수6", 1403000),
-                new ShopMenuData("국수7", 1200));
+        mMenuList = Arrays.asList(new ShopSubMenuData("국수", 140020),
+                new ShopSubMenuData("국수2", 1403000),
+                new ShopSubMenuData("국수3", 1200),
+                new ShopSubMenuData("국수4", 1039439),
+                new ShopSubMenuData("국수5", 14000),
+                new ShopSubMenuData("국수6", 1403000),
+                new ShopSubMenuData("국수7", 1200));
 
-        mMenuRecList = Arrays.asList(new ShopRecMenuData("부대찌게", 14000),
-                new ShopRecMenuData("된장찌게", 1403000),
-                new ShopRecMenuData("칼국수", 1200),
-                new ShopRecMenuData("게찌게", 1039439),
-                new ShopRecMenuData("부대찌게", 14000),
-                new ShopRecMenuData("된장찌게", 1403000),
-                new ShopRecMenuData("칼국수", 1200));
+        mMenuRecList = Arrays.asList(new ShopMainMenuData("부대찌게", 14000),
+                new ShopMainMenuData("된장찌게", 1403000),
+                new ShopMainMenuData("칼국수", 1200),
+                new ShopMainMenuData("게찌게", 1039439),
+                new ShopMainMenuData("부대찌게", 14000),
+                new ShopMainMenuData("된장찌게", 1403000),
+                new ShopMainMenuData("칼국수", 1200));
 
     }
 

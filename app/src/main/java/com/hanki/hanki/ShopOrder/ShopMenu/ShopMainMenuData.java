@@ -1,10 +1,10 @@
 package com.hanki.hanki.ShopOrder.ShopMenu;
 
-public class ShopRecMenuData {
+public class ShopMainMenuData {
     public String menuName;
     public int menuPirce;
 
-    public ShopRecMenuData(String menuName, int menuPirce) {
+    public ShopMainMenuData(String menuName, int menuPirce) {
         this.menuName = menuName;
         this.menuPirce = menuPirce;
     }

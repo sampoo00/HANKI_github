@@ -78,6 +78,20 @@ public class ShopMenuDialog extends Dialog {
 
         mPickupType.setChecked(true);
 
+//        mPickupGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(RadioGroup group, int checkedId) {
+//                switch (checkedId){
+//                    case id.menu_pickupRadioBtn :
+//                        Toast.makeText(getContext(), "매장이 선택 되었습니다.", Toast.LENGTH_SHORT).show();
+//
+//                    case id.menu_nonPickupRadioBtn :
+//                        Toast.makeText(getContext(), "픽업이 선택 되었습니다.", Toast.LENGTH_SHORT).show();
+//
+//                }
+//            }
+//        });
+
         mPickupType.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {

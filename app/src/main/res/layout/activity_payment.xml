@@ -99,13 +99,13 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_toLeftOf="@+id/pament_changePayBtn"
+                            android:layout_toLeftOf="@+id/payment_changePayBtn"
                             android:scaleX="0.7"
                             android:scaleY="0.7"
                             android:background="@drawable/sample_kakaopay"/>
                         
                         <Button
-                            android:id="@+id/pament_changePayBtn"
+                            android:id="@+id/payment_changePayBtn"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_alignParentRight="true"
@@ -131,9 +131,11 @@
                         android:layout_marginStart="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:visibility="gone">
 
                         <RadioGroup
+                            android:id="@+id/payment_radioGroup"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">

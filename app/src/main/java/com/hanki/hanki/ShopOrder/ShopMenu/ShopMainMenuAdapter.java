@@ -12,16 +12,16 @@ import com.hanki.hanki.R;
 import java.text.DecimalFormat;
 import java.util.List;
 
-public class ShopMenuRecAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
+public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
     private Context context;
-    private List<ShopRecMenuData> menuRecData;
+    private List<ShopMainMenuData> menuRecData;
 
-    public ShopMenuRecAdapter(Context context, List<ShopRecMenuData> menuRecData) {
+    public ShopMainMenuAdapter(Context context, List<ShopMainMenuData> menuRecData) {
         this.context = context;
         this.menuRecData = menuRecData;
     }
 
-    public void setAdapter(List<ShopRecMenuData> menuRecData) {
+    public void setAdapter(List<ShopMainMenuData> menuRecData) {
         this.menuRecData = menuRecData;
         notifyDataSetChanged();
     }
