@@ -36,7 +36,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/tutorial_closeBtn"
+            android:id="@+id/tutorial_noshowBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -44,7 +44,7 @@
             android:text="@string/noshowBtn" />
 
         <Button
-            android:id="@+id/tutorial_noshowBtn"
+            android:id="@+id/tutorial_closeBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
