@@ -14,10 +14,10 @@ public interface NetworkService {
     Call<TestData> getTestResponse();
 
     //매장명 조회 (baseUrl : http://117.17.156.101:8180/HANKI/shops)
-    @GET("/HANKI/shops")
-    Call<ShopName> getShopNameResult(@Query("UUID") String UUID);
+//    @GET("/HANKI/shops")
+//    Call<ShopName> getShopNameResult(@Query("UUID") String UUID);
 
-    //매장명 조회 (tempUrl)
-    //@GET("/aaaa/shops")
-    //Call<ShopName> getShopNameResult(@Query("UUID") String UUID);
+    //매장명 조회 (tempUrl : http://192.168.1.108:8080/)
+    @GET("/aaaa/shops")
+    Call<ShopName> getShopNameResult(@Query("UUID") String UUID);
 }

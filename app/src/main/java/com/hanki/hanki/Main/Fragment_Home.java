@@ -124,8 +124,8 @@ public class Fragment_Home extends Fragment {
         minewBeaconManager.startScan();
         isScanning = true;
 
-        //**** 매장명을 받아오기 위한 임시 코드 ****//
-        String UUID = "15282";
+        //****** 매장명을 받아오기 위한 임시 코드 ****** //
+        String UUID = "15290";
         Call<ShopName> request = networkService.getShopNameResult(UUID);
         request.enqueue(new Callback<ShopName>() {
             @Override
@@ -143,7 +143,7 @@ public class Fragment_Home extends Fragment {
                 Log.d(TAG, "fail " + t.getMessage());
             }
         });
-        // *************************************//
+        // *************************************** //
 
         //원래 코드
         minewBeaconManager.setDeviceManagerDelegateListener(new MinewBeaconManagerListener() {

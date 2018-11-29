@@ -61,7 +61,8 @@
             android:stopWithTask="false" />
 
         <activity android:name=".ShopOrder.ShopPayment.PaymentActivity" />
-        <activity android:name=".ShopOrder.ShopPayment.PaymentPayActivity"></activity>
+        <activity android:name=".ShopOrder.ShopPayment.PaymentPayActivity"/>
+        <activity android:name=".PermissionActivity"></activity>
     </application>
 
 </manifest>
