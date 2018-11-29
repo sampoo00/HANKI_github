@@ -127,16 +127,13 @@ public class Fragment_Home extends Fragment {
         //**** 매장명을 받아오기 위한 임시 코드 ****//
         String UUID = "15282";
         Call<ShopName> request = networkService.getShopNameResult(UUID);
-
-        Log.d(TAG, Application.getInstance().tempUrl);
-
         request.enqueue(new Callback<ShopName>() {
             @Override
             public void onResponse(Call<ShopName> call, Response<ShopName> response) {
                 if (response.isSuccessful()) {
                     shopNameList.add(response.body());
+                    Log.d(TAG, response.body().toString());
                 }
-                Log.d(TAG, response.body().getShopImgUrl());
                 Log.d(TAG, response.message());
                 Log.d(TAG, "responseCode " + response.code());
             }

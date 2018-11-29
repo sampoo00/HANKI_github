@@ -8,8 +8,8 @@ public class Application extends android.app.Application {
 
     private static Application instance;
     private NetworkService networkService;
-    private String baseUrl = "http://117.17.156.101:8180";
-    public String tempUrl = "http://192.168.1.108:8080";
+    private String baseUrl = "http://117.17.156.101:8180/";
+    public String tempUrl = "http://192.168.1.108:8080/";
 
     public static Application getInstance() {
         return instance;
@@ -25,7 +25,7 @@ public class Application extends android.app.Application {
     public void buildNetworkService() {
         Retrofit.Builder builder = new Retrofit.Builder();
         Retrofit retrofit = builder
-                .baseUrl(tempUrl)
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
