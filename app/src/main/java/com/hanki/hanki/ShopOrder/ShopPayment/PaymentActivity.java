@@ -7,7 +7,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hanki.hanki.R;
@@ -27,6 +35,21 @@ public class PaymentActivity extends AppCompatActivity {
     //결제하기
     RelativeLayout mToOrderLayout;
 
+    //메뉴 정보 확인
+    TextView mFirstPriceText;
+    Button mChangePayBtn;
+    CheckBox mCashReceipt_CheckBox;
+
+    //현금 영수증
+    LinearLayout mCashReceiptLayout;
+    RadioGroup mRadioGroup;
+    RadioButton mPersonRadioBtn;
+    RadioButton mCorpRadioBtn;
+    EditText mCashReceiptNum;
+    CheckBox mSaveCashReciptInfo_CheckBox;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +67,46 @@ public class PaymentActivity extends AppCompatActivity {
         initRecyclerView();
 
         mToOrderLayout = (RelativeLayout) findViewById(R.id.payment_toOrderLayout);
+
+        //결제 정보
+        mFirstPriceText = (TextView) findViewById(R.id.payment_PriceTxt);
+        mChangePayBtn = (Button) findViewById(R.id.payment_changePayBtn);
+        mCashReceipt_CheckBox = (CheckBox) findViewById(R.id.payment_cashReceipt_Checkbox);
+
+        //현금 영수증
+        mCashReceiptLayout = (LinearLayout) findViewById(R.id.payment_cashReceiptContentLayout);
+        mRadioGroup = (RadioGroup) findViewById(R.id.payment_radioGroup);
+        mPersonRadioBtn = (RadioButton) findViewById(R.id.payment_personRadioBtn);
+        mCorpRadioBtn = (RadioButton) findViewById(R.id.payment_corpRadioBtn);
+        mCashReceiptNum = (EditText) findViewById(R.id.payment_cashReceipt_number);
+        mSaveCashReciptInfo_CheckBox = (CheckBox) findViewById(R.id.payment_saveCashReceiptInfo);
+
+        //checkbox 선택시 현금영수증
+        mCashReceipt_CheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked){
+                    mCashReceiptLayout.setVisibility(View.VISIBLE);
+                }
+                else{
+                    mCashReceiptLayout.setVisibility(View.GONE);
+                    mRadioGroup.clearCheck();
+                }
+            }
+        });
+
+        //radioGroup
+        mRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.payment_personRadioBtn:
+                        Toast.makeText(getApplicationContext(), "개인", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
     }
 
     public void initRecyclerView(){
@@ -96,7 +159,9 @@ public class PaymentActivity extends AppCompatActivity {
 
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.payment_toOrderLayout:
+            case R.id.payment_changePayBtn:
+                Toast.makeText(getApplicationContext(), "변경Layout만들기", Toast.LENGTH_SHORT).show();
+            case R.id.payment_toOrderLayout: // 결제하기 Layout
                 Toast.makeText(getApplicationContext(), "결제하기", Toast.LENGTH_SHORT).show();
 
         }
