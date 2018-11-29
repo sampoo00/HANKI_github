@@ -1,6 +1,7 @@
 package com.hanki.hanki.ShopOrder;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
@@ -24,12 +25,21 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.NetworkItem.ShopResult;
+import com.hanki.hanki.ShopOrder.NetworkItem.ShopTopInfo;
 import com.hanki.hanki.ShopOrder.ShopMenu.Fragment_menu;
+import com.hanki.hanki.Util.Application;
+import com.hanki.hanki.Util.NetworkService;
 import com.like.LikeButton;
 import com.like.OnLikeListener;
 
+import java.net.NetworkInterface;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import static com.kakao.util.maps.helper.Utility.getPackageInfo;
 
@@ -51,6 +61,7 @@ public class ShopMainActivity extends AppCompatActivity {
     TextView nonpickup;
 
     final static int TAB_NUMS = 3; //탭 갯수
+    public static final String TAG = "SHOP MAIN ACTIVITY";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +71,7 @@ public class ShopMainActivity extends AppCompatActivity {
         init();
         setupToolbar();
         setupCollapsingToolbar();
+        getShopResultNetwork(); //통신
 
         Log.d("HASH", getKeyHash(ShopMainActivity.this));
     }
@@ -80,7 +92,6 @@ public class ShopMainActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-
         shopTitle = (TextView) findViewById(R.id.shopMain_shopTitle); //매장 이름
         shopRatingBar = (RatingBar) findViewById(R.id.shopMain_ratingbar); //ratingBar
         shopTxtRatingBar = (TextView) findViewById(R.id.shopMain_txtRatingbar); //ratingBar개수를 표시하는 텍스트
@@ -89,7 +100,6 @@ public class ShopMainActivity extends AppCompatActivity {
         //pickup(픽업), nonpickup(현장)
         pickup = (TextView) findViewById(R.id.shopMain_pickup);
         nonpickup = (TextView) findViewById(R.id.shopMain_nonpickup);
-
 
         //like버튼
         likeBtn = (LikeButton) findViewById(R.id.shopMain_likeBtn);
@@ -190,6 +200,7 @@ public class ShopMainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // ***** 해시값 얻어오는 코드 (나중에 지울것) ***** //
     public static String getKeyHash(final Context context) {
         PackageInfo packageInfo = getPackageInfo(context, PackageManager.GET_SIGNATURES);
         if (packageInfo == null) return null;
@@ -204,5 +215,59 @@ public class ShopMainActivity extends AppCompatActivity {
             }
         }
         return null;
+    }
+
+    public void getShopResultNetwork() {
+        NetworkService networkService = Application.getInstance().getNetworkService();
+
+        // 매장인식 다이얼로그(ShopNameAdapter)에서 넘긴 UUID와 userId 받기
+        Intent intent = getIntent();
+        String UUID = intent.getStringExtra("UUID");
+        String userId = intent.getStringExtra("userId");
+
+        Call<ShopResult> request = networkService.getShopMenuResult(UUID, userId);
+        request.enqueue(new Callback<ShopResult>() {
+            @Override
+            public void onResponse(Call<ShopResult> call, Response<ShopResult> response) {
+                if (response.isSuccessful()) {
+                    ShopResult shopResult = response.body();
+                    setShopResult(shopResult);
+                    Log.d(TAG, "메뉴판 조회 성공");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ShopResult> call, Throwable t) {
+                Log.d(TAG, "메뉴판 조회 실패 : " + t.getMessage());
+            }
+        });
+    }
+
+    public void setShopResult(ShopResult shopResult) {
+        if(shopResult.description.equals("success")) { //description이 success인 경우
+
+            ShopTopInfo shopTopInfo = shopResult.result;
+            shopTitle.setText(shopTopInfo.shopName); //매장명
+            shopRatingBar.setRating(shopTopInfo.shopScoreAvg); //별점
+            shopTxtRatingBar.setText(String.valueOf(shopTopInfo.shopScoreAvg)); //별점 텍스트
+            reviewNum.setText("리뷰 " + String.valueOf(shopTopInfo.reviewNum)); //리뷰수
+
+            //찜하기 여부
+            if(shopTopInfo.wishYn != null && shopTopInfo.wishYn.equalsIgnoreCase("Y")) {
+                likeBtn.setLiked(true);
+            } else {
+                likeBtn.setLiked(false);
+            }
+
+            // 매장 주문 타입 - 1: 현장/픽업, 2: 현장 only, 3: 픽업 only
+            if(shopTopInfo.orderType == 1) {
+                nonpickup.setBackground(getResources().getDrawable(R.color.nonPickUp_on));
+                pickup.setBackground(getResources().getDrawable(R.color.pickUp_on));
+            } else if(shopTopInfo.orderType == 2) {
+                nonpickup.setBackground(getResources().getDrawable(R.color.nonPickUp_on));
+            } else if (shopTopInfo.orderType == 3) {
+                pickup.setBackground(getResources().getDrawable(R.color.pickUp_on));
+            }
+        }
     }
 }

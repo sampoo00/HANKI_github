@@ -1,19 +1,17 @@
 package com.hanki.hanki.NumberTicket;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.hanki.hanki.Main.ShopName;
+import com.hanki.hanki.ShopOrder.NetworkItem.ShopResult;
+import com.hanki.hanki.ShopOrder.NetworkItem.ShopTopInfo;
 import com.hanki.hanki.Util.Application;
 import com.hanki.hanki.Util.NetworkService;
 import com.hanki.hanki.R;
@@ -38,6 +36,8 @@ public class Fragment_numberticket extends Fragment {
         View view = inflater.inflate(R.layout.home_fragment_numberticket, container, false);
         testBtn = view.findViewById(R.id.testBtn);
         testTv = view.findViewById(R.id.textTv);
+
+        networkService = Application.getInstance().getNetworkService();
         return view;
     }
 
@@ -48,40 +48,22 @@ public class Fragment_numberticket extends Fragment {
         testBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                networkService = Application.getInstance().getNetworkService();
-                /*
-                Call<TestData> request1 = networkService.getTestResponse();
-                request1.enqueue(new Callback<TestData>() {
+                String UUID = "15290"; //UUID
+                String userId = ""; //userId 설정
+
+                //메뉴판 받아오기
+                Call<ShopResult> request = networkService.getShopMenuResult(UUID, userId);
+                request.enqueue(new Callback<ShopResult>() {
                     @Override
-                    public void onResponse(Call<TestData> call, Response<TestData> response) {
-                        Log.d("응답", response.body().result);
-                        if(response.isSuccessful()) {
-                            TestData testData = response.body();
-                            testTv.setText(testData.result);
+                    public void onResponse(Call<ShopResult> call, Response<ShopResult> response) {
+                        if (response.isSuccessful()) {
+                            ShopResult shopResult = response.body();
+                            ShopTopInfo shopTopInfo = shopResult.result;
+                            testTv.setText(shopTopInfo.toString());
                         }
                     }
-
                     @Override
-                    public void onFailure(Call<TestData> call, Throwable t) {
-                        testTv.setText(t.getMessage());
-                    }
-                });
-                */
-
-                Call<ShopName> request = networkService.getShopNameResult("15290");
-                request.enqueue(new Callback<ShopName>() {
-                    @Override
-                    public void onResponse(Call<ShopName> call, Response<ShopName> response) {
-                        Log.d("NumberTicket", response.code()+"");
-                        if(response.isSuccessful()) {
-                            ShopName shopName = response.body();
-                            testTv.setText(shopName.toString());
-                            Log.d("NumberTicket", shopName.toString());
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<ShopName> call, Throwable t) {
+                    public void onFailure(Call<ShopResult> call, Throwable t) {
                         testTv.setText(t.getMessage());
                     }
                 });

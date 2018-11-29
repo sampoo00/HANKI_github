@@ -21,8 +21,6 @@ public class SearchedShopDialog extends Dialog {
     private RecyclerView shopListRecyclerView;
     private ImageButton searchedDialog_closeBtn;
 
-    NetworkService service;
-
     public SearchedShopDialog(@NonNull Context context, final ArrayList<ShopName> shopNameList) {
         super(context);
         setContentView(R.layout.dialog_searched_shop);
