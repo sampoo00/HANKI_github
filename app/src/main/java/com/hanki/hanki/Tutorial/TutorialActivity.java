@@ -50,7 +50,7 @@ public class TutorialActivity extends AppCompatActivity {
             case R.id.tutorial_noshowBtn:
                 SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
                 SharedPreferences.Editor editor = pref.edit();
-                editor.putInt("checkTutorial", 1).apply();
+                editor.putString("selectedNoShow", "yes").apply();
                 break;
             case R.id.tutorial_closeBtn:
                 break;

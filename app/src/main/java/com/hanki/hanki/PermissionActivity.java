@@ -25,25 +25,8 @@ public class PermissionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permission);
 
-        initPermissionListener();
-
-        Button permissionBtn = (Button) findViewById(R.id.permissionBtn);
-        permissionBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //전화걸기와 위치 권한 받기
-                TedPermission.with(PermissionActivity.this)
-                        .setPermissionListener(permissionListener)
-                        .setDeniedMessage("If you reject permission, you can not user this service\n\nPleas turn on permissions at [Setting] > [Permission]")
-                        .setPermissions(Manifest.permission.CALL_PHONE, Manifest.permission.ACCESS_FINE_LOCATION)
-                        .check();
-            }
-        });
-    }
-
-    public void initPermissionListener() {
         SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
-        final int checkShowTutorial = pref.getInt("checkTutorial", 0);
+        final String checkShowTutorial = pref.getString("selectedNoShow", "no");
 
         permissionListener = new PermissionListener() {
             @Override
@@ -51,7 +34,7 @@ public class PermissionActivity extends AppCompatActivity {
 
                 // **** 화면전환 (수정필요) **** //
                 Intent intent;
-                if(checkShowTutorial == 0) {
+                if (checkShowTutorial.equals("no")) {
                     intent = new Intent(PermissionActivity.this, TutorialActivity.class);
                 } else {
                     intent = new Intent(PermissionActivity.this, HomeActivity.class);
@@ -68,5 +51,19 @@ public class PermissionActivity extends AppCompatActivity {
                 finish();
             }
         };
+
+        Button permissionBtn = (Button) findViewById(R.id.permissionBtn);
+        permissionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //전화걸기와 위치 권한 받기
+                TedPermission.with(PermissionActivity.this)
+                        .setPermissionListener(permissionListener)
+                        .setDeniedMessage("If you reject permission, you can not user this service\n\nPleas turn on permissions at [Setting] > [Permission]")
+                        .setPermissions(Manifest.permission.CALL_PHONE, Manifest.permission.ACCESS_FINE_LOCATION)
+                        .check();
+            }
+        });
     }
+
 }
