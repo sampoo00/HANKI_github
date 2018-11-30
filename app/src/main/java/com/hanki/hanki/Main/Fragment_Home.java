@@ -40,7 +40,7 @@ public class Fragment_Home extends Fragment {
     ArrayList<ShopName> shopNameList = new ArrayList<>();
     NetworkService networkService;
 
-    public final static String TAG = "Fragment_home";
+    public final static String TAG = "FRAGMENT_HOME";
 
     public Fragment_Home() {
 
@@ -135,12 +135,12 @@ public class Fragment_Home extends Fragment {
                     Log.d(TAG, response.body().toString());
                 }
                 Log.d(TAG, response.message());
-                Log.d(TAG, "responseCode " + response.code());
+                Log.d(TAG, "RESPONSE " + response.code());
             }
 
             @Override
             public void onFailure(Call<ShopName> call, Throwable t) {
-                Log.d(TAG, "fail " + t.getMessage());
+                Log.d(TAG, "FAIL " + t.getMessage());
             }
         });
         // *************************************** //

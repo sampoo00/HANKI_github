@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,8 @@ public class Fragment_numberticket extends Fragment {
     TextView testTv;
 
     NetworkService networkService;
+
+    public final static String TAG = "NUMBER_TICKET";
 
     public Fragment_numberticket() {
     }
@@ -60,11 +63,13 @@ public class Fragment_numberticket extends Fragment {
                             ShopResult shopResult = response.body();
                             ShopTopInfo shopTopInfo = shopResult.result;
                             testTv.setText(shopTopInfo.toString());
+                            Log.d(TAG, "RESPONSE " + response.code());
                         }
                     }
                     @Override
                     public void onFailure(Call<ShopResult> call, Throwable t) {
                         testTv.setText(t.getMessage());
+                        Log.d(TAG, "FAIL " + t.getMessage());
                     }
                 });
             }

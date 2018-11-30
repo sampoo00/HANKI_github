@@ -10,8 +10,8 @@ public class Application extends android.app.Application {
     private NetworkService networkService;
 
     // **** url 변경 **** //
-    private String baseUrl = "http://117.17.156.101:8180/"; //서버용 주소
-    public String tempUrl = "http://192.168.1.108:8080/"; //로컬용 주소
+    public String baseUrl = "http://117.17.156.101:8180/"; //서버용 주소
+    public String tempUrl = "http://192.168.1.108:8080/"; //로컬용 주소, 테스트용
     // ***************** //
 
     public String imageUrl = "aaaa/image/shop/textLogo/"; //이미지 경로
@@ -30,7 +30,7 @@ public class Application extends android.app.Application {
     public void buildNetworkService() {
         Retrofit.Builder builder = new Retrofit.Builder();
         Retrofit retrofit = builder
-                .baseUrl(tempUrl) //여기서 바꿔주기 (baseUrl or tempUrl)
+                .baseUrl(tempUrl) //여기서 바꿔주기 (baseUrl or tempUrl), ShopNameAdapter 이미지 URL도 바꿔주기
                 .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
