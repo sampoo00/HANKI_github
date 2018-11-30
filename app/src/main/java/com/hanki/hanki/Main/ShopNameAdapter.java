@@ -38,13 +38,26 @@ public class ShopNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        MyViewHolder myViewHolder = (MyViewHolder) holder;
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, final int position) {
+        final MyViewHolder myViewHolder = (MyViewHolder) holder;
 
+        //이미지 URL 생성
         String shopLogoUrl  = Application.getInstance().tempUrl + Application.getInstance().imageUrl
-                +shopLogoList.get(position).getShopCode() + "/" + shopLogoList.get(position).getTextImgId();
+                + shopLogoList.get(position).getShopCode() + "/" + shopLogoList.get(position).getTextImgId();
         Glide.with(context).load(shopLogoUrl).into(myViewHolder.shopLogo);
-        Log.d(TAG, shopLogoUrl); //이미지 경로
+
+        Log.d(TAG, shopLogoUrl); //이미지 경로 확인하기
+
+        //ShopMainActivity로 이동 시 UUID를 같이 넘겨줌
+        ((MyViewHolder) holder).shopLogo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ShopMainActivity.class);
+                intent.putExtra("UUID", shopLogoList.get(position).getUUID());
+                intent.putExtra("userId", "");
+                v.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -59,14 +72,6 @@ public class ShopNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         public MyViewHolder(final View itemView) {
             super(itemView);
             shopLogo = (ImageView) itemView.findViewById(R.id.shopLogo);
-
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(itemView.getContext(), ShopMainActivity.class);
-                    v.getContext().startActivity(intent);
-                }
-            });
         }
     }
 }
