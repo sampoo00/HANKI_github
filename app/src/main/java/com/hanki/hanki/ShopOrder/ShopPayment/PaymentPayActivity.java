@@ -32,13 +32,10 @@ public class PaymentPayActivity extends AppCompatActivity {
 
     public void setUpToolbar(){
         setSupportActionBar(mToolbar);
-        if(getSupportActionBar() != null){
-            getSupportActionBar().setTitle("매장 이름2"); // toolbar 제목
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        }
-
+        getSupportActionBar().setTitle("매장 이름2"); // toolbar 제목
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
+
 
     public void initRecyclerView(){
         mPayRecyclerView = (RecyclerView) findViewById(R.id.paymentPay_RecyclerView);
@@ -64,7 +61,7 @@ public class PaymentPayActivity extends AppCompatActivity {
 
 
     public void init(){
-        mToolbar = (Toolbar) findViewById(R.id.payment_toolbar);
+        mToolbar = (Toolbar) findViewById(R.id.paymentPay_toolbar);
         setUpToolbar();
 
         initRecyclerView();
