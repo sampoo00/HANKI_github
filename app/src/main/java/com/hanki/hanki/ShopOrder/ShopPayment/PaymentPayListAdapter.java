@@ -40,15 +40,31 @@ public class PaymentPayListAdapter extends RecyclerView.Adapter<PaymentPayListVi
 
         holder.VH_PayName.setText(payListData.get(position).payName);
 
+//        holder.VH_RadioBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//            @Override
+//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+//                if (lastCheckedRB != null) {
+//                    lastCheckedRB.setChecked(false);
+//
+//                }
+//                lastCheckedRB = holder.VH_RadioBtn;
+//                lastPosition = position;
+//            }
+//        });
+
         holder.VH_RadioBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (lastCheckedRB != null) {
+
+                if(lastCheckedRB != null){
                     lastCheckedRB.setChecked(false);
+//                    ((ShopMenuDialog)ShopMenuDialog.mContext).subReqPrice(reqMenuData.get(lastPosition).menuPrice);
 
                 }
                 lastCheckedRB = holder.VH_RadioBtn;
                 lastPosition = position;
+
+//                ((ShopMenuDialog)ShopMenuDialog.mContext).addReqPrice(reqMenuData.get(position).menuPrice);
             }
         });
 
@@ -64,6 +80,7 @@ public class PaymentPayListAdapter extends RecyclerView.Adapter<PaymentPayListVi
                         }
                     }
         });
+
     }
 
     @Override
