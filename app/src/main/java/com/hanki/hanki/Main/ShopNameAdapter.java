@@ -42,9 +42,9 @@ public class ShopNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         final MyViewHolder myViewHolder = (MyViewHolder) holder;
 
         //이미지 URL 생성
-        String shopLogoUrl  = Application.getInstance().tempUrl + Application.getInstance().imageUrl
+        String shopLogoUrl  = Application.getInstance().imageUrl
                 + shopLogoList.get(position).getShopCode() + "/" + shopLogoList.get(position).getTextImgId();
-        Glide.with(context).load(shopLogoUrl).into(myViewHolder.shopLogo);
+        Glide.with(context).load(shopLogoUrl).into(myViewHolder.shopLogo); //이미지 띄우기
 
         Log.d(TAG, shopLogoUrl); //이미지 경로 확인하기
 

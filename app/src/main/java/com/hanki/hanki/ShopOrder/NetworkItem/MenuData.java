@@ -1,6 +1,11 @@
 package com.hanki.hanki.ShopOrder.NetworkItem;
 
-public class MenuData {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class MenuData implements Parcelable{
     String menuName;
     int menuPrice;
     String menuImgId;
@@ -22,5 +27,15 @@ public class MenuData {
                 ", menuDoc='" + menuDoc + '\'' +
                 ", toppingKey='" + toppingKey + '\'' +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }

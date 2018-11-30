@@ -25,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
 import com.hanki.hanki.ShopOrder.NetworkItem.ShopResult;
 import com.hanki.hanki.ShopOrder.NetworkItem.ShopTopInfo;
 import com.hanki.hanki.ShopOrder.ShopMenu.Fragment_menu;
@@ -36,6 +37,7 @@ import com.like.OnLikeListener;
 import java.net.NetworkInterface;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -60,6 +62,9 @@ public class ShopMainActivity extends AppCompatActivity {
     TextView pickup;
     TextView nonpickup;
 
+    static String origin = "";
+    static ArrayList<MenuData> menuList = new ArrayList<>();
+
     final static int TAB_NUMS = 3; //탭 갯수
     public static final String TAG = "SHOP MAIN ACTIVITY";
 
@@ -68,16 +73,15 @@ public class ShopMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_shop_main);
 
-        init();
-        setupToolbar();
-        setupCollapsingToolbar();
         getShopResultNetwork(); //통신
+        init();
+        setupCollapsingToolbar();
+
 
         Log.d("HASH", getKeyHash(ShopMainActivity.this));
     }
 
     public void init() {
-
         mToolbar = (Toolbar) findViewById(R.id.shopMain_toolbar);
         mCollapsingToolbar = (CollapsingToolbarLayout) findViewById(
                 R.id.shopMain_collapsingtoolbar);
@@ -118,9 +122,9 @@ public class ShopMainActivity extends AppCompatActivity {
 
     }
 
-    private void setupToolbar() {
+    private void setupToolbar(String shopName) {
         setSupportActionBar(mToolbar);
-        getSupportActionBar().setTitle("매장 이름"); // toolbar 제목
+        getSupportActionBar().setTitle(shopName); // toolbar 제목
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
@@ -175,7 +179,12 @@ public class ShopMainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new Fragment_menu();
+                    Fragment_menu fragment_menu = new Fragment_menu();
+                    Bundle bundle = new Bundle(2);
+                    bundle.putString("origin", origin);
+                    bundle.putParcelableArrayList("menuList", menuList);
+                    fragment_menu.setArguments(bundle);
+                    return fragment_menu;
                 case 1:
                     return new Fragment_shopInfo();
                 case 2:
@@ -225,6 +234,7 @@ public class ShopMainActivity extends AppCompatActivity {
         String UUID = intent.getStringExtra("UUID");
         String userId = intent.getStringExtra("userId");
 
+        //통신
         Call<ShopResult> request = networkService.getShopMenuResult(UUID, userId);
         request.enqueue(new Callback<ShopResult>() {
             @Override
@@ -245,8 +255,9 @@ public class ShopMainActivity extends AppCompatActivity {
 
     public void setShopResult(ShopResult shopResult) {
         if(shopResult.description.equals("success")) { //description이 success인 경우
-
             ShopTopInfo shopTopInfo = shopResult.result;
+
+            setupToolbar(shopTopInfo.shopName); //툴바에 매장명 세팅
             shopTitle.setText(shopTopInfo.shopName); //매장명
             shopRatingBar.setRating(shopTopInfo.shopScoreAvg); //별점
             shopTxtRatingBar.setText(String.valueOf(shopTopInfo.shopScoreAvg)); //별점 텍스트
@@ -268,6 +279,11 @@ public class ShopMainActivity extends AppCompatActivity {
             } else if (shopTopInfo.orderType == 3) {
                 pickup.setBackground(getResources().getDrawable(R.color.pickUp_on));
             }
+
+            origin = shopTopInfo.origin; //원산지
+            menuList = shopTopInfo.list; //메뉴리스트
+
+            Log.d(TAG, "origin : " + origin);
         }
     }
 }

@@ -63,12 +63,9 @@
                         android:id="@+id/shopMain_countryOforigin"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="fill_horizontal"
-                        android:text="소고기(호주산), 쌀(국내산)"/>
-
+                        android:layout_gravity="fill_horizontal"/>
 
                 </GridLayout>
-
                 
             </RelativeLayout>
 

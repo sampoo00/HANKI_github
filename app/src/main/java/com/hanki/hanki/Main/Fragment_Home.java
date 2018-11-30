@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.hanki.hanki.HomeActivity;
+import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
 import com.hanki.hanki.Util.Application;
 import com.hanki.hanki.Util.NetworkService;
 import com.hanki.hanki.R;
@@ -31,7 +33,7 @@ import retrofit2.Response;
 
 public class Fragment_Home extends Fragment {
     Button goShopMain;
-    Button startSearchBtn;
+    ImageButton startSearchBtn;
     PrettyDialog bluetoothDialog = null;
 
     private MinewBeaconManager minewBeaconManager;
@@ -72,7 +74,7 @@ public class Fragment_Home extends Fragment {
             }
         });
 
-        startSearchBtn = (Button) view.findViewById(R.id.startSearchBtn); //비콘 인식 버튼
+        startSearchBtn = (ImageButton) view.findViewById(R.id.startSearchBtn); //비콘 인식 버튼
         startSearchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

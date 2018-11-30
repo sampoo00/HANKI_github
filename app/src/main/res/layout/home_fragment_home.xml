@@ -13,12 +13,12 @@
         android:onClick="onClick"
         android:text="TEST SHOP MAIN" />
 
-    <Button
+    <ImageButton
         android:id="@+id/startSearchBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
         android:layout_centerInParent="true"
-        android:onClick="onClick"
-        android:text="Start Search Beacon" />
+        android:background="@drawable/main_button"
+        android:onClick="onClick" />
 
 </RelativeLayout>
