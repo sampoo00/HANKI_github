@@ -18,6 +18,8 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.hanki.hanki.ShopOrder.ShopPayment.IamPort.iamPortMainActivity;
+
 
 import com.hanki.hanki.R;
 
@@ -181,7 +183,9 @@ public class PaymentActivity extends AppCompatActivity {
                 break;
 
             case R.id.payment_toOrderLayout: // 결제하기 Layout
-                Toast.makeText(getApplicationContext(), "결제하기", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "결제하기", Toast.LENGTH_SHORT).show();
+                intent = new Intent(this, iamPortMainActivity.class);
+                startActivity(intent);
                 break;
 
         }
