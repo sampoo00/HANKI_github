@@ -8,17 +8,26 @@
         android:id="@+id/goShopMain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginTop="30dp"
         android:onClick="onClick"
         android:text="TEST SHOP MAIN" />
 
     <ImageButton
-        android:id="@+id/startSearchBtn"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:id="@+id/mainBtn"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
         android:layout_centerInParent="true"
         android:background="@drawable/main_button"
         android:onClick="onClick" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mainBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="@string/connectShopMessage"
+        android:textColor="#5d5d5d" />
 
 </RelativeLayout>

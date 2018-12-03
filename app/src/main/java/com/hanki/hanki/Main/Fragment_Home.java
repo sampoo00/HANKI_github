@@ -11,8 +11,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-import com.hanki.hanki.HomeActivity;
-import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
 import com.hanki.hanki.Util.Application;
 import com.hanki.hanki.Util.NetworkService;
 import com.hanki.hanki.R;
@@ -33,13 +31,13 @@ import retrofit2.Response;
 
 public class Fragment_Home extends Fragment {
     Button goShopMain;
-    ImageButton startSearchBtn;
+    ImageButton mainBtn;
     PrettyDialog bluetoothDialog = null;
 
     private MinewBeaconManager minewBeaconManager;
     private boolean isScanning;
 
-    ArrayList<ShopName> shopNameList = new ArrayList<>();
+    ArrayList<ShopLogo> shopNameList = new ArrayList<>();
     NetworkService networkService;
 
     public final static String TAG = "FRAGMENT_HOME";
@@ -74,12 +72,14 @@ public class Fragment_Home extends Fragment {
             }
         });
 
-        startSearchBtn = (ImageButton) view.findViewById(R.id.startSearchBtn); //비콘 인식 버튼
-        startSearchBtn.setOnClickListener(new View.OnClickListener() {
+        mainBtn = (ImageButton) view.findViewById(R.id.mainBtn); //비콘 인식 버튼
+        mainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (checkBluetooth() == 0) {
-                    startSearch();
+                    //startSearch();
+                    Intent intent = new Intent(getActivity(), SearchBeaconActivity.class);
+                    startActivity(intent);
                 } else {
                     showBluetoothDialog(); //블루투스 다이얼로그
                 }
@@ -128,10 +128,10 @@ public class Fragment_Home extends Fragment {
 
         //****** 매장명을 받아오기 위한 임시 코드 ****** //
         String UUID = "15290";
-        Call<ShopName> request = networkService.getShopNameResult(UUID);
-        request.enqueue(new Callback<ShopName>() {
+        Call<ShopLogo> request = networkService.getShopNameResult(UUID);
+        request.enqueue(new Callback<ShopLogo>() {
             @Override
-            public void onResponse(Call<ShopName> call, Response<ShopName> response) {
+            public void onResponse(Call<ShopLogo> call, Response<ShopLogo> response) {
                 if (response.isSuccessful()) {
                     shopNameList.add(response.body());
                     Log.d(TAG, response.body().toString());
@@ -141,7 +141,7 @@ public class Fragment_Home extends Fragment {
             }
 
             @Override
-            public void onFailure(Call<ShopName> call, Throwable t) {
+            public void onFailure(Call<ShopLogo> call, Throwable t) {
                 Log.d(TAG, "FAIL " + t.getMessage());
             }
         });
@@ -151,9 +151,9 @@ public class Fragment_Home extends Fragment {
         minewBeaconManager.setDeviceManagerDelegateListener(new MinewBeaconManagerListener() {
             @Override
             public void onAppearBeacons(List<MinewBeacon> list) {
-//                ShopName shopData;
+//                ShopLogo shopData;
 //                for (int i = 0; i < list.size(); i++) {
-//                    shopData = new ShopName(list.get(i).getBeaconValue(BeaconValueIndex.MinewBeaconValueIndex_Minor).getStringValue());
+//                    shopData = new ShopLogo(list.get(i).getBeaconValue(BeaconValueIndex.MinewBeaconValueIndex_Minor).getStringValue());
 //                    if (shopData.getShopName().equals("15290") || shopData.getShopName().equals("15282")) {
 //                        if (!shopNameList.contains(shopData)) {
 //                            shopNameList.add(shopData);

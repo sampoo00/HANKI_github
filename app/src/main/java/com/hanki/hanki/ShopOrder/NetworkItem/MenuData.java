@@ -5,15 +5,15 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
-public class MenuData implements Parcelable{
-    String menuName;
-    int menuPrice;
-    String menuImgId;
-    int pickUpType;
-    String category;
-    String soldOutYn;
-    String menuDoc;
-    String toppingKey;
+public class MenuData {
+    private String menuName;
+    private int menuPrice;
+    private String menuImgId;
+    private int pickUpType;
+    private String category;
+    private String soldOutYn;
+    private String menuDoc;
+    private String toppingKey;
 
     @Override
     public String toString() {
@@ -29,13 +29,35 @@ public class MenuData implements Parcelable{
                 '}';
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
+    public String getMenuName() {
+        return menuName;
     }
 
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public int getMenuPrice() {
+        return menuPrice;
+    }
 
+    public String getMenuImgId() {
+        return menuImgId;
+    }
+
+    public int getPickUpType() {
+        return pickUpType;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getSoldOutYn() {
+        return soldOutYn;
+    }
+
+    public String getMenuDoc() {
+        return menuDoc;
+    }
+
+    public String getToppingKey() {
+        return toppingKey;
     }
 }

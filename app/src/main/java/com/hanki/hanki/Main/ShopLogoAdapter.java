@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.hanki.hanki.R;
@@ -18,14 +17,14 @@ import com.hanki.hanki.Util.Application;
 
 import java.util.ArrayList;
 
-public class ShopNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ShopLogoAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
-    ArrayList<ShopName> shopLogoList;
+    ArrayList<ShopLogo> shopLogoList;
 
     public static final String TAG = "SHOP_NAME_ADAPTER";
 
-    public ShopNameAdapter(Context context, ArrayList<ShopName> shopLogoList) {
+    public ShopLogoAdapter(Context context, ArrayList<ShopLogo> shopLogoList) {
         this.context = context;
         this.shopLogoList = shopLogoList;
     }
@@ -42,13 +41,13 @@ public class ShopNameAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         final MyViewHolder myViewHolder = (MyViewHolder) holder;
 
         //이미지 URL 생성
-        String shopLogoUrl  = Application.getInstance().imageUrl
+        String shopLogoUrl  = Application.getInstance().imageUrl + "shop/textLogo/"
                 + shopLogoList.get(position).getShopCode() + "/" + shopLogoList.get(position).getTextImgId();
         Glide.with(context).load(shopLogoUrl).into(myViewHolder.shopLogo); //이미지 띄우기
 
         Log.d(TAG, shopLogoUrl); //이미지 경로 확인하기
 
-        //ShopMainActivity로 이동 시 UUID를 같이 넘겨줌
+        //ShopMainActivity로 이동 시 UUID, userId를 같이 넘겨줌
         ((MyViewHolder) holder).shopLogo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

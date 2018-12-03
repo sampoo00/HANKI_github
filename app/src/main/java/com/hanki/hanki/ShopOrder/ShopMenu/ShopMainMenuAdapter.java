@@ -8,21 +8,26 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
+import com.hanki.hanki.Util.Application;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
-    private Context context;
-    private List<ShopMainMenuData> menuRecData;
 
-    public ShopMainMenuAdapter(Context context, List<ShopMainMenuData> menuRecData) {
+    private Context context;
+    private List<MenuData> mainMenuData;
+    private String shopCode;
+
+    public ShopMainMenuAdapter(Context context, List<MenuData> mainMenuData, String shopCode) {
         this.context = context;
-        this.menuRecData = menuRecData;
+        this.mainMenuData = mainMenuData;
+        this.shopCode = shopCode;
     }
 
-    public void setAdapter(List<ShopMainMenuData> menuRecData) {
-        this.menuRecData = menuRecData;
+    public void setAdapter(List<MenuData> mainMenuData) {
+        this.mainMenuData = mainMenuData;
         notifyDataSetChanged();
     }
 
@@ -48,16 +53,12 @@ public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder
 
     @Override
     public void onBindViewHolder(ShopMenuViewHolder holder, int position) {
+        String imageUrl = Application.getInstance().imageUrl + "menu/"
+                + shopCode + "/" + mainMenuData.get(position).getMenuImgId();
+        Glide.with(context).load(imageUrl).into(holder.VH_menu_rec_image);
 
-
-        Glide.with(context)
-                .load(R.drawable.logo_sample)
-                .into(holder.VH_menu_rec_image);
-        holder.VH_menu_rec_title.setText(menuRecData.get(position).menuName);
-        holder.VH_menu_rec_fee.setText(String.valueOf(moneyFormat(menuRecData.get(position).menuPirce))+"원");
-
-
-
+        holder.VH_menu_rec_title.setText(mainMenuData.get(position).getMenuName());
+        holder.VH_menu_rec_fee.setText(String.valueOf(moneyFormat(mainMenuData.get(position).getMenuPrice()))+"원");
         holder.VH_menu_rec_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,17 +98,11 @@ public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder
 
             }
         });
-
-
-
-
     }
-
-
 
     @Override
     public int getItemCount() {
-        return menuRecData != null ? menuRecData.size() : 0;
+        return mainMenuData != null ? mainMenuData.size() : 0;
     }
 
 }

@@ -63,7 +63,8 @@
         <activity android:name=".ShopOrder.ShopPayment.PaymentActivity" />
         <activity android:name=".ShopOrder.ShopPayment.PaymentPayActivity" />
         <activity android:name=".PermissionActivity" />
-        <activity android:name=".ShopOrder.ShopPayment.IamPort.iamPortMainActivity"></activity>
+        <activity android:name=".ShopOrder.ShopPayment.IamPort.iamPortMainActivity" />
+        <activity android:name=".Main.SearchBeaconActivity"></activity>
     </application>
 
 </manifest>

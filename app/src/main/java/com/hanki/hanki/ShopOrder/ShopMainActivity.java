@@ -62,8 +62,7 @@ public class ShopMainActivity extends AppCompatActivity {
     TextView pickup;
     TextView nonpickup;
 
-    static String origin = "";
-    static ArrayList<MenuData> menuList = new ArrayList<>();
+    static ShopTopInfo shopTopInfo;
 
     final static int TAB_NUMS = 3; //탭 갯수
     public static final String TAG = "SHOP MAIN ACTIVITY";
@@ -76,7 +75,6 @@ public class ShopMainActivity extends AppCompatActivity {
         getShopResultNetwork(); //통신
         init();
         setupCollapsingToolbar();
-
 
         Log.d("HASH", getKeyHash(ShopMainActivity.this));
     }
@@ -119,7 +117,6 @@ public class ShopMainActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     private void setupToolbar(String shopName) {
@@ -180,9 +177,8 @@ public class ShopMainActivity extends AppCompatActivity {
             switch (position) {
                 case 0:
                     Fragment_menu fragment_menu = new Fragment_menu();
-                    Bundle bundle = new Bundle(2);
-                    bundle.putString("origin", origin);
-                    bundle.putParcelableArrayList("menuList", menuList);
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("shopTopInfo", shopTopInfo);
                     fragment_menu.setArguments(bundle);
                     return fragment_menu;
                 case 1:
@@ -229,7 +225,7 @@ public class ShopMainActivity extends AppCompatActivity {
     public void getShopResultNetwork() {
         NetworkService networkService = Application.getInstance().getNetworkService();
 
-        // 매장인식 다이얼로그(ShopNameAdapter)에서 넘긴 UUID와 userId 받기
+        // 매장인식 다이얼로그(ShopLogoAdapter)에서 넘긴 UUID와 userId 받기
         Intent intent = getIntent();
         String UUID = intent.getStringExtra("UUID");
         String userId = intent.getStringExtra("userId");
@@ -255,7 +251,7 @@ public class ShopMainActivity extends AppCompatActivity {
 
     public void setShopResult(ShopResult shopResult) {
         if(shopResult.description.equals("success")) { //description이 success인 경우
-            ShopTopInfo shopTopInfo = shopResult.result;
+            shopTopInfo = shopResult.result;
 
             setupToolbar(shopTopInfo.shopName); //툴바에 매장명 세팅
             shopTitle.setText(shopTopInfo.shopName); //매장명
@@ -279,11 +275,6 @@ public class ShopMainActivity extends AppCompatActivity {
             } else if (shopTopInfo.orderType == 3) {
                 pickup.setBackground(getResources().getDrawable(R.color.pickUp_on));
             }
-
-            origin = shopTopInfo.origin; //원산지
-            menuList = shopTopInfo.list; //메뉴리스트
-
-            Log.d(TAG, "origin : " + origin);
         }
     }
 }

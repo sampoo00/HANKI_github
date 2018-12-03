@@ -14,7 +14,7 @@ public class Application extends android.app.Application {
     public String tempUrl = "http://192.168.1.108:8080/"; //로컬용 주소, 테스트용
     // ***************** //
 
-    public String imageUrl = "http://117.17.156.101:8180/HANKI/image/shop/textLogo/"; //이미지 경로
+    public String imageUrl = "http://117.17.156.101:8180/HANKI/image/"; //이미지 경로
 
     public static Application getInstance() {
         return instance;
@@ -30,7 +30,7 @@ public class Application extends android.app.Application {
     public void buildNetworkService() {
         Retrofit.Builder builder = new Retrofit.Builder();
         Retrofit retrofit = builder
-                .baseUrl(baseUrl) //여기서 바꿔주기 (baseUrl or tempUrl), ShopNameAdapter 이미지 URL도 바꿔주기
+                .baseUrl(baseUrl) //여기서 바꿔주기 (baseUrl or tempUrl), ShopLogoAdapter 이미지 URL도 바꿔주기
                 .addConverterFactory(GsonConverterFactory.create())
                 .addConverterFactory(ScalarsConverterFactory.create())
                 .build();
