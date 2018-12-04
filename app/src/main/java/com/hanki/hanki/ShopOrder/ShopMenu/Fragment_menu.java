@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class Fragment_menu extends Fragment {
 
     //메인메뉴
@@ -42,16 +41,16 @@ public class Fragment_menu extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.shop_main_fragment_menu, container, false);
-
-        //ShopMainActivity에서 넘겨준 shopTopInfo 받기
-        Bundle bundle = getArguments();
-        shopTopInfo = (ShopTopInfo) bundle.getParcelable("shopTopInfo");
         return view;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        //ShopMainActivity에서 넘겨준 shopTopInfo 받기
+        Bundle bundle = getArguments();
+        shopTopInfo = (ShopTopInfo) bundle.getParcelable("shopTopInfo");
 
         init(view);
         initMenuRecyclerView(view);
@@ -60,7 +59,8 @@ public class Fragment_menu extends Fragment {
     public void init(View view) {
         //원산지 표시
         TextView txtCountryOrigin = (TextView) view.findViewById(R.id.shopMain_countryOforigin);
-        txtCountryOrigin.setText(shopTopInfo.origin);
+        String origin = shopTopInfo.origin;
+        txtCountryOrigin.setText(origin);
 
         mMainMenuList = new ArrayList<>();
         mSubMenuList = new ArrayList<>();

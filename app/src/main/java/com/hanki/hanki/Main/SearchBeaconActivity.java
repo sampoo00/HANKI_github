@@ -33,7 +33,6 @@ public class SearchBeaconActivity extends AppCompatActivity {
     private boolean isScanning;
 
     NetworkService networkService;
-
     ArrayList<ShopLogo> shopLogoList; //인식된 매장로고 리스트
 
     public static final String TAG = "SEARCH BEACON";
@@ -86,11 +85,16 @@ public class SearchBeaconActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ShopLogo> call, Response<ShopLogo> response) {
                 if (response.isSuccessful()) {
-                    if(!shopLogoList.contains(response.body())) {
+                    if (shopLogoList.size() == 0) {
                         shopLogoList.add(response.body());
+                    } else {
+                        for (int i = 0; i < shopLogoList.size(); i++) {
+                            if (!shopLogoList.get(i).getShopCode().equals(response.body().getShopCode())) {
+                                shopLogoList.add(response.body());
+                            }
+                        }
                     }
                     adapter.notifyDataSetChanged();
-                    Log.d(TAG, response.body().toString());
                 }
             }
 

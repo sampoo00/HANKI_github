@@ -89,8 +89,6 @@ public class ShopMainActivity extends AppCompatActivity {
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mViewPager = (ViewPager) findViewById(R.id.shopMain_viewPager);
 
-        mViewPager.setAdapter(mSectionsPagerAdapter);
-
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTabLayout));
         mTabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
@@ -238,6 +236,7 @@ public class ShopMainActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     ShopResult shopResult = response.body();
                     setShopResult(shopResult);
+                    mViewPager.setAdapter(mSectionsPagerAdapter);
                     Log.d(TAG, "메뉴판 조회 성공");
                 }
             }

@@ -2,6 +2,7 @@ package com.hanki.hanki.ShopOrder.ShopMenu;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +57,7 @@ public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder
         String imageUrl = Application.getInstance().imageUrl + "menu/"
                 + shopCode + "/" + mainMenuData.get(position).getMenuImgId();
         Glide.with(context).load(imageUrl).into(holder.VH_menu_rec_image);
+        Log.d("MAIN_MENU_ADAPTER", "IMAGE_URL : " + imageUrl);
 
         holder.VH_menu_rec_title.setText(mainMenuData.get(position).getMenuName());
         holder.VH_menu_rec_fee.setText(String.valueOf(moneyFormat(mainMenuData.get(position).getMenuPrice()))+"원");
