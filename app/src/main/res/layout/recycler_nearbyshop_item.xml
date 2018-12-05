@@ -20,7 +20,7 @@
         android:layout_alignTop="@id/nearbyshop_shopImage"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
-        android:layout_toRightOf="@id/nearbyshop_shopImage"
+        android:layout_toEndOf="@id/nearbyshop_shopImage"
         android:gravity="center_vertical">
 
         <TextView
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="교촌치킨 서초점"
-            android:textColor="#000"
+            android:textColor="#444"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -36,22 +36,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nearbyshop_shopName"
-            android:layout_marginRight="10dp">
+            android:layout_marginEnd="10dp">
 
             <TextView
                 android:id="@+id/nearbyshop_star"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/nearbyshop_shopName"
                 android:text="★" />
 
             <TextView
                 android:id="@+id/nearbyshop_shopScore"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/nearbyshop_shopName"
-                android:layout_toRightOf="@id/nearbyshop_star"
-                android:text="4.2" />
+                android:text="4.2점"
+                android:textColor="#444"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -60,20 +59,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/nearbyshop_scoreLayout"
-            android:layout_toRightOf="@id/nearbyshop_scoreLayout">
+            android:layout_toEndOf="@id/nearbyshop_scoreLayout">
 
             <TextView
                 android:id="@+id/nearbyshop_review"
-                android:layout_marginRight="3dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="리뷰" />
+                android:layout_marginEnd="3dp"
+                android:text="리뷰"
+                android:textColor="#666" />
 
             <TextView
                 android:id="@+id/nearbyshop_reviewNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="89" />
+                android:text="89"
+                android:textColor="#666" />
 
         </LinearLayout>
 
@@ -82,7 +83,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/nearbyshop_reviewLayout"
-            android:text="허니콤보, 레드콤보" />
+            android:text="허니콤보, 레드콤보"
+            android:textColor="#666" />
 
     </RelativeLayout>
 
@@ -92,45 +94,48 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@id/nearbyshop_shopImage"
         android:layout_alignTop="@id/nearbyshop_shopImage"
-        android:layout_toLeftOf="@+id/nearbyshop_next"
+        android:layout_toStartOf="@+id/nearbyshop_next"
         android:gravity="center_vertical">
 
         <TextView
-            android:id="@+id/nearbyshop_pickup"
+            android:id="@+id/nearbyshop_nonpickup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
-            android:background="#d847ddff"
-            android:gravity="center"
-            android:paddingBottom="5dp"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:paddingTop="5dp"
-            android:text="픽업"
-            android:textColor="#fff" />
-
-        <TextView
-            android:id="@+id/nearbyshop_here"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/nearbyshop_pickup"
-            android:background="#d8ff4747"
+            android:background="#a8da5f"
             android:gravity="center"
             android:paddingBottom="5dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
             android:paddingTop="5dp"
             android:text="현장"
-            android:textColor="#fff" />
+            android:textColor="#fff"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/nearbyshop_pickup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nearbyshop_nonpickup"
+            android:background="#f69679"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp"
+            android:text="픽업"
+            android:textColor="#fff"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
     <ImageView
         android:id="@+id/nearbyshop_next"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
+        android:layout_width="15dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/ic_chevron_right_black_24dp" />
+        android:layout_marginLeft="5dp"
+        android:background="@drawable/icon_next_button" />
 
 </RelativeLayout>

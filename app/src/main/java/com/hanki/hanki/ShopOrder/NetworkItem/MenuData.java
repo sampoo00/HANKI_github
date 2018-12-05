@@ -1,10 +1,5 @@
 package com.hanki.hanki.ShopOrder.NetworkItem;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.io.Serializable;
-
 public class MenuData {
     private String menuName;
     private int menuPrice;
