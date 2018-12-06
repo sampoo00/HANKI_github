@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
-public class MenuData {
+public class MenuData implements Parcelable {
     private String menuName;
     private int menuPrice;
     private String menuImgId;
@@ -14,6 +14,30 @@ public class MenuData {
     private String soldOutYn;
     private String menuDoc;
     private String toppingKey;
+
+    protected MenuData(Parcel in) {
+        menuName = in.readString();
+        menuPrice = in.readInt();
+        menuImgId = in.readString();
+        pickUpType = in.readInt();
+        category = in.readString();
+        soldOutYn = in.readString();
+        menuDoc = in.readString();
+        toppingKey = in.readString();
+    }
+
+    //Creator
+    public static final Creator<MenuData> CREATOR = new Creator<MenuData>() {
+        @Override
+        public MenuData createFromParcel(Parcel in) {
+            return new MenuData(in);
+        }
+
+        @Override
+        public MenuData[] newArray(int size) {
+            return new MenuData[size];
+        }
+    };
 
     @Override
     public String toString() {
@@ -59,5 +83,22 @@ public class MenuData {
 
     public String getToppingKey() {
         return toppingKey;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(menuName);
+        dest.writeInt(menuPrice);
+        dest.writeString(menuImgId);
+        dest.writeInt(pickUpType);
+        dest.writeString(category);
+        dest.writeString(soldOutYn);
+        dest.writeString(menuDoc);
+        dest.writeString(toppingKey);
     }
 }

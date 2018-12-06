@@ -2,7 +2,9 @@ package com.hanki.hanki.ShopOrder.ShopMenu;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,21 +18,22 @@ import com.hanki.hanki.ShopOrder.ShopMainActivity;
 import com.hanki.hanki.Util.Application;
 
 import java.text.DecimalFormat;
-import java.util.List;
+import java.util.ArrayList;
 
 public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
 
     private Context context;
-    private List<MenuData> mainMenuData;
+    private ArrayList<MenuData> mainMenuData;
     private String shopCode;
 
-    public ShopMainMenuAdapter(Context context, List<MenuData> mainMenuData, String shopCode) {
+
+    public ShopMainMenuAdapter(Context context, ArrayList<MenuData> mainMenuData, String shopCode) {
         this.context = context;
         this.mainMenuData = mainMenuData;
         this.shopCode = shopCode;
     }
 
-    public void setAdapter(List<MenuData> mainMenuData) {
+    public void setAdapter(ArrayList<MenuData> mainMenuData) {
         this.mainMenuData = mainMenuData;
         notifyDataSetChanged();
     }
@@ -43,17 +46,17 @@ public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder
         return shopMenu_viewHolder;
     }
 
-    public static Fragment_menu newInstance(String imagUrl, String ) {
-        Fragment_menu fragment = new Fragment_menu();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+//    public static Fragment_menu newInstance(ArrayList<MenuData> mainMenuData) {
+//        Fragment_menu fragment = new Fragment_menu();
+//        Bundle args = new Bundle();
+//        args.putParcelable(SelectedMenuData, (Parcelable) mainMenuData);
+//        fragment.setArguments(args);
+//        return fragment;
+//    }
+
     //shopDialog 호출
-    public void goShopMenuOrder(){
-        ShopMenuDialog shopMenuDialog = new ShopMenuDialog(context);
+    public void goShopMenuOrder(MenuData menuData){
+        ShopMenuDialog shopMenuDialog = new ShopMenuDialog(context, menuData, shopCode);
         shopMenuDialog.setCanceledOnTouchOutside(false);
         shopMenuDialog.show();
     }
@@ -66,7 +69,7 @@ public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(ShopMenuViewHolder holder, int position) {
+    public void onBindViewHolder(ShopMenuViewHolder holder, final int position) {
         String imageUrl = Application.getInstance().imageUrl + "menu/"
                 + shopCode + "/" + mainMenuData.get(position).getMenuImgId();
         Glide.with(context).load(imageUrl).into(holder.VH_menu_main_image);
@@ -80,7 +83,7 @@ public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder
                //POP_UP 만들기
 
 //                Toast.makeText(context, "이미지 클릭", Toast.LENGTH_LONG).show();
-                goShopMenuOrder();
+                goShopMenuOrder(mainMenuData.get(position));
             }
         });
 
@@ -89,7 +92,7 @@ public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder
             public void onClick(View view) {
                 //popup
 //                Toast.makeText(context, "타이틀 클릭", Toast.LENGTH_LONG).show();
-                goShopMenuOrder();
+                goShopMenuOrder(mainMenuData.get(position));
 
             }
         });
@@ -99,7 +102,7 @@ public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder
             public void onClick(View view) {
                 //popup
 //                Toast.makeText(context, "가격 클릭", Toast.LENGTH_LONG).show();
-                goShopMenuOrder();
+                goShopMenuOrder(mainMenuData.get(position));
 
             }
         });
@@ -109,7 +112,7 @@ public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder
             public void onClick(View view) {
                 //popup
 //                Toast.makeText(context, "LinearLayout1클릭", Toast.LENGTH_LONG).show();
-                goShopMenuOrder();
+                goShopMenuOrder(mainMenuData.get(position));
 
             }
         });

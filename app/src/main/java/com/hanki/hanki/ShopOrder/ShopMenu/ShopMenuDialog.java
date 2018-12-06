@@ -6,7 +6,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,9 +23,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
 import com.hanki.hanki.ShopOrder.ShopPayment.PaymentActivity;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -272,13 +276,17 @@ public class ShopMenuDialog extends Dialog {
     }
 
 
-    public ShopMenuDialog(@NonNull Context context) {
+
+
+    public ShopMenuDialog(@NonNull Context context, MenuData menuData, String shopCode) {
         super(context);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setContentView(layout.shop_menu_dialog);
         mContext = this;
+        MenuData selectedMenuData = menuData;
         mCalTotalPrice = (TextView) findViewById(id.menu_totalPrice);
         mCalTotalPrice.setText("0");
+
 
 
         initTotalCount();

@@ -25,13 +25,13 @@ public class Fragment_menu extends Fragment {
     private RecyclerView mMainMenuRecyclerView;
     private GridLayoutManager mMainMenuGridLayoutManager;
     private ShopMainMenuAdapter mMainMenuAdapter;
-    private List<MenuData> mMainMenuList;
+    private ArrayList<MenuData> mMainMenuList;
 
     //서브메뉴
     private RecyclerView mSubMenuRecyclerView;
     private LinearLayoutManager mSubMenuLinearLayoutManager;
     private ShopSubMenuAdapter mSubMenuAdapter;
-    private List<MenuData> mSubMenuList;
+    private ArrayList<MenuData> mSubMenuList;
 
     ShopTopInfo shopTopInfo;
 
