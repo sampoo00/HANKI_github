@@ -34,7 +34,7 @@ public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder
 
     @Override
     public ShopMenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shop_menu_recmenu_recycler, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shop_menu_mian_menu_recycler, parent, false);
         ShopMenuViewHolder shopMenu_viewHolder = new ShopMenuViewHolder(view);
 
         return shopMenu_viewHolder;

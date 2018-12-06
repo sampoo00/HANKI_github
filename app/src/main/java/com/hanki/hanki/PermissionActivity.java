@@ -20,19 +20,21 @@ import java.util.List;
 public class PermissionActivity extends AppCompatActivity {
 
     PermissionListener permissionListener;
+    SharedPreferences pref;
+    String checkShowTutorial;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_permission);
 
-        SharedPreferences pref = getSharedPreferences("pref", MODE_PRIVATE);
-        final String checkShowTutorial = pref.getString("selectedNoShow", "no");
+        pref = getSharedPreferences("pref", MODE_PRIVATE);
+        checkShowTutorial = pref.getString("selectedNoShow", "no");
 
         permissionListener = new PermissionListener() {
             @Override
             public void onPermissionGranted() { //권한을 다 허용하였을 경우
-
                 // **** 화면전환 (수정필요) **** //
                 Intent intent;
                 if (checkShowTutorial.equals("no")) {
@@ -57,12 +59,25 @@ public class PermissionActivity extends AppCompatActivity {
         permissionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //전화걸기와 위치 권한 받기
-                TedPermission.with(PermissionActivity.this)
-                        .setPermissionListener(permissionListener)
-                        .setDeniedMessage("If you reject permission, you can not user this service\n\nPlease turn on permissions at [Setting] > [Permission]")
-                        .setPermissions(Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CALL_PHONE)
-                        .check();
+                if(Build.VERSION.SDK_INT > 23) {
+                    //전화걸기와 위치 권한 받기
+                    TedPermission.with(PermissionActivity.this)
+                            .setPermissionListener(permissionListener)
+                            .setDeniedMessage("If you reject permission, you can not user this service\n\nPleas turn on permissions at [Setting] > [Permission]")
+                            .setPermissions(Manifest.permission.CALL_PHONE, Manifest.permission.ACCESS_FINE_LOCATION)
+                            .check();
+                }
+                else{
+                    Intent intent;
+                    if (checkShowTutorial.equals("no")) {
+                        intent = new Intent(PermissionActivity.this, TutorialActivity.class);
+                    } else {
+                        intent = new Intent(PermissionActivity.this, HomeActivity.class);
+                    }
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         });
     }
