@@ -102,20 +102,6 @@ public class Fragment_menu extends Fragment {
             }
         }
 
-//        mMenuList = Arrays.asList(new ShopSubMenuData("국수", 140020),
-//                new ShopSubMenuData("국수2", 1403000),
-//                new ShopSubMenuData("국수3", 1200),
-//                new ShopSubMenuData("국수4", 1039439),
-//                new ShopSubMenuData("국수5", 14000),
-//                new ShopSubMenuData("국수6", 1403000),
-//                new ShopSubMenuData("국수7", 1200));
-//
-//        mMenuRecList = Arrays.asList(new ShopMainMenuData("부대찌게", 14000),
-//                new ShopMainMenuData("된장찌게", 1403000),
-//                new ShopMainMenuData("칼국수", 1200),
-//                new ShopMainMenuData("게찌게", 1039439),
-//                new ShopMainMenuData("부대찌게", 14000),
-//                new ShopMainMenuData("된장찌게", 1403000),
-//                new ShopMainMenuData("칼국수", 1200));
+
     }
 }

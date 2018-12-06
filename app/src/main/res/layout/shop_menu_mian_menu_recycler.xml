@@ -7,7 +7,7 @@
 
 
         <LinearLayout
-            android:id="@+id/shopMain_menu_rec_recyclerLayout1"
+            android:id="@+id/shopMain_menu_main_recyclerLayout1"
             android:layout_width="150dp"
             android:layout_height="0dp"
             android:gravity="center"
@@ -17,7 +17,7 @@
             android:background="@color/pdlg_color_yellow">
 
             <ImageView
-                android:id="@+id/menu_rec_recyclerImage1"
+                android:id="@+id/menu_main_recyclerImage1"
                 android:layout_width="120dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="10dp"
@@ -25,7 +25,7 @@
                 android:onClick="onClick" />
 
             <TextView
-                android:id="@+id/menu_rec_recycler_title1"
+                android:id="@+id/menu_main_recycler_title1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -38,7 +38,7 @@
 
 
             <TextView
-                android:id="@+id/menu_rec_recycler_fee1"
+                android:id="@+id/menu_main_recycler_fee1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"

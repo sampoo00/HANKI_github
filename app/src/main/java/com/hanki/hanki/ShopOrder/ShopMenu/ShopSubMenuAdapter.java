@@ -59,12 +59,12 @@ public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
     public void onBindViewHolder(ShopMenuViewHolder holder, int position) {
         String imageUrl = Application.getInstance().imageUrl + "menu/"
                 + shopCode + "/" + subMenuData.get(position).getMenuImgId();
-        Glide.with(context).load(imageUrl).into(holder.VH_menu_image);
+        Glide.with(context).load(imageUrl).into(holder.VH_menu_sub_image);
 
-        holder.VH_menu_title.setText(subMenuData.get(position).getMenuName());
-        holder.VH_menu_fee.setText(String.valueOf(moneyFormat(subMenuData.get(position).getMenuPrice()))+"원");
+        holder.VH_menu_sub_title.setText(subMenuData.get(position).getMenuName());
+        holder.VH_menu_sub_fee.setText(String.valueOf(moneyFormat(subMenuData.get(position).getMenuPrice()))+"원");
 
-        holder.VH_menu_image.setOnClickListener(new View.OnClickListener() {
+        holder.VH_menu_sub_image.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                //POP_UP 만들기
@@ -73,7 +73,7 @@ public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
             }
         });
 
-        holder.VH_menu_title.setOnClickListener(new View.OnClickListener() {
+        holder.VH_menu_sub_title.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //popup
@@ -83,7 +83,7 @@ public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
             }
         });
 
-        holder.VH_menu_fee.setOnClickListener(new View.OnClickListener() {
+        holder.VH_menu_sub_fee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //popup
@@ -92,7 +92,7 @@ public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
             }
         });
 
-        holder.VH_menu_recyclerLayout.setOnClickListener(new View.OnClickListener() {
+        holder.VH_menu_sub_recyclerLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //popup
