@@ -25,12 +25,14 @@ public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder
     private Context context;
     private ArrayList<MenuData> mainMenuData;
     private String shopCode;
+    private int orderType;
 
 
-    public ShopMainMenuAdapter(Context context, ArrayList<MenuData> mainMenuData, String shopCode) {
+    public ShopMainMenuAdapter(Context context, ArrayList<MenuData> mainMenuData, String shopCode, int orderType) {
         this.context = context;
         this.mainMenuData = mainMenuData;
         this.shopCode = shopCode;
+        this.orderType = orderType;
     }
 
     public void setAdapter(ArrayList<MenuData> mainMenuData) {
@@ -56,7 +58,7 @@ public class ShopMainMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder
 
     //shopDialog 호출
     public void goShopMenuOrder(MenuData menuData){
-        ShopMenuDialog shopMenuDialog = new ShopMenuDialog(context, menuData, shopCode);
+        ShopMenuDialog shopMenuDialog = new ShopMenuDialog(context, menuData, shopCode, orderType);
         shopMenuDialog.setCanceledOnTouchOutside(false);
         shopMenuDialog.show();
     }

@@ -82,9 +82,9 @@ public class Fragment_menu extends Fragment {
 
         initMenuArrayList();
 
-        mMainMenuAdapter = new ShopMainMenuAdapter(getContext(), mMainMenuList, shopTopInfo.shopCode); //메인메뉴
+        mMainMenuAdapter = new ShopMainMenuAdapter(getContext(), mMainMenuList, shopTopInfo.shopCode, shopTopInfo.orderType); //메인메뉴
         mMainMenuRecyclerView.setAdapter(mMainMenuAdapter);
-        mSubMenuAdapter = new ShopSubMenuAdapter(getContext(), mSubMenuList, shopTopInfo.shopCode); //서브메뉴
+        mSubMenuAdapter = new ShopSubMenuAdapter(getContext(), mSubMenuList, shopTopInfo.shopCode, shopTopInfo.orderType); //서브메뉴
         mSubMenuRecyclerView.setAdapter(mSubMenuAdapter);
     }
 

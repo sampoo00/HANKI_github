@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -17,6 +18,7 @@ import java.util.List;
 public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuListViewHolder> {
     private Context context;
     private List<ShopOptMenuData> optMenuData;
+    private MenuData menuData;
     int toppingMenuCount = 1;
     int optMenuPrice = 0;
 

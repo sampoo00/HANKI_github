@@ -6,34 +6,45 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.os.Bundle;
+import android.nfc.Tag;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.hanki.hanki.R;
 import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
+import com.hanki.hanki.ShopOrder.NetworkItem.ToppingData;
+import com.hanki.hanki.ShopOrder.NetworkItem.ToppingResult;
 import com.hanki.hanki.ShopOrder.ShopPayment.PaymentActivity;
+import com.hanki.hanki.Util.Application;
+import com.hanki.hanki.Util.NetworkService;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import static com.hanki.hanki.R.*;
 
 public class ShopMenuDialog extends Dialog {
+    String TAG = "check2";
     NestedScrollView mNestScroll;
     //필수 메뉴
     private RecyclerView mReqMenuRecyclerView;
@@ -73,6 +84,26 @@ public class ShopMenuDialog extends Dialog {
     //식판 담기, 주문 하기
     LinearLayout addCartLayout;
     LinearLayout orderMenuLayout;
+
+    //Menu와 topping
+    int mShopOrderType;
+    String mSelectedShopCode;
+    MenuData mSelectedMenuData;
+    ArrayList<ToppingData> toppingDataList;
+
+    //메뉴판
+    ImageView mMenuImg;
+    TextView mMenuTitle;
+    RelativeLayout mReqMenuLayout; //menu_reqMenuLayout
+    ImageView mFirstMenuDotLine; //menu_dotline2
+
+    RelativeLayout mOptMenuLayout; //menu_optMenuLayout
+    ImageView mSecondMenuDotLine; //menu_dotline3
+
+
+
+
+
 
 
     public void initPickupType(){
@@ -123,6 +154,8 @@ public class ShopMenuDialog extends Dialog {
 //            }
 //        });
     }
+
+    //초기 수량
     public void initTotalCount(){
         mTotalCountInt = 1;
         mTotalSubBtn = (ImageButton)findViewById(id.menu_totalSubBtn);
@@ -275,20 +308,31 @@ public class ShopMenuDialog extends Dialog {
 
     }
 
+    public void init(){
+        mMenuImg = (ImageView) findViewById(id.menu_MenuImg);
+        mMenuTitle = (TextView) findViewById(id.menu_MenuTitle);
+        mReqMenuLayout = (RelativeLayout) findViewById(id.menu_reqMenuLayout); //
+        mFirstMenuDotLine = (ImageView) findViewById(id.menu_dotline2); //만약 Req 안나오게 하면 같이 없애야함
+
+        mOptMenuLayout = (RelativeLayout) findViewById(id.menu_optMenuLayout); //menu_optMenuLayout
+        mSecondMenuDotLine = (ImageView) findViewById(id.menu_dotline3); //opt안나오게 하려면 같이 삭제
+    }
 
 
 
-    public ShopMenuDialog(@NonNull Context context, MenuData menuData, String shopCode) {
+    public ShopMenuDialog(@NonNull Context context, MenuData menuData, String shopCode, int orderType) {
         super(context);
         getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         setContentView(layout.shop_menu_dialog);
         mContext = this;
-        MenuData selectedMenuData = menuData;
+        mSelectedMenuData = menuData;
+        mSelectedShopCode = shopCode;
+        mShopOrderType = orderType;
         mCalTotalPrice = (TextView) findViewById(id.menu_totalPrice);
         mCalTotalPrice.setText("0");
 
-
-
+        init();
+        getToppingNetworking();
         initTotalCount();
         initRecycler();
         initPickupType();
@@ -303,6 +347,66 @@ public class ShopMenuDialog extends Dialog {
 //                dismiss();
 //            }
 //        });
+
+    }
+
+    public void setToppingResult(ToppingResult toppingResult) {
+        if(toppingResult.description.equals("success")) { //description이 success인 경우
+            toppingDataList = toppingResult.result;
+
+            String imageUrl = Application.getInstance().imageUrl + "menu/"
+                    + mSelectedShopCode + "/" + mSelectedMenuData.getMenuImgId();
+            Glide.with(getContext()).load(imageUrl).into(mMenuImg);
+
+            mMenuTitle.setText(mSelectedMenuData.getMenuName());
+
+            Log.d(TAG, "pickupType : " + mShopOrderType);
+            
+            // 매장 주문 타입 - 1: 현장/픽업, 2: 현장 only, 3: 픽업 only
+            if(mShopOrderType == 1) {
+                mPickupType.setVisibility(View.VISIBLE);
+                mNonPickupType.setVisibility(View.VISIBLE);
+                Log.d(TAG, "pickup&nonPickup : " + mShopOrderType);
+
+            } else if(mShopOrderType == 2) {
+                mPickupType.setVisibility(View.GONE);
+                mNonPickupType.setVisibility(View.VISIBLE);
+                Log.d(TAG, "nonPickup : " + mShopOrderType);
+
+            } else if (mShopOrderType == 3) {
+                mPickupType.setVisibility(View.VISIBLE);
+                mNonPickupType.setVisibility(View.GONE);
+                Log.d(TAG, "pickup : " + mShopOrderType);
+            }
+        }
+    }
+
+    public void getToppingNetworking(){
+        NetworkService networkService = Application.getInstance().getNetworkService();
+
+        //toppingKey
+        String toppingKey = mSelectedMenuData.getToppingKey();
+
+        Log.d(TAG, toppingKey);
+
+        //통신
+        Call<ToppingResult> request = networkService.getToppingResult(toppingKey);
+        request.enqueue(new Callback<ToppingResult>() {
+            @Override
+            public void onResponse(Call<ToppingResult> call, Response<ToppingResult> response) {
+                if (response.isSuccessful()) {
+                    ToppingResult toppingResult = response.body();
+                    setToppingResult(toppingResult);
+
+                    Log.d(TAG, "토핑 다이얼로그 성공");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ToppingResult> call, Throwable t) {
+                Log.d(TAG, "토핑 조회 실패 : " + t.getMessage());
+            }
+        });
 
     }
 

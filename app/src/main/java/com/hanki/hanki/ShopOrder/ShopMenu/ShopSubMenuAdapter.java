@@ -15,21 +15,23 @@ import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
 import com.hanki.hanki.Util.Application;
 
 import java.text.DecimalFormat;
-import java.util.List;
+import java.util.ArrayList;
 
 public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
 
     private Context context;
-    private List<MenuData> subMenuData;
+    private ArrayList<MenuData> subMenuData;
     private String shopCode;
+    int orderType;
 
-    public ShopSubMenuAdapter(Context context, List<MenuData> subMenuData, String shopCode) {
+    public ShopSubMenuAdapter(Context context, ArrayList<MenuData> subMenuData, String shopCode, int orderType) {
         this.context = context;
         this.subMenuData = subMenuData;
         this.shopCode = shopCode;
+        this.orderType = orderType;
     }
 
-    public void setAdapter(List<MenuData> subMenuData) {
+    public void setAdapter(ArrayList<MenuData> subMenuData) {
         this.subMenuData = subMenuData;
         notifyDataSetChanged();
     }
@@ -42,8 +44,8 @@ public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
         return shopMenu_viewHolder;
     }
 
-    public void goShopMenuOrder(){
-        ShopMenuDialog shopMenuDialog = new ShopMenuDialog(context);
+    public void goShopMenuOrder(MenuData menuData){
+        ShopMenuDialog shopMenuDialog = new ShopMenuDialog(context, menuData, shopCode, orderType);
         shopMenuDialog.setCanceledOnTouchOutside(false);
         shopMenuDialog.show();
     }
@@ -56,7 +58,7 @@ public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
 
     @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(ShopMenuViewHolder holder, int position) {
+    public void onBindViewHolder(ShopMenuViewHolder holder, final int position) {
         String imageUrl = Application.getInstance().imageUrl + "menu/"
                 + shopCode + "/" + subMenuData.get(position).getMenuImgId();
         Glide.with(context).load(imageUrl).into(holder.VH_menu_sub_image);
@@ -69,7 +71,7 @@ public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
             public void onClick(View view) {
                //POP_UP 만들기
                 //Toast.makeText(context, "이미지 클릭", Toast.LENGTH_LONG).show();
-                goShopMenuOrder();
+                goShopMenuOrder(subMenuData.get(position));
             }
         });
 
@@ -78,7 +80,7 @@ public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
             public void onClick(View view) {
                 //popup
 //                Toast.makeText(context, "타이틀 클릭", Toast.LENGTH_LONG).show();
-                goShopMenuOrder();
+                goShopMenuOrder(subMenuData.get(position));
 
             }
         });
@@ -88,7 +90,7 @@ public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
             public void onClick(View view) {
                 //popup
 //                Toast.makeText(context, "가격 클릭", Toast.LENGTH_LONG).show();
-                goShopMenuOrder();
+                goShopMenuOrder(subMenuData.get(position));
             }
         });
 
@@ -97,7 +99,7 @@ public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
             public void onClick(View view) {
                 //popup
 //                Toast.makeText(context, "relativeLayout클릭", Toast.LENGTH_LONG).show();
-                goShopMenuOrder();
+                goShopMenuOrder(subMenuData.get(position));
             }
         });    }
 
