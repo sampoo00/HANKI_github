@@ -50,13 +50,13 @@ public class ShopMenuDialog extends Dialog {
     private RecyclerView mReqMenuRecyclerView;
     private LinearLayoutManager mReqMenuLinearLayoutManager;
     private ShopReqMenuListAdapter mReqMenuAdapter;
-    List<ShopReqMenuData> mReqMenuList;
+    ArrayList<ToppingData> mReqMenuList = new ArrayList<>();
 
     //선택 메뉴
     private RecyclerView mOptMenuRecyclerView;
     private LinearLayoutManager mOptMenuLinearLayoutManager;
     private ShopOptMenuListAdapter mOptMenuAdapter;
-    List<ShopOptMenuData> mOptMenuList;
+    ArrayList<ToppingData> mOptMenuList = new ArrayList<>();
 
     //총수량
     int mTotalCountInt;
@@ -89,7 +89,7 @@ public class ShopMenuDialog extends Dialog {
     int mShopOrderType;
     String mSelectedShopCode;
     MenuData mSelectedMenuData;
-    ArrayList<ToppingData> toppingDataList;
+    ArrayList<ToppingData> toppingDataList = new ArrayList<>();
 
     //메뉴판
     ImageView mMenuImg;
@@ -334,9 +334,9 @@ public class ShopMenuDialog extends Dialog {
         init();
         getToppingNetworking();
         initTotalCount();
-        initRecycler();
         initPickupType();
         initRequest();
+//        initRecycler();
         initCartOrder();
 
         //참고
@@ -352,7 +352,8 @@ public class ShopMenuDialog extends Dialog {
 
     public void setToppingResult(ToppingResult toppingResult) {
         if(toppingResult.description.equals("success")) { //description이 success인 경우
-            toppingDataList = toppingResult.result;
+            toppingDataList.addAll(toppingResult.result);
+
 
             String imageUrl = Application.getInstance().imageUrl + "menu/"
                     + mSelectedShopCode + "/" + mSelectedMenuData.getMenuImgId();
@@ -361,7 +362,7 @@ public class ShopMenuDialog extends Dialog {
             mMenuTitle.setText(mSelectedMenuData.getMenuName());
 
             Log.d(TAG, "pickupType : " + mShopOrderType);
-            
+
             // 매장 주문 타입 - 1: 현장/픽업, 2: 현장 only, 3: 픽업 only
             if(mShopOrderType == 1) {
                 mPickupType.setVisibility(View.VISIBLE);
@@ -378,6 +379,8 @@ public class ShopMenuDialog extends Dialog {
                 mNonPickupType.setVisibility(View.GONE);
                 Log.d(TAG, "pickup : " + mShopOrderType);
             }
+
+            initRecycler();
         }
     }
 
@@ -411,19 +414,35 @@ public class ShopMenuDialog extends Dialog {
     }
 
     public void initArrayList(){
+        Log.d(TAG, "toppingDatalist" + toppingDataList);
 
-        mReqMenuList = Arrays.asList(new ShopReqMenuData("대","5~6인", 1326000),
-                new ShopReqMenuData("중", "3~4인", 23000),
-                new ShopReqMenuData("소", "1~2인", 20000),
-                new ShopReqMenuData("대","5~6인", 26000),
-                new ShopReqMenuData("중", "3~4인", 23000),
-                new ShopReqMenuData("소", "1~2인", 20000));
+        if (toppingDataList != null) {
+            if (toppingDataList.size() != 0) {
+                for (int i = 0; i < toppingDataList.size(); i++) {
+                    if (toppingDataList.get(i).getToppingGroupName().equals("사이즈")) { //카테고리가 main인 menuList 구성
+                        mReqMenuList.add(toppingDataList.get(i));
+                        Log.d(TAG, "mReqMenuList.add" + mReqMenuList.get(i).toString());
+                    } else if (toppingDataList.get(i).getToppingGroupName().equals("추가선택")) { //카테고리가 sub인 menuList 구성
+                        mOptMenuList.add(toppingDataList.get(i));
+                        Log.d(TAG, "mOptMenuList.add" + mOptMenuList.get(i).toString());
 
-        mOptMenuList = Arrays.asList(new ShopOptMenuData("라면사리", 1000),
-                new ShopOptMenuData("떡사리", 2000),
-        new ShopOptMenuData("모둠사리", 4000),
-        new ShopOptMenuData("치즈", 2000),
-        new ShopOptMenuData("파", 500));
+                    }
+                }
+            }
+        }
+
+//        mReqMenuList = Arrays.asList(new ShopReqMenuData("대","5~6인", 1326000),
+//                new ShopReqMenuData("중", "3~4인", 23000),
+//                new ShopReqMenuData("소", "1~2인", 20000),
+//                new ShopReqMenuData("대","5~6인", 26000),
+//                new ShopReqMenuData("중", "3~4인", 23000),
+//                new ShopReqMenuData("소", "1~2인", 20000));
+//
+//        mOptMenuList = Arrays.asList(new ShopOptMenuData("라면사리", 1000),
+//                new ShopOptMenuData("떡사리", 2000),
+//        new ShopOptMenuData("모둠사리", 4000),
+//        new ShopOptMenuData("치즈", 2000),
+//        new ShopOptMenuData("파", 500));
 
     }
 

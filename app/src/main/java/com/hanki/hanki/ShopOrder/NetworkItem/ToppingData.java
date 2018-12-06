@@ -6,13 +6,15 @@ public class ToppingData {
     String toppingName;
     int toppingPrice;
     String toppingSoldOutYn;
+    int toppingNum;
 
-    public ToppingData(String shopCode, String toppingGroupName, String toppingName, int toppingPrice, String toppingSoldOutYn) {
+    public ToppingData(String shopCode, String toppingGroupName, String toppingName, int toppingPrice, String toppingSoldOutYn, int toppingNum) {
         this.shopCode = shopCode;
         this.toppingGroupName = toppingGroupName;
         this.toppingName = toppingName;
         this.toppingPrice = toppingPrice;
         this.toppingSoldOutYn = toppingSoldOutYn;
+        this.toppingNum = toppingNum;
     }
 
     public String getShopCode() {
@@ -53,5 +55,13 @@ public class ToppingData {
 
     public void setToppingSoldOutYn(String toppingSoldOutYn) {
         this.toppingSoldOutYn = toppingSoldOutYn;
+    }
+
+    public void setToppingNum(int toppingNum) {
+        this.toppingNum = toppingNum;
+    }
+
+    public int getToppingNum() {
+        return toppingNum;
     }
 }
