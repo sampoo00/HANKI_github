@@ -12,98 +12,110 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
+import com.hanki.hanki.ShopOrder.NetworkItem.ShopTopInfo;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class Fragment_menu extends Fragment {
 
-    //강조하고 싶은 메뉴
-    private RecyclerView mMenuRecyclerView;
-    private LinearLayoutManager mMenuLinearLayoutManager;
-    private ShopSubMenuAdapter mMenuAdapter;
-    private List<ShopSubMenuData> mMenuList;
+    //메인메뉴
+    private RecyclerView mMainMenuRecyclerView;
+    private GridLayoutManager mMainMenuGridLayoutManager;
+    private ShopMainMenuAdapter mMainMenuAdapter;
+    private List<MenuData> mMainMenuList;
 
-    //매장 메뉴
-    private RecyclerView mMenuRecRecyclerView;
-    private GridLayoutManager mMenuRecGridLayoutManager;
-    private ShopMainMenuAdapter mMenuRecAdapter;
-    private List<ShopMainMenuData> mMenuRecList;
+    //서브메뉴
+    private RecyclerView mSubMenuRecyclerView;
+    private LinearLayoutManager mSubMenuLinearLayoutManager;
+    private ShopSubMenuAdapter mSubMenuAdapter;
+    private List<MenuData> mSubMenuList;
 
-    //원산지 표기
-    TextView txtCountryOrigin;
+    ShopTopInfo shopTopInfo;
 
+    public static final String TAG = "MENU";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.shop_main_fragment_menu, container, false);
+        View view = inflater.inflate(R.layout.shop_main_fragment_menu, container, false);
+        return view;
     }
-
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //ShopMainActivity에서 넘겨준 shopTopInfo 받기
+        Bundle bundle = getArguments();
+        shopTopInfo = (ShopTopInfo) bundle.getParcelable("shopTopInfo");
+
         init(view);
         initMenuRecyclerView(view);
-
-
     }
 
-    public void init(View view){
+    public void init(View view) {
+        //원산지 표시
+        TextView txtCountryOrigin = (TextView) view.findViewById(R.id.shopMain_countryOforigin);
+        String origin = shopTopInfo.origin;
+        txtCountryOrigin.setText(origin);
 
-        txtCountryOrigin = (TextView)view.findViewById(R.id.shopMain_countryOforigin);
-        txtCountryOrigin.setText("소고기(호주산), 돼지고기(국내산), 닭고기(국내산), 김치(국내산), 쌀(국내산)");
+        mMainMenuList = new ArrayList<>();
+        mSubMenuList = new ArrayList<>();
     }
-    public void initMenuRecyclerView(View view){
-        mMenuRecyclerView = view.findViewById(R.id.shopMain_menu_recyclerView);
-        mMenuRecRecyclerView = view.findViewById(R.id.shopMain_menu_rec_recyclerView);
 
-        mMenuLinearLayoutManager = new LinearLayoutManager(view.getContext());
-        mMenuLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        mMenuRecGridLayoutManager = new GridLayoutManager(view.getContext(), 2);
-        mMenuRecGridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
+    public void initMenuRecyclerView(View view) {
+        mMainMenuRecyclerView = view.findViewById(R.id.shopMain_main_menu_recyclerView);
+        mSubMenuRecyclerView = view.findViewById(R.id.shopMain_sub_menu_recyclerView);
 
+        mMainMenuGridLayoutManager = new GridLayoutManager(view.getContext(), 2);
+        mMainMenuGridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
+        mMainMenuRecyclerView.setLayoutManager(mMainMenuGridLayoutManager);
+        mMainMenuRecyclerView.setHasFixedSize(true);
 
-        mMenuRecyclerView.setLayoutManager(mMenuLinearLayoutManager);
-        mMenuRecyclerView.setHasFixedSize(true);
-        mMenuRecRecyclerView.setLayoutManager(mMenuRecGridLayoutManager);
-        mMenuRecRecyclerView.setHasFixedSize(true);
+        mSubMenuLinearLayoutManager = new LinearLayoutManager(view.getContext());
+        mSubMenuLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        mSubMenuRecyclerView.setLayoutManager(mSubMenuLinearLayoutManager);
+        mSubMenuRecyclerView.setHasFixedSize(true);
 
         initMenuArrayList();
 
-        mMenuRecAdapter = new ShopMainMenuAdapter(getContext(), mMenuRecList);
-        mMenuRecRecyclerView.setAdapter(mMenuRecAdapter);
-        mMenuAdapter = new ShopSubMenuAdapter(getContext(), mMenuList);
-        mMenuRecyclerView.setAdapter(mMenuAdapter);
-
-
+        mMainMenuAdapter = new ShopMainMenuAdapter(getContext(), mMainMenuList, shopTopInfo.shopCode); //메인메뉴
+        mMainMenuRecyclerView.setAdapter(mMainMenuAdapter);
+        mSubMenuAdapter = new ShopSubMenuAdapter(getContext(), mSubMenuList, shopTopInfo.shopCode); //서브메뉴
+        mSubMenuRecyclerView.setAdapter(mSubMenuAdapter);
     }
 
-    public void initMenuArrayList(){
+    public void initMenuArrayList() {
+        ArrayList<MenuData> menuList = shopTopInfo.list; //매장 메뉴리스트
+        if (shopTopInfo.list != null) {
+            if (menuList.size() != 0) {
+                for (int i = 0; i < menuList.size(); i++) {
+                    if (menuList.get(i).getCategory().equals("main")) { //카테고리가 main인 menuList 구성
+                        mMainMenuList.add(menuList.get(i));
+                    } else if (menuList.get(i).getCategory().equals("sub")) { //카테고리가 sub인 menuList 구성
+                        mSubMenuList.add(menuList.get(i));
+                    }
+                }
+            }
+        }
 
-        mMenuList = Arrays.asList(new ShopSubMenuData("국수", 140020),
-                new ShopSubMenuData("국수2", 1403000),
-                new ShopSubMenuData("국수3", 1200),
-                new ShopSubMenuData("국수4", 1039439),
-                new ShopSubMenuData("국수5", 14000),
-                new ShopSubMenuData("국수6", 1403000),
-                new ShopSubMenuData("국수7", 1200));
-
-        mMenuRecList = Arrays.asList(new ShopMainMenuData("부대찌게", 14000),
-                new ShopMainMenuData("된장찌게", 1403000),
-                new ShopMainMenuData("칼국수", 1200),
-                new ShopMainMenuData("게찌게", 1039439),
-                new ShopMainMenuData("부대찌게", 14000),
-                new ShopMainMenuData("된장찌게", 1403000),
-                new ShopMainMenuData("칼국수", 1200));
-
+//        mMenuList = Arrays.asList(new ShopSubMenuData("국수", 140020),
+//                new ShopSubMenuData("국수2", 1403000),
+//                new ShopSubMenuData("국수3", 1200),
+//                new ShopSubMenuData("국수4", 1039439),
+//                new ShopSubMenuData("국수5", 14000),
+//                new ShopSubMenuData("국수6", 1403000),
+//                new ShopSubMenuData("국수7", 1200));
+//
+//        mMenuRecList = Arrays.asList(new ShopMainMenuData("부대찌게", 14000),
+//                new ShopMainMenuData("된장찌게", 1403000),
+//                new ShopMainMenuData("칼국수", 1200),
+//                new ShopMainMenuData("게찌게", 1039439),
+//                new ShopMainMenuData("부대찌게", 14000),
+//                new ShopMainMenuData("된장찌게", 1403000),
+//                new ShopMainMenuData("칼국수", 1200));
     }
-
-
-
 }

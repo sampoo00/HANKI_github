@@ -82,6 +82,9 @@
     <!-- Home -->
     <string name="home_bluetoothMessage">매장 인식을 위해 먼저 Bluetooth를 켜주세요.</string>
     <string name="home_searchedShopDialogTitle">매장 선택</string>
+    <string name="connectShopMessage">버튼을 눌러 매장과 어플을 연결시켜주세요!</string>
+    <string name="search_beacon_msg1">들어오신 매장을 선택해주세요.</string>
+    <string name="search_beacon_msg2">우층 상단의 X 터치 시 매장 인식을 중단합니다.</string>
 
     <!-- Review -->
     <string name="writeReview">작성하기</string>
@@ -91,12 +94,12 @@
     <string name="deleteReviewMessage">작성하신 리뷰를 삭제하시겠습니까?</string>
 
     <!-- ShopInfo -->
-    <string name="shopInfo_operationInfo">운영 정보</string>
+    <string name="shopInfo_operationInfo">[운영 정보]</string>
     <string name="shopInfo_runTime">영업 시간</string>
     <string name="shopInfo_breakTime">브레이크 타임</string>
     <string name="shopInfo_holiday">휴무일</string>
     <string name="shopInfo_shopPhoneNum">전화번호</string>
-    <string name="shopInfo_location">매장 위치</string>
+    <string name="shopInfo_location">[매장 위치]</string>
     <string name="shopInfo_ownerName">대표자명</string>
     <string name="shopInfo_businessName">상호명</string>
     <string name="shopInfo_businessNum">사업자 번호</string>
@@ -119,6 +122,5 @@
     <string name="permission_location">위치</string>
     <string name="permission_placeholder_explanation">주변 매장 위치 조회</string>
     <string name="permission_btn">네, 확인했습니다.</string>
-
 
 </resources>

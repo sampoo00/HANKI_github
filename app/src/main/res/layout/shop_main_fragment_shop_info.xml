@@ -22,7 +22,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/shopInfo_operationInfo"
-                android:textColor="#000"
+                android:textColor="#444"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -32,7 +32,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/operationInfo"
                 android:layout_marginTop="10dp"
-                android:text="@string/shopInfo_runTime" />
+                android:text="@string/shopInfo_runTime"
+                android:textColor="#444"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/shopInfo_runTime"
@@ -40,7 +42,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/runTime"
                 android:layout_toRightOf="@+id/breakTime"
-                android:text="10:00 ~ 21:00" />
+                android:text="10:00 ~ 21:00"
+                android:textColor="#666"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/breakTime"
@@ -49,7 +53,9 @@
                 android:layout_below="@+id/runTime"
                 android:layout_marginRight="18dp"
                 android:layout_marginTop="5dp"
-                android:text="@string/shopInfo_breakTime" />
+                android:text="@string/shopInfo_breakTime"
+                android:textColor="#444"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/shopInfo_breakTime"
@@ -57,7 +63,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/breakTime"
                 android:layout_toRightOf="@+id/breakTime"
-                android:text="14:00 ~ 17:00" />
+                android:text="14:00 ~ 17:00"
+                android:textColor="#666"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/holiday"
@@ -65,7 +73,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/breakTime"
                 android:layout_marginTop="5dp"
-                android:text="@string/shopInfo_holiday" />
+                android:text="@string/shopInfo_holiday"
+                android:textColor="#444"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/shopInfo_holiday"
@@ -73,7 +83,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/holiday"
                 android:layout_toRightOf="@+id/breakTime"
-                android:text="격주 일요일" />
+                android:text="격주 일요일"
+                android:textColor="#666"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/shopPhoneNum"
@@ -81,7 +93,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/holiday"
                 android:layout_marginTop="5dp"
-                android:text="@string/shopInfo_shopPhoneNum" />
+                android:text="@string/shopInfo_shopPhoneNum"
+                android:textColor="#444"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/shopInfo_phoneNum"
@@ -90,26 +104,18 @@
                 android:layout_alignTop="@+id/shopPhoneNum"
                 android:layout_marginRight="5dp"
                 android:layout_toRightOf="@+id/breakTime"
-                android:text="031-123-1234" />
-
-            <Button
-                android:id="@+id/shopInfo_dialBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/shopInfo_phoneNum"
-                android:layout_alignTop="@+id/shopInfo_phoneNum"
-                android:layout_toRightOf="@+id/shopInfo_phoneNum"
-                android:background="@null"
-                android:text="전화걸기" />
+                android:text="031-123-1234"
+                android:textColor="#666"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/shopInfo_dialBtn"
+                android:layout_below="@+id/shopInfo_phoneNum"
                 android:layout_marginTop="18dp"
                 android:text="@string/shopInfo_location"
-                android:textColor="#000"
+                android:textColor="#444"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -119,7 +125,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/location"
                 android:layout_marginTop="5dp"
-                android:text="서울특별시 삼성동 테헤란로 10" />
+                android:text="서울특별시 삼성동 테헤란로 10"
+                android:textColor="#444"
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:id="@+id/shopInfo_mapview"
@@ -134,8 +142,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/shopInfo_mapview"
                 android:layout_marginTop="18dp"
-                android:text="사업자 정보"
-                android:textColor="#000"
+                android:text="[사업자 정보]"
+                android:textColor="#444"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -145,7 +153,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/businessInfo"
                 android:layout_marginTop="10dp"
-                android:text="@string/shopInfo_ownerName" />
+                android:text="@string/shopInfo_ownerName"
+                android:textColor="#444"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/shopInfo_ownerName"
@@ -153,7 +163,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/ownerName"
                 android:layout_toRightOf="@+id/breakTime"
-                android:text="홍길동" />
+                android:text="홍길동"
+                android:textColor="#666"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/businessName"
@@ -161,7 +173,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/ownerName"
                 android:layout_marginTop="5dp"
-                android:text="@string/shopInfo_businessName" />
+                android:text="@string/shopInfo_businessName"
+                android:textColor="#444"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/shopInfo_businessName"
@@ -169,7 +183,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/businessName"
                 android:layout_toRightOf="@+id/breakTime"
-                android:text="놀부 부대찌개 강남씨티점" />
+                android:text="놀부 부대찌개 강남씨티점"
+                android:textColor="#666"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/businessNum"
@@ -177,7 +193,9 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/businessName"
                 android:layout_marginTop="5dp"
-                android:text="@string/shopInfo_businessNum" />
+                android:text="@string/shopInfo_businessNum"
+                android:textColor="#444"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/shopInfo_businessNum"
@@ -185,7 +203,9 @@
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/businessNum"
                 android:layout_toRightOf="@+id/breakTime"
-                android:text="123-01-12345" />
+                android:text="123-01-12345"
+                android:textColor="#666"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 

@@ -1,6 +1,6 @@
 package com.hanki.hanki.Main;
 
-public class ShopName {
+public class ShopLogo {
     private String shopCode;
     private String result;
     private String description;
@@ -49,7 +49,7 @@ public class ShopName {
 
     @Override
     public String toString() {
-        return "ShopName{" +
+        return "ShopLogo{" +
                 "shopCode='" + shopCode + '\'' +
                 ", result='" + result + '\'' +
                 ", description='" + description + '\'' +

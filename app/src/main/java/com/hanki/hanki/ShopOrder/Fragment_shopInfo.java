@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -32,7 +34,6 @@ public class Fragment_shopInfo extends Fragment {
     TextView shopInfo_breakTime;
     TextView shopInfo_holiday;
     TextView shopInfo_phoneNum;
-    Button shopInfo_dialBtn;
     RelativeLayout shopInfo_mapview;
 
     @Override
@@ -43,7 +44,6 @@ public class Fragment_shopInfo extends Fragment {
         shopInfo_breakTime = (TextView) view.findViewById(R.id.shopInfo_breakTime);
         shopInfo_holiday = (TextView) view.findViewById(R.id.shopInfo_holiday);
         shopInfo_phoneNum = (TextView) view.findViewById(R.id.shopInfo_phoneNum);
-        shopInfo_dialBtn = (Button) view.findViewById(R.id.shopInfo_dialBtn);
         shopInfo_mapview = (RelativeLayout) view.findViewById(R.id.shopInfo_mapview);
 
         setMapView();
@@ -75,7 +75,11 @@ public class Fragment_shopInfo extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        shopInfo_dialBtn.setOnClickListener(new View.OnClickListener() {
+        SpannableString content = new SpannableString("031-123-1234");
+        content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+        shopInfo_phoneNum.setText(content);
+
+        shopInfo_phoneNum.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL);

@@ -59,7 +59,6 @@ public class PermissionActivity extends AppCompatActivity {
         permissionBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(Build.VERSION.SDK_INT > 23) {
                     //전화걸기와 위치 권한 받기
                     TedPermission.with(PermissionActivity.this)
@@ -78,6 +77,7 @@ public class PermissionActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
+
             }
         });
     }

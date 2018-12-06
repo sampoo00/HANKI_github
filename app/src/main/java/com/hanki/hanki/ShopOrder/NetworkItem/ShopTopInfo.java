@@ -1,8 +1,12 @@
 package com.hanki.hanki.ShopOrder.NetworkItem;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ShopTopInfo {
+public class ShopTopInfo implements Parcelable {
     public String shopCode;
     public String shopName;
     public int orderType;
@@ -24,5 +28,15 @@ public class ShopTopInfo {
                 ", origin='" + origin + '\'' +
                 ", list=" + list +
                 '}';
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+
     }
 }

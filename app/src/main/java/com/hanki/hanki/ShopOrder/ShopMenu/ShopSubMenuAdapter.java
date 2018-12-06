@@ -11,27 +11,32 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
+import com.hanki.hanki.Util.Application;
 
 import java.text.DecimalFormat;
 import java.util.List;
 
 public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>  {
-    private Context context;
-    private List<ShopSubMenuData> menuData;
 
-    public ShopSubMenuAdapter(Context context, List<ShopSubMenuData> menuData) {
+    private Context context;
+    private List<MenuData> subMenuData;
+    private String shopCode;
+
+    public ShopSubMenuAdapter(Context context, List<MenuData> subMenuData, String shopCode) {
         this.context = context;
-        this.menuData = menuData;
+        this.subMenuData = subMenuData;
+        this.shopCode = shopCode;
     }
 
-    public void setAdapter(List<ShopSubMenuData> menuData) {
-        this.menuData = menuData;
+    public void setAdapter(List<MenuData> subMenuData) {
+        this.subMenuData = subMenuData;
         notifyDataSetChanged();
     }
 
     @Override
     public ShopMenuViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shop_menu_menulist_recycler, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.shop_menu_sub_menu_recycler, parent, false);
         ShopMenuViewHolder shopMenu_viewHolder = new ShopMenuViewHolder(view);
 
         return shopMenu_viewHolder;
@@ -48,17 +53,16 @@ public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
         return decimalFormat.format(inputMoney);
     }
+
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(ShopMenuViewHolder holder, int position) {
+        String imageUrl = Application.getInstance().imageUrl + "menu/"
+                + shopCode + "/" + subMenuData.get(position).getMenuImgId();
+        Glide.with(context).load(imageUrl).into(holder.VH_menu_image);
 
-        Glide.with(context)
-                .load(R.drawable.logo_sample)
-                .into(holder.VH_menu_image);
-
-
-        holder.VH_menu_title.setText(menuData.get(position).menuName);
-        holder.VH_menu_fee.setText(String.valueOf(moneyFormat(menuData.get(position).menuPrice))+"원");
+        holder.VH_menu_title.setText(subMenuData.get(position).getMenuName());
+        holder.VH_menu_fee.setText(String.valueOf(moneyFormat(subMenuData.get(position).getMenuPrice()))+"원");
 
         holder.VH_menu_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,7 +103,7 @@ public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
 
     @Override
     public int getItemCount() {
-        return menuData != null ? menuData.size() : 0;
+        return subMenuData != null ? subMenuData.size() : 0;
     }
 
 }

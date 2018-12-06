@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shopMain_menu_recyclerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="#49000000" />
+
+    <ImageView
+        android:id="@+id/menu_recyclerImage"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:onClick="onClick"
+        android:src="@drawable/logo_sample" />
+
+    <LinearLayout
+        android:id="@+id/menu_recyclerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="20dp"
+        android:layout_toEndOf="@id/menu_recyclerImage"
+        android:layout_toRightOf="@+id/menu_recyclerImage"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/menu_recycler_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:onClick="onClick"
+            android:text="메뉴이름"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/menu_recycler_fee"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:onClick="onClick"
+            android:text="가 격"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</RelativeLayout>
