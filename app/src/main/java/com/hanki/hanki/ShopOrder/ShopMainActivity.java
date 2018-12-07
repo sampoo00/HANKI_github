@@ -20,6 +20,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,7 +55,10 @@ public class ShopMainActivity extends AppCompatActivity {
     CollapsingToolbarLayout mCollapsingToolbar;
     Toolbar mToolbar;
 
-    LikeButton likeBtn;
+//    LikeButton likeBtn;
+    ImageView likeBtn;
+    boolean isLike = false;
+
     TextView shopTitle;
     RatingBar shopRatingBar;
     TextView shopTxtRatingBar;
@@ -101,20 +105,39 @@ public class ShopMainActivity extends AppCompatActivity {
         pickup = (TextView) findViewById(R.id.shopMain_pickup);
         nonpickup = (TextView) findViewById(R.id.shopMain_nonpickup);
 
-        //like버튼
-        likeBtn = (LikeButton) findViewById(R.id.shopMain_likeBtn);
-        likeBtn.setOnLikeListener(new OnLikeListener() {
+        likeBtn = (ImageView) findViewById(R.id.shopMain_likeBtn);
+        likeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void liked(LikeButton likeButton) {
-                Toast.makeText(getApplicationContext(), "liked!", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                if (!isLike) {
+                    Toast.makeText(getApplicationContext(), "liked!", Toast.LENGTH_SHORT).show();
+                    likeBtn.setBackgroundResource(R.drawable.heart_on);
+                    isLike = true;
+                }
+                else if(isLike) {
+                    Toast.makeText(getApplicationContext(), "unliked!", Toast.LENGTH_SHORT).show();
+                    likeBtn.setBackgroundResource(R.drawable.heart_off);
+                    isLike = false;
+                }
             }
 
-            @Override
-            public void unLiked(LikeButton likeButton) {
-                Toast.makeText(getApplicationContext(), "unliked!", Toast.LENGTH_SHORT).show();
-
-            }
         });
+//        //like버튼
+//        likeBtn = (LikeButton) findViewById(R.id.shopMain_likeBtn);
+//        likeBtn.setOnLikeListener(new OnLikeListener() {
+//            @Override
+//            public void liked(LikeButton likeButton) {
+//                Toast.makeText(getApplicationContext(), "liked!", Toast.LENGTH_SHORT).show();
+//                likeBtn.setBackgroundResource(R.drawable.heart_on);
+//            }
+//
+//            @Override
+//            public void unLiked(LikeButton likeButton) {
+//                Toast.makeText(getApplicationContext(), "unliked!", Toast.LENGTH_SHORT).show();
+//                likeBtn.setBackgroundResource(R.drawable.heart_off);
+//
+//            }
+//        });
     }
 
     private void setupToolbar(String shopName) {
@@ -260,9 +283,11 @@ public class ShopMainActivity extends AppCompatActivity {
 
             //찜하기 여부
             if(shopTopInfo.wishYn != null && shopTopInfo.wishYn.equalsIgnoreCase("Y")) {
-                likeBtn.setLiked(true);
+//                likeBtn.setLiked(true);
+                likeBtn.setBackgroundResource(R.drawable.heart_on);
             } else {
-                likeBtn.setLiked(false);
+//                likeBtn.setLiked(false);
+                likeBtn.setBackgroundResource(R.drawable.heart_off);
             }
 
             // 매장 주문 타입 - 1: 현장/픽업, 2: 현장 only, 3: 픽업 only

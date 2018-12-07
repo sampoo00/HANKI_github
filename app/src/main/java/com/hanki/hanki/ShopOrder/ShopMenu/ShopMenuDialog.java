@@ -3,18 +3,22 @@ package com.hanki.hanki.ShopOrder.ShopMenu;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -26,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.hanki.hanki.R;
 import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
 import com.hanki.hanki.ShopOrder.NetworkItem.ToppingData;
@@ -52,13 +57,13 @@ public class ShopMenuDialog extends Dialog {
     private RecyclerView mReqMenuRecyclerView;
     private LinearLayoutManager mReqMenuLinearLayoutManager;
     private ShopReqMenuListAdapter mReqMenuAdapter;
-    ArrayList<ToppingData> mReqMenuList = new ArrayList<>();
+    ArrayList<ToppingData> mReqMenuList;
 
     //선택 메뉴
     private RecyclerView mOptMenuRecyclerView;
     private LinearLayoutManager mOptMenuLinearLayoutManager;
     private ShopOptMenuListAdapter mOptMenuAdapter;
-    ArrayList<ToppingData> mOptMenuList = new ArrayList<>();
+    ArrayList<ToppingData> mOptMenuList;
 
     //총수량
     int mTotalCountInt;
@@ -109,11 +114,6 @@ public class ShopMenuDialog extends Dialog {
 
 
     public void initPickupType(){
-        mPickupGroup = (RadioGroup) findViewById(id.menu_RadioGroup);
-        mPickupType = (RadioButton) findViewById(id.menu_pickupRadioBtn);
-        mNonPickupType = (RadioButton) findViewById(id.menu_nonPickupRadioBtn);
-
-        mPickupType.setChecked(true);
 
         mPickupGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -131,30 +131,6 @@ public class ShopMenuDialog extends Dialog {
             }
         });
 
-//        mPickupType.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if(mPickupType.isChecked()){
-//                    Toast.makeText(getContext(), "매장이 선택 되었습니다.", Toast.LENGTH_SHORT).show();
-//                }
-//                else{
-//                    Toast.makeText(getContext(), "매장이 선택 해제 되었습니다.", Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//
-//        mNonPickupType.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if(mNonPickupType.isChecked()){
-//                    Toast.makeText(getContext(), "픽업이 선택 되었습니다.", Toast.LENGTH_SHORT).show();
-//                }
-//                else{
-//                    Toast.makeText(getContext(), "픽업이 선택 해제 되었습니다.", Toast.LENGTH_SHORT).show();
-//
-//                }
-//            }
-//        });
     }
 
     //초기 수량
@@ -298,7 +274,16 @@ public class ShopMenuDialog extends Dialog {
         addCartLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getContext(), "식판에 담겼습니다", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), "식판에 담겼습니다", Toast.LENGTH_SHORT).show();
+
+                Dialog dialog = new Dialog(getContext());
+                dialog.setContentView(layout.dialog_alert_image);
+                dialog.setCanceledOnTouchOutside(false);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+                dialog.show();
+
+
             }
         });
 
@@ -321,6 +306,11 @@ public class ShopMenuDialog extends Dialog {
 
         mOptMenuLayout = (RelativeLayout) findViewById(id.menu_optMenuLayout); //menu_optMenuLayout
         mSecondMenuDotLine = (ImageView) findViewById(id.menu_dotline3); //opt안나오게 하려면 같이 삭제
+
+        //매장 버튼
+        mPickupGroup = (RadioGroup) findViewById(id.menu_RadioGroup);
+        mPickupType = (RadioButton) findViewById(id.menu_pickupRadioBtn);
+        mNonPickupType = (RadioButton) findViewById(id.menu_nonPickupRadioBtn);
     }
 
 
@@ -341,7 +331,6 @@ public class ShopMenuDialog extends Dialog {
         initTotalCount();
         initPickupType();
         initRequest();
-//        initRecycler();
         initCartOrder();
 
         //참고
@@ -372,16 +361,20 @@ public class ShopMenuDialog extends Dialog {
             if(mShopOrderType == 1) {
                 mPickupType.setVisibility(View.VISIBLE);
                 mNonPickupType.setVisibility(View.VISIBLE);
+                mPickupType.setChecked(true);
                 Log.d(TAG, "pickup&nonPickup : " + mShopOrderType);
 
             } else if(mShopOrderType == 2) {
                 mPickupType.setVisibility(View.GONE);
                 mNonPickupType.setVisibility(View.VISIBLE);
+                mNonPickupType.setChecked(true);
+
                 Log.d(TAG, "nonPickup : " + mShopOrderType);
 
             } else if (mShopOrderType == 3) {
                 mPickupType.setVisibility(View.VISIBLE);
                 mNonPickupType.setVisibility(View.GONE);
+                mPickupType.setChecked(true);
                 Log.d(TAG, "pickup : " + mShopOrderType);
             }
 
@@ -420,20 +413,19 @@ public class ShopMenuDialog extends Dialog {
 
     public void initArrayList(){
         Log.d(TAG, "toppingDatalist" + toppingDataList);
+        mReqMenuList = new ArrayList<>();
+        mOptMenuList = new ArrayList<>();
 
         if (toppingDataList != null) {
-            if (toppingDataList.size() != 0) {
                 for (int i = 0; i < toppingDataList.size(); i++) {
                     if (toppingDataList.get(i).getToppingGroupName().equals("사이즈")) { //카테고리가 main인 menuList 구성
                         mReqMenuList.add(toppingDataList.get(i));
-                        Log.d(TAG, "mReqMenuList.add" + mReqMenuList.get(i).toString());
-                    } else if (toppingDataList.get(i).getToppingGroupName().equals("추가선택")) { //카테고리가 sub인 menuList 구성
+                    }
+                    else if (toppingDataList.get(i).getToppingGroupName().equals("추가선택")) { //카테고리가 sub인 menuList 구성
                         mOptMenuList.add(toppingDataList.get(i));
-                        Log.d(TAG, "mOptMenuList.add" + mOptMenuList.get(i).toString());
 
                     }
                 }
-            }
         }
 
         //사이즈(추가선택)가 0이면 사이즈(추가선택) 레이아웃 숨김,
