@@ -23,8 +23,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
-        android:layout_margin="10dp"
-        android:text="Ver.1.00.01"/>
+        android:layout_margin="10dp" />
 </FrameLayout>
 
 
