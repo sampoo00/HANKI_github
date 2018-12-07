@@ -52,6 +52,7 @@ dependencies {
     implementation files('libs/libDaumMapAndroid.jar')
     //tedPermission
     implementation 'gun0912.ted:tedpermission:2.2.2'
-
+    //lotti
+    implementation "com.airbnb.android:lottie:2.6.0"
 
 }
