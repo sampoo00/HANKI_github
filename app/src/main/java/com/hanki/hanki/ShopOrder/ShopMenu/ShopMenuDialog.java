@@ -11,6 +11,8 @@ import android.support.annotation.NonNull;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -239,13 +241,16 @@ public class ShopMenuDialog extends Dialog {
                     mNestScroll.postDelayed(new Runnable() {
                         @Override
                         public void run() {
+//                            mNestScroll.scrollTo(0,1000);
                             mNestScroll.smoothScrollBy(0, 800);
+
                         }
                     }, 100);
 
                 }
             }
         });
+
     }
 
     //천 단위 숫자 입력
@@ -431,18 +436,16 @@ public class ShopMenuDialog extends Dialog {
             }
         }
 
-//        mReqMenuList = Arrays.asList(new ShopReqMenuData("대","5~6인", 1326000),
-//                new ShopReqMenuData("중", "3~4인", 23000),
-//                new ShopReqMenuData("소", "1~2인", 20000),
-//                new ShopReqMenuData("대","5~6인", 26000),
-//                new ShopReqMenuData("중", "3~4인", 23000),
-//                new ShopReqMenuData("소", "1~2인", 20000));
-//
-//        mOptMenuList = Arrays.asList(new ShopOptMenuData("라면사리", 1000),
-//                new ShopOptMenuData("떡사리", 2000),
-//        new ShopOptMenuData("모둠사리", 4000),
-//        new ShopOptMenuData("치즈", 2000),
-//        new ShopOptMenuData("파", 500));
+        //사이즈(추가선택)가 0이면 사이즈(추가선택) 레이아웃 숨김,
+        if(mReqMenuList.size() == 0){
+            //relative layout View.Gone
+            mReqMenuLayout.setVisibility(View.GONE);
+            mFirstMenuDotLine.setVisibility(View.GONE);
+        }
+        if(mOptMenuList.size() == 0){
+            mOptMenuLayout.setVisibility(View.GONE);
+            mSecondMenuDotLine.setVisibility(View.GONE);
+        }
 
     }
 
