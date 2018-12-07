@@ -25,6 +25,7 @@ public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
     private Context context;
     private ArrayList<ToppingData> reqMenuData;
     private RadioButton lastCheckedRB = null;
+    boolean checked = false;
     private int lastPosition = 0;
 
 
@@ -69,16 +70,25 @@ public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if(lastCheckedRB != null){
-                    lastCheckedRB.setChecked(false);
-                    ((ShopMenuDialog)ShopMenuDialog.mContext).subReqPrice(reqMenuData.get(lastPosition).getToppingPrice());
-
+                if (lastCheckedRB != null) {
+                    if(lastCheckedRB!=holder.VH_reqRadioBtn && !checked){
+                        checked = true;
+                        lastCheckedRB.setChecked(false); //이거하면 change되는거임)
+                    }
+                    else if(lastCheckedRB==holder.VH_reqRadioBtn && !checked){
+                        checked = true;
+                        lastCheckedRB.setChecked(true);
+                    }
+                    ((ShopMenuDialog) ShopMenuDialog.mContext).subReqPrice(reqMenuData.get(lastPosition).getToppingPrice());
+                    checked = false;
                 }
+
                 lastCheckedRB = holder.VH_reqRadioBtn;
                 lastPosition = position;
 
-                ((ShopMenuDialog)ShopMenuDialog.mContext).addReqPrice(reqMenuData.get(position).getToppingPrice());
+                ((ShopMenuDialog) ShopMenuDialog.mContext).addReqPrice(reqMenuData.get(position).getToppingPrice());
             }
+
         });
 
 
