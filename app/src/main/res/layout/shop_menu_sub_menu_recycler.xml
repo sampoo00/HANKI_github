@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/shopMain_menu_recyclerLayout"
+    android:id="@+id/shopMain_menu_sub_recyclerLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -13,7 +13,7 @@
         android:background="#49000000" />
 
     <ImageView
-        android:id="@+id/menu_recyclerImage"
+        android:id="@+id/menu_sub_foodImage"
         android:layout_width="100dp"
         android:layout_height="80dp"
         android:layout_marginBottom="20dp"
@@ -24,17 +24,17 @@
         android:src="@drawable/logo_sample" />
 
     <LinearLayout
-        android:id="@+id/menu_recyclerText"
+        android:id="@+id/menu_subTextLinearLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginLeft="20dp"
-        android:layout_toEndOf="@id/menu_recyclerImage"
-        android:layout_toRightOf="@+id/menu_recyclerImage"
+        android:layout_toEndOf="@id/menu_sub_foodImage"
+        android:layout_toRightOf="@+id/menu_sub_foodImage"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/menu_recycler_title"
+            android:id="@+id/menu_sub_recycler_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
@@ -44,7 +44,7 @@
             android:textSize="14sp" />
 
         <TextView
-            android:id="@+id/menu_recycler_fee"
+            android:id="@+id/menu_sub_recycler_fee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"

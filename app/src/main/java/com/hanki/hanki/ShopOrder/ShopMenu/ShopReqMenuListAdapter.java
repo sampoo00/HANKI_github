@@ -12,20 +12,24 @@ import android.widget.CompoundButton;
 import android.widget.RadioButton;
 
 import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
+import com.hanki.hanki.ShopOrder.NetworkItem.ToppingData;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.hanki.hanki.ShopOrder.ShopMenu.ShopMenuDialog.*;
 
 public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuListViewHolder> {
     private Context context;
-    private List<ShopReqMenuData> reqMenuData;
+    private ArrayList<ToppingData> reqMenuData;
     private RadioButton lastCheckedRB = null;
+    boolean checked = false;
     private int lastPosition = 0;
 
 
-    public ShopReqMenuListAdapter(Context context, List<ShopReqMenuData> reqMenuData) {
+    public ShopReqMenuListAdapter(Context context, ArrayList<ToppingData> reqMenuData) {
         this.context = context;
         this.reqMenuData = reqMenuData;
     }
@@ -50,9 +54,9 @@ public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
     @Override
     public void onBindViewHolder(@NonNull final ShopReqMenuListViewHolder holder, final int position) {
 
-        holder.VH_reqMenuSize.setText(reqMenuData.get(position).menuSize);
-        holder.VH_reqMenuPeople.setText(reqMenuData.get(position).menuPeople);
-        holder.VH_reqMenuPrice.setText(String.valueOf(moneyFormat(reqMenuData.get(position).menuPrice))+"원");
+        holder.VH_reqMenuSize.setText(reqMenuData.get(position).getToppingName());
+//        holder.VH_reqMenuPeople.setText(reqMenuData.get(position).menuPeople);
+        holder.VH_reqMenuPrice.setText(String.valueOf(moneyFormat(reqMenuData.get(position).getToppingPrice()))+"원");
 //        holder.VH_reqRadioBtn.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -66,16 +70,25 @@ public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if(lastCheckedRB != null){
-                    lastCheckedRB.setChecked(false);
-                    ((ShopMenuDialog)ShopMenuDialog.mContext).subReqPrice(reqMenuData.get(lastPosition).menuPrice);
-
+                if (lastCheckedRB != null) {
+                    if(lastCheckedRB!=holder.VH_reqRadioBtn && !checked){
+                        checked = true;
+                        lastCheckedRB.setChecked(false); //이거하면 change되는거임)
+                    }
+                    else if(lastCheckedRB==holder.VH_reqRadioBtn && !checked){
+                        checked = true;
+                        lastCheckedRB.setChecked(true);
+                    }
+                    ((ShopMenuDialog) ShopMenuDialog.mContext).subReqPrice(reqMenuData.get(lastPosition).getToppingPrice());
+                    checked = false;
                 }
+
                 lastCheckedRB = holder.VH_reqRadioBtn;
                 lastPosition = position;
 
-                ((ShopMenuDialog)ShopMenuDialog.mContext).addReqPrice(reqMenuData.get(position).menuPrice);
+                ((ShopMenuDialog) ShopMenuDialog.mContext).addReqPrice(reqMenuData.get(position).getToppingPrice());
             }
+
         });
 
 

@@ -62,7 +62,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/substract_circle" />
+            android:background="@drawable/smaple_substract_circle" />
 
 
         <TextView
@@ -85,7 +85,7 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="center_vertical"
-            android:background="@drawable/add_circle_gray"
+            android:background="@drawable/smaple_add_circle_gray"
             />
 
 

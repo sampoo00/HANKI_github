@@ -1,36 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:src="@drawable/border_searched_shop_dialog">
+    android:layout_height="match_parent"
+    android:background="@drawable/space_shop_dialog">
 
     <RelativeLayout
         android:id="@+id/menuDialog_layout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/border_searched_shop_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/menuDialog_title"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="@drawable/border_menu_dialog_title"
-            android:gravity="center"
-            android:text="@string/shopmenu_title"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-
 
 
         <android.support.v4.widget.NestedScrollView
             android:id="@+id/menu_ScrollView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/menu_totalPriceLayout"
-            android:layout_below="@+id/menuDialog_title">
+            android:layout_above="@+id/menu_totalPriceLayout">
 
 
             <RelativeLayout
@@ -39,21 +25,20 @@
                 >
 
                 <ImageView
-                    android:id="@+id/menu_foodImg"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/ic_home_black_24dp"
+                    android:id="@+id/menu_MenuImg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     />
                 <TextView
-                    android:id="@+id/menu_foodTitle"
+                    android:id="@+id/menu_MenuTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20sp"
+                    android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@id/menu_foodImg"
+                    android:layout_below="@id/menu_MenuImg"
                     android:text="맛있는 음식"/>
 
                 <ImageView
@@ -66,7 +51,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginEnd="5dp"
-                    android:layout_below="@+id/menu_foodTitle"/>
+                    android:layout_below="@+id/menu_MenuTitle"/>
 
                 <RelativeLayout
                     android:id="@+id/menu_reqMenuLayout"
@@ -176,7 +161,7 @@
                             android:id="@+id/menu_totalSubBtn"
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:background="@drawable/substract_circle" />
+                            android:background="@drawable/smaple_substract_circle" />
 
 
                         <TextView
@@ -196,7 +181,7 @@
                             android:id="@+id/menu_totalPlusBtn"
                             android:layout_width="35dp"
                             android:layout_height="35dp"
-                            android:background="@drawable/add_circle_gray"                            android:scaleType="centerCrop" />
+                            android:background="@drawable/smaple_add_circle_gray"                            android:scaleType="centerCrop" />
 
                     </LinearLayout>
 

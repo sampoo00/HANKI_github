@@ -1,7 +1,12 @@
 package com.hanki.hanki.Util;
 
+import android.view.Menu;
+
 import com.hanki.hanki.Main.ShopLogo;
+import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
 import com.hanki.hanki.ShopOrder.NetworkItem.ShopResult;
+import com.hanki.hanki.ShopOrder.NetworkItem.ToppingData;
+import com.hanki.hanki.ShopOrder.NetworkItem.ToppingResult;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -20,4 +25,8 @@ public interface NetworkService {
     //메뉴판 조회
     @GET("/HANKI/shops/menuInfo")
     Call<ShopResult> getShopMenuResult(@Query("UUID") String UUID, @Query("userId") String userId);
+
+    //필수 메뉴/선택 메뉴 조회
+    @GET("/HANKI/shops/topping")
+    Call<ToppingResult> getToppingResult(@Query("toppingKey") String toppingKey);
 }

@@ -53,5 +53,5 @@ dependencies {
     //tedPermission
     implementation 'gun0912.ted:tedpermission:2.2.2'
     //lottie
-    implementation 'com.airbnb.android:lottie:2.5.5'
+    implementation "com.airbnb.android:lottie:2.6.0"
 }

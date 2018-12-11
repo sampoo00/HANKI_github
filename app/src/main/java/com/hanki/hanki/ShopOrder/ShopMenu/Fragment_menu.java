@@ -25,13 +25,13 @@ public class Fragment_menu extends Fragment {
     private RecyclerView mMainMenuRecyclerView;
     private GridLayoutManager mMainMenuGridLayoutManager;
     private ShopMainMenuAdapter mMainMenuAdapter;
-    private List<MenuData> mMainMenuList;
+    private ArrayList<MenuData> mMainMenuList;
 
     //서브메뉴
     private RecyclerView mSubMenuRecyclerView;
     private LinearLayoutManager mSubMenuLinearLayoutManager;
     private ShopSubMenuAdapter mSubMenuAdapter;
-    private List<MenuData> mSubMenuList;
+    private ArrayList<MenuData> mSubMenuList;
 
     TextView txtCountryOrigin;
     ShopTopInfo shopTopInfo;
@@ -81,10 +81,9 @@ public class Fragment_menu extends Fragment {
 
         initMenuArrayList();
 
-        String shopCode = shopTopInfo.shopCode;
-        mMainMenuAdapter = new ShopMainMenuAdapter(getContext(), mMainMenuList, shopCode); //메인메뉴
+        mMainMenuAdapter = new ShopMainMenuAdapter(getContext(), mMainMenuList, shopTopInfo.shopCode, shopTopInfo.orderType); //메인메뉴
         mMainMenuRecyclerView.setAdapter(mMainMenuAdapter);
-        mSubMenuAdapter = new ShopSubMenuAdapter(getContext(), mSubMenuList, shopCode); //서브메뉴
+        mSubMenuAdapter = new ShopSubMenuAdapter(getContext(), mSubMenuList, shopTopInfo.shopCode, shopTopInfo.orderType); //서브메뉴
         mSubMenuRecyclerView.setAdapter(mSubMenuAdapter);
     }
 
@@ -100,20 +99,6 @@ public class Fragment_menu extends Fragment {
             }
         }
 
-//        mMenuList = Arrays.asList(new ShopSubMenuData("국수", 140020),
-//                new ShopSubMenuData("국수2", 1403000),
-//                new ShopSubMenuData("국수3", 1200),
-//                new ShopSubMenuData("국수4", 1039439),
-//                new ShopSubMenuData("국수5", 14000),
-//                new ShopSubMenuData("국수6", 1403000),
-//                new ShopSubMenuData("국수7", 1200));
-//
-//        mMenuRecList = Arrays.asList(new ShopMainMenuData("부대찌게", 14000),
-//                new ShopMainMenuData("된장찌게", 1403000),
-//                new ShopMainMenuData("칼국수", 1200),
-//                new ShopMainMenuData("게찌게", 1039439),
-//                new ShopMainMenuData("부대찌게", 14000),
-//                new ShopMainMenuData("된장찌게", 1403000),
-//                new ShopMainMenuData("칼국수", 1200));
+
     }
 }

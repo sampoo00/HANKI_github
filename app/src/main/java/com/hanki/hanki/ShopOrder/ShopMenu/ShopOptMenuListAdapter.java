@@ -10,17 +10,21 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 
 import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
+import com.hanki.hanki.ShopOrder.NetworkItem.ToppingData;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuListViewHolder> {
     private Context context;
-    private List<ShopOptMenuData> optMenuData;
+    private ArrayList<ToppingData> optMenuData;
+    private MenuData menuData;
     int toppingMenuCount = 1;
     int optMenuPrice = 0;
 
-    public ShopOptMenuListAdapter(Context context, List<ShopOptMenuData> optMenuData) {
+    public ShopOptMenuListAdapter(Context context, ArrayList<ToppingData> optMenuData) {
         this.context = context;
         this.optMenuData = optMenuData;
     }
@@ -42,8 +46,8 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
 
     @Override
     public void onBindViewHolder(@NonNull final ShopReqMenuListViewHolder holder, final int position) {
-        holder.VH_optMenuTitle.setText(optMenuData.get(position).optMenuTitle);
-        holder.VH_optMenuPrice.setText(String.valueOf(moneyFormat(optMenuData.get(position).optMenuPrice)+"원"));
+        holder.VH_optMenuTitle.setText(optMenuData.get(position).getToppingName());
+        holder.VH_optMenuPrice.setText(String.valueOf(moneyFormat(optMenuData.get(position).getToppingPrice())+"원"));
 
 
         holder.VH_optCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -52,17 +56,17 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
                 if(isChecked){
                     holder.VH_optToppingLinearlayout.setVisibility(View.VISIBLE);
                         toppingMenuCount = 1;
-                        optMenuPrice = optMenuData.get(position).optMenuPrice * toppingMenuCount;
+                        optMenuPrice = optMenuData.get(position).getToppingPrice() * toppingMenuCount;
                         ((ShopMenuDialog)ShopMenuDialog.mContext).addOptPrice(optMenuPrice);
-                        optMenuData.get(position).setOptMenuCount(toppingMenuCount);
+                        optMenuData.get(position).setToppingNum(toppingMenuCount);
 
                 }
                 else{
                     holder.VH_optToppingLinearlayout.setVisibility(View.GONE);
-                    optMenuPrice = optMenuData.get(position).optMenuPrice * optMenuData.get(position).getOptMenuCount();
+                    optMenuPrice = optMenuData.get(position).getToppingPrice() * optMenuData.get(position).getToppingNum();
                     ((ShopMenuDialog)ShopMenuDialog.mContext).subOptPrice(optMenuPrice);
                     toppingMenuCount = 1;
-                    optMenuData.get(position).setOptMenuCount(0);
+                    optMenuData.get(position).setToppingNum(0);
                     holder.VH_optMenuCount.setText(String.valueOf(toppingMenuCount)); //topping 수량
 
                 }
@@ -89,14 +93,14 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
             public void onClick(View v) {
                     if(toppingMenuCount < 99) {
                         toppingMenuCount = toppingMenuCount + 1;
-                       ((ShopMenuDialog)ShopMenuDialog.mContext).addOptPrice(optMenuData.get(position).optMenuPrice);
+                       ((ShopMenuDialog)ShopMenuDialog.mContext).addOptPrice(optMenuData.get(position).getToppingPrice());
 
                     }
                     else{
                         toppingMenuCount = 99;
                     }
 
-                optMenuData.get(position).setOptMenuCount(toppingMenuCount);
+                optMenuData.get(position).setToppingNum(toppingMenuCount);
                 holder.VH_optMenuCount.setText(String.valueOf(toppingMenuCount));
 
             }
@@ -111,10 +115,10 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
                 }
                 else{
                     toppingMenuCount = toppingMenuCount -1;
-                    ((ShopMenuDialog)ShopMenuDialog.mContext).subOptPrice(optMenuData.get(position).optMenuPrice);;
+                    ((ShopMenuDialog)ShopMenuDialog.mContext).subOptPrice(optMenuData.get(position).getToppingPrice());;
 
                 }
-                optMenuData.get(position).setOptMenuCount(toppingMenuCount);
+                optMenuData.get(position).setToppingNum(toppingMenuCount);
                 holder.VH_optMenuCount.setText(String.valueOf(toppingMenuCount));
 
             }

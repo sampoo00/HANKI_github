@@ -27,19 +27,31 @@
                 android:background="@color/white"
                 app:layout_collapseMode="parallax">
 
-                <com.like.LikeButton
-                    android:id="@+id/shopMain_likeBtn"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginRight="15dp"
-                    android:layout_marginTop="15dp"
-                    app:anim_scale_factor="2.5"
-                    app:circle_start_color="#e4b1b1b1"
-                    app:icon_size="25dp"
-                    app:icon_type="heart" />
+                <!--<com.like.LikeButton-->
+                    <!--android:id="@+id/shopMain_likeBtn"-->
+                    <!--android:layout_width="30dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:layout_alignParentEnd="true"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_marginEnd="15dp"-->
+                    <!--android:layout_marginRight="15dp"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:background="@drawable/heart_off"-->
+                    <!--app:anim_scale_factor="2.5"-->
+                    <!--app:icon_size="25dp"-->
+                    <!--app:icon_type="heart" />-->
+
+                <ImageView
+                android:id="@+id/shopMain_likeBtn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="15dp"
+                android:background="@drawable/heart_off"
+                android:onClick="onClick"/>
 
                 <TextView
                     android:id="@+id/shopMain_shopTitle"

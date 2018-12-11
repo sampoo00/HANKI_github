@@ -5,7 +5,9 @@ import android.content.SharedPreferences;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.hanki.hanki.Tutorial.TutorialActivity;
 
 public class SplashActivity extends AppCompatActivity {
@@ -14,6 +16,7 @@ public class SplashActivity extends AppCompatActivity {
     Handler handler = new Handler();
     SharedPreferences pref;
     SharedPreferences.Editor editor;
+    TextView app_version;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +26,15 @@ public class SplashActivity extends AppCompatActivity {
         pref = getSharedPreferences("pref", MODE_PRIVATE);
 
         editor = pref.edit();
+        //초기 값 지정
         isFirstRun = pref.getBoolean("isFirstRun", true);
         checkShowTutorial = pref.getString("selectedNoShow", "no");
+
+        app_version = (TextView) findViewById(R.id.splash_version);
+        app_version.setText("ver.1.00.01");
+        LottieAnimationView lottie = (LottieAnimationView) findViewById(R.id.splash_lottie);
+        lottie.playAnimation();
+        lottie.cancelAnimation();
 
         handler.postDelayed(new Runnable() {
             @Override
