@@ -93,7 +93,7 @@
     <string name="review_writeReview">리뷰 작성</string>
     <string name="deleteReviewMessage">작성하신 리뷰를 삭제하시겠습니까?</string>
 
-    <!-- ShopInfo -->
+    <!-- InfoData -->
     <string name="shopInfo_operationInfo">[운영 정보]</string>
     <string name="shopInfo_runTime">영업 시간</string>
     <string name="shopInfo_breakTime">브레이크 타임</string>

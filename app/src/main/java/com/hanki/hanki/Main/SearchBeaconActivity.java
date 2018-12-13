@@ -67,7 +67,6 @@ public class SearchBeaconActivity extends AppCompatActivity {
                 startScan();
                 startSearchAniBtn.setAnimation("motion.json");
                 startSearchAniBtn.playAnimation();
-
             }
         });
     }
