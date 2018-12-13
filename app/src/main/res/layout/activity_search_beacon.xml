@@ -44,7 +44,7 @@
         android:id="@+id/search_beacon_recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/startSearchBtn"
+        android:layout_above="@+id/startSearchAniBtn"
         android:layout_below="@+id/search_beacon_msg2"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="28dp"
@@ -52,14 +52,13 @@
         android:layout_marginTop="25dp"
         android:scrollbars="vertical" />
 
-    <ImageButton
-        android:id="@+id/startSearchBtn"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/startSearchAniBtn"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="40dp"
-        android:background="@drawable/main_button"
-        android:onClick="onClick" />
+        android:background="@drawable/main_button" />
 
 </RelativeLayout>

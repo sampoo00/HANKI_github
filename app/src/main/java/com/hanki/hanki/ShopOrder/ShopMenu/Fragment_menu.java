@@ -33,14 +33,16 @@ public class Fragment_menu extends Fragment {
     private ShopSubMenuAdapter mSubMenuAdapter;
     private ArrayList<MenuData> mSubMenuList;
 
+    TextView txtCountryOrigin;
     ShopTopInfo shopTopInfo;
-
-    public static final String TAG = "MENU";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.shop_main_fragment_menu, container, false);
+        txtCountryOrigin = (TextView) view.findViewById(R.id.shopMain_countryOforigin);
+        mMainMenuRecyclerView = view.findViewById(R.id.shopMain_main_menu_recyclerView);
+        mSubMenuRecyclerView = view.findViewById(R.id.shopMain_sub_menu_recyclerView);
         return view;
     }
 
@@ -52,24 +54,21 @@ public class Fragment_menu extends Fragment {
         Bundle bundle = getArguments();
         shopTopInfo = (ShopTopInfo) bundle.getParcelable("shopTopInfo");
 
-        init(view);
-        initMenuRecyclerView(view);
+        if(shopTopInfo != null) {
+            init();
+            initMenuRecyclerView(view);
+        }
     }
 
-    public void init(View view) {
-        //원산지 표시
-        TextView txtCountryOrigin = (TextView) view.findViewById(R.id.shopMain_countryOforigin);
+    public void init() {
         String origin = shopTopInfo.origin;
-        txtCountryOrigin.setText(origin);
+        txtCountryOrigin.setText(origin); //원산지 표시
 
-        mMainMenuList = new ArrayList<>();
-        mSubMenuList = new ArrayList<>();
+        mMainMenuList = new ArrayList<>(); //메인메뉴
+        mSubMenuList = new ArrayList<>(); //서브메뉴
     }
 
     public void initMenuRecyclerView(View view) {
-        mMainMenuRecyclerView = view.findViewById(R.id.shopMain_main_menu_recyclerView);
-        mSubMenuRecyclerView = view.findViewById(R.id.shopMain_sub_menu_recyclerView);
-
         mMainMenuGridLayoutManager = new GridLayoutManager(view.getContext(), 2);
         mMainMenuGridLayoutManager.setOrientation(GridLayoutManager.VERTICAL);
         mMainMenuRecyclerView.setLayoutManager(mMainMenuGridLayoutManager);
@@ -90,14 +89,12 @@ public class Fragment_menu extends Fragment {
 
     public void initMenuArrayList() {
         ArrayList<MenuData> menuList = shopTopInfo.list; //매장 메뉴리스트
-        if (shopTopInfo.list != null) {
-            if (menuList.size() != 0) {
-                for (int i = 0; i < menuList.size(); i++) {
-                    if (menuList.get(i).getCategory().equals("main")) { //카테고리가 main인 menuList 구성
-                        mMainMenuList.add(menuList.get(i));
-                    } else if (menuList.get(i).getCategory().equals("sub")) { //카테고리가 sub인 menuList 구성
-                        mSubMenuList.add(menuList.get(i));
-                    }
+        if (menuList != null) {
+            for (int i = 0; i < menuList.size(); i++) {
+                if (menuList.get(i).getCategory().equals("main")) { //카테고리가 main인 menuList 구성
+                    mMainMenuList.add(menuList.get(i));
+                } else if (menuList.get(i).getCategory().equals("sub")) { //카테고리가 sub인 menuList 구성
+                    mSubMenuList.add(menuList.get(i));
                 }
             }
         }

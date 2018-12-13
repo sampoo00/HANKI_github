@@ -1,8 +1,11 @@
 package com.hanki.hanki.Util;
 
+import com.hanki.hanki.R;
+
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
+import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class Application extends android.app.Application {
 
@@ -25,6 +28,12 @@ public class Application extends android.app.Application {
         super.onCreate();
         buildNetworkService();
         Application.instance = this;
+
+        CalligraphyConfig.initDefault(new CalligraphyConfig.Builder()
+                .setDefaultFontPath("font/NanumSquareR.ttf")
+                .setFontAttrId(R.attr.fontPath)
+                .build()
+        );
     }
 
     public void buildNetworkService() {

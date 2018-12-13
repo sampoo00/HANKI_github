@@ -3,8 +3,6 @@ package com.hanki.hanki.ShopOrder.NetworkItem;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import java.io.Serializable;
-
 public class MenuData implements Parcelable {
     private String menuName;
     private int menuPrice;

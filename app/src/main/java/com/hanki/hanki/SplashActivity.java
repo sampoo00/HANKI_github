@@ -33,20 +33,12 @@ public class SplashActivity extends AppCompatActivity {
         app_version = (TextView) findViewById(R.id.splash_version);
         app_version.setText("ver.1.00.01");
         LottieAnimationView lottie = (LottieAnimationView) findViewById(R.id.splash_lottie);
+//        lottie.setAnimation("json/christmas_tree_with_gift_boxes.json");
         lottie.playAnimation();
-        lottie.cancelAnimation();
 
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-//                Intent intent;
-//                if(checkShowTutorial == 0) {
-//                    intent = new Intent(SplashActivity.this, TutorialActivity.class);
-//                } else {
-//                    intent = new Intent(SplashActivity.this, HomeActivity.class);
-//                }
-//                startActivity(intent);
-//                finish();
 
                 if(isFirstRun){
                     editor.putBoolean("isFirstRun", false);

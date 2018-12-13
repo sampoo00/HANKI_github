@@ -26,23 +26,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hanki.hanki.R;
-import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
 import com.hanki.hanki.ShopOrder.NetworkItem.ShopResult;
 import com.hanki.hanki.ShopOrder.NetworkItem.ShopTopInfo;
+import com.hanki.hanki.ShopOrder.ShopInfo.Fragment_shopInfo;
 import com.hanki.hanki.ShopOrder.ShopMenu.Fragment_menu;
 import com.hanki.hanki.Util.Application;
 import com.hanki.hanki.Util.NetworkService;
-import com.like.LikeButton;
-import com.like.OnLikeListener;
 
-import java.net.NetworkInterface;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static com.kakao.util.maps.helper.Utility.getPackageInfo;
 
@@ -65,6 +62,9 @@ public class ShopMainActivity extends AppCompatActivity {
     TextView reviewNum;
     TextView pickup;
     TextView nonpickup;
+
+    static String uuid;
+    String userId;
 
     static ShopTopInfo shopTopInfo;
 
@@ -195,15 +195,18 @@ public class ShopMainActivity extends AppCompatActivity {
 
         @Override
         public Fragment getItem(int position) {
+            Bundle bundle = new Bundle();
             switch (position) {
                 case 0:
                     Fragment_menu fragment_menu = new Fragment_menu();
-                    Bundle bundle = new Bundle();
                     bundle.putParcelable("shopTopInfo", shopTopInfo);
                     fragment_menu.setArguments(bundle);
                     return fragment_menu;
                 case 1:
-                    return new Fragment_shopInfo();
+                    Fragment_shopInfo fragment_shopInfo = new Fragment_shopInfo();
+                    bundle.putString("uuid", uuid);
+                    fragment_shopInfo.setArguments(bundle);
+                    return fragment_shopInfo;
                 case 2:
                     return new Fragment_reviews();
             }
@@ -248,11 +251,11 @@ public class ShopMainActivity extends AppCompatActivity {
 
         // 매장인식 다이얼로그(ShopLogoAdapter)에서 넘긴 UUID와 userId 받기
         Intent intent = getIntent();
-        String UUID = intent.getStringExtra("UUID");
-        String userId = intent.getStringExtra("userId");
+        uuid = intent.getStringExtra("UUID");
+        userId = intent.getStringExtra("userId");
 
         //통신
-        Call<ShopResult> request = networkService.getShopMenuResult(UUID, userId);
+        Call<ShopResult> request = networkService.getShopMenuResult(uuid, userId);
         request.enqueue(new Callback<ShopResult>() {
             @Override
             public void onResponse(Call<ShopResult> call, Response<ShopResult> response) {
@@ -301,4 +304,10 @@ public class ShopMainActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 }
+

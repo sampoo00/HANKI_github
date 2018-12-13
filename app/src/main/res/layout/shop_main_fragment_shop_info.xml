@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ShopOrder.Fragment_shopInfo">
+    tools:context=".ShopOrder.ShopInfo.Fragment_shopInfo">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -98,7 +98,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/shopInfo_phoneNum"
+                android:id="@+id/shopInfo_callNum"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/shopPhoneNum"
@@ -112,7 +112,7 @@
                 android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/shopInfo_phoneNum"
+                android:layout_below="@+id/shopInfo_callNum"
                 android:layout_marginTop="18dp"
                 android:text="@string/shopInfo_location"
                 android:textColor="#444"
@@ -162,6 +162,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/ownerName"
+                android:layout_marginTop="0dp"
                 android:layout_toRightOf="@+id/breakTime"
                 android:text="홍길동"
                 android:textColor="#666"

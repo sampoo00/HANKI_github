@@ -6,8 +6,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.hanki.hanki.R;
 import com.hanki.hanki.Util.Application;
 import com.hanki.hanki.Util.NetworkService;
@@ -26,7 +26,7 @@ import retrofit2.Response;
 public class SearchBeaconActivity extends AppCompatActivity {
 
     RecyclerView search_beacon_recyclerView;
-    ImageButton startSearchBtn;
+    LottieAnimationView startSearchAniBtn;
     ShopLogoAdapter adapter;
 
     private MinewBeaconManager minewBeaconManager;
@@ -60,11 +60,14 @@ public class SearchBeaconActivity extends AppCompatActivity {
         adapter = new ShopLogoAdapter(SearchBeaconActivity.this, shopLogoList);
         search_beacon_recyclerView.setAdapter(adapter);
 
-        startSearchBtn = (ImageButton) findViewById(R.id.startSearchBtn);
-        startSearchBtn.setOnClickListener(new View.OnClickListener() {
+        startSearchAniBtn = (LottieAnimationView) findViewById(R.id.startSearchAniBtn);
+        startSearchAniBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startScan();
+                startSearchAniBtn.setAnimation("json/motion.json");
+                startSearchAniBtn.setRepeatCount(3);
+                startSearchAniBtn.playAnimation();
             }
         });
     }
