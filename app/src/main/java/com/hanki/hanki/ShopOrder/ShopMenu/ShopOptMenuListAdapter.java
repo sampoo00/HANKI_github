@@ -91,14 +91,16 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View v) {
-                    if(toppingMenuCount < 99) {
-                        toppingMenuCount = toppingMenuCount + 1;
-                       ((ShopMenuDialog)ShopMenuDialog.mContext).addOptPrice(optMenuData.get(position).getToppingPrice());
+                toppingMenuCount = optMenuData.get(position).getToppingNum();
 
-                    }
-                    else{
-                        toppingMenuCount = 99;
-                    }
+                if(toppingMenuCount < 99) {
+                    toppingMenuCount = toppingMenuCount + 1;
+                   ((ShopMenuDialog)ShopMenuDialog.mContext).addOptPrice(optMenuData.get(position).getToppingPrice());
+
+                }
+                else{
+                    toppingMenuCount = 99;
+                }
 
                 optMenuData.get(position).setToppingNum(toppingMenuCount);
                 holder.VH_optMenuCount.setText(String.valueOf(toppingMenuCount));
@@ -109,6 +111,7 @@ public class ShopOptMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
         holder.VH_optMenuSubBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                toppingMenuCount = optMenuData.get(position).getToppingNum();
 
                 if(toppingMenuCount == 1){
                     toppingMenuCount = 1;
