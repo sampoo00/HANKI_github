@@ -46,7 +46,8 @@ public class ShopSubMenuAdapter extends RecyclerView.Adapter<ShopMenuViewHolder>
 
     public void goShopMenuOrder(MenuData menuData){
         ShopMenuDialog shopMenuDialog = new ShopMenuDialog(context, menuData, shopCode, orderType);
-        shopMenuDialog.setCanceledOnTouchOutside(false);
+//        shopMenuDialog.setCanceledOnTouchOutside(false);
+        shopMenuDialog.setCanceledOnTouchOutside(true);     //바깥 터치시 close
         shopMenuDialog.show();
     }
 

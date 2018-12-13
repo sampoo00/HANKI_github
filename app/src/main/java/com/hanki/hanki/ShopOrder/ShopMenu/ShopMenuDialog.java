@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
@@ -270,13 +271,23 @@ public class ShopMenuDialog extends Dialog {
             public void onClick(View v) {
 //                Toast.makeText(getContext(), "식판에 담겼습니다", Toast.LENGTH_SHORT).show();
 
-                Dialog dialog = new Dialog(getContext());
+                final Dialog dialog = new Dialog(getContext());
                 dialog.setContentView(layout.dialog_alert_image);
                 dialog.setCanceledOnTouchOutside(false);
                 dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
                 dialog.show();
 
+                Handler mHandler = new Handler();
+
+                Runnable mDialog = new Runnable() {
+                    @Override
+                    public void run() {
+                        dialog.dismiss();
+
+                    }
+                };
+                mHandler.postDelayed(mDialog, 1200); // 3초후에 실행
 
             }
         });
