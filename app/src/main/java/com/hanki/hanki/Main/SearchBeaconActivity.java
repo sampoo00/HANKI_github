@@ -65,7 +65,8 @@ public class SearchBeaconActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startScan();
-                startSearchAniBtn.setAnimation("motion.json");
+                startSearchAniBtn.setAnimation("json/motion.json");
+                startSearchAniBtn.setRepeatCount(3);
                 startSearchAniBtn.playAnimation();
             }
         });

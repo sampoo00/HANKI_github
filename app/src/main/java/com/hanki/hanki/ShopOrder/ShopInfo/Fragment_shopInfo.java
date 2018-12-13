@@ -105,8 +105,9 @@ public class Fragment_shopInfo extends Fragment {
         shopInfo_runTime.setText(infoData.getRunTime());
         shopInfo_breakTime.setText(infoData.getBreakTime());
         shopInfo_holiday.setText(infoData.getHoliday());
-        shopInfo_location.setText(infoData.getAddr());
+        shopInfo_location.setText(infoData.getAddr() + " " + infoData.getDetailAddr());
         shopInfo_ownerName.setText(infoData.getOwnerName());
+        shopInfo_businessName.setText(infoData.getShopName());
 
         SpannableString content = new SpannableString(infoData.getShopCallNum());
         content.setSpan(new UnderlineSpan(), 0, content.length(), 0);

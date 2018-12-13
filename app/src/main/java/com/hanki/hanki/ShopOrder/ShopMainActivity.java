@@ -39,6 +39,7 @@ import java.security.NoSuchAlgorithmException;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 import static com.kakao.util.maps.helper.Utility.getPackageInfo;
 
@@ -303,4 +304,10 @@ public class ShopMainActivity extends AppCompatActivity {
             }
         }
     }
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
 }
+
