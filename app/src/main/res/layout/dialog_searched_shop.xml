@@ -7,7 +7,7 @@
         android:id="@+id/searchedDialog_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/border_searched_shop_dialog"
+        android:background="@drawable/border_allround_shop_dialog"
         android:orientation="vertical">
 
         <TextView

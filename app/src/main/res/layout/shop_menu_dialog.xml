@@ -1,19 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/shop_menu_dialog_mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/space_shop_dialog">
+    >
 
     <RelativeLayout
         android:id="@+id/menuDialog_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="25dp"
         android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/menu_topTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/border_menu_dialog_title"
+            >
+            <TextView
+                android:id="@+id/menu_topTitle_Content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="9dp"
+                android:text="메뉴 주문"
+                android:textSize="17sp"
+                />
+
+            <ImageView
+                android:id="@+id/menu_dialog_closeBtn"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="9dp"
+                android:layout_marginEnd="9dp"
+                android:onClick="onClick"
+                android:background="@drawable/icon_close"/>
+        </RelativeLayout>
 
 
         <android.support.v4.widget.NestedScrollView
             android:id="@+id/menu_ScrollView"
+            android:layout_below="@id/menu_topTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/menu_totalPriceLayout">
@@ -23,23 +53,64 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 >
-
-                <ImageView
-                    android:id="@+id/menu_MenuImg"
+                <RelativeLayout
+                    android:id="@+id/menu_topContent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    />
-                <TextView
-                    android:id="@+id/menu_MenuTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_below="@id/menu_MenuImg"
-                    android:text="맛있는 음식"/>
+                    android:layout_marginBottom="10dp">
+
+                    <FrameLayout
+                        android:id="@+id/menu_frameLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="20dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/menu_MenuImg"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/imageview_gradation"
+                            />
+
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:id="@+id/menu_MenuInfoLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal"
+                        android:layout_alignParentBottom="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="10dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/menu_MenuName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:layout_marginBottom="3dp"
+                            android:text="맛있는 음식"/>
+
+                        <TextView
+                            android:id="@+id/menu_MenuDoc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="10sp"
+                            android:text="설명"
+                            />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
 
                 <ImageView
                     android:id="@+id/menu_dotline1"
@@ -51,7 +122,8 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginEnd="5dp"
-                    android:layout_below="@+id/menu_MenuTitle"/>
+                    android:layout_below="@+id/menu_topContent"/>
+
 
                 <RelativeLayout
                     android:id="@+id/menu_reqMenuLayout"
@@ -382,7 +454,7 @@
                     android:layout_height="50dp"
                     android:orientation="vertical"
                     android:layout_weight="1"
-                    android:background="@drawable/border_menu_dialog_bottom_line"
+                    android:background="@drawable/border_menu_dialog_right_line"
                     android:onClick="onClick">
                     <TextView
                         android:id="@+id/menu_addCartTxt"

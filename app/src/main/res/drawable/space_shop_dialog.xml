@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <inset
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:drawable="@drawable/menu_bg"
-    android:insetTop="10dp"
-    android:insetBottom="10dp"
+    android:drawable="@drawable/border_allround_shop_dialog"
+    android:insetTop="55dp"
+    android:insetBottom="50dp"
     >
 </inset>

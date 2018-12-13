@@ -3,22 +3,15 @@ package com.hanki.hanki.ShopOrder.ShopMenu;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v4.widget.NestedScrollView;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -30,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.hanki.hanki.R;
 import com.hanki.hanki.ShopOrder.NetworkItem.MenuData;
 import com.hanki.hanki.ShopOrder.NetworkItem.ToppingData;
@@ -41,8 +33,6 @@ import com.hanki.hanki.Util.NetworkService;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -53,6 +43,8 @@ import static com.hanki.hanki.R.*;
 public class ShopMenuDialog extends Dialog {
     String TAG = "check2";
     NestedScrollView mNestScroll;
+    RelativeLayout mMainLayout;
+    ImageView mCloseBtn;
     //필수 메뉴
     private RecyclerView mReqMenuRecyclerView;
     private LinearLayoutManager mReqMenuLinearLayoutManager;
@@ -100,7 +92,9 @@ public class ShopMenuDialog extends Dialog {
 
     //메뉴판
     ImageView mMenuImg;
-    TextView mMenuTitle;
+//    RoundedImageView mMenuImg;
+    TextView mMenuName;
+    TextView mMenuDoc;
     RelativeLayout mReqMenuLayout; //menu_reqMenuLayout
     ImageView mFirstMenuDotLine; //menu_dotline2
 
@@ -299,8 +293,20 @@ public class ShopMenuDialog extends Dialog {
     }
 
     public void init(){
-        mMenuImg = (ImageView) findViewById(id.menu_MenuImg);
-        mMenuTitle = (TextView) findViewById(id.menu_MenuTitle);
+        mMainLayout = (RelativeLayout) findViewById(id.shop_menu_dialog_mainLayout);
+        mMainLayout.setBackgroundResource(drawable.space_shop_dialog);
+        mMenuImg = (ImageView) findViewById(id.menu_MenuImg); //dialog
+
+        mCloseBtn = (ImageView) findViewById(R.id.menu_dialog_closeBtn);
+        mCloseBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+        mMenuName = (TextView) findViewById(id.menu_MenuName);
+        mMenuDoc = (TextView) findViewById(id.menu_MenuDoc);
         mReqMenuLayout = (RelativeLayout) findViewById(id.menu_reqMenuLayout); //
         mFirstMenuDotLine = (ImageView) findViewById(id.menu_dotline2); //만약 Req 안나오게 하면 같이 없애야함
 
@@ -311,6 +317,7 @@ public class ShopMenuDialog extends Dialog {
         mPickupGroup = (RadioGroup) findViewById(id.menu_RadioGroup);
         mPickupType = (RadioButton) findViewById(id.menu_pickupRadioBtn);
         mNonPickupType = (RadioButton) findViewById(id.menu_nonPickupRadioBtn);
+
     }
 
 
@@ -348,13 +355,14 @@ public class ShopMenuDialog extends Dialog {
         if(toppingResult.description.equals("success")) { //description이 success인 경우
             toppingDataList.addAll(toppingResult.result);
 
-
+            //set image
             String imageUrl = Application.getInstance().imageUrl + "menu/"
                     + mSelectedShopCode + "/" + mSelectedMenuData.getMenuImgId();
             Glide.with(getContext()).load(imageUrl).into(mMenuImg);
 
-            mMenuTitle.setText(mSelectedMenuData.getMenuName());
-
+            //set name, documentation
+            mMenuName.setText(mSelectedMenuData.getMenuName());
+            mMenuDoc.setText(mSelectedMenuData.getMenuDoc());
             Log.d(TAG, "pickupType : " + mShopOrderType);
 
             // 매장 주문 타입 - 1: 현장/픽업, 2: 현장 only, 3: 픽업 only
