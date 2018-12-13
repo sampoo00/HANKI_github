@@ -57,14 +57,13 @@ public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
         holder.VH_reqMenuSize.setText(reqMenuData.get(position).getToppingName());
 //        holder.VH_reqMenuPeople.setText(reqMenuData.get(position).menuPeople);
         holder.VH_reqMenuPrice.setText(String.valueOf(moneyFormat(reqMenuData.get(position).getToppingPrice()))+"원");
-//        holder.VH_reqRadioBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(holder.VH_reqRadioBtn.isChecked()){
-//                    holder.VH_reqRadioBtn.setChecked(true);
-//                }
-//            }
-//        });
+        if(position == 0){
+            holder.VH_reqRadioBtn.setChecked(true);
+            lastCheckedRB = holder.VH_reqRadioBtn;
+            lastPosition = position;
+            ((ShopMenuDialog) ShopMenuDialog.mContext).addReqPrice(reqMenuData.get(position).getToppingPrice());
+
+        }
 
         holder.VH_reqRadioBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -83,8 +82,10 @@ public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
                     checked = false;
                 }
 
+
                 lastCheckedRB = holder.VH_reqRadioBtn;
                 lastPosition = position;
+
 
                 ((ShopMenuDialog) ShopMenuDialog.mContext).addReqPrice(reqMenuData.get(position).getToppingPrice());
             }

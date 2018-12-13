@@ -342,7 +342,7 @@ public class ShopMenuDialog extends Dialog {
         mSelectedShopCode = shopCode;
         mShopOrderType = orderType;
         mCalTotalPrice = (TextView) findViewById(id.menu_totalPrice);
-        mCalTotalPrice.setText("0");
+//        mCalTotalPrice.setText("0");
 
         init();
         getToppingNetworking();
@@ -350,6 +350,8 @@ public class ShopMenuDialog extends Dialog {
         initPickupType();
         initRequest();
         initCartOrder();
+
+
 
         //참고
 //        searchedDialog_closeBtn = (ImageButton) findViewById(R.id.searchedDialog_closeBtn);
