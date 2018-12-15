@@ -47,11 +47,11 @@ public class PaymentPayActivity extends AppCompatActivity {
 
 
         mPayListData = new ArrayList<>();
-        mPayListData.add(new PaymentPayListData("카카오 페이"));
-        mPayListData.add(new PaymentPayListData("네이버 페이"));
-        mPayListData.add(new PaymentPayListData("페이코"));
-        mPayListData.add(new PaymentPayListData("신용카드 결제"));
-        mPayListData.add(new PaymentPayListData("휴대폰 결제"));
+        mPayListData.add(new PaymentPayListData("카카오페이", R.drawable.logo_kakao));
+        mPayListData.add(new PaymentPayListData("네이버페이", R.drawable.logo_naversymbol));
+        mPayListData.add(new PaymentPayListData("페이코", 0));
+        mPayListData.add(new PaymentPayListData("카드결제", 0 ));
+        mPayListData.add(new PaymentPayListData("휴대폰결제", 0));
 
 
 

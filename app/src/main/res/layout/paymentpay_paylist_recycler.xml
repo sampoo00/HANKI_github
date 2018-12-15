@@ -10,8 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
-        android:layout_margin="15dp"
-
+        android:layout_marginBottom="15dp"
         android:orientation="horizontal">
 
         <RadioButton
@@ -19,13 +18,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
+        <ImageView
+            android:id="@+id/paymentPay_logo"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/logo_kakao"/>
+
         <TextView
             android:id="@+id/paymentPay_payName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginStart="10dp"
-            android:textSize="22sp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginStart="7dp"
+            android:textSize="20sp"
             android:text="네이버 페이"/>
     </LinearLayout>
 

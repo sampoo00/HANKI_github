@@ -269,7 +269,9 @@ public class ShopMenuDialog extends Dialog {
         addCartLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(getContext(), "식판에 담겼습니다", Toast.LENGTH_SHORT).show();
+
+                //주문 retrofit2 추가 해야함
+
 
                 final Dialog dialog = new Dialog(getContext());
                 dialog.setContentView(layout.dialog_alert_image);
@@ -284,6 +286,7 @@ public class ShopMenuDialog extends Dialog {
                     @Override
                     public void run() {
                         dialog.dismiss();
+                        mContext.dismiss();
 
                     }
                 };

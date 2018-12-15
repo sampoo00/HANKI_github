@@ -39,7 +39,11 @@ public class PaymentPayListAdapter extends RecyclerView.Adapter<PaymentPayListVi
     public void onBindViewHolder(@NonNull final PaymentPayListViewHolder holder, final int position) {
 
         holder.VH_PayName.setText(payListData.get(position).payName);
-
+        if(payListData.get(position).payImg != 0) {
+            holder.VH_PayImg.setBackgroundResource(payListData.get(position).getPayImg());
+        }else{
+            holder.VH_PayImg.setVisibility(View.GONE);
+        }
 //        holder.VH_RadioBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 //            @Override
 //            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
