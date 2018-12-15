@@ -27,38 +27,60 @@
             android:layout_centerInParent="true">
 
 
-            <TextView
-                android:id="@+id/foodTray_totalPrice"
+            <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textSize="25sp"
-                android:textColor="@color/pdlg_color_blue"
-                android:textStyle="bold"
-                android:text="36,000"/>
+                android:layout_centerInParent="true"
+                >
 
-            <TextView
-                android:id="@+id/foodTray_wonTxt"
-                android:layout_toRightOf="@+id/foodTray_totalPrice"
-                android:layout_centerVertical="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_marginLeft="5dp"
-                android:text="원"/>
+                <TextView
+                    android:id="@+id/foodTray_totalTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textStyle="bold"
+                    android:textSize="20sp"
+                    android:text="총"/>
 
-            <TextView
-                android:id="@+id/menu_totalPriceText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/foodTray_wonTxt"
-                android:layout_toRightOf="@+id/foodTray_wonTxt"
-                android:layout_marginLeft="17dp"
-                android:layout_centerVertical="true"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:text="결제하기"/>
+                <TextView
+                    android:id="@+id/foodTray_totalPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/foodTray_totalTxt"
+                    android:layout_toEndOf="@+id/foodTray_totalTxt"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:textSize="25sp"
+                    android:textColor="@color/pdlg_color_blue"
+                    android:textStyle="bold"
+                    android:text="36,000"/>
+
+                <TextView
+                    android:id="@+id/foodTray_totalPrice_wonTxt"
+                    android:layout_toRightOf="@+id/foodTray_totalPrice"
+                    android:layout_centerVertical="true"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginStart="5dp"
+                    android:text="원"/>
+
+                <TextView
+                    android:id="@+id/foodTray_totalPriceText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/foodTray_totalPrice_wonTxt"
+                    android:layout_toRightOf="@+id/foodTray_totalPrice_wonTxt"
+                    android:layout_marginLeft="17dp"
+                    android:layout_marginStart="17dp"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:text="결제하기"/>
+            </RelativeLayout>
         </RelativeLayout>
 
 

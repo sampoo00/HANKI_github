@@ -6,13 +6,294 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="300dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/cart_bg">
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/foodTray_firstLineLayout"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="놀부 부대찌게"
-            android:textSize="17sp"/>
-    </RelativeLayout>
+            android:layout_marginTop="35dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/foodTray_ShopName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginLeft="45dp"
+                android:layout_marginStart="45dp"
+                android:gravity="center_horizontal"
+                android:text="놀부 부대찌개"
+                android:textSize="17sp"/>
+
+            <ImageView
+                android:id="@+id/foodTray_deleteBtn"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginLeft="15dp"
+                android:background="@drawable/icon_close"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/foodTray_itemLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/foodTray_firstLineLayout"
+            android:layout_marginTop="35dp"
+            android:gravity="center"
+            >
+
+            <ImageView
+                android:id="@+id/payment_foodImg"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:layout_margin="10dp"
+                android:background="@drawable/sample_food">
+
+            </ImageView>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:layout_margin="10dp"
+                android:layout_gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/payment_shopTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:text="놀부 부대찌개"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:text="[사이즈]"
+                        />
+                    <TextView
+                        android:id="@+id/foodTray_foodSize"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:text="중(中)"
+                        />
+                    <TextView
+                        android:id="@+id/foodTray_foodNum"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:gravity="center"
+                        android:text="1개"
+                        />
+                    <TextView
+                        android:id="@+id/foodTray_foodPrice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:text="33,000원"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:text="[토핑]"
+                        />
+                    <TextView
+                        android:id="@+id/foodTray_ToppingName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:text="햄사리"
+                        />
+                    <TextView
+                        android:id="@+id/foodTray_ToppingNum"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:gravity="center"
+                        android:text="2개"
+                        />
+                    <TextView
+                        android:id="@+id/foodTray_ToppingPrice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:text="+3,000원"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:textStyle="bold"
+                        android:textSize="11sp"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginBottom="2dp"
+                        android:text="[수량]"
+                        />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:layout_gravity="end"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/foodTray_subBtn"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:background="@drawable/smaple_substract_circle" />
+
+
+                        <TextView
+                            android:id="@+id/foodTray_foodCount"
+                            android:layout_width="50dp"
+                            android:layout_height="25dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:gravity="center"
+                            android:textSize="17sp"
+                            android:background="@drawable/border_menu_diaog_all_edge"
+                            android:text="1"
+                            />
+
+                        <ImageButton
+                            android:id="@+id/foodTray_addBtn"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:background="@drawable/smaple_add_circle_gray"                            android:scaleType="centerCrop" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                </LinearLayout>
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|end"
+            android:layout_below="@+id/foodTray_itemLayout"
+            android:layout_marginTop="30dp"
+            >
+
+            <TextView
+                android:id="@+id/foodTray_totalPriceTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:text="총 주문 금액"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/foodTray_totalPriceTxt"
+                android:layout_toEndOf="@+id/foodTray_totalPriceTxt"
+                android:orientation="horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginEnd="20dp">
+
+                <TextView
+                    android:id="@+id/payment_PriceTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/pdlg_color_red"
+                    android:text="36,000"/>
+
+
+                <TextView
+                    android:id="@+id/payment_wonTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="5dp"
+                    android:text="원"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+        </RelativeLayout>
+
 
 </RelativeLayout>

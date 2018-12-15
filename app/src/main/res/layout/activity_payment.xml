@@ -47,7 +47,7 @@
                     >
 
                     <TextView
-                        android:id="@+id/payment_totalPrcieTxt"
+                        android:id="@+id/payment_totalPriceTxt"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
