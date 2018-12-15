@@ -1,11 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/foodTray_recyclerView"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/foodTray_toOrderLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="foodtray fragment"/>
+        android:layout_height="wrap_content">
 
-</LinearLayout>
+    </android.support.v7.widget.RecyclerView>
+    <RelativeLayout
+        android:id="@+id/foodTray_toOrderLayout"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:onClick="onClick"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true">
+
+
+            <TextView
+                android:id="@+id/foodTray_totalPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textSize="25sp"
+                android:textColor="@color/pdlg_color_blue"
+                android:textStyle="bold"
+                android:text="36,000"/>
+
+            <TextView
+                android:id="@+id/foodTray_wonTxt"
+                android:layout_toRightOf="@+id/foodTray_totalPrice"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginLeft="5dp"
+                android:text="원"/>
+
+            <TextView
+                android:id="@+id/menu_totalPriceText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/foodTray_wonTxt"
+                android:layout_toRightOf="@+id/foodTray_wonTxt"
+                android:layout_marginLeft="17dp"
+                android:layout_centerVertical="true"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:text="결제하기"/>
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>

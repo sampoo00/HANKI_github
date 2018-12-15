@@ -1,4 +1,4 @@
-package com.hanki.hanki.ShopOrder.ShopMenu;
+package com.hanki.hanki.ShopOrder.NetworkItem;
 
 import java.util.ArrayList;
 

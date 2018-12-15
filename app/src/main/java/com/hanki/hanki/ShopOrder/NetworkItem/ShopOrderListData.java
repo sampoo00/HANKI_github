@@ -1,4 +1,4 @@
-package com.hanki.hanki.ShopOrder.ShopMenu;
+package com.hanki.hanki.ShopOrder.NetworkItem;
 
 public class ShopOrderListData {
     String menuName;
