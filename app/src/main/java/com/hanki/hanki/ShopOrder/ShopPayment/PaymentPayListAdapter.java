@@ -11,13 +11,14 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.hanki.hanki.R;
+import com.hanki.hanki.ShopOrder.ShopMenu.ShopMenuDialog;
 
 import java.util.ArrayList;
 
 public class PaymentPayListAdapter extends RecyclerView.Adapter<PaymentPayListViewHolder> {
     Context context;
     private ArrayList<PaymentPayListData> payListData;
-    private int lastPosition = 0;
+    private int lastPosition;
     private RadioButton lastCheckedRB = null;
 
 
@@ -44,17 +45,16 @@ public class PaymentPayListAdapter extends RecyclerView.Adapter<PaymentPayListVi
         }else{
             holder.VH_PayImg.setVisibility(View.GONE);
         }
-//        holder.VH_RadioBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-//            @Override
-//            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                if (lastCheckedRB != null) {
-//                    lastCheckedRB.setChecked(false);
-//
-//                }
-//                lastCheckedRB = holder.VH_RadioBtn;
-//                lastPosition = position;
-//            }
-//        });
+        lastPosition = ((PaymentPayActivity)PaymentPayActivity.mContext).mLogoPosition;
+
+        if(position == lastPosition) { //기본 값 지정
+            holder.VH_RadioBtn.setChecked(true);
+            lastCheckedRB = holder.VH_RadioBtn;
+            lastPosition = position;
+            ((PaymentPayActivity)PaymentPayActivity.mContext).setLogoInfo(lastPosition, payListData.get(position).getPayImg(), payListData.get(position).getPayName());
+        }
+
+
 
         holder.VH_RadioBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -67,6 +67,8 @@ public class PaymentPayListAdapter extends RecyclerView.Adapter<PaymentPayListVi
                 }
                 lastCheckedRB = holder.VH_RadioBtn;
                 lastPosition = position;
+
+                ((PaymentPayActivity)PaymentPayActivity.mContext).setLogoInfo(lastPosition, payListData.get(position).getPayImg(), payListData.get(position).getPayName());
 
 //                ((ShopMenuDialog)ShopMenuDialog.mContext).addReqPrice(reqMenuData.get(position).menuPrice);
             }

@@ -14,20 +14,33 @@ import java.util.ArrayList;
 
 
 public class PaymentPayActivity extends AppCompatActivity {
+    public static PaymentPayActivity mContext;
     Toolbar mToolbar;
     private RecyclerView mPayRecyclerView;
     private LinearLayoutManager mPayLinearLayoutManager;
     private PaymentPayListAdapter mPayListAdapter;
     ArrayList<PaymentPayListData> mPayListData;
 
+    //넘겨줄 것
+    int mLogoUrl = 0;
+    String  mLogoName = "";
+    int mLogoPosition;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_pay);
 
+        mContext = this;
+        mLogoPosition = getIntent().getIntExtra("logoPosition", 0);
         init();
+        setLogoInfo(mLogoPosition, mLogoUrl, mLogoName);
+    }
 
-
+    public void setLogoInfo(int logoPosition, int logoUrl, String logoName){
+        mLogoPosition = logoPosition;
+        mLogoUrl = logoUrl;
+        mLogoName = logoName;
     }
 
     public void setUpToolbar(){
@@ -71,7 +84,10 @@ public class PaymentPayActivity extends AppCompatActivity {
         switch (view.getId()){
             case R.id.paymentPay_choiceLayout:
                 Intent intent = new Intent(this, PaymentActivity.class);
-                finish();
+                intent.putExtra("logoPosition", mLogoPosition);
+                intent.putExtra("logoUrl", mLogoUrl);
+                intent.putExtra("logoName", mLogoName);
+//                intent.putExtra("isFirst", mFirst);
                 startActivity(intent);
                 break;
         }

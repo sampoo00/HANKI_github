@@ -57,7 +57,7 @@ public class ShopReqMenuListAdapter extends RecyclerView.Adapter<ShopReqMenuList
         holder.VH_reqMenuSize.setText(reqMenuData.get(position).getToppingName());
 //        holder.VH_reqMenuPeople.setText(reqMenuData.get(position).menuPeople);
         holder.VH_reqMenuPrice.setText(String.valueOf(moneyFormat(reqMenuData.get(position).getToppingPrice()))+"원");
-        if(position == 0){
+        if(position == 0){ //기본 값 지정
             holder.VH_reqRadioBtn.setChecked(true);
             lastCheckedRB = holder.VH_reqRadioBtn;
             lastPosition = position;
