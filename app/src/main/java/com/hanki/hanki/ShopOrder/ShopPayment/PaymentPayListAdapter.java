@@ -20,6 +20,7 @@ public class PaymentPayListAdapter extends RecyclerView.Adapter<PaymentPayListVi
     private ArrayList<PaymentPayListData> payListData;
     private int lastPosition;
     private RadioButton lastCheckedRB = null;
+    boolean check = false;
 
 
     public PaymentPayListAdapter(Context context,  ArrayList<PaymentPayListData> payListData) {
@@ -61,16 +62,21 @@ public class PaymentPayListAdapter extends RecyclerView.Adapter<PaymentPayListVi
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
                 if(lastCheckedRB != null){
-                    lastCheckedRB.setChecked(false);
-//                    ((ShopMenuDialog)ShopMenuDialog.mContext).subReqPrice(reqMenuData.get(lastPosition).menuPrice);
+                    if(lastCheckedRB != holder.VH_RadioBtn && !check){
+                        check = true;
+                        lastCheckedRB.setChecked(false);
+                    }else if(lastCheckedRB == holder.VH_RadioBtn && !check){
+                        check = true;
+                        lastCheckedRB.setChecked(true);
+                    }
 
+                    check = false;
                 }
                 lastCheckedRB = holder.VH_RadioBtn;
                 lastPosition = position;
 
                 ((PaymentPayActivity)PaymentPayActivity.mContext).setLogoInfo(lastPosition, payListData.get(position).getPayImg(), payListData.get(position).getPayName());
 
-//                ((ShopMenuDialog)ShopMenuDialog.mContext).addReqPrice(reqMenuData.get(position).menuPrice);
             }
         });
 

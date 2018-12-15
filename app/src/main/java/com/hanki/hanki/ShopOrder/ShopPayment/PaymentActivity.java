@@ -38,7 +38,7 @@ public class PaymentActivity extends AppCompatActivity {
     Button mChangePayBtn;
 
     //결제 정보
-    boolean mIsFirst = true;
+    RelativeLayout mPaymentPayLayout;
     int mLogoImageUrl;
     String mInitLogoName;
     int mLogoPostion;
@@ -50,15 +50,20 @@ public class PaymentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment);
 
-//        mIsFirst = getIntent().getBooleanExtra("isFirst", true);
+        init();
+        setupToolbar();
         mLogoImageUrl = getIntent().getIntExtra("logoUrl", R.drawable.logo_kakao);
         mInitLogoName = getIntent().getStringExtra("logoName");
         mLogoPostion = getIntent().getIntExtra("logoPosition", 0);
         if(mInitLogoName == null){
             mInitLogoName = "카카오페이";
         }
-        init();
-        setupToolbar();
+        else{
+            mPaymentPayLayout.requestFocus();
+        }
+
+        setPaymentInfo(mLogoImageUrl, mInitLogoName);
+
 
     }
 
@@ -71,11 +76,13 @@ public class PaymentActivity extends AppCompatActivity {
 
         //결제 정보
         mFirstPriceText = (TextView) findViewById(R.id.payment_PriceTxt);
+        mPaymentPayLayout = (RelativeLayout) findViewById(R.id.payment_payLayout);
+        mPaymentPayLayout.setFocusableInTouchMode(true);
         mChangePayBtn = (Button) findViewById(R.id.payment_changePayBtn);
         mLogoImage = (ImageView) findViewById(R.id.payment_payLogo);
         mLogoName = (TextView) findViewById(R.id.payment_payTxt);
 
-        setPaymentInfo(mLogoImageUrl, mInitLogoName);
+
     }
 
     public void setPaymentInfo(int imageUrl, String imageName){

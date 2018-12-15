@@ -88,6 +88,7 @@ public class PaymentPayActivity extends AppCompatActivity {
                 intent.putExtra("logoUrl", mLogoUrl);
                 intent.putExtra("logoName", mLogoName);
 //                intent.putExtra("isFirst", mFirst);
+                finish();
                 startActivity(intent);
                 break;
         }
