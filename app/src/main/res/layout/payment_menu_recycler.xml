@@ -5,37 +5,31 @@
     android:layout_height="wrap_content"
     >
 
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/payment_itemLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_margin="10dp"
-        android:background="@color/pdlg_color_gray"
         android:gravity="center"
-        android:layout_centerInParent="true"
         >
-
 
         <ImageView
             android:id="@+id/payment_foodImg"
-            android:layout_width="140dp"
-            android:layout_height="120dp"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
             android:layout_weight="1"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_centerVertical="true"
             android:layout_margin="10dp"
             android:background="@drawable/sample_food">
 
         </ImageView>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:layout_margin="10dp"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/payment_foodImg"
-            android:layout_toEndOf="@+id/payment_foodImg"
+            android:layout_gravity="center_vertical"
             android:orientation="vertical">
 
             <TextView
@@ -67,7 +61,7 @@
 
         </LinearLayout>
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <ImageView
         android:layout_below="@+id/payment_itemLayout"
