@@ -5,13 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hanki.hanki.ShopOrder.ShopPayment.IamPort.iamPortMainActivity;
 
@@ -45,6 +48,11 @@ public class PaymentActivity extends AppCompatActivity {
     ImageView mLogoImage;
     TextView mLogoName;
 
+    //쿠폰, 포인트, 캐쉬백
+    LinearLayout mCouponLayout;
+    LinearLayout mHankiPointLayout;
+    LinearLayout mOKCashBackLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,7 +67,7 @@ public class PaymentActivity extends AppCompatActivity {
             mInitLogoName = "카카오페이";
         }
         else{
-            mPaymentPayLayout.requestFocus();
+            mOKCashBackLayout.requestFocus();
         }
 
         setPaymentInfo(mLogoImageUrl, mInitLogoName);
@@ -77,11 +85,15 @@ public class PaymentActivity extends AppCompatActivity {
         //결제 정보
         mFirstPriceText = (TextView) findViewById(R.id.payment_PriceTxt);
         mPaymentPayLayout = (RelativeLayout) findViewById(R.id.payment_payLayout);
-        mPaymentPayLayout.setFocusableInTouchMode(true);
         mChangePayBtn = (Button) findViewById(R.id.payment_changePayBtn);
         mLogoImage = (ImageView) findViewById(R.id.payment_payLogo);
         mLogoName = (TextView) findViewById(R.id.payment_payTxt);
 
+        //쿠폰, 포인트, 캐시백
+        mCouponLayout = (LinearLayout) findViewById(R.id.payment_couponLayout);
+        mHankiPointLayout = (LinearLayout) findViewById(R.id.payment_pointLayout);
+        mOKCashBackLayout = (LinearLayout) findViewById(R.id.payment_okCashBackLayout);
+        mOKCashBackLayout.setFocusableInTouchMode(true);
 
     }
 
@@ -159,6 +171,15 @@ public class PaymentActivity extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(), "결제하기", Toast.LENGTH_SHORT).show();
                 intent = new Intent(this, iamPortMainActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.payment_couponLayout: //쿠폰 Layout
+                Toast.makeText(getApplicationContext(), "쿠폰", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.payment_pointLayout: //포인트 Layout
+                Toast.makeText(getApplicationContext(), "행키 포인트", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.payment_okCashBackLayout: //OKcashBack Layout
+                Toast.makeText(getApplicationContext(), "오케이 캐쉬백", Toast.LENGTH_SHORT).show();
                 break;
 
         }
