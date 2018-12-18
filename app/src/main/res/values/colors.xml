@@ -14,4 +14,8 @@
     <color name="pickUp_on">#f69679</color>
     <color name="nonPickUp_on">#a8da5f</color>
 
+    <!-- color -->
+    <color name="NumberColor">#ff6167</color>
+    <color name="textColor">#444444</color>
+
 </resources>

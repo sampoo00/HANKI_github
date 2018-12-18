@@ -23,8 +23,6 @@ import retrofit2.Response;
 
 public class Fragment_numberticket extends Fragment {
 
-    Button testBtn;
-    TextView testTv;
 
     NetworkService networkService;
 
@@ -37,8 +35,8 @@ public class Fragment_numberticket extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.home_fragment_numberticket, container, false);
-        testBtn = view.findViewById(R.id.testBtn);
-        testTv = view.findViewById(R.id.textTv);
+//        testBtn = view.findViewById(R.id.testBtn);
+//        testTv = view.findViewById(R.id.textTv);
 
         networkService = Application.getInstance().getNetworkService();
         return view;
@@ -48,31 +46,31 @@ public class Fragment_numberticket extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        testBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String UUID = "15290"; //UUID
-                String userId = ""; //userId 설정
-
-                //메뉴판 받아오기
-                Call<ShopResult> request = networkService.getShopMenuResult(UUID, userId);
-                request.enqueue(new Callback<ShopResult>() {
-                    @Override
-                    public void onResponse(Call<ShopResult> call, Response<ShopResult> response) {
-                        if (response.isSuccessful()) {
-                            ShopResult shopResult = response.body();
-                            ShopTopInfo shopTopInfo = shopResult.result;
-                            testTv.setText(shopTopInfo.toString());
-                            Log.d(TAG, "RESPONSE " + response.code());
-                        }
-                    }
-                    @Override
-                    public void onFailure(Call<ShopResult> call, Throwable t) {
-                        testTv.setText(t.getMessage());
-                        Log.d(TAG, "FAIL " + t.getMessage());
-                    }
-                });
-            }
-        });
+//        testBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String UUID = "15290"; //UUID
+//                String userId = ""; //userId 설정
+//
+//                //메뉴판 받아오기
+//                Call<ShopResult> request = networkService.getShopMenuResult(UUID, userId);
+//                request.enqueue(new Callback<ShopResult>() {
+//                    @Override
+//                    public void onResponse(Call<ShopResult> call, Response<ShopResult> response) {
+//                        if (response.isSuccessful()) {
+//                            ShopResult shopResult = response.body();
+//                            ShopTopInfo shopTopInfo = shopResult.result;
+//                            testTv.setText(shopTopInfo.toString());
+//                            Log.d(TAG, "RESPONSE " + response.code());
+//                        }
+//                    }
+//                    @Override
+//                    public void onFailure(Call<ShopResult> call, Throwable t) {
+//                        testTv.setText(t.getMessage());
+//                        Log.d(TAG, "FAIL " + t.getMessage());
+//                    }
+//                });
+//            }
+//        });
     }
 }

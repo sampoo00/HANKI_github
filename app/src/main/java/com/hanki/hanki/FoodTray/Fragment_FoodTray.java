@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.hanki.hanki.NumberTicket.NetworkItem.OrderedListData;
 import com.hanki.hanki.R;
@@ -45,6 +46,14 @@ public class Fragment_FoodTray extends Fragment {
     public void init(View view){
 
         mOrderLayout = view.findViewById(R.id.foodTray_toOrderLayout);
+        mOrderLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Toast.makeText(getContext(), "결제하기", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
 
 }

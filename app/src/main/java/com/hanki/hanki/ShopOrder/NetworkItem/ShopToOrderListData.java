@@ -1,6 +1,6 @@
 package com.hanki.hanki.ShopOrder.NetworkItem;
 
-public class ShopOrderListData {
+public class ShopToOrderListData {
     String menuName;
     String menuPrice;
     String toppingName;

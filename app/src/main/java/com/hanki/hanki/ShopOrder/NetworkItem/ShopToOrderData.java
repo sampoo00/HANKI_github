@@ -2,16 +2,16 @@ package com.hanki.hanki.ShopOrder.NetworkItem;
 
 import java.util.ArrayList;
 
-public class ShopOrderData {
+public class ShopToOrderData {
     //유저아이디, 매장 고유코드, FCM 토큰 값, 주문내역 총 금액
     public String userId;
     public String shopCode;
     public String FCMToken;
     public String amount;
 
-    public ArrayList<ShopOrderListData> list;
+    public ArrayList<ShopToOrderListData> list;
 
-    public ShopOrderData(String userId, String shopCode, String FCMToken, String amount, ArrayList<ShopOrderListData> list) {
+    public ShopToOrderData(String userId, String shopCode, String FCMToken, String amount, ArrayList<ShopToOrderListData> list) {
         this.userId = userId;
         this.shopCode = shopCode;
         this.FCMToken = FCMToken;
@@ -51,11 +51,11 @@ public class ShopOrderData {
         this.amount = amount;
     }
 
-    public ArrayList<ShopOrderListData> getList() {
+    public ArrayList<ShopToOrderListData> getList() {
         return list;
     }
 
-    public void setList(ArrayList<ShopOrderListData> list) {
+    public void setList(ArrayList<ShopToOrderListData> list) {
         this.list = list;
     }
 }
