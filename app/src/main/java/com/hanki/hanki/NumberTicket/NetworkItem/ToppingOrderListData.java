@@ -1,4 +1,4 @@
-package com.hanki.hanki.FoodTray.NetworkItem;
+package com.hanki.hanki.NumberTicket.NetworkItem;
 
 public class ToppingOrderListData {
     String toppingName;

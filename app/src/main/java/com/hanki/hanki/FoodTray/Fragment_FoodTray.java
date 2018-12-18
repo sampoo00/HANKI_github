@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import com.hanki.hanki.FoodTray.NetworkItem.OrderListData;
+import com.hanki.hanki.NumberTicket.NetworkItem.OrderedListData;
 import com.hanki.hanki.R;
 
 import java.util.List;
@@ -23,7 +23,7 @@ public class Fragment_FoodTray extends Fragment {
     private RecyclerView mFoodTrayRecyclerView;
     private LinearLayoutManager mFoodTrayLinearLayoutManager;
     private FoodTrayOrderListAdapter mPaymentAdapter;
-    List<OrderListData> mOrderList;
+    List<OrderedListData> mOrderList;
 
     public Fragment_FoodTray() {
     }

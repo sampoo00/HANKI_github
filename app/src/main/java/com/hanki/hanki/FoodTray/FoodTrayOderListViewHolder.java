@@ -15,5 +15,6 @@ public class FoodTrayOderListViewHolder extends RecyclerView.ViewHolder {
 
     public FoodTrayOderListViewHolder(View itemView) {
         super(itemView);
+
     }
 }

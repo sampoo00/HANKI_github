@@ -1,4 +1,4 @@
-package com.hanki.hanki.FoodTray.NetworkItem;
+package com.hanki.hanki.NumberTicket.NetworkItem;
 
 import java.util.ArrayList;
 
