@@ -30,6 +30,7 @@ import com.hanki.hanki.ShopOrder.NetworkItem.ShopResult;
 import com.hanki.hanki.ShopOrder.NetworkItem.ShopTopInfo;
 import com.hanki.hanki.ShopOrder.ShopInfo.Fragment_shopInfo;
 import com.hanki.hanki.ShopOrder.ShopMenu.Fragment_menu;
+import com.hanki.hanki.ShopOrder.ShopReview.Fragment_reviews;
 import com.hanki.hanki.Util.Application;
 import com.hanki.hanki.Util.NetworkService;
 
