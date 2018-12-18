@@ -11,11 +11,10 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.hanki.hanki.R;
+import com.tsengvn.typekit.TypekitContextWrapper;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class WriteReviewActivity extends AppCompatActivity {
 
@@ -60,6 +59,6 @@ public class WriteReviewActivity extends AppCompatActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+        super.attachBaseContext(TypekitContextWrapper.wrap(newBase));
     }
 }
