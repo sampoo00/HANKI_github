@@ -23,7 +23,6 @@ import retrofit2.Response;
 
 public class Fragment_numberticket extends Fragment {
 
-
     NetworkService networkService;
 
     public final static String TAG = "NUMBER_TICKET";

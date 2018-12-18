@@ -6,19 +6,21 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hanki.hanki.R;
+import com.hanki.hanki.Util.GPS;
 
 import java.util.ArrayList;
 
 public class Fragment_NearByShop extends Fragment {
 
     RecyclerView nearbyshop_recyclerview;
+    public static final String TAG = "NEARBYSHOP";
 
     public Fragment_NearByShop() {
 
@@ -33,7 +35,10 @@ public class Fragment_NearByShop extends Fragment {
         TextView nearbyshop_infoMessage = (TextView)view.findViewById(R.id.nearbyshop_infoMessage);
         nearbyshop_infoMessage.setFocusableInTouchMode(true);
         nearbyshop_infoMessage.requestFocus();
-        
+
+        GPS gps = new GPS(getContext());
+        Log.d(TAG, gps.getLatitude()+", " + gps.getLongitude());
+
         return view;
     }
 
